@@ -1,3 +1,5 @@
+package controller;
+
 import java.sql.ResultSet;
 
 public interface Func {

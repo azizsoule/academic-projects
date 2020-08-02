@@ -1,3 +1,5 @@
+package controller;
+
 class Mairie {
     private final Integer id_mairie;
 
