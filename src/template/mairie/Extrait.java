@@ -1,4 +1,4 @@
-package controller;
+package mairie;
 
 import java.sql.Date;
 import java.sql.ResultSet;

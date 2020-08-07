@@ -1,7 +1,6 @@
-package controller;
+package mairie;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class Main {
 

@@ -1,4 +1,4 @@
-package controller;
+package mairie;
 
 import java.sql.*;
 import java.util.ArrayList;

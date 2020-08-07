@@ -1,4 +1,4 @@
-package controller;
+package mairie;
 
 class Mairie {
     private final Integer id_mairie;

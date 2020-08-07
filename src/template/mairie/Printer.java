@@ -1,4 +1,4 @@
-package controller;
+package mairie;
 
 public class Printer {
 

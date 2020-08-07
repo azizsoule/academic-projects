@@ -1,4 +1,4 @@
-package controller;
+package mairie;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
