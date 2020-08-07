@@ -20,15 +20,15 @@
                   <TextField layoutX="100.0" layoutY="225.0" prefHeight="26.0" prefWidth="226.0" promptText="Mot de passe" />
                   <Button layoutX="138.0" layoutY="281.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="151.0" text="Se connecter" textAlignment="CENTER" />
                   <Button layoutX="326.0" layoutY="364.0" mnemonicParsing="false" styleClass="quit-btn" stylesheets="@style.css" text="Quitter" textAlignment="CENTER" />
-                  <ImageView fitHeight="166.0" fitWidth="287.0" layoutX="-7.0">
+                  <Text layoutX="153.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20px;" text="Connexion" textAlignment="CENTER" wrappingWidth="99.86457824707031" />
+                  <ImageView fitHeight="164.0" fitWidth="281.0" layoutX="-2.0">
                      <image>
-                        <Image url="@../../../Documents/ruban.png" />
+                        <Image url="@../icons/ruban.png" />
                      </image>
                   </ImageView>
-                  <Text layoutX="153.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20px;" text="Connexion" textAlignment="CENTER" wrappingWidth="99.86457824707031" />
-                  <ImageView fitHeight="18.0" fitWidth="17.0" layoutX="253.0" layoutY="119.0">
+                  <ImageView layoutX="251.0" layoutY="113.0">
                      <image>
-                        <Image url="@../../../AppData/Local/Temp/icons8_login_rounded_right_24px.png" />
+                        <Image url="@../icons/icons8_login_rounded_right_30px.png" />
                      </image>
                   </ImageView>
                </children></Pane>
