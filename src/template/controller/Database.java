@@ -2,7 +2,6 @@ package controller;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.function.Function;
 
 /* NB : N'oubliez surtout pas d'ajouter mysql-connector au projet
 sinon vous risquez d'etre confronté à des erreurs un peu chiantes !*/
@@ -91,30 +90,24 @@ public class Database {
     void sendQuery(String query,Func func) throws SQLException{
         int res = 1;
 
-        String req = "";
-
-        for (int j = 0; j < 6; j++) {
-            req += query.charAt(j);
-        }
+        String req = query.substring(0,6).toUpperCase();
 
         try {
             statement = connection.prepareStatement(query);
 
-            req = req.toUpperCase();
-
-            if ("SELECT".equals(req)) {
-                resultSet = statement.getResultSet();
-
-                func.wheQuerryComplete(resultSet);
-
-                System.out.println();
+            if (req.equals("SELECT")) {
+                resultSet = statement.executeQuery();
+                func.whenQuerryComplete(resultSet);
             } else {
                 res = statement.executeUpdate();
             }
 
             if (res == 0) {
                 throw new SQLException("Query failed");
+            }else{
+                System.out.println("Query succeed !");
             }
+
         } catch (SQLException exception) {
             exception.printStackTrace();
         } finally {
@@ -147,11 +140,9 @@ public class Database {
     void sendQuery(String query,ArrayList<Object> arguments,Func function) throws SQLException {
         int res = 1;
 
-        String req = "";
+        query = query.trim();
 
-        for (int j = 0; j < 6; j++) {
-            req += query.charAt(j);
-        }
+        String req = query.substring(0,6).toUpperCase();
 
         try {
             statement = connection.prepareStatement(query);
@@ -183,9 +174,7 @@ public class Database {
 
             System.out.println(statement.toString());
 
-            req = req.toUpperCase();
-
-            if ("SELECT".equals(req)) {
+            if (req.equals("SELECT")) {
                 resultSet = statement.executeQuery();
             } else {
                 res = statement.executeUpdate();
@@ -193,10 +182,12 @@ public class Database {
 
             if (res == 0) {
                 throw new SQLException("Querry failed");
+            }else{
+                System.out.println("Query succeed !");
             }
 
             if (resultSet != null) {
-                function.wheQuerryComplete(resultSet);
+                function.whenQuerryComplete(resultSet);
             }
 
         } catch (SQLException exception) {

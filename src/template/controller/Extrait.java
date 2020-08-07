@@ -203,7 +203,7 @@ class Extrait {
                     add("%"+string.toLowerCase()+"%");
                 }
             }, resultSet -> {
-                onResult.wheQuerryComplete(resultSet);
+                onResult.whenQuerryComplete(resultSet);
             });
         } catch (SQLException e) {
             e.printStackTrace();
