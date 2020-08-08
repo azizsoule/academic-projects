@@ -23,12 +23,12 @@
                   <Text layoutX="153.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20px;" text="Connexion" textAlignment="CENTER" wrappingWidth="99.86457824707031" />
                   <ImageView fitHeight="164.0" fitWidth="281.0" layoutX="-2.0">
                      <image>
-                        <Image url="@../icons/ruban.png" />
+                        <Image url="@icons/ruban.png" />
                      </image>
                   </ImageView>
                   <ImageView layoutX="251.0" layoutY="113.0">
                      <image>
-                        <Image url="@../icons/icons8_login_rounded_right_30px.png" />
+                        <Image url="@icons/icons8_login_rounded_right_30px.png" />
                      </image>
                   </ImageView>
                </children></Pane>
@@ -36,7 +36,7 @@
                <children>
                   <ImageView fitHeight="113.0" fitWidth="127.0" layoutX="50.0" layoutY="31.0">
                      <image>
-                        <Image url="@../icons/armoiries.png" />
+                        <Image url="@icons/armoiries.png" />
                      </image>
                   </ImageView>
                   <Label alignment="CENTER" blendMode="COLOR_DODGE" layoutX="42.0" layoutY="396.0" prefHeight="18.0" prefWidth="142.0" text="with baby 5 |  2020" textAlignment="CENTER" />
