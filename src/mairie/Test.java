@@ -2,7 +2,7 @@ package mairie;
 
 import java.sql.SQLException;
 
-public class Main {
+public class Test {
 
     static Func func = resultSet -> {
         try {
@@ -16,7 +16,7 @@ public class Main {
 
     public static void main(String[] args){
 
-        Database x = new Database("root", "root", "mairie");
+        Database x = new Database("root", "root", "src/mairie");
 
         x.connect();
 

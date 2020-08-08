@@ -1,4 +1,4 @@
-package dashboard;
+package controllers;
 
 public class Controller {
 }

@@ -61,7 +61,7 @@ public class Database {
         port = 3306;
         this.user = "root";
         this.password = "root";
-        this.dbName = "mairie";
+        this.dbName = "src/mairie";
         url = this.url + host + ":" + port + "/" + this.dbName;
     }
 
@@ -70,7 +70,7 @@ public class Database {
         port = 3306;
         this.user = user;
         this.password = password;
-        this.dbName = "mairie";
+        this.dbName = "src/mairie";
         url = this.url + host + ":" + port + "/" + this.dbName;
     }
 
