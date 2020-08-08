@@ -1447,7 +1447,7 @@
                               </LinearGradient>
                            </textFill>
                         </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Actes de naissance">
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="btn-selected" stylesheets="@dashboard.css" text="Actes de naissance">
                            <padding>
                               <Insets left="40.0" />
                            </padding>
@@ -1465,15 +1465,18 @@
                                  </stops>
                               </LinearGradient>
                            </textFill>
+                           <effect>
+                              <DropShadow color="WHITE" />
+                           </effect>
                            <graphic>
-                              <ImageView fitHeight="28.0" fitWidth="28.0">
+                              <ImageView fitHeight="29.0" fitWidth="27.0">
                                  <image>
-                                    <Image url="@../icons/icons8_birthday_50px.png" />
+                                    <Image url="@../icons/icons8_birthday_50px_1.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="btn-selected" stylesheets="@dashboard.css" text="Acte de mariage">
+                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Acte de mariage">
                            <padding>
                               <Insets left="40.0" />
                            </padding>
@@ -1488,13 +1491,10 @@
                                  </stops>
                               </LinearGradient>
                            </textFill>
-                           <effect>
-                              <DropShadow color="WHITE" />
-                           </effect>
                            <graphic>
-                              <ImageView fitHeight="33.0" fitWidth="31.0">
+                              <ImageView fitHeight="26.0" fitWidth="28.0">
                                  <image>
-                                    <Image url="@../icons/icons8_date_50px.png" />
+                                    <Image url="@../icons/icons8_date_50px_1.png" />
                                  </image>
                               </ImageView>
                            </graphic>
