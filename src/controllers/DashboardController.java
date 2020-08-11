@@ -9,7 +9,7 @@ import javafx.scene.layout.Pane;
 
 import java.util.EventObject;
 
-public class Controller {
+public class DashboardController {
 
     @FXML
     private Button btn_tableau_de_bord;
