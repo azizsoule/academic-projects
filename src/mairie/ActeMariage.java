@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
 
-class ActeMariage extends Extrait{
+public class ActeMariage extends Extrait{
 
      private Integer id_acte_mar;
      private Date date_mar;

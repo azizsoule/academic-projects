@@ -1,6 +1,6 @@
 package mairie;
 
-class Mairie {
+public class Mairie {
     private final Integer id_mairie;
 
     private final String communes;

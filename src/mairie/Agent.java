@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
-class Agent {
+public class Agent {
     private final Database db;
 
     private final Integer id_agent;
@@ -150,7 +150,7 @@ class Agent {
     }
 
     //Surchage statique de la methode precedente pour permettre de verifier di un agent existe sans instancier la classe Agent
-    static Boolean agentExist(String userName, String password){
+    public static Boolean agentExist(String userName, String password){
         Database bd = new Database("root", "root");
 
         ArrayList<Object> params = new ArrayList<Object>() {

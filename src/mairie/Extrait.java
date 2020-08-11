@@ -7,7 +7,7 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReference;
 
-class Extrait {
+public class Extrait {
 
     private final Database db;
 
