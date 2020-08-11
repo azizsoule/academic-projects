@@ -8,6 +8,7 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -25,1372 +26,765 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="891.0" prefWidth="1282.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="891.0" prefWidth="1282.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Controller">
    <children>
-      <StackPane layoutX="316.0" prefHeight="891.0" prefWidth="967.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+      <SplitPane dividerPositions="0.25" layoutX="-9.0" layoutY="-9.0" prefHeight="891.0" prefWidth="1282.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <items>
+            <VBox alignment="TOP_CENTER" prefHeight="891.0" prefWidth="326.0" spacing="10.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);">
                <children>
-                  <ImageView fitHeight="173.0" fitWidth="176.0" layoutX="-14.0" layoutY="548.0" rotate="-90.0">
-                     <image>
-                        <Image url="@icons/ruban.png" />
-                     </image>
-                  </ImageView>
-                  <Pane layoutX="62.0" layoutY="123.0" prefHeight="5.0" prefWidth="870.0" style="-fx-background-color: rgb(0, 196, 196);" />
-                  <Pane layoutX="62.0" layoutY="110.0" prefHeight="5.0" prefWidth="285.0" style="-fx-background-color: rgb(0, 196, 196);" />
-                  <Label alignment="CENTER" layoutX="355.0" layoutY="89.0" prefHeight="35.0" prefWidth="285.0" style="-fx-font: #fff; -fx-border-color: rgb(0, 196, 196);" text="ACTES DE NAISSANCE" textAlignment="CENTER" textFill="#3a97a8">
-                     <font>
-                        <Font name="Agency FB" size="24.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="394.0" layoutY="660.0" prefHeight="35.0" prefWidth="206.0" style="-fx-background-color: #f5f5f5;" text="with baby 5 |  2020" textAlignment="CENTER" textFill="#026f83">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Pane layoutX="-1.0" layoutY="710.0" prefHeight="200.0" prefWidth="976.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
-                  <Pane layoutX="-322.0" layoutY="-5.0" prefHeight="79.0" prefWidth="1405.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);">
+                  <Pane prefHeight="212.0" prefWidth="326.0" style="-fx-background-color: #fff;">
+                     <effect>
+                        <InnerShadow choke="0.35" color="#ababab40" height="219.6" radius="106.35" width="207.8" />
+                     </effect>
                      <children>
-                        <Label alignment="CENTER" layoutX="1096.0" layoutY="39.0" prefHeight="35.0" prefWidth="194.0" style="-fx-font: #fff;" text="Mardi 04 Aout 2020  " textAlignment="CENTER" textFill="WHITE">
-                           <font>
-                              <Font name="Agency FB" size="24.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </Pane>
-                  <ScrollPane layoutX="62.0" layoutY="199.0" prefHeight="395.0" prefWidth="870.0">
-                     <content>
-                        <TableView editable="true" prefHeight="415.0" prefWidth="896.0" tableMenuButtonVisible="true">
-                           <columns>
-                              <TableColumn prefWidth="148.0" text="ID_Extrait" />
-                              <TableColumn prefWidth="123.0" text="Nom" />
-                              <TableColumn prefWidth="193.0" text="Prénom(s)" />
-                              <TableColumn prefWidth="155.0" text="Date de Naissance" />
-                              <TableColumn prefWidth="331.0" text="Actions" />
-                           </columns>
-                        </TableView>
-                     </content>
-                  </ScrollPane>
-                  <TextField layoutX="253.0" layoutY="141.0" prefHeight="35.0" prefWidth="470.0" promptText="Rechercher">
-                     <padding>
-                        <Insets left="25.0" right="25.0" />
-                     </padding>
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </TextField>
-                  <Pane layoutX="647.0" layoutY="108.0" prefHeight="5.0" prefWidth="285.0" style="-fx-background-color: rgb(0, 196, 196);" />
-                  <Pane layoutX="689.0" layoutY="143.0" prefHeight="32.0" prefWidth="33.0" style="-fx-background-color: #f5f5f5;">
-                     <children>
-                        <ImageView fitHeight="20.0" fitWidth="23.0" layoutX="6.0" layoutY="6.0">
+                        <ImageView fitHeight="160.0" fitWidth="172.0" layoutX="83.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@icons/icons8_Search_52px.png" />
+                              <Image url="@icons/jimmy-fallon.png" />
                            </image>
                         </ImageView>
                      </children>
                   </Pane>
-                  <Button accessibleText="IUHYGTFD" cache="true" layoutX="296.0" layoutY="611.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="32.0" prefWidth="412.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" styleClass="Hover-top" stylesheets="@style.css" text="AJOUTER ACTE DE NAISSANCE" textAlignment="CENTER" textFill="WHITE">
-                     <effect>
-                        <DropShadow color="#000000c0" height="7.42" radius="3.58" width="8.9" />
-                     </effect>
+                  <Label text="BIENVENUE">
                      <font>
-                        <Font name="Arial Rounded MT Bold" size="15.0" />
+                        <Font size="30.0" />
                      </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <VBox alignment="TOP_CENTER" layoutX="-314.0" prefHeight="891.0" prefWidth="315.0" spacing="10.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);">
-                     <children>
-                        <Pane prefHeight="212.0" prefWidth="326.0" style="-fx-background-color: #fff;">
-                           <effect>
-                              <InnerShadow choke="0.35" color="#ababab40" height="219.6" radius="106.35" width="207.8" />
-                           </effect>
-                           <children>
-                              <ImageView fitHeight="160.0" fitWidth="172.0" layoutX="83.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/jimmy-fallon.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </Pane>
-                        <Label text="BIENVENUE">
-                           <font>
-                              <Font size="30.0" />
-                           </font>
-                           <textFill>
-                              <LinearGradient endX="0.8797619047619047" endY="0.6643315018315018" startX="0.2285714285714286" startY="0.39903846153846156">
-                                 <stops>
-                                    <Stop color="#ee9300" />
-                                    <Stop color="WHITE" offset="0.20509578544061297" />
-                                    <Stop color="WHITE" offset="0.49606983449855824" />
-                                    <Stop color="#00ff48" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Label>
-                        <Pane prefHeight="45.0" prefWidth="326.0" style="-fx-background-color: #fff;">
-                           <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="51.0" layoutY="9.0" prefHeight="0.0" prefWidth="224.0" text="SEXY Baby" textAlignment="CENTER" textFill="#508ba3">
-                                 <font>
-                                    <Font name="Bell MT Bold" size="23.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <effect>
-                              <InnerShadow color="#bfbfbf" height="26.93" radius="18.835" width="50.41" />
-                           </effect>
-                        </Pane>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Tableau de bord" textFill="#aeaeae" wrapText="true">
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/icons8_Home_32px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <VBox.margin>
-                              <Insets top="30.0" />
-                           </VBox.margin>
-                           <padding>
-                              <Insets left="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                        </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" lineSpacing="2.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Mon compte">
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/icons8_Person_32px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets left="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="2.0" />
-                           </VBox.margin>
-                           <textFill>
-                              <LinearGradient endX="0.009615384615384616" endY="1.0" startX="0.764423076923077">
-                                 <stops>
-                                    <Stop color="#d45f02" />
-                                    <Stop color="#54fc07" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: linear-gradient(to bottom right,#0056d8, #25ccff, #0056d8);" styleClass="btn-selected" stylesheets="@dashboard.css" text="Actes de naissance">
-                           <padding>
-                              <Insets left="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="2.0" />
-                           </VBox.margin>
-                           <textFill>
-                              <LinearGradient endX="0.009615384615384616" endY="1.0" startX="0.764423076923077">
-                                 <stops>
-                                    <Stop color="#d45f02" />
-                                    <Stop color="#54fc07" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                           <effect>
-                              <DropShadow color="WHITE" />
-                           </effect>
-                           <graphic>
-                              <ImageView fitHeight="28.0" fitWidth="29.0">
-                                 <image>
-                                    <Image url="@icons/icons8_birthday_50px_1.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Acte de mariage">
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/icons8_Box_32px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets left="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <textFill>
-                              <LinearGradient endX="0.009615384615384616" endY="1.0" startX="0.764423076923077">
-                                 <stops>
-                                    <Stop color="#d45f02" />
-                                    <Stop color="#54fc07" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Settings">
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/icons8_Slider__32px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets left="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="2.0" />
-                           </VBox.margin>
-                           <textFill>
-                              <LinearGradient endX="0.009615384615384616" endY="1.0" startX="0.764423076923077">
-                                 <stops>
-                                    <Stop color="#d45f02" />
-                                    <Stop color="#54fc07" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Deconnexion">
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/icons8_Sign_Out_32px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets left="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="2.0" />
-                           </VBox.margin>
-                           <textFill>
-                              <LinearGradient endX="0.009615384615384616" endY="1.0" startX="0.764423076923077">
-                                 <stops>
-                                    <Stop color="#d45f02" />
-                                    <Stop color="#54fc07" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Button>
-                        <Pane prefHeight="79.0" prefWidth="326.0" />
-                     </children>
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </VBox>
-               </children>
-            </Pane>
-            <Pane fx:id="add_an" prefHeight="892.0" prefWidth="823.0" style="-fx-background-color: white;">
-               <children>
-                  <VBox layoutX="90.0" layoutY="124.0" prefHeight="214.0" prefWidth="405.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: grey; -fx-border-radius: 5;">
-                     <children>
-                        <VBox prefHeight="64.0" prefWidth="505.0" spacing="5.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Text>
-                              <TextField prefHeight="42.0" prefWidth="164.0" />
-                           </children>
-                        </VBox>
-                        <VBox prefHeight="64.0" prefWidth="505.0" spacing="5.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prénoms">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Text>
-                              <TextField prefHeight="42.0" prefWidth="505.0" />
-                           </children>
-                        </VBox>
-                        <HBox prefHeight="26.0" prefWidth="536.0" spacing="15.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sexe :">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Text>
-                              <RadioButton mnemonicParsing="false" text="Féminin">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </RadioButton>
-                              <RadioButton mnemonicParsing="false" text="Masculin">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </RadioButton>
-                           </children>
-                        </HBox>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </VBox>
-                  <Label layoutX="158.0" layoutY="88.0" prefHeight="36.0" prefWidth="275.0" text="Information sur l'enfant" textFill="#508ba3">
-                     <font>
-                        <Font name="Bell MT Bold" size="25.0" />
-                     </font>
+                     <textFill>
+                        <LinearGradient endX="0.8797619047619047" endY="0.6643315018315018" startX="0.2285714285714286" startY="0.39903846153846156">
+                           <stops>
+                              <Stop color="#ee9300" />
+                              <Stop color="WHITE" offset="0.20509578544061297" />
+                              <Stop color="WHITE" offset="0.49606983449855824" />
+                              <Stop color="#00ff48" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
                   </Label>
-                  <Label layoutX="166.0" layoutY="351.0" prefHeight="31.0" prefWidth="309.0" text="Information sur les parents" textFill="#508ba3">
-                     <font>
-                        <Font name="Bell MT Bold" size="25.0" />
-                     </font>
-                  </Label>
-                  <Pane layoutX="435.0" layoutY="106.0" prefHeight="5.0" prefWidth="482.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
-                  <Pane layoutX="479.0" layoutY="369.0" prefHeight="5.0" prefWidth="438.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
-                  <Pane layoutX="93.0" layoutY="106.0" prefHeight="5.0" prefWidth="63.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
-                  <VBox layoutX="506.0" layoutY="124.0" prefHeight="212.0" prefWidth="412.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: grey; -fx-border-radius: 5;">
+                  <Pane prefHeight="45.0" prefWidth="326.0" style="-fx-background-color: #fff;">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Heure de naissance:" wrappingWidth="132.96435546875">
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="51.0" layoutY="9.0" prefHeight="0.0" prefWidth="224.0" text="Diarra Mamadou" textAlignment="CENTER" textFill="#508ba3">
                            <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Text>
-                        <HBox alignment="CENTER" prefHeight="0.0" prefWidth="388.0" spacing="10.0">
-                           <children>
-                              <Label />
-                              <Spinner editable="true" prefHeight="26.0" prefWidth="86.0">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </Spinner>
-                              <Label text="Heures">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                                 <padding>
-                                    <Insets top="5.0" />
-                                 </padding>
-                              </Label>
-                              <Spinner editable="true" prefHeight="26.0" prefWidth="80.0">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </Spinner>
-                              <Label text="Minutes">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                                 <padding>
-                                    <Insets top="5.0" />
-                                 </padding>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <VBox prefHeight="44.0" prefWidth="388.0" spacing="5.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date de naissance">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Text>
-                              <DatePicker prefHeight="46.0" prefWidth="388.0" />
-                           </children>
-                        </VBox>
-                        <VBox prefHeight="66.0" prefWidth="505.0" spacing="5.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lieu de naissance">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Text>
-                              <TextField prefHeight="64.0" prefWidth="388.0" />
-                           </children>
-                        </VBox>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </VBox>
-                  <Pane layoutX="93.0" layoutY="369.0" prefHeight="5.0" prefWidth="63.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
-                  <VBox layoutX="508.0" layoutY="384.0" prefHeight="176.0" prefWidth="411.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: grey; -fx-border-radius: 5;">
-                     <children>
-                        <VBox prefHeight="140.0" prefWidth="739.0" spacing="5.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mère" textAlignment="CENTER" wrappingWidth="386.37255859375">
-                                 <font>
-                                    <Font name="Agency FB" size="25.0" />
-                                 </font>
-                              </Text>
-                              <TextField prefHeight="42.0" prefWidth="505.0" promptText="Nom">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </TextField>
-                              <TextField prefHeight="44.0" prefWidth="739.0" promptText="Prénoms">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </TextField>
-                              <TextField prefHeight="43.0" prefWidth="739.0" promptText="Domicile">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </TextField>
-                           </children>
-                        </VBox>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </VBox>
-                  <VBox layoutX="93.0" layoutY="384.0" prefHeight="176.0" prefWidth="405.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: grey; -fx-border-radius: 5;">
-                     <children>
-                        <VBox prefHeight="140.0" prefWidth="739.0" spacing="5.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Père" textAlignment="CENTER" wrappingWidth="379.30419921875">
-                                 <font>
-                                    <Font name="Agency FB" size="25.0" />
-                                 </font>
-                              </Text>
-                              <TextField prefHeight="42.0" prefWidth="505.0" promptText="Nom">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </TextField>
-                              <TextField prefHeight="44.0" prefWidth="739.0" promptText="Prénoms">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </TextField>
-                              <TextField prefHeight="43.0" prefWidth="739.0" promptText="Domicile">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </TextField>
-                           </children>
-                        </VBox>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </VBox>
-                  <Button accessibleText="IUHYGTFD" cache="true" layoutX="299.0" layoutY="587.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="32.0" prefWidth="412.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" styleClass="Hover-top" stylesheets="@style.css" text="VALIDER" textAlignment="CENTER" textFill="WHITE">
-                     <effect>
-                        <DropShadow color="#000000c0" height="7.42" radius="3.58" width="8.9" />
-                     </effect>
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="15.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <ImageView fitHeight="173.0" fitWidth="176.0" layoutX="-1.0" layoutY="605.0" rotate="-90.0">
-                     <image>
-                        <Image url="@icons/ruban.png" />
-                     </image>
-                  </ImageView>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="405.0" layoutY="658.0" prefHeight="35.0" prefWidth="206.0" style="-fx-background-color: #f5f5f5;" text="with baby 5 |  2020" textAlignment="CENTER" textFill="#026f83">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <HBox layoutY="712.0" prefHeight="190.0" prefWidth="1081.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
-                  <Pane layoutY="-5.0" prefHeight="79.0" prefWidth="1081.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);">
-                     <children>
-                        <Label alignment="CENTER" layoutX="779.0" layoutY="39.0" prefHeight="35.0" prefWidth="194.0" style="-fx-font: #fff;" text="Mardi 04 Aout 2020  " textAlignment="CENTER" textFill="WHITE">
-                           <font>
-                              <Font name="Agency FB" size="24.0" />
+                              <Font name="Bell MT Bold" size="23.0" />
                            </font>
                         </Label>
                      </children>
+                     <effect>
+                        <InnerShadow color="#bfbfbf" height="26.93" radius="18.835" width="50.41" />
+                     </effect>
                   </Pane>
-                  <VBox alignment="TOP_CENTER" layoutX="-316.0" prefHeight="891.0" prefWidth="315.0" spacing="10.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);">
-                     <children>
-                        <Pane prefHeight="212.0" prefWidth="326.0" style="-fx-background-color: #fff;">
-                           <effect>
-                              <InnerShadow choke="0.35" color="#ababab40" height="219.6" radius="106.35" width="207.8" />
-                           </effect>
-                           <children>
-                              <ImageView fitHeight="160.0" fitWidth="172.0" layoutX="83.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/jimmy-fallon.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </Pane>
-                        <Label text="BIENVENUE">
-                           <font>
-                              <Font size="30.0" />
-                           </font>
-                           <textFill>
-                              <LinearGradient endX="0.8797619047619047" endY="0.6643315018315018" startX="0.2285714285714286" startY="0.39903846153846156">
-                                 <stops>
-                                    <Stop color="#ee9300" />
-                                    <Stop color="WHITE" offset="0.20509578544061297" />
-                                    <Stop color="WHITE" offset="0.49606983449855824" />
-                                    <Stop color="#00ff48" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Label>
-                        <Pane prefHeight="45.0" prefWidth="326.0" style="-fx-background-color: #fff;">
-                           <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="51.0" layoutY="9.0" prefHeight="0.0" prefWidth="224.0" text="SEXY Baby" textAlignment="CENTER" textFill="#508ba3">
-                                 <font>
-                                    <Font name="Bell MT Bold" size="23.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <effect>
-                              <InnerShadow color="#bfbfbf" height="26.93" radius="18.835" width="50.41" />
-                           </effect>
-                        </Pane>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Tableau de bord" textFill="#aeaeae" wrapText="true">
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/icons8_Home_32px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <VBox.margin>
-                              <Insets top="30.0" />
-                           </VBox.margin>
-                           <padding>
-                              <Insets left="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                        </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" lineSpacing="2.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Mon compte">
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/icons8_Person_32px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets left="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="2.0" />
-                           </VBox.margin>
-                           <textFill>
-                              <LinearGradient endX="0.009615384615384616" endY="1.0" startX="0.764423076923077">
-                                 <stops>
-                                    <Stop color="#d45f02" />
-                                    <Stop color="#54fc07" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="btn-selected" stylesheets="@dashboard.css" text="Actes de naissance">
-                           <padding>
-                              <Insets left="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="2.0" />
-                           </VBox.margin>
-                           <textFill>
-                              <LinearGradient endX="0.009615384615384616" endY="1.0" startX="0.764423076923077">
-                                 <stops>
-                                    <Stop color="#d45f02" />
-                                    <Stop color="#54fc07" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                           <effect>
-                              <DropShadow color="WHITE" />
-                           </effect>
-                           <graphic>
-                              <ImageView fitHeight="29.0" fitWidth="27.0">
-                                 <image>
-                                    <Image url="@icons/icons8_birthday_50px_1.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Acte de mariage">
-                           <padding>
-                              <Insets left="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <textFill>
-                              <LinearGradient endX="0.009615384615384616" endY="1.0" startX="0.764423076923077">
-                                 <stops>
-                                    <Stop color="#d45f02" />
-                                    <Stop color="#54fc07" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                           <graphic>
-                              <ImageView fitHeight="26.0" fitWidth="28.0">
-                                 <image>
-                                    <Image url="@icons/icons8_date_50px_1.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Settings">
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/icons8_Slider__32px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets left="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="2.0" />
-                           </VBox.margin>
-                           <textFill>
-                              <LinearGradient endX="0.009615384615384616" endY="1.0" startX="0.764423076923077">
-                                 <stops>
-                                    <Stop color="#d45f02" />
-                                    <Stop color="#54fc07" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Deconnexion">
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/icons8_Sign_Out_32px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets left="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="2.0" />
-                           </VBox.margin>
-                           <textFill>
-                              <LinearGradient endX="0.009615384615384616" endY="1.0" startX="0.764423076923077">
-                                 <stops>
-                                    <Stop color="#d45f02" />
-                                    <Stop color="#54fc07" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Button>
-                        <Pane prefHeight="79.0" prefWidth="326.0" />
-                     </children>
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </VBox>
-               </children>
-            </Pane>
-            <Pane fx:id="add_am" prefHeight="892.0" prefWidth="823.0" style="-fx-background-color: white;">
-               <children>
-                  <VBox layoutX="90.0" layoutY="154.0" prefHeight="214.0" prefWidth="405.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: grey; -fx-border-radius: 5;">
-                     <children>
-                        <VBox prefHeight="64.0" prefWidth="505.0" spacing="5.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Text>
-                              <TextField prefHeight="42.0" prefWidth="164.0" />
-                           </children>
-                        </VBox>
-                        <VBox prefHeight="64.0" prefWidth="505.0" spacing="5.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prénoms">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Text>
-                              <TextField prefHeight="42.0" prefWidth="505.0" />
-                           </children>
-                        </VBox>
-                        <HBox prefHeight="26.0" prefWidth="536.0" spacing="15.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sexe :">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Text>
-                              <RadioButton mnemonicParsing="false" text="Féminin">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </RadioButton>
-                              <RadioButton mnemonicParsing="false" text="Masculin">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </RadioButton>
-                           </children>
-                        </HBox>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </VBox>
-                  <Label layoutX="158.0" layoutY="118.0" prefHeight="36.0" prefWidth="275.0" text="Information sur l'enfant" textFill="#508ba3">
-                     <font>
-                        <Font name="Bell MT Bold" size="25.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="166.0" layoutY="351.0" prefHeight="31.0" prefWidth="309.0" text="Information sur les parents" textFill="#508ba3">
-                     <font>
-                        <Font name="Bell MT Bold" size="25.0" />
-                     </font>
-                  </Label>
-                  <Pane layoutX="435.0" layoutY="136.0" prefHeight="5.0" prefWidth="482.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
-                  <Pane layoutX="479.0" layoutY="369.0" prefHeight="5.0" prefWidth="438.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
-                  <Pane layoutX="93.0" layoutY="136.0" prefHeight="5.0" prefWidth="63.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
-                  <VBox layoutX="506.0" layoutY="154.0" prefHeight="212.0" prefWidth="412.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: grey; -fx-border-radius: 5;">
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Heure de naissance:" wrappingWidth="132.96435546875">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Text>
-                        <HBox alignment="CENTER" prefHeight="0.0" prefWidth="388.0" spacing="10.0">
-                           <children>
-                              <Label />
-                              <Spinner editable="true" prefHeight="26.0" prefWidth="86.0">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </Spinner>
-                              <Label text="Heures">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                                 <padding>
-                                    <Insets top="5.0" />
-                                 </padding>
-                              </Label>
-                              <Spinner editable="true" prefHeight="26.0" prefWidth="80.0">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </Spinner>
-                              <Label text="Minutes">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                                 <padding>
-                                    <Insets top="5.0" />
-                                 </padding>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <VBox prefHeight="44.0" prefWidth="388.0" spacing="5.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date de naissance">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Text>
-                              <DatePicker prefHeight="46.0" prefWidth="388.0" />
-                           </children>
-                        </VBox>
-                        <VBox prefHeight="66.0" prefWidth="505.0" spacing="5.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lieu de naissance">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Text>
-                              <TextField prefHeight="64.0" prefWidth="388.0" />
-                           </children>
-                        </VBox>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </VBox>
-                  <Pane layoutX="93.0" layoutY="369.0" prefHeight="5.0" prefWidth="63.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
-                  <VBox layoutX="93.0" layoutY="414.0" prefHeight="176.0" prefWidth="405.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: grey; -fx-border-radius: 5;">
-                     <children>
-                        <VBox prefHeight="140.0" prefWidth="739.0" spacing="5.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ACTE DE MARIAGE" textAlignment="CENTER" wrappingWidth="379.30419921875">
-                                 <font>
-                                    <Font name="Agency FB" size="25.0" />
-                                 </font>
-                              </Text>
-                              <TextField prefHeight="42.0" prefWidth="505.0" promptText="Nom">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </TextField>
-                              <TextField prefHeight="44.0" prefWidth="739.0" promptText="Prénoms">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </TextField>
-                              <TextField prefHeight="43.0" prefWidth="739.0" promptText="Domicile">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </TextField>
-                           </children>
-                        </VBox>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </VBox>
-                  <Button accessibleText="IUHYGTFD" cache="true" layoutX="299.0" layoutY="587.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="32.0" prefWidth="412.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" styleClass="Hover-top" stylesheets="@style.css" text="VALIDER" textAlignment="CENTER" textFill="WHITE">
-                     <effect>
-                        <DropShadow color="#000000c0" height="7.42" radius="3.58" width="8.9" />
-                     </effect>
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="15.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <ImageView fitHeight="173.0" fitWidth="176.0" layoutX="-1.0" layoutY="605.0" rotate="-90.0">
-                     <image>
-                        <Image url="@icons/ruban.png" />
-                     </image>
-                  </ImageView>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="405.0" layoutY="658.0" prefHeight="35.0" prefWidth="206.0" style="-fx-background-color: #f5f5f5;" text="with baby 5 |  2020" textAlignment="CENTER" textFill="#026f83">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <HBox layoutY="712.0" prefHeight="190.0" prefWidth="1081.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
-                  <Pane layoutY="-5.0" prefHeight="79.0" prefWidth="1081.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);">
-                     <children>
-                        <Label alignment="CENTER" layoutX="779.0" layoutY="39.0" prefHeight="35.0" prefWidth="194.0" style="-fx-font: #fff;" text="Mardi 04 Aout 2020  " textAlignment="CENTER" textFill="WHITE">
-                           <font>
-                              <Font name="Agency FB" size="24.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </Pane>
-                  <VBox alignment="TOP_CENTER" layoutX="-317.0" prefHeight="891.0" prefWidth="315.0" spacing="10.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);">
-                     <children>
-                        <Pane prefHeight="212.0" prefWidth="326.0" style="-fx-background-color: #fff;">
-                           <effect>
-                              <InnerShadow choke="0.35" color="#ababab40" height="219.6" radius="106.35" width="207.8" />
-                           </effect>
-                           <children>
-                              <ImageView fitHeight="160.0" fitWidth="172.0" layoutX="83.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/jimmy-fallon.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </Pane>
-                        <Label text="BIENVENUE">
-                           <font>
-                              <Font size="30.0" />
-                           </font>
-                           <textFill>
-                              <LinearGradient endX="0.8797619047619047" endY="0.6643315018315018" startX="0.2285714285714286" startY="0.39903846153846156">
-                                 <stops>
-                                    <Stop color="#ee9300" />
-                                    <Stop color="WHITE" offset="0.20509578544061297" />
-                                    <Stop color="WHITE" offset="0.49606983449855824" />
-                                    <Stop color="#00ff48" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Label>
-                        <Pane prefHeight="45.0" prefWidth="326.0" style="-fx-background-color: #fff;">
-                           <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="51.0" layoutY="9.0" prefHeight="0.0" prefWidth="224.0" text="SEXY Baby" textAlignment="CENTER" textFill="#508ba3">
-                                 <font>
-                                    <Font name="Bell MT Bold" size="23.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <effect>
-                              <InnerShadow color="#bfbfbf" height="26.93" radius="18.835" width="50.41" />
-                           </effect>
-                        </Pane>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Tableau de bord" textFill="#aeaeae" wrapText="true">
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/icons8_Home_32px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <VBox.margin>
-                              <Insets top="30.0" />
-                           </VBox.margin>
-                           <padding>
-                              <Insets left="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                        </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" lineSpacing="2.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Mon compte">
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/icons8_Person_32px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets left="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="2.0" />
-                           </VBox.margin>
-                           <textFill>
-                              <LinearGradient endX="0.009615384615384616" endY="1.0" startX="0.764423076923077">
-                                 <stops>
-                                    <Stop color="#d45f02" />
-                                    <Stop color="#54fc07" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Actes de naissance">
-                           <padding>
-                              <Insets left="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="2.0" />
-                           </VBox.margin>
-                           <textFill>
-                              <LinearGradient endX="0.009615384615384616" endY="1.0" startX="0.764423076923077">
-                                 <stops>
-                                    <Stop color="#d45f02" />
-                                    <Stop color="#54fc07" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                           <graphic>
-                              <ImageView fitHeight="25.0" fitWidth="28.0">
-                                 <image>
-                                    <Image url="@icons/icons8_birthday_50px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="btn-selected" stylesheets="@dashboard.css" text="Acte de mariage">
-                           <padding>
-                              <Insets left="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <textFill>
-                              <LinearGradient endX="0.009615384615384616" endY="1.0" startX="0.764423076923077">
-                                 <stops>
-                                    <Stop color="#d45f02" />
-                                    <Stop color="#54fc07" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                           <effect>
-                              <DropShadow color="WHITE" />
-                           </effect>
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="28.0">
-                                 <image>
-                                    <Image url="@icons/icons8_date_50px_2.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Settings">
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/icons8_Slider__32px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets left="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="2.0" />
-                           </VBox.margin>
-                           <textFill>
-                              <LinearGradient endX="0.009615384615384616" endY="1.0" startX="0.764423076923077">
-                                 <stops>
-                                    <Stop color="#d45f02" />
-                                    <Stop color="#54fc07" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Deconnexion">
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/icons8_Sign_Out_32px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets left="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="2.0" />
-                           </VBox.margin>
-                           <textFill>
-                              <LinearGradient endX="0.009615384615384616" endY="1.0" startX="0.764423076923077">
-                                 <stops>
-                                    <Stop color="#d45f02" />
-                                    <Stop color="#54fc07" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Button>
-                        <Pane prefHeight="79.0" prefWidth="326.0" />
-                     </children>
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </VBox>
-               </children>
-            </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #000;" />
-            <Pane fx:id="list_am" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
-               <children>
-                  <ImageView fitHeight="173.0" fitWidth="176.0" layoutX="-14.0" layoutY="548.0" rotate="-90.0">
-                     <image>
-                        <Image url="@icons/ruban.png" />
-                     </image>
-                  </ImageView>
-                  <Pane layoutX="62.0" layoutY="123.0" prefHeight="5.0" prefWidth="870.0" style="-fx-background-color: rgb(0, 196, 196);" />
-                  <Pane layoutX="62.0" layoutY="110.0" prefHeight="5.0" prefWidth="285.0" style="-fx-background-color: rgb(0, 196, 196);" />
-                  <Label alignment="CENTER" layoutX="355.0" layoutY="89.0" prefHeight="35.0" prefWidth="285.0" style="-fx-font: #fff; -fx-border-color: rgb(0, 196, 196);" text="ACTES DE MARIAGE" textAlignment="CENTER" textFill="#3a97a8">
-                     <font>
-                        <Font name="Agency FB" size="24.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="394.0" layoutY="660.0" prefHeight="35.0" prefWidth="206.0" style="-fx-background-color: #f5f5f5;" text="with baby 5 |  2020" textAlignment="CENTER" textFill="#026f83">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Pane layoutX="-1.0" layoutY="710.0" prefHeight="200.0" prefWidth="976.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
-                  <Pane layoutX="-322.0" layoutY="-5.0" prefHeight="79.0" prefWidth="1405.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);">
-                     <children>
-                        <Label alignment="CENTER" layoutX="1096.0" layoutY="39.0" prefHeight="35.0" prefWidth="194.0" style="-fx-font: #fff;" text="Mardi 04 Aout 2020  " textAlignment="CENTER" textFill="WHITE">
-                           <font>
-                              <Font name="Agency FB" size="24.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </Pane>
-                  <ScrollPane layoutX="62.0" layoutY="199.0" prefHeight="395.0" prefWidth="870.0">
-                     <content>
-                        <TableView editable="true" prefHeight="415.0" prefWidth="896.0" tableMenuButtonVisible="true">
-                           <columns>
-                              <TableColumn prefWidth="148.0" text="ID_Extrait" />
-                              <TableColumn prefWidth="123.0" text="Nom" />
-                              <TableColumn prefWidth="193.0" text="Prénom(s)" />
-                              <TableColumn prefWidth="155.0" text="Date de Naissance" />
-                              <TableColumn prefWidth="331.0" text="Actions" />
-                           </columns>
-                        </TableView>
-                     </content>
-                  </ScrollPane>
-                  <TextField layoutX="253.0" layoutY="141.0" prefHeight="35.0" prefWidth="470.0" promptText="Rechercher">
-                     <padding>
-                        <Insets left="25.0" right="25.0" />
-                     </padding>
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </TextField>
-                  <Pane layoutX="647.0" layoutY="108.0" prefHeight="5.0" prefWidth="285.0" style="-fx-background-color: rgb(0, 196, 196);" />
-                  <Pane layoutX="689.0" layoutY="143.0" prefHeight="32.0" prefWidth="33.0" style="-fx-background-color: #f5f5f5;">
-                     <children>
-                        <ImageView fitHeight="20.0" fitWidth="23.0" layoutX="6.0" layoutY="6.0">
+                  <Button fx:id="btn_tableau_de_bord" alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" onAction="#openPane" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: linear-gradient(to bottom right,#0056d8, #25ccff, #0056d8);" styleClass="btn-selected" stylesheets="@dashboard.css" text="Tableau de bord" textFill="#aeaeae" wrapText="true">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@icons/icons8_Search_52px.png" />
+                              <Image url="@icons/icons8_Home_32px.png" />
                            </image>
                         </ImageView>
-                     </children>
-                  </Pane>
-                  <Button accessibleText="IUHYGTFD" cache="true" layoutX="296.0" layoutY="611.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="32.0" prefWidth="412.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" styleClass="Hover-top" stylesheets="@style.css" text="AJOUTER ACTE DE MARIAGE" textAlignment="CENTER" textFill="WHITE">
-                     <effect>
-                        <DropShadow color="#000000c0" height="7.42" radius="3.58" width="8.9" />
-                     </effect>
+                     </graphic>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
                      <font>
-                        <Font name="Arial Rounded MT Bold" size="15.0" />
+                        <Font size="17.0" />
                      </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <VBox alignment="TOP_CENTER" layoutX="-314.0" prefHeight="891.0" prefWidth="315.0" spacing="10.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);">
-                     <children>
-                        <Pane prefHeight="212.0" prefWidth="326.0" style="-fx-background-color: #fff;">
-                           <effect>
-                              <InnerShadow choke="0.35" color="#ababab40" height="219.6" radius="106.35" width="207.8" />
-                           </effect>
-                           <children>
-                              <ImageView fitHeight="160.0" fitWidth="172.0" layoutX="83.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/jimmy-fallon.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </Pane>
-                        <Label text="BIENVENUE">
-                           <font>
-                              <Font size="30.0" />
-                           </font>
-                           <textFill>
-                              <LinearGradient endX="0.8797619047619047" endY="0.6643315018315018" startX="0.2285714285714286" startY="0.39903846153846156">
-                                 <stops>
-                                    <Stop color="#ee9300" />
-                                    <Stop color="WHITE" offset="0.20509578544061297" />
-                                    <Stop color="WHITE" offset="0.49606983449855824" />
-                                    <Stop color="#00ff48" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Label>
-                        <Pane prefHeight="45.0" prefWidth="326.0" style="-fx-background-color: #fff;">
-                           <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="51.0" layoutY="9.0" prefHeight="0.0" prefWidth="224.0" text="SEXY Baby" textAlignment="CENTER" textFill="#508ba3">
-                                 <font>
-                                    <Font name="Bell MT Bold" size="23.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <effect>
-                              <InnerShadow color="#bfbfbf" height="26.93" radius="18.835" width="50.41" />
-                           </effect>
-                        </Pane>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Tableau de bord" textFill="#aeaeae" wrapText="true">
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/icons8_Home_32px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <VBox.margin>
-                              <Insets top="30.0" />
-                           </VBox.margin>
-                           <padding>
-                              <Insets left="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                        </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" lineSpacing="2.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Mon compte">
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/icons8_Person_32px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets left="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="2.0" />
-                           </VBox.margin>
-                           <textFill>
-                              <LinearGradient endX="0.009615384615384616" endY="1.0" startX="0.764423076923077">
-                                 <stops>
-                                    <Stop color="#d45f02" />
-                                    <Stop color="#54fc07" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Actes de naissance">
-                           <padding>
-                              <Insets left="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="2.0" />
-                           </VBox.margin>
-                           <textFill>
-                              <LinearGradient endX="0.009615384615384616" endY="1.0" startX="0.764423076923077">
-                                 <stops>
-                                    <Stop color="#d45f02" />
-                                    <Stop color="#54fc07" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                           <graphic>
-                              <ImageView fitHeight="28.0" fitWidth="28.0">
-                                 <image>
-                                    <Image url="@icons/icons8_birthday_50px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" styleClass="btn-selected" stylesheets="@dashboard.css" text="Acte de mariage">
-                           <padding>
-                              <Insets left="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <textFill>
-                              <LinearGradient endX="0.009615384615384616" endY="1.0" startX="0.764423076923077">
-                                 <stops>
-                                    <Stop color="#d45f02" />
-                                    <Stop color="#54fc07" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                           <effect>
-                              <DropShadow color="WHITE" />
-                           </effect>
-                           <graphic>
-                              <ImageView fitHeight="32.0" fitWidth="28.0">
-                                 <image>
-                                    <Image url="@icons/icons8_date_50px_2.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Settings">
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/icons8_Slider__32px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets left="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="2.0" />
-                           </VBox.margin>
-                           <textFill>
-                              <LinearGradient endX="0.009615384615384616" endY="1.0" startX="0.764423076923077">
-                                 <stops>
-                                    <Stop color="#d45f02" />
-                                    <Stop color="#54fc07" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Deconnexion">
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/icons8_Sign_Out_32px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets left="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="2.0" />
-                           </VBox.margin>
-                           <textFill>
-                              <LinearGradient endX="0.009615384615384616" endY="1.0" startX="0.764423076923077">
-                                 <stops>
-                                    <Stop color="#d45f02" />
-                                    <Stop color="#54fc07" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Button>
-                        <Pane prefHeight="79.0" prefWidth="326.0" />
-                     </children>
                      <effect>
-                        <DropShadow />
+                        <DropShadow color="WHITE" />
                      </effect>
-                  </VBox>
-               </children>
-            </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
-               <children>
-                  <Pane layoutX="257.0" layoutY="109.0" prefHeight="81.0" prefWidth="80.0" style="-fx-background-color: rgb(0, 150, 150);">
-                     <children>
-                        <ImageView fitHeight="50.0" fitWidth="56.0" layoutX="12.0" layoutY="14.0">
+                  </Button>
+                  <Button fx:id="btn_compte" alignment="BASELINE_LEFT" graphicTextGap="15.0" lineSpacing="2.0" mnemonicParsing="false" onAction="#openPane" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Mon compte">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/icons8_Person_32px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="2.0" />
+                     </VBox.margin>
+                     <textFill>
+                        <LinearGradient endX="0.009615384615384616" endY="1.0" startX="0.764423076923077">
+                           <stops>
+                              <Stop color="#d45f02" />
+                              <Stop color="#54fc07" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Button>
+                  <Button fx:id="btn_actes_naiss" alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" onAction="#openPane" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Actes de naissance">
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="2.0" />
+                     </VBox.margin>
+                     <textFill>
+                        <LinearGradient endX="0.009615384615384616" endY="1.0" startX="0.764423076923077">
+                           <stops>
+                              <Stop color="#d45f02" />
+                              <Stop color="#54fc07" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                     <graphic>
+                        <ImageView fitHeight="28.0" fitWidth="29.0">
                            <image>
                               <Image url="@icons/icons8_birthday_50px_1.png" />
                            </image>
                         </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btn_acte_mariage" alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" onAction="#openPane" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Acte de mariage">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/icons8_Box_32px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <textFill>
+                        <LinearGradient endX="0.009615384615384616" endY="1.0" startX="0.764423076923077">
+                           <stops>
+                              <Stop color="#d45f02" />
+                              <Stop color="#54fc07" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Button>
+                  <Button fx:id="btn_settings" alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" onAction="#openPane" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Settings">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/icons8_Slider__32px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="2.0" />
+                     </VBox.margin>
+                     <textFill>
+                        <LinearGradient endX="0.009615384615384616" endY="1.0" startX="0.764423076923077">
+                           <stops>
+                              <Stop color="#d45f02" />
+                              <Stop color="#54fc07" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Button>
+                  <Button fx:id="btn_sign_out" alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" onAction="#openPane" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Deconnexion">
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/icons8_Sign_Out_32px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <padding>
+                        <Insets left="40.0" />
+                     </padding>
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="2.0" />
+                     </VBox.margin>
+                     <textFill>
+                        <LinearGradient endX="0.009615384615384616" endY="1.0" startX="0.764423076923077">
+                           <stops>
+                              <Stop color="#d45f02" />
+                              <Stop color="#54fc07" offset="1.0" />
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                  </Button>
+               </children>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </VBox>
+            <StackPane prefHeight="891.0" prefWidth="946.0" style="-fx-border-color: black;">
+               <children>
+                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #000;" />
+                  <Pane fx:id="paneAdd_an" prefHeight="866.0" prefWidth="944.0" style="-fx-background-color: white;">
+                     <children>
+                        <VBox layoutX="90.0" layoutY="124.0" prefHeight="214.0" prefWidth="405.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: grey; -fx-border-radius: 5;">
+                           <children>
+                              <VBox prefHeight="64.0" prefWidth="505.0" spacing="5.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField prefHeight="42.0" prefWidth="164.0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="64.0" prefWidth="505.0" spacing="5.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prénoms">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField prefHeight="42.0" prefWidth="505.0" />
+                                 </children>
+                              </VBox>
+                              <HBox prefHeight="26.0" prefWidth="536.0" spacing="15.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sexe :">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <RadioButton mnemonicParsing="false" text="Féminin">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </RadioButton>
+                                    <RadioButton mnemonicParsing="false" text="Masculin">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </RadioButton>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                        <Label layoutX="158.0" layoutY="88.0" prefHeight="36.0" prefWidth="309.0" text="Information sur l'enfant" textFill="#508ba3">
+                           <font>
+                              <Font name="Bell MT Bold" size="25.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="166.0" layoutY="351.0" prefHeight="31.0" prefWidth="350.0" text="Information sur les parents" textFill="#508ba3">
+                           <font>
+                              <Font name="Bell MT Bold" size="25.0" />
+                           </font>
+                        </Label>
+                        <Pane layoutX="463.0" layoutY="106.0" prefHeight="5.0" prefWidth="454.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
+                        <Pane layoutX="512.0" layoutY="369.0" prefHeight="5.0" prefWidth="405.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
+                        <Pane layoutX="93.0" layoutY="106.0" prefHeight="5.0" prefWidth="63.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
+                        <VBox layoutX="506.0" layoutY="124.0" prefHeight="212.0" prefWidth="412.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: grey; -fx-border-radius: 5;">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Heure de naissance:" wrappingWidth="132.96435546875">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Text>
+                              <HBox alignment="CENTER" prefHeight="20.0" prefWidth="388.0" spacing="10.0">
+                                 <children>
+                                    <Label />
+                                    <Spinner editable="true" prefHeight="26.0" prefWidth="86.0">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </Spinner>
+                                    <Label text="Heures">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                       <padding>
+                                          <Insets top="5.0" />
+                                       </padding>
+                                    </Label>
+                                    <Spinner editable="true" prefHeight="26.0" prefWidth="80.0">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </Spinner>
+                                    <Label text="Minutes">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                       <padding>
+                                          <Insets top="5.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <VBox prefHeight="44.0" prefWidth="388.0" spacing="5.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date de naissance">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <DatePicker prefHeight="46.0" prefWidth="388.0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="66.0" prefWidth="505.0" spacing="5.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lieu de naissance">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField prefHeight="64.0" prefWidth="388.0" />
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                        <Pane layoutX="93.0" layoutY="369.0" prefHeight="5.0" prefWidth="63.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
+                        <VBox layoutX="508.0" layoutY="384.0" prefHeight="176.0" prefWidth="411.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: grey; -fx-border-radius: 5;">
+                           <children>
+                              <VBox prefHeight="140.0" prefWidth="739.0" spacing="5.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mère" textAlignment="CENTER" wrappingWidth="386.37255859375">
+                                       <font>
+                                          <Font name="Agency FB" size="25.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField prefHeight="42.0" prefWidth="505.0" promptText="Nom">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField prefHeight="44.0" prefWidth="739.0" promptText="Prénoms">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField prefHeight="43.0" prefWidth="739.0" promptText="Domicile">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                        <VBox layoutX="93.0" layoutY="384.0" prefHeight="176.0" prefWidth="405.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: grey; -fx-border-radius: 5;">
+                           <children>
+                              <VBox prefHeight="140.0" prefWidth="739.0" spacing="5.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Père" textAlignment="CENTER" wrappingWidth="379.30419921875">
+                                       <font>
+                                          <Font name="Agency FB" size="25.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField prefHeight="42.0" prefWidth="505.0" promptText="Nom">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField prefHeight="44.0" prefWidth="739.0" promptText="Prénoms">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField prefHeight="43.0" prefWidth="739.0" promptText="Domicile">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="405.0" layoutY="658.0" prefHeight="35.0" prefWidth="206.0" style="-fx-background-color: #f5f5f5;" text="with baby 5 |  2020" textAlignment="CENTER" textFill="#026f83">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btn_valider" accessibleText="IUHYGTFD" cache="true" layoutX="299.0" layoutY="587.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="32.0" prefWidth="412.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" styleClass="Hover-top" stylesheets="@style.css" text="VALIDER" textAlignment="CENTER" textFill="WHITE">
+                           <effect>
+                              <DropShadow color="#000000c0" height="7.42" radius="3.58" width="8.9" />
+                           </effect>
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
                      </children>
                   </Pane>
-                  <Pane layoutX="540.0" layoutY="286.0" prefHeight="251.0" prefWidth="294.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);">
+                  <Pane fx:id="paneList_am" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
                      <children>
-                        <Button alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutY="243.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="294.0" style="-fx-background-color: #fff;" styleClass="Hover-top" stylesheets="@style.css" text="ACTE DE MARIAGE" textFill="#cd522a">
+                        <Pane layoutX="62.0" layoutY="123.0" prefHeight="5.0" prefWidth="870.0" style="-fx-background-color: rgb(0, 196, 196);" />
+                        <Pane layoutX="62.0" layoutY="110.0" prefHeight="5.0" prefWidth="285.0" style="-fx-background-color: rgb(0, 196, 196);" />
+                        <Label alignment="CENTER" layoutX="355.0" layoutY="89.0" prefHeight="35.0" prefWidth="285.0" style="-fx-font: #fff; -fx-border-color: rgb(0, 196, 196);" text="ACTES DE MARIAGE" textAlignment="CENTER" textFill="#3a97a8">
+                           <font>
+                              <Font name="Agency FB" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="394.0" layoutY="660.0" prefHeight="35.0" prefWidth="206.0" style="-fx-background-color: #f5f5f5;" text="with baby 5 |  2020" textAlignment="CENTER" textFill="#026f83">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <ScrollPane layoutX="62.0" layoutY="199.0" prefHeight="395.0" prefWidth="870.0">
+                           <content>
+                              <TableView editable="true" prefHeight="415.0" prefWidth="896.0" tableMenuButtonVisible="true">
+                                 <columns>
+                                    <TableColumn prefWidth="148.0" text="ID_Extrait" />
+                                    <TableColumn prefWidth="123.0" text="Nom" />
+                                    <TableColumn prefWidth="193.0" text="Prénom(s)" />
+                                    <TableColumn prefWidth="155.0" text="Date de Naissance" />
+                                    <TableColumn prefWidth="331.0" text="Actions" />
+                                 </columns>
+                              </TableView>
+                           </content>
+                        </ScrollPane>
+                        <TextField layoutX="253.0" layoutY="141.0" prefHeight="35.0" prefWidth="470.0" promptText="Rechercher">
+                           <padding>
+                              <Insets left="25.0" right="25.0" />
+                           </padding>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextField>
+                        <Pane layoutX="647.0" layoutY="108.0" prefHeight="5.0" prefWidth="285.0" style="-fx-background-color: rgb(0, 196, 196);" />
+                        <Pane layoutX="689.0" layoutY="143.0" prefHeight="32.0" prefWidth="33.0" style="-fx-background-color: #f5f5f5;">
+                           <children>
+                              <ImageView fitHeight="20.0" fitWidth="23.0" layoutX="6.0" layoutY="6.0">
+                                 <image>
+                                    <Image url="@icons/icons8_Search_52px.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Button fx:id="btn_ajouter_am" accessibleText="IUHYGTFD" cache="true" layoutX="296.0" layoutY="611.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#openPane" prefHeight="32.0" prefWidth="412.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" styleClass="Hover-top" stylesheets="@style.css" text="AJOUTER ACTE DE MARIAGE" textAlignment="CENTER" textFill="WHITE">
+                           <effect>
+                              <DropShadow color="#000000c0" height="7.42" radius="3.58" width="8.9" />
+                           </effect>
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneAdd_am" prefHeight="892.0" prefWidth="823.0" style="-fx-background-color: white;">
+                     <children>
+                        <VBox layoutX="90.0" layoutY="154.0" prefHeight="214.0" prefWidth="405.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: grey; -fx-border-radius: 5;">
+                           <children>
+                              <VBox prefHeight="64.0" prefWidth="505.0" spacing="5.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField prefHeight="42.0" prefWidth="164.0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="64.0" prefWidth="505.0" spacing="5.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prénoms">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField prefHeight="42.0" prefWidth="505.0" />
+                                 </children>
+                              </VBox>
+                              <HBox prefHeight="26.0" prefWidth="536.0" spacing="15.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sexe :">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <RadioButton mnemonicParsing="false" text="Féminin">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </RadioButton>
+                                    <RadioButton mnemonicParsing="false" text="Masculin">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </RadioButton>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                        <Label layoutX="158.0" layoutY="118.0" prefHeight="36.0" prefWidth="275.0" text="Information sur l'enfant" textFill="#508ba3">
+                           <font>
+                              <Font name="Bell MT Bold" size="25.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="166.0" layoutY="351.0" prefHeight="31.0" prefWidth="309.0" text="Information sur les parents" textFill="#508ba3">
+                           <font>
+                              <Font name="Bell MT Bold" size="25.0" />
+                           </font>
+                        </Label>
+                        <Pane layoutX="435.0" layoutY="136.0" prefHeight="5.0" prefWidth="482.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
+                        <Pane layoutX="479.0" layoutY="369.0" prefHeight="5.0" prefWidth="438.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
+                        <Pane layoutX="93.0" layoutY="136.0" prefHeight="5.0" prefWidth="63.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
+                        <VBox layoutX="506.0" layoutY="154.0" prefHeight="212.0" prefWidth="412.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: grey; -fx-border-radius: 5;">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Heure de naissance:" wrappingWidth="132.96435546875">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Text>
+                              <HBox alignment="CENTER" prefHeight="0.0" prefWidth="388.0" spacing="10.0">
+                                 <children>
+                                    <Label />
+                                    <Spinner editable="true" prefHeight="26.0" prefWidth="86.0">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </Spinner>
+                                    <Label text="Heures">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                       <padding>
+                                          <Insets top="5.0" />
+                                       </padding>
+                                    </Label>
+                                    <Spinner editable="true" prefHeight="26.0" prefWidth="80.0">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </Spinner>
+                                    <Label text="Minutes">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                       <padding>
+                                          <Insets top="5.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <VBox prefHeight="44.0" prefWidth="388.0" spacing="5.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date de naissance">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <DatePicker prefHeight="46.0" prefWidth="388.0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="66.0" prefWidth="505.0" spacing="5.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lieu de naissance">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField prefHeight="64.0" prefWidth="388.0" />
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                        <Pane layoutX="93.0" layoutY="369.0" prefHeight="5.0" prefWidth="63.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
+                        <VBox layoutX="93.0" layoutY="414.0" prefHeight="176.0" prefWidth="405.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: grey; -fx-border-radius: 5;">
+                           <children>
+                              <VBox prefHeight="140.0" prefWidth="739.0" spacing="5.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ACTE DE MARIAGE" textAlignment="CENTER" wrappingWidth="379.30419921875">
+                                       <font>
+                                          <Font name="Agency FB" size="25.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField prefHeight="42.0" prefWidth="505.0" promptText="Nom">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField prefHeight="44.0" prefWidth="739.0" promptText="Prénoms">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField prefHeight="43.0" prefWidth="739.0" promptText="Domicile">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                        <Button accessibleText="IUHYGTFD" cache="true" layoutX="299.0" layoutY="587.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="32.0" prefWidth="412.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" styleClass="Hover-top" stylesheets="@style.css" text="VALIDER" textAlignment="CENTER" textFill="WHITE">
+                           <effect>
+                              <DropShadow color="#000000c0" height="7.42" radius="3.58" width="8.9" />
+                           </effect>
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="405.0" layoutY="658.0" prefHeight="35.0" prefWidth="206.0" style="-fx-background-color: #f5f5f5;" text="with baby 5 |  2020" textAlignment="CENTER" textFill="#026f83">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="pane_tableau_de_bord" prefHeight="889.0" prefWidth="971.0" style="-fx-background-color: #fff;">
+                     <children>
+                        <Pane layoutX="257.0" layoutY="109.0" prefHeight="81.0" prefWidth="80.0" style="-fx-background-color: rgb(0, 150, 150);">
+                           <children>
+                              <ImageView fitHeight="50.0" fitWidth="56.0" layoutX="12.0" layoutY="14.0">
+                                 <image>
+                                    <Image url="@icons/icons8_birthday_50px_1.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Pane layoutX="540.0" layoutY="286.0" prefHeight="251.0" prefWidth="294.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);">
+                           <children>
+                              <Button fx:id="btn_add_am" alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutY="243.0" mnemonicParsing="false" onAction="#openPane" prefHeight="45.0" prefWidth="294.0" style="-fx-background-color: #fff;" styleClass="Hover-top" stylesheets="@style.css" text="ACTE DE MARIAGE" textFill="#cd522a">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow color="#7f7f7e" height="15.0" radius="7.0" spread="0.01" width="15.0" />
+                                 </effect>
+                              </Button>
+                           </children>
+                        </Pane>
+                        <Button alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutX="78.0" layoutY="108.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="259.0" style="-fx-background-color: rgb(0, 196, 196);" textFill="#cd522a">
+                           <font>
+                              <Font name="System Bold" size="27.0" />
+                           </font>
+                           <effect>
+                              <DropShadow color="#7f7f7e" height="15.0" radius="7.0" spread="0.01" width="15.0" />
+                           </effect>
+                        </Button>
+                        <Label layoutX="133.0" layoutY="146.0" prefHeight="42.0" prefWidth="107.0" text="2 327" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="29.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="92.0" layoutY="122.0" style="-fx-font: #fff;" text="EXTRAIT DE NAISSANCE" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Pane layoutX="93.0" layoutY="144.0" prefHeight="5.0" prefWidth="160.0" style="-fx-background-color: rgb(0, 150, 150);" />
+                        <Button alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutX="395.0" layoutY="108.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="246.0" style="-fx-background-color: rgb(0, 196, 196);" textFill="#cd522a">
+                           <font>
+                              <Font name="System Bold" size="27.0" />
+                           </font>
+                           <effect>
+                              <DropShadow color="#7f7f7e" height="15.0" radius="7.0" spread="0.01" width="15.0" />
+                           </effect>
+                        </Button>
+                        <Pane layoutX="561.0" layoutY="108.0" prefHeight="81.0" prefWidth="80.0" style="-fx-background-color: rgb(0, 150, 150);">
+                           <children>
+                              <ImageView fitHeight="54.0" fitWidth="56.0" layoutX="10.0" layoutY="14.0">
+                                 <image>
+                                    <Image url="@icons/icons8_date_50px_1.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Label layoutX="451.0" layoutY="145.0" prefHeight="42.0" prefWidth="107.0" text="1 730" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="29.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="408.0" layoutY="121.0" style="-fx-font: #fff;" text="ACTE DE MARIAGE" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Pane layoutX="409.0" layoutY="143.0" prefHeight="5.0" prefWidth="149.0" style="-fx-background-color: rgb(0, 150, 150);" />
+                        <Label layoutX="699.0" layoutY="150.0" prefHeight="42.0" prefWidth="107.0" text="37" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="29.0" />
+                           </font>
+                        </Label>
+                        <Pane layoutX="75.0" layoutY="215.0" prefHeight="5.0" prefWidth="870.0" style="-fx-background-color: rgb(0, 196, 196);" />
+                        <Button alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutX="699.0" layoutY="109.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="246.0" style="-fx-background-color: rgb(0, 196, 196);" textFill="#cd522a">
+                           <font>
+                              <Font name="System Bold" size="27.0" />
+                           </font>
+                           <effect>
+                              <DropShadow color="#7f7f7e" height="15.0" radius="7.0" spread="0.01" width="15.0" />
+                           </effect>
+                        </Button>
+                        <Pane layoutX="875.0" layoutY="109.0" prefHeight="81.0" prefWidth="71.0" style="-fx-background-color: rgb(0, 150, 150);">
+                           <children>
+                              <ImageView fitHeight="71.0" fitWidth="68.0" layoutX="2.0" layoutY="4.0">
+                                 <image>
+                                    <Image url="@icons/icons8_conference_background_selected_80px_1.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Label layoutX="713.0" layoutY="122.0" style="-fx-font: #fff;" text="MEMBRE DU PERSONNEL" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Pane layoutX="714.0" layoutY="144.0" prefHeight="5.0" prefWidth="149.0" style="-fx-background-color: rgb(0, 150, 150);" />
+                        <Label layoutX="735.0" layoutY="150.0" prefHeight="42.0" prefWidth="107.0" text="1 730" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="29.0" />
+                           </font>
+                        </Label>
+                        <Pane layoutX="76.0" layoutY="239.0" prefHeight="5.0" prefWidth="294.0" style="-fx-background-color: rgb(0, 196, 196);" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="376.0" layoutY="221.0" prefHeight="35.0" prefWidth="236.0" style="-fx-font: #fff; -fx-border-color: rgb(0, 196, 196);" text="TABLEAU DE BORD" textFill="#3a97a8">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Pane layoutX="619.0" layoutY="236.0" prefHeight="5.0" prefWidth="326.0" style="-fx-background-color: rgb(0, 196, 196);" />
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="394.0" layoutY="660.0" prefHeight="35.0" prefWidth="206.0" style="-fx-background-color: #f5f5f5;" text="with baby 5 |  2020" textAlignment="CENTER" textFill="#026f83">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Pane layoutX="174.0" layoutY="286.0" prefHeight="251.0" prefWidth="294.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
+                        <Button fx:id="btn_add_an" alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutX="174.0" layoutY="530.0" mnemonicParsing="false" onAction="#openPane" prefHeight="42.0" prefWidth="294.0" style="-fx-background-color: #fff;" styleClass="Hover-top" stylesheets="@style.css" text="EXTRAIT DE NAISSANCE" textFill="#059cc6">
                            <font>
                               <Font name="System Bold" size="22.0" />
                            </font>
@@ -1398,335 +792,78 @@
                               <DropShadow color="#7f7f7e" height="15.0" radius="7.0" spread="0.01" width="15.0" />
                            </effect>
                         </Button>
-                     </children>
-                  </Pane>
-                  <ImageView fitHeight="173.0" fitWidth="176.0" layoutX="-14.0" layoutY="548.0" rotate="-90.0">
-                     <image>
-                        <Image url="@icons/ruban.png" />
-                     </image>
-                  </ImageView>
-                  <Button alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutX="78.0" layoutY="108.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="259.0" style="-fx-background-color: rgb(0, 196, 196);" textFill="#cd522a">
-                     <font>
-                        <Font name="System Bold" size="27.0" />
-                     </font>
-                     <effect>
-                        <DropShadow color="#7f7f7e" height="15.0" radius="7.0" spread="0.01" width="15.0" />
-                     </effect>
-                  </Button>
-                  <Label layoutX="133.0" layoutY="146.0" prefHeight="42.0" prefWidth="107.0" text="2 327" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="29.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="92.0" layoutY="122.0" style="-fx-font: #fff;" text="EXTRAIT DE NAISSANCE" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Pane layoutX="93.0" layoutY="144.0" prefHeight="5.0" prefWidth="160.0" style="-fx-background-color: rgb(0, 150, 150);" />
-                  <Button alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutX="395.0" layoutY="108.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="246.0" style="-fx-background-color: rgb(0, 196, 196);" textFill="#cd522a">
-                     <font>
-                        <Font name="System Bold" size="27.0" />
-                     </font>
-                     <effect>
-                        <DropShadow color="#7f7f7e" height="15.0" radius="7.0" spread="0.01" width="15.0" />
-                     </effect>
-                  </Button>
-                  <Pane layoutX="561.0" layoutY="108.0" prefHeight="81.0" prefWidth="80.0" style="-fx-background-color: rgb(0, 150, 150);">
-                     <children>
-                        <ImageView fitHeight="54.0" fitWidth="56.0" layoutX="10.0" layoutY="14.0">
-                           <image>
-                              <Image url="@icons/icons8_date_50px_1.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-                  <Label layoutX="451.0" layoutY="145.0" prefHeight="42.0" prefWidth="107.0" text="1 730" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="29.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="408.0" layoutY="121.0" style="-fx-font: #fff;" text="ACTE DE MARIAGE" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Pane layoutX="409.0" layoutY="143.0" prefHeight="5.0" prefWidth="149.0" style="-fx-background-color: rgb(0, 150, 150);" />
-                  <Label layoutX="699.0" layoutY="150.0" prefHeight="42.0" prefWidth="107.0" text="37" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="29.0" />
-                     </font>
-                  </Label>
-                  <Pane layoutX="75.0" layoutY="215.0" prefHeight="5.0" prefWidth="870.0" style="-fx-background-color: rgb(0, 196, 196);" />
-                  <Button alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutX="699.0" layoutY="109.0" mnemonicParsing="false" prefHeight="81.0" prefWidth="246.0" style="-fx-background-color: rgb(0, 196, 196);" textFill="#cd522a">
-                     <font>
-                        <Font name="System Bold" size="27.0" />
-                     </font>
-                     <effect>
-                        <DropShadow color="#7f7f7e" height="15.0" radius="7.0" spread="0.01" width="15.0" />
-                     </effect>
-                  </Button>
-                  <Pane layoutX="875.0" layoutY="109.0" prefHeight="81.0" prefWidth="71.0" style="-fx-background-color: rgb(0, 150, 150);">
-                     <children>
-                        <ImageView fitHeight="71.0" fitWidth="68.0" layoutX="2.0" layoutY="4.0">
-                           <image>
-                              <Image url="@icons/icons8_conference_background_selected_80px_1.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-                  <Label layoutX="713.0" layoutY="122.0" style="-fx-font: #fff;" text="MEMBRE DU PERSONNEL" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Pane layoutX="714.0" layoutY="144.0" prefHeight="5.0" prefWidth="149.0" style="-fx-background-color: rgb(0, 150, 150);" />
-                  <Label layoutX="735.0" layoutY="150.0" prefHeight="42.0" prefWidth="107.0" text="1 730" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="29.0" />
-                     </font>
-                  </Label>
-                  <Pane layoutX="76.0" layoutY="239.0" prefHeight="5.0" prefWidth="294.0" style="-fx-background-color: rgb(0, 196, 196);" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="376.0" layoutY="221.0" prefHeight="35.0" prefWidth="236.0" style="-fx-font: #fff; -fx-border-color: rgb(0, 196, 196);" text="TABLEAU DE BORD" textFill="#3a97a8">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <Pane layoutX="619.0" layoutY="236.0" prefHeight="5.0" prefWidth="326.0" style="-fx-background-color: rgb(0, 196, 196);" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="394.0" layoutY="660.0" prefHeight="35.0" prefWidth="206.0" style="-fx-background-color: #f5f5f5;" text="with baby 5 |  2020" textAlignment="CENTER" textFill="#026f83">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="14.0" />
-                     </font>
-                  </Label>
-                  <Pane layoutX="174.0" layoutY="286.0" prefHeight="251.0" prefWidth="294.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
-                  <Button alignment="CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutX="174.0" layoutY="530.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="294.0" style="-fx-background-color: #fff;" styleClass="Hover-top" stylesheets="@style.css" text="EXTRAIT DE NAISSANCE" textFill="#059cc6">
-                     <font>
-                        <Font name="System Bold" size="22.0" />
-                     </font>
-                     <effect>
-                        <DropShadow color="#7f7f7e" height="15.0" radius="7.0" spread="0.01" width="15.0" />
-                     </effect>
-                  </Button>
-                  <Pane layoutX="-1.0" layoutY="710.0" prefHeight="200.0" prefWidth="976.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
-                  <Pane layoutX="-322.0" layoutY="-5.0" prefHeight="79.0" prefWidth="1405.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);">
-                     <children>
-                        <Label alignment="CENTER" layoutX="1102.0" layoutY="33.0" prefHeight="35.0" prefWidth="194.0" style="-fx-font: #fff;" text="Mardi 04 Aout 2020  " textAlignment="CENTER" textFill="WHITE">
-                           <font>
-                              <Font name="Agency FB" size="24.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </Pane>
-                  <Pane layoutX="256.0" layoutY="109.0" prefHeight="81.0" prefWidth="80.0" style="-fx-background-color: rgb(0, 150, 150);">
-                     <children>
-                        <ImageView fitHeight="54.0" fitWidth="56.0" layoutX="12.0" layoutY="14.0">
-                           <image>
-                              <Image url="@icons/icons8_birthday_50px_1.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-                  <VBox alignment="TOP_CENTER" layoutX="-316.0" prefHeight="891.0" prefWidth="326.0" spacing="10.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);">
-                     <children>
-                        <Pane prefHeight="212.0" prefWidth="326.0" style="-fx-background-color: #fff;">
-                           <effect>
-                              <InnerShadow choke="0.35" color="#ababab40" height="219.6" radius="106.35" width="207.8" />
-                           </effect>
+                        <Pane layoutX="256.0" layoutY="109.0" prefHeight="81.0" prefWidth="80.0" style="-fx-background-color: rgb(0, 150, 150);">
                            <children>
-                              <ImageView fitHeight="160.0" fitWidth="172.0" layoutX="83.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/jimmy-fallon.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </Pane>
-                        <Label text="BIENVENUE">
-                           <font>
-                              <Font size="30.0" />
-                           </font>
-                           <textFill>
-                              <LinearGradient endX="0.8797619047619047" endY="0.6643315018315018" startX="0.2285714285714286" startY="0.39903846153846156">
-                                 <stops>
-                                    <Stop color="#ee9300" />
-                                    <Stop color="WHITE" offset="0.20509578544061297" />
-                                    <Stop color="WHITE" offset="0.49606983449855824" />
-                                    <Stop color="#00ff48" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Label>
-                        <Pane prefHeight="45.0" prefWidth="326.0" style="-fx-background-color: #fff;">
-                           <children>
-                              <Label alignment="CENTER" contentDisplay="CENTER" layoutX="51.0" layoutY="9.0" prefHeight="0.0" prefWidth="224.0" text="SEXY Baby" textAlignment="CENTER" textFill="#508ba3">
-                                 <font>
-                                    <Font name="Bell MT Bold" size="23.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <effect>
-                              <InnerShadow color="#bfbfbf" height="26.93" radius="18.835" width="50.41" />
-                           </effect>
-                        </Pane>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" style="-fx-background-color: linear-gradient(to bottom right,#0056d8, #25ccff, #0056d8);" styleClass="btn-selected" stylesheets="@dashboard.css" text="Tableau de bord" textFill="#aeaeae" wrapText="true">
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/icons8_Home_32px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <VBox.margin>
-                              <Insets top="30.0" />
-                           </VBox.margin>
-                           <padding>
-                              <Insets left="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <effect>
-                              <DropShadow color="WHITE" />
-                           </effect>
-                        </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" lineSpacing="2.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Mon compte">
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/icons8_Person_32px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets left="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="2.0" />
-                           </VBox.margin>
-                           <textFill>
-                              <LinearGradient endX="0.009615384615384616" endY="1.0" startX="0.764423076923077">
-                                 <stops>
-                                    <Stop color="#d45f02" />
-                                    <Stop color="#54fc07" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Actes de naissance">
-                           <padding>
-                              <Insets left="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="2.0" />
-                           </VBox.margin>
-                           <textFill>
-                              <LinearGradient endX="0.009615384615384616" endY="1.0" startX="0.764423076923077">
-                                 <stops>
-                                    <Stop color="#d45f02" />
-                                    <Stop color="#54fc07" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                           <graphic>
-                              <ImageView fitHeight="28.0" fitWidth="29.0">
+                              <ImageView fitHeight="54.0" fitWidth="56.0" layoutX="12.0" layoutY="14.0">
                                  <image>
                                     <Image url="@icons/icons8_birthday_50px_1.png" />
                                  </image>
                               </ImageView>
-                           </graphic>
-                        </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Acte de mariage">
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/icons8_Box_32px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets left="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <textFill>
-                              <LinearGradient endX="0.009615384615384616" endY="1.0" startX="0.764423076923077">
-                                 <stops>
-                                    <Stop color="#d45f02" />
-                                    <Stop color="#54fc07" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Settings">
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/icons8_Slider__32px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets left="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="2.0" />
-                           </VBox.margin>
-                           <textFill>
-                              <LinearGradient endX="0.009615384615384616" endY="1.0" startX="0.764423076923077">
-                                 <stops>
-                                    <Stop color="#d45f02" />
-                                    <Stop color="#54fc07" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Button>
-                        <Button alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@dashboard.css" text="Deconnexion">
-                           <graphic>
-                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@icons/icons8_Sign_Out_32px.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                           <padding>
-                              <Insets left="40.0" />
-                           </padding>
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="2.0" />
-                           </VBox.margin>
-                           <textFill>
-                              <LinearGradient endX="0.009615384615384616" endY="1.0" startX="0.764423076923077">
-                                 <stops>
-                                    <Stop color="#d45f02" />
-                                    <Stop color="#54fc07" offset="1.0" />
-                                 </stops>
-                              </LinearGradient>
-                           </textFill>
-                        </Button>
-                        <Pane prefHeight="79.0" prefWidth="326.0" />
+                           </children>
+                        </Pane>
                      </children>
-                     <effect>
-                        <DropShadow />
-                     </effect>
-                  </VBox>
+                  </Pane>
+                  <Pane fx:id="paneList_an" prefHeight="887.0" prefWidth="918.0" style="-fx-background-color: #fff;">
+                     <children>
+                        <Pane layoutX="62.0" layoutY="123.0" prefHeight="5.0" prefWidth="870.0" style="-fx-background-color: rgb(0, 196, 196);" />
+                        <Pane layoutX="62.0" layoutY="110.0" prefHeight="5.0" prefWidth="285.0" style="-fx-background-color: rgb(0, 196, 196);" />
+                        <Label alignment="CENTER" layoutX="355.0" layoutY="89.0" prefHeight="35.0" prefWidth="285.0" style="-fx-font: #fff; -fx-border-color: rgb(0, 196, 196);" text="ACTES DE NAISSANCE" textAlignment="CENTER" textFill="#3a97a8">
+                           <font>
+                              <Font name="Agency FB" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="394.0" layoutY="772.0" prefHeight="35.0" prefWidth="206.0" style="-fx-background-color: #f5f5f5;" text="with baby 5 |  2020" textAlignment="CENTER" textFill="#026f83">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <ScrollPane layoutX="13.0" layoutY="199.0" prefHeight="476.0" prefWidth="894.0">
+                           <content>
+                              <TableView editable="true" prefHeight="474.0" prefWidth="890.0" tableMenuButtonVisible="true">
+                                 <columns>
+                                    <TableColumn prefWidth="148.0" text="ID_Extrait" />
+                                    <TableColumn prefWidth="123.0" text="Nom" />
+                                    <TableColumn prefWidth="193.0" text="Prénom(s)" />
+                                    <TableColumn prefWidth="155.0" text="Date de Naissance" />
+                                    <TableColumn prefWidth="331.0" text="Actions" />
+                                 </columns>
+                              </TableView>
+                           </content>
+                        </ScrollPane>
+                        <TextField layoutX="253.0" layoutY="141.0" prefHeight="35.0" prefWidth="470.0" promptText="Rechercher">
+                           <padding>
+                              <Insets left="25.0" right="25.0" />
+                           </padding>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextField>
+                        <Pane layoutX="647.0" layoutY="108.0" prefHeight="5.0" prefWidth="285.0" style="-fx-background-color: rgb(0, 196, 196);" />
+                        <Pane layoutX="689.0" layoutY="143.0" prefHeight="32.0" prefWidth="33.0" style="-fx-background-color: #f5f5f5;">
+                           <children>
+                              <ImageView fitHeight="20.0" fitWidth="23.0" layoutX="6.0" layoutY="6.0">
+                                 <image>
+                                    <Image url="@icons/icons8_Search_52px.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Button fx:id="btn_ajouter_an" accessibleText="IUHYGTFD" cache="true" layoutX="296.0" layoutY="688.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#openPane" prefHeight="32.0" prefWidth="412.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" styleClass="Hover-top" stylesheets="@style.css" text="AJOUTER ACTE DE NAISSANCE" textAlignment="CENTER" textFill="WHITE">
+                           <effect>
+                              <DropShadow color="#000000c0" height="7.42" radius="3.58" width="8.9" />
+                           </effect>
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </Pane>
                </children>
-            </Pane>
-         </children>
-      </StackPane>
+            </StackPane>
+         </items>
+      </SplitPane>
    </children>
 </AnchorPane>
