@@ -132,8 +132,7 @@ public class DashboardController {
     private TextField search_field;
 
 
-//    Database db = new Database("root","root", "mairie");
-    Database db = new Database("admin","admin", "projet_mairie");
+    Database db = new Database("root","root", "mairie");
 
     //Variable permettant de contenir les ligne du tableau
     final ObservableList<Ex> data = FXCollections.observableArrayList();
