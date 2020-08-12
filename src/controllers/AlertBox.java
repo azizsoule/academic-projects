@@ -3,8 +3,6 @@ package controllers;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
-import java.util.function.Consumer;
-
 public class AlertBox {
 
     public static void showAlertBox(String title, String message, Alert.AlertType alertType) {

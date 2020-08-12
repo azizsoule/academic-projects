@@ -191,7 +191,7 @@ public class Extrait {
         id_agent = result.getInt("id_agent");
     }
 
-    static void search(String string, Func onResult) {
+    public static void search(String string, Func onResult) {
         Database bd = new Database();
 
         bd.connect();
