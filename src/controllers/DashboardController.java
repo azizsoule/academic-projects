@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import mairie.Database;
 import mairie.Ex;
 import mairie.Extrait;
@@ -25,6 +26,7 @@ public class DashboardController {
 
     @FXML
     public TableView extraitList;
+    public VBox rootVbox;
 
     //************************************************************************
 
@@ -41,16 +43,13 @@ public class DashboardController {
     private Button btn_acte_mariage;
 
     @FXML
-    private Button btn_settings;
-
-    @FXML
     private Button btn_sign_out;
 
     @FXML
     private Pane paneAdd_an;
 
     @FXML
-    private Button btn_valider;
+    private static Button btn_valider;
 
     @FXML
     private Pane paneList_am;
@@ -133,7 +132,8 @@ public class DashboardController {
     private TextField search_field;
 
 
-    Database db = new Database("root","root", "mairie");
+//    Database db = new Database("root","root", "mairie");
+    Database db = new Database("admin","admin", "projet_mairie");
 
     //Variable permettant de contenir les ligne du tableau
     final ObservableList<Ex> data = FXCollections.observableArrayList();
@@ -163,13 +163,23 @@ public class DashboardController {
         }
     };
 
+    public void setActive(Button button) {
+        for (Node elmt:rootVbox.getChildren()
+             ) {
+            if(elmt instanceof Button)
+                elmt.setStyle("-fx-background-color: #10165F");
+        }
+        button.setStyle("-fx-background-color: linear-gradient(to bottom right,#0056d8, #25ccff, #0056d8)");
+    }
+
     public void openPane(ActionEvent actionEvent) {
 //        Bouton du vbox
         if (actionEvent.getSource() == btn_tableau_de_bord)
+            setActive(btn_tableau_de_bord);
             pane_tableau_de_bord.toFront();
 
         if (actionEvent.getSource() == btn_actes_naiss) {
-            btn_actes_naiss.setStyle("-fx-background-color: linear-gradient(to bottom right,#0056d8, #25ccff, #0056d8)");
+            setActive(btn_actes_naiss);
             paneList_an.toFront();
 
             db.connect();
@@ -185,11 +195,11 @@ public class DashboardController {
 
         }
         if (actionEvent.getSource() == btn_acte_mariage) {
-            btn_acte_mariage.setStyle("-fx-background-color: linear-gradient(to bottom right,#0056d8, #25ccff, #0056d8)");
+            setActive(btn_acte_mariage);
             paneList_am.toFront();
         }
         if(actionEvent.getSource()==btn_sign_out) {
-            btn_sign_out.setStyle("-fx-background-color: linear-gradient(to bottom right,#0056d8, #25ccff, #0056d8)");
+            setActive(btn_sign_out);
             Alert alertBox = new Alert(Alert.AlertType.CONFIRMATION);
             alertBox.setTitle("Confirmation");
             alertBox.setContentText("Voulez-vous vraiment vous deconnecter ?");
@@ -218,6 +228,7 @@ public class DashboardController {
         for (Node node:pane.getChildren()
         ) {
             if (node instanceof TextField && ((TextField) node).getText().trim()==""){
+                btn_valider.setDisable(true);
                 return false;
             }
             if(node instanceof DatePicker && ((DatePicker) node).getValue()==null){
@@ -266,6 +277,7 @@ public class DashboardController {
                         },func
                 );
                 AlertBox.showAlertBox("Succès","Insertion effectuée avec succès", Alert.AlertType.INFORMATION);
+
             } catch (SQLException throwables) {
                 AlertBox.showAlertBox("Echec","Echec de l'insertion", Alert.AlertType.ERROR);
                 throwables.printStackTrace();
