@@ -56,7 +56,7 @@ public class Database {
     //Constructeur 3 : Constructeur specifique au projet.
     //Vous remarquerez que le nom de la base de donnéés est déja enregistré dans
     //l'attribut dbName de la classe Database
-    Database() {
+    public Database() {
         host = "localhost";
         port = 3306;
         this.user = "root";
@@ -70,7 +70,8 @@ public class Database {
         port = 3306;
         this.user = user;
         this.password = password;
-        this.dbName = "mairie";
+//        this.dbName = "mairie"; //Code de Malick
+        this.dbName = "projet_mairie";
         url = this.url + host + ":" + port + "/" + this.dbName;
     }
 
