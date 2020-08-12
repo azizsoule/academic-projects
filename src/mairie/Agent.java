@@ -151,8 +151,8 @@ public class Agent {
 
     //Surchage statique de la methode precedente pour permettre de verifier di un agent existe sans instancier la classe Agent
     public static Boolean agentExist(String userName, String password){
-        Database bd = new Database("root", "root");
-
+//        Database bd = new Database("root", "root");
+        Database bd = new Database("admin", "admin");
         ArrayList<Object> params = new ArrayList<Object>() {
             {
                 add(userName);
