@@ -1,15 +1,23 @@
 package controllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
+import mairie.Database;
+import mairie.Ex;
+import mairie.Func;
 
-import java.util.EventObject;
+import java.sql.SQLException;
+
 
 public class DashboardController {
+
+    @FXML
+    public TableView extraitList;
 
     @FXML
     private Button btn_tableau_de_bord;
@@ -59,6 +67,44 @@ public class DashboardController {
     @FXML
     private Button btn_add_an;
 
+    @FXML
+    private TableColumn<Ex, Integer> id_extrait;
+
+    @FXML
+    private TableColumn<Ex, String> nom;
+
+    @FXML
+    private TableColumn<Ex, String> prenoms;
+
+    @FXML
+    private TableColumn<Ex, String> date_de_naissance;
+
+    //Variable permettant de contenir les ligne du tableau
+    final ObservableList<Ex> data = FXCollections.observableArrayList();
+
+    //Expression lamba ayant pour role de remplir le tableView des extraits de naissance
+    Func refreshTableView = resultset -> {
+        try {
+
+            id_extrait.setCellValueFactory(new PropertyValueFactory<Ex, Integer>("id_extrait"));
+
+            nom.setCellValueFactory(new PropertyValueFactory<Ex, String>("nom"));
+
+            prenoms.setCellValueFactory(new PropertyValueFactory<Ex, String>("prenoms"));
+
+            date_de_naissance.setCellValueFactory(new PropertyValueFactory<Ex, String>("date_de_naissance"));
+
+            while (resultset.next()) {
+                data.add(new Ex(resultset.getInt("id_extrait"), resultset.getString("nom"), resultset.getString("prenoms"), resultset.getDate("date_naiss").toString()));
+            }
+
+            extraitList.setItems(data);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    };
+
     public void openPane(ActionEvent actionEvent) {
 //        Bouton du vbox
         if (actionEvent.getSource() == btn_tableau_de_bord)
@@ -67,6 +113,20 @@ public class DashboardController {
         if (actionEvent.getSource() == btn_actes_naiss) {
             btn_actes_naiss.setStyle("-fx-background-color: linear-gradient(to bottom right,#0056d8, #25ccff, #0056d8)");
             paneList_an.toFront();
+
+            Database db = new Database("root","root", "mairie");
+
+            db.connect();
+
+            try {
+                db.sendQuery("SELECT id_extrait,nom,prenoms,date_naiss FROM individus", refreshTableView);
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+
+            db.disconnect();
+
+
         }
         if (actionEvent.getSource() == btn_acte_mariage) {
             btn_acte_mariage.setStyle("-fx-background-color: linear-gradient(to bottom right,#0056d8, #25ccff, #0056d8)");

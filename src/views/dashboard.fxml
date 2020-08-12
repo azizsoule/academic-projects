@@ -819,12 +819,12 @@
                         </Label>
                         <ScrollPane layoutX="13.0" layoutY="199.0" prefHeight="476.0" prefWidth="894.0">
                            <content>
-                              <TableView editable="true" prefHeight="474.0" prefWidth="890.0" tableMenuButtonVisible="true">
+                              <TableView fx:id="extraitList" editable="true" prefHeight="474.0" prefWidth="890.0" tableMenuButtonVisible="true">
                                  <columns>
-                                    <TableColumn prefWidth="148.0" text="ID_Extrait" />
-                                    <TableColumn prefWidth="123.0" text="Nom" />
-                                    <TableColumn prefWidth="193.0" text="Prénom(s)" />
-                                    <TableColumn prefWidth="155.0" text="Date de Naissance" />
+                                    <TableColumn fx:id="id_extrait" prefWidth="148.0" text="ID_Extrait" />
+                                    <TableColumn fx:id="nom" prefWidth="123.0" text="Nom" />
+                                    <TableColumn fx:id="prenoms" prefWidth="193.0" text="Prénom(s)" />
+                                    <TableColumn fx:id="date_de_naissance" prefWidth="155.0" text="Date de Naissance" />
                                     <TableColumn prefWidth="331.0" text="Actions" />
                                  </columns>
                               </TableView>

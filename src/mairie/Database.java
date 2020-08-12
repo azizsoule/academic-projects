@@ -34,7 +34,7 @@ public class Database {
     //Je vous laisse le soin de comprendre l'utilité de chacun des constructeurs crees
 
     //Constructeur 1
-    Database(String user, String password, String dbName) {
+    public Database(String user, String password, String dbName) {
         host = "localhost";
         port = 3306;
         this.user = user;
@@ -75,7 +75,7 @@ public class Database {
     }
 
     //Methode permettant de se connecter a la base de donnees
-    void connect() {
+    public void connect() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(url, user, password);
@@ -87,7 +87,7 @@ public class Database {
     }
 
     //Methode permetant d'envoyer des requettes non preparees à la base de données
-    void sendQuery(String query,Func func) throws SQLException{
+    public void sendQuery(String query,Func func) throws SQLException{
         int res = 1;
 
         String req = query.substring(0,6).toUpperCase();
@@ -137,7 +137,7 @@ public class Database {
     //Surchage de la methode sendQuery qui permet d'envoyer des requettes préparees.
     //le parametre est une instance de la classe ArrayList<Object> qui les valeurs (dans l'ordre d'apparition des ?) qui doivent
     //etre insérées dans la requette préparée
-    void sendQuery(String query,ArrayList<Object> arguments,Func function) throws SQLException {
+    public void sendQuery(String query,ArrayList<Object> arguments,Func function) throws SQLException {
         int res = 1;
 
         query = query.trim();
@@ -216,7 +216,7 @@ public class Database {
     }
 
     //Methode permetant de detruire la connexiion existant avec la base de donnees
-    void disconnect(){
+    public void disconnect(){
         try {
             connection.close();
         } catch (SQLException exception) {
