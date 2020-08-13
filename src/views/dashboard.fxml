@@ -3,9 +3,9 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.SplitPane?>
@@ -28,9 +28,9 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DashboardController">
    <children>
-      <SplitPane dividerPositions="0.25" prefHeight="891.0" prefWidth="1282.0">
+      <SplitPane dividerPositions="0.25" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <items>
-            <VBox fx:id="rootVbox" alignment="TOP_CENTER" prefHeight="891.0" prefWidth="326.0" spacing="10.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" SplitPane.resizableWithParent="false">
+            <VBox fx:id="rootVbox" alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="870.0" prefWidth="326.0" spacing="10.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" SplitPane.resizableWithParent="false">
                <children>
                   <Pane prefHeight="212.0" prefWidth="326.0" style="-fx-background-color: #fff;">
                      <effect>
@@ -61,7 +61,7 @@
                   </Label>
                   <Pane prefHeight="45.0" prefWidth="326.0" style="-fx-background-color: #fff;">
                      <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="51.0" layoutY="9.0" prefHeight="0.0" prefWidth="224.0" text="Diarra Mamadou" textAlignment="CENTER" textFill="#508ba3">
+                        <Label fx:id="agentUsername" alignment="CENTER" contentDisplay="CENTER" layoutX="51.0" layoutY="9.0" prefHeight="0.0" prefWidth="224.0" text="Diarra Mamadou" textAlignment="CENTER" textFill="#508ba3">
                            <font>
                               <Font name="Bell MT Bold" size="23.0" />
                            </font>
@@ -201,10 +201,10 @@
                   <DropShadow />
                </effect>
             </VBox>
-            <StackPane prefHeight="891.0" prefWidth="946.0" style="-fx-border-color: black;">
+            <StackPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="940.0" style="-fx-border-color: black;" SplitPane.resizableWithParent="false">
                <children>
-                  <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #000;" />
-                  <Pane fx:id="paneList_am" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+                  <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="940.0" style="-fx-background-color: #000;" StackPane.alignment="CENTER" />
+                  <Pane fx:id="paneList_am" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="940.0" style="-fx-background-color: #fff;" StackPane.alignment="CENTER">
                      <children>
                         <Pane layoutX="62.0" layoutY="123.0" prefHeight="5.0" prefWidth="870.0" style="-fx-background-color: rgb(0, 196, 196);" />
                         <Pane layoutX="62.0" layoutY="110.0" prefHeight="5.0" prefWidth="285.0" style="-fx-background-color: rgb(0, 196, 196);" />
@@ -262,444 +262,7 @@
                         </Button>
                      </children>
                   </Pane>
-                  <Pane fx:id="paneAdd_am" prefHeight="892.0" prefWidth="823.0" style="-fx-background-color: white;">
-                     <children>
-                        <VBox layoutX="90.0" layoutY="154.0" prefHeight="214.0" prefWidth="405.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: grey; -fx-border-radius: 5;">
-                           <children>
-                              <VBox prefHeight="64.0" prefWidth="505.0" spacing="5.0">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Text>
-                                    <TextField prefHeight="42.0" prefWidth="164.0" />
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="64.0" prefWidth="505.0" spacing="5.0">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prénoms">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Text>
-                                    <TextField prefHeight="42.0" prefWidth="505.0" />
-                                 </children>
-                              </VBox>
-                              <HBox prefHeight="26.0" prefWidth="536.0" spacing="15.0">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sexe :">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Text>
-                                    <RadioButton mnemonicParsing="false" text="Féminin">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </RadioButton>
-                                    <RadioButton mnemonicParsing="false" text="Masculin">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </RadioButton>
-                                 </children>
-                              </HBox>
-                           </children>
-                           <padding>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </padding>
-                        </VBox>
-                        <Label layoutX="158.0" layoutY="118.0" prefHeight="36.0" prefWidth="275.0" text="Information sur l'enfant" textFill="#508ba3">
-                           <font>
-                              <Font name="Bell MT Bold" size="25.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="166.0" layoutY="351.0" prefHeight="31.0" prefWidth="309.0" text="Information sur les parents" textFill="#508ba3">
-                           <font>
-                              <Font name="Bell MT Bold" size="25.0" />
-                           </font>
-                        </Label>
-                        <Pane layoutX="435.0" layoutY="136.0" prefHeight="5.0" prefWidth="482.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
-                        <Pane layoutX="479.0" layoutY="369.0" prefHeight="5.0" prefWidth="438.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
-                        <Pane layoutX="93.0" layoutY="136.0" prefHeight="5.0" prefWidth="63.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
-                        <VBox layoutX="506.0" layoutY="154.0" prefHeight="212.0" prefWidth="412.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: grey; -fx-border-radius: 5;">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Heure de naissance:" wrappingWidth="132.96435546875">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Text>
-                              <HBox alignment="CENTER" prefHeight="0.0" prefWidth="388.0" spacing="10.0">
-                                 <children>
-                                    <Label />
-                                    <Spinner editable="true" prefHeight="26.0" prefWidth="86.0">
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
-                                    </Spinner>
-                                    <Label text="Heures">
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
-                                       <padding>
-                                          <Insets top="5.0" />
-                                       </padding>
-                                    </Label>
-                                    <Spinner editable="true" prefHeight="26.0" prefWidth="80.0">
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
-                                    </Spinner>
-                                    <Label text="Minutes">
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
-                                       <padding>
-                                          <Insets top="5.0" />
-                                       </padding>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <VBox prefHeight="44.0" prefWidth="388.0" spacing="5.0">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date de naissance">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Text>
-                                    <DatePicker prefHeight="46.0" prefWidth="388.0" />
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="66.0" prefWidth="505.0" spacing="5.0">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lieu de naissance">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Text>
-                                    <TextField prefHeight="64.0" prefWidth="388.0" />
-                                 </children>
-                              </VBox>
-                           </children>
-                           <padding>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </padding>
-                        </VBox>
-                        <Pane layoutX="93.0" layoutY="369.0" prefHeight="5.0" prefWidth="63.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
-                        <VBox layoutX="93.0" layoutY="414.0" prefHeight="176.0" prefWidth="405.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: grey; -fx-border-radius: 5;">
-                           <children>
-                              <VBox prefHeight="140.0" prefWidth="739.0" spacing="5.0">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ACTE DE MARIAGE" textAlignment="CENTER" wrappingWidth="379.30419921875">
-                                       <font>
-                                          <Font name="Agency FB" size="25.0" />
-                                       </font>
-                                    </Text>
-                                    <TextField prefHeight="42.0" prefWidth="505.0" promptText="Nom">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </TextField>
-                                    <TextField prefHeight="44.0" prefWidth="739.0" promptText="Prénoms">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </TextField>
-                                    <TextField prefHeight="43.0" prefWidth="739.0" promptText="Domicile">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </TextField>
-                                 </children>
-                              </VBox>
-                           </children>
-                           <padding>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </padding>
-                        </VBox>
-                        <Button accessibleText="IUHYGTFD" cache="true" layoutX="299.0" layoutY="587.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="32.0" prefWidth="412.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" styleClass="Hover-top" stylesheets="@style.css" text="VALIDER" textAlignment="CENTER" textFill="WHITE">
-                           <effect>
-                              <DropShadow color="#000000c0" height="7.42" radius="3.58" width="8.9" />
-                           </effect>
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="15.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="405.0" layoutY="658.0" prefHeight="35.0" prefWidth="206.0" style="-fx-background-color: #f5f5f5;" text="with baby 5 |  2020" textAlignment="CENTER" textFill="#026f83">
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="14.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </Pane>
-                  <Pane fx:id="paneAdd_an" prefHeight="866.0" prefWidth="944.0" style="-fx-background-color: white;">
-                     <children>
-                        <VBox layoutX="93.0" layoutY="132.0" prefHeight="214.0" prefWidth="405.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: grey; -fx-border-radius: 5;">
-                           <children>
-                              <VBox prefHeight="64.0" prefWidth="505.0" spacing="5.0">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Text>
-                                    <TextField fx:id="nom" prefHeight="42.0" prefWidth="164.0" />
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="64.0" prefWidth="505.0" spacing="5.0">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prénoms">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Text>
-                                    <TextField fx:id="prenom" prefHeight="42.0" prefWidth="505.0" />
-                                 </children>
-                              </VBox>
-                              <HBox prefHeight="26.0" prefWidth="536.0" spacing="15.0">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sexe :">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Text>
-                                    <RadioButton mnemonicParsing="false" text="Féminin">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </RadioButton>
-                                    <RadioButton mnemonicParsing="false" text="Masculin">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </RadioButton>
-                                 </children>
-                              </HBox>
-                           </children>
-                           <padding>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </padding>
-                        </VBox>
-                        <Label layoutX="158.0" layoutY="88.0" prefHeight="36.0" prefWidth="309.0" text="Information sur l'enfant" textFill="#508ba3">
-                           <font>
-                              <Font name="Bell MT Bold" size="25.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="166.0" layoutY="351.0" prefHeight="31.0" prefWidth="350.0" text="Information sur les parents" textFill="#508ba3">
-                           <font>
-                              <Font name="Bell MT Bold" size="25.0" />
-                           </font>
-                        </Label>
-                        <Pane layoutX="463.0" layoutY="106.0" prefHeight="5.0" prefWidth="454.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
-                        <Pane layoutX="512.0" layoutY="369.0" prefHeight="5.0" prefWidth="405.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
-                        <Pane layoutX="93.0" layoutY="106.0" prefHeight="5.0" prefWidth="63.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
-                        <VBox layoutX="506.0" layoutY="124.0" prefHeight="212.0" prefWidth="412.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: grey; -fx-border-radius: 5;">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Heure de naissance:" wrappingWidth="132.96435546875">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Text>
-                              <HBox alignment="CENTER" prefHeight="20.0" prefWidth="388.0" spacing="10.0">
-                                 <children>
-                                    <Label />
-                                    <Spinner fx:id="heure" editable="true" prefHeight="26.0" prefWidth="86.0">
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
-                                    </Spinner>
-                                    <Label text="Heures">
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
-                                       <padding>
-                                          <Insets top="5.0" />
-                                       </padding>
-                                    </Label>
-                                    <Spinner fx:id="minutes" editable="true" prefHeight="26.0" prefWidth="80.0">
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
-                                    </Spinner>
-                                    <Label text="Minutes">
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
-                                       <padding>
-                                          <Insets top="5.0" />
-                                       </padding>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <VBox prefHeight="44.0" prefWidth="388.0" spacing="5.0">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date de naissance">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Text>
-                                    <DatePicker fx:id="dateNaiss" prefHeight="46.0" prefWidth="388.0" />
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="66.0" prefWidth="505.0" spacing="5.0">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lieu de naissance">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Text>
-                                    <TextField fx:id="lieuNaiss" prefHeight="64.0" prefWidth="388.0" />
-                                 </children>
-                              </VBox>
-                           </children>
-                           <padding>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </padding>
-                        </VBox>
-                        <Pane layoutX="93.0" layoutY="369.0" prefHeight="5.0" prefWidth="63.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" />
-                        <VBox layoutX="508.0" layoutY="384.0" prefHeight="176.0" prefWidth="411.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: grey; -fx-border-radius: 5;">
-                           <children>
-                              <VBox prefHeight="140.0" prefWidth="739.0" spacing="5.0">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mère" textAlignment="CENTER" wrappingWidth="386.37255859375">
-                                       <font>
-                                          <Font name="Agency FB" size="25.0" />
-                                       </font>
-                                    </Text>
-                                    <TextField fx:id="nomMere" prefHeight="42.0" prefWidth="505.0" promptText="Nom">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </TextField>
-                                    <TextField fx:id="prenomMere" prefHeight="44.0" prefWidth="739.0" promptText="Prénoms">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </TextField>
-                                    <TextField fx:id="domicileMere" prefHeight="43.0" prefWidth="739.0" promptText="Domicile">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </TextField>
-                                 </children>
-                              </VBox>
-                           </children>
-                           <padding>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </padding>
-                        </VBox>
-                        <VBox layoutX="93.0" layoutY="384.0" prefHeight="176.0" prefWidth="405.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: grey; -fx-border-radius: 5;">
-                           <children>
-                              <VBox prefHeight="140.0" prefWidth="739.0" spacing="5.0">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Père" textAlignment="CENTER" wrappingWidth="379.30419921875">
-                                       <font>
-                                          <Font name="Agency FB" size="25.0" />
-                                       </font>
-                                    </Text>
-                                    <TextField fx:id="nomPere" prefHeight="42.0" prefWidth="505.0" promptText="Nom">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </TextField>
-                                    <TextField fx:id="prenomPere" prefHeight="44.0" prefWidth="739.0" promptText="Prénoms">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </TextField>
-                                    <TextField fx:id="domicilePere" prefHeight="43.0" prefWidth="739.0" promptText="Domicile">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </TextField>
-                                 </children>
-                              </VBox>
-                           </children>
-                           <padding>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </padding>
-                        </VBox>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="405.0" layoutY="658.0" prefHeight="35.0" prefWidth="206.0" style="-fx-background-color: #f5f5f5;" text="with baby 5 |  2020" textAlignment="CENTER" textFill="#026f83">
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <Button fx:id="btn_valider" accessibleText="IUHYGTFD" cache="true" layoutX="299.0" layoutY="587.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#insertValue" prefHeight="32.0" prefWidth="412.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" styleClass="Hover-top" stylesheets="@style.css" text="VALIDER" textAlignment="CENTER" textFill="WHITE">
-                           <effect>
-                              <DropShadow color="#000000c0" height="7.42" radius="3.58" width="8.9" />
-                           </effect>
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="15.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                     </children>
-                  </Pane>
-                  <Pane fx:id="paneList_an" prefHeight="887.0" prefWidth="918.0" style="-fx-background-color: #fff;">
-                     <children>
-                        <Pane layoutX="62.0" layoutY="123.0" prefHeight="5.0" prefWidth="870.0" style="-fx-background-color: rgb(0, 196, 196);" />
-                        <Pane layoutX="62.0" layoutY="110.0" prefHeight="5.0" prefWidth="285.0" style="-fx-background-color: rgb(0, 196, 196);" />
-                        <Label alignment="CENTER" layoutX="355.0" layoutY="89.0" prefHeight="35.0" prefWidth="285.0" style="-fx-font: #fff; -fx-border-color: rgb(0, 196, 196);" text="ACTES DE NAISSANCE" textAlignment="CENTER" textFill="#3a97a8">
-                           <font>
-                              <Font name="Agency FB" size="24.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="394.0" layoutY="772.0" prefHeight="35.0" prefWidth="206.0" style="-fx-background-color: #f5f5f5;" text="with baby 5 |  2020" textAlignment="CENTER" textFill="#026f83">
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <ScrollPane layoutX="13.0" layoutY="199.0" prefHeight="476.0" prefWidth="894.0">
-                           <content>
-                              <TableView fx:id="extraitList" editable="true" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="890.0" tableMenuButtonVisible="true">
-                                 <columns>
-                                    <TableColumn fx:id="id_extrait" prefWidth="148.0" text="ID_Extrait" />
-                                    <TableColumn fx:id="name" prefWidth="123.0" text="Nom" />
-                                    <TableColumn fx:id="prenoms" prefWidth="193.0" text="Prénom(s)" />
-                                    <TableColumn fx:id="date_de_naissance" prefWidth="155.0" text="Date de Naissance" />
-                                    <TableColumn prefWidth="331.0" text="Actions" />
-                                 </columns>
-                              </TableView>
-                           </content>
-                        </ScrollPane>
-                        <TextField fx:id="search_field" layoutX="253.0" layoutY="141.0" onAction="#search" prefHeight="35.0" prefWidth="470.0" promptText="Rechercher">
-                           <padding>
-                              <Insets left="25.0" right="25.0" />
-                           </padding>
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </TextField>
-                        <Pane layoutX="647.0" layoutY="108.0" prefHeight="5.0" prefWidth="285.0" style="-fx-background-color: rgb(0, 196, 196);" />
-                        <Pane layoutX="689.0" layoutY="143.0" prefHeight="32.0" prefWidth="33.0" style="-fx-background-color: #f5f5f5;">
-                           <children>
-                              <ImageView fitHeight="20.0" fitWidth="23.0" layoutX="6.0" layoutY="6.0">
-                                 <image>
-                                    <Image url="@icons/icons8_Search_52px.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </Pane>
-                        <Button fx:id="btn_ajouter_an" accessibleText="IUHYGTFD" cache="true" layoutX="296.0" layoutY="688.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#openPane" prefHeight="32.0" prefWidth="412.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" styleClass="Hover-top" stylesheets="@style.css" text="AJOUTER ACTE DE NAISSANCE" textAlignment="CENTER" textFill="WHITE">
-                           <effect>
-                              <DropShadow color="#000000c0" height="7.42" radius="3.58" width="8.9" />
-                           </effect>
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="15.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                     </children>
-                  </Pane>
-                  <Pane fx:id="pane_tableau_de_bord" prefHeight="889.0" prefWidth="971.0" style="-fx-background-color: #fff;">
+                  <Pane fx:id="pane_tableau_de_bord" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="940.0" style="-fx-background-color: #fff;" StackPane.alignment="CENTER">
                      <children>
                         <Pane layoutX="257.0" layoutY="109.0" prefHeight="81.0" prefWidth="80.0" style="-fx-background-color: rgb(0, 150, 150);">
                            <children>
@@ -833,6 +396,364 @@
                               </ImageView>
                            </children>
                         </Pane>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneList_an" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="940.0" style="-fx-background-color: #fff;">
+                     <children>
+                        <Pane layoutX="45.0" layoutY="115.0" prefHeight="5.0" prefWidth="870.0" style="-fx-background-color: rgb(0, 196, 196);" />
+                        <Pane layoutX="45.0" layoutY="102.0" prefHeight="5.0" prefWidth="285.0" style="-fx-background-color: rgb(0, 196, 196);" />
+                        <Label alignment="CENTER" layoutX="338.0" layoutY="81.0" prefHeight="35.0" prefWidth="285.0" style="-fx-font: #fff; -fx-border-color: rgb(0, 196, 196);" text="ACTES DE NAISSANCE" textAlignment="CENTER" textFill="#3a97a8">
+                           <font>
+                              <Font name="Agency FB" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="394.0" layoutY="750.0" prefHeight="35.0" prefWidth="206.0" style="-fx-background-color: #f5f5f5;" text="with baby 5 |  2020" textAlignment="CENTER" textFill="#026f83">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <ScrollPane layoutX="20.0" layoutY="197.0" prefHeight="476.0" prefWidth="910.0">
+                           <content>
+                              <TableView fx:id="extraitList" editable="true" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="908.0" tableMenuButtonVisible="true">
+                                 <columns>
+                                    <TableColumn fx:id="id_extrait" prefWidth="148.0" text="ID_Extrait" />
+                                    <TableColumn fx:id="name" prefWidth="123.0" text="Nom" />
+                                    <TableColumn fx:id="prenoms" prefWidth="193.0" text="Prénom(s)" />
+                                    <TableColumn fx:id="date_de_naissance" prefWidth="155.0" text="Date de Naissance" />
+                                    <TableColumn prefWidth="331.0" text="Actions" />
+                                 </columns>
+                              </TableView>
+                           </content>
+                        </ScrollPane>
+                        <TextField fx:id="search_field" layoutX="253.0" layoutY="141.0" onAction="#search" prefHeight="35.0" prefWidth="470.0" promptText="Rechercher">
+                           <padding>
+                              <Insets left="25.0" right="25.0" />
+                           </padding>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextField>
+                        <Pane layoutX="630.0" layoutY="100.0" prefHeight="5.0" prefWidth="285.0" style="-fx-background-color: rgb(0, 196, 196);" />
+                        <Pane layoutX="689.0" layoutY="143.0" prefHeight="32.0" prefWidth="33.0" style="-fx-background-color: #f5f5f5;">
+                           <children>
+                              <ImageView fitHeight="20.0" fitWidth="23.0" layoutX="6.0" layoutY="6.0">
+                                 <image>
+                                    <Image url="@icons/icons8_Search_52px.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Button fx:id="btn_ajouter_an" accessibleText="IUHYGTFD" cache="true" layoutX="296.0" layoutY="688.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#openPane" prefHeight="32.0" prefWidth="412.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" styleClass="Hover-top" stylesheets="@style.css" text="AJOUTER ACTE DE NAISSANCE" textAlignment="CENTER" textFill="WHITE">
+                           <effect>
+                              <DropShadow color="#000000c0" height="7.42" radius="3.58" width="8.9" />
+                           </effect>
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneAdd_am" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="940.0" style="-fx-background-color: white;" StackPane.alignment="CENTER">
+                     <children>
+                        <VBox layoutX="87.0" layoutY="209.0" prefHeight="351.0" prefWidth="535.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #084675; -fx-border-radius: 5;">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <children>
+                              <VBox prefHeight="64.0" prefWidth="505.0" spacing="5.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom Conjoint" underline="true">
+                                       <font>
+                                          <Font name="Cantarell Bold" size="16.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="nomConjoint" prefHeight="42.0" prefWidth="164.0" />
+                                       </children>
+                              </VBox>
+                              <VBox prefHeight="64.0" prefWidth="505.0" spacing="5.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom Conjointe" underline="true">
+                                       <font>
+                                          <Font name="Cantarell Bold" size="16.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="nomConjointe" prefHeight="42.0" prefWidth="505.0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="71.0" prefWidth="388.0" spacing="5.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date de mariage" underline="true">
+                                       <font>
+                                          <Font name="Cantarell Bold" size="16.0" />
+                                       </font>
+                                    </Text>
+                                    <DatePicker fx:id="dateMariage" prefHeight="46.0" prefWidth="388.0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="66.0" prefWidth="505.0" spacing="5.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lieu de Mariage" underline="true">
+                                       <font>
+                                          <Font name="Cantarell Bold" size="16.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="lieuMariage" prefHeight="64.0" prefWidth="388.0" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                        <Label alignment="CENTER" layoutX="276.0" layoutY="155.0" lineSpacing="10.0" prefHeight="39.0" prefWidth="387.0" text="Informations sur les conjoints" textAlignment="CENTER" textFill="#073454">
+                           <font>
+                              <Font name="Cantarell Regular" size="30.0" />
+                           </font>
+                        </Label>
+                        <Pane layoutX="90.0" layoutY="177.0" prefHeight="5.0" prefWidth="168.0" style="-fx-background-color: #084675;" />
+                        <Button accessibleText="IUHYGTFD" cache="true" layoutX="297.0" layoutY="609.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="32.0" prefWidth="412.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" styleClass="Hover-top" stylesheets="@style.css" text="VALIDER" textAlignment="CENTER" textFill="WHITE">
+                           <effect>
+                              <DropShadow color="#000000c0" height="7.42" radius="3.58" width="8.9" />
+                           </effect>
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="414.0" layoutY="687.0" prefHeight="35.0" prefWidth="206.0" style="-fx-background-color: #f5f5f5;" text="with baby 5 |  2020" textAlignment="CENTER" textFill="#026f83">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Text fill="#084675" fontSmoothingType="LCD" layoutX="244.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ACTE DE MARIAGE" textAlignment="CENTER" underline="true" wrappingWidth="470.0">
+                           <font>
+                              <Font name="Cantarell Bold" size="38.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="160.0" fitWidth="160.0" layoutX="90.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/logo-mairie.jpg" />
+                           </image>
+                        </ImageView>
+                        <Pane layoutX="671.0" layoutY="177.0" prefHeight="5.0" prefWidth="215.0" style="-fx-background-color: #084675;" />
+                        <ImageView fitHeight="169.0" fitWidth="160.0" layoutX="691.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/logo-mairie.jpg" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="228.0" fitWidth="246.0" layoutX="643.0" layoutY="258.0" opacity="0.5" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/armoiries.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneAdd_an" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="940.0" style="-fx-background-color: white;" StackPane.alignment="CENTER">
+                     <children>
+                        <VBox layoutX="80.0" layoutY="164.0" prefHeight="217.0" prefWidth="405.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: grey; -fx-border-radius: 5;">
+                           <children>
+                              <VBox prefHeight="64.0" prefWidth="505.0" spacing="5.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="nom" accessibleRole="PARENT" prefHeight="42.0" prefWidth="164.0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="64.0" prefWidth="505.0" spacing="5.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prénoms">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="prenom" accessibleRole="PARENT" prefHeight="42.0" prefWidth="505.0" />
+                                 </children>
+                              </VBox>
+                              <HBox prefHeight="26.0" prefWidth="536.0" spacing="15.0">
+                                 <children>
+                                    <ComboBox fx:id="comboSexe" prefHeight="26.0" prefWidth="286.0" promptText="Sexe" />
+                                 </children>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                        <Label layoutX="163.0" layoutY="125.0" prefHeight="36.0" prefWidth="294.0" text="Information sur l'enfant" textAlignment="CENTER" textFill="#073c61">
+                           <font>
+                              <Font name="Cantarell Regular" size="28.0" />
+                           </font>
+                        </Label>
+                        <VBox layoutX="517.0" layoutY="163.0" prefHeight="217.0" prefWidth="405.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: grey; -fx-border-radius: 5;">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="20.0" prefWidth="388.0" spacing="10.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Heure de naissance:" wrappingWidth="82.96435546875">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Label />
+                                    <Spinner fx:id="heure" editable="true" prefHeight="26.0" prefWidth="70.0">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </Spinner>
+                                    <Label text="Heures">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                       <padding>
+                                          <Insets top="5.0" />
+                                       </padding>
+                                    </Label>
+                                    <Spinner fx:id="minutes" editable="true" prefHeight="26.0" prefWidth="80.0">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </Spinner>
+                                    <Label text="Minutes">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                       <padding>
+                                          <Insets top="5.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <VBox prefHeight="65.0" prefWidth="388.0" spacing="5.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date de naissance">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <DatePicker fx:id="dateNaiss" prefHeight="44.0" prefWidth="388.0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="66.0" prefWidth="388.0" spacing="5.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lieu de naissance">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="lieuNaiss" accessibleRole="PARENT" prefHeight="64.0" prefWidth="388.0" />
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                        <VBox layoutX="516.0" layoutY="437.0" prefHeight="188.0" prefWidth="398.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: grey; -fx-border-radius: 5;">
+                           <children>
+                              <VBox prefHeight="140.0" prefWidth="739.0" spacing="5.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mère" textAlignment="CENTER" wrappingWidth="386.37255859375">
+                                       <font>
+                                          <Font name="Agency FB" size="25.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="nomMere" accessibleRole="PARENT" prefHeight="42.0" prefWidth="505.0" promptText="Nom">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField fx:id="professionMere" accessibleRole="PARENT" prefHeight="44.0" prefWidth="739.0" promptText="Profession">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField fx:id="domicileMere" accessibleRole="PARENT" prefHeight="43.0" prefWidth="739.0" promptText="Domicile">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                        <VBox layoutX="84.0" layoutY="437.0" prefHeight="188.0" prefWidth="405.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: grey; -fx-border-radius: 5;">
+                           <children>
+                              <VBox prefHeight="172.0" prefWidth="381.0" spacing="5.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Père" textAlignment="CENTER" wrappingWidth="379.30419921875">
+                                       <font>
+                                          <Font name="Agency FB" size="25.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="nomPere" accessibleRole="PARENT" prefHeight="42.0" prefWidth="505.0" promptText="Nom">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField fx:id="professionPere" accessibleRole="PARENT" prefHeight="44.0" prefWidth="739.0" promptText="Profession">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </TextField>
+                                    <TextField fx:id="domicilePere" accessibleRole="PARENT" prefHeight="44.0" prefWidth="381.0" promptText="Domicile">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="392.0" layoutY="711.0" prefHeight="35.0" prefWidth="206.0" style="-fx-background-color: #f5f5f5;" text="with baby 5 |  2020" textAlignment="CENTER" textFill="#026f83">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btn_valider" cache="true" layoutX="286.0" layoutY="640.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#insertValue" prefHeight="32.0" prefWidth="412.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" styleClass="Hover-top" stylesheets="@style.css" text="VALIDER" textAlignment="CENTER" textFill="WHITE">
+                           <effect>
+                              <DropShadow color="#000000c0" height="7.42" radius="3.58" width="8.9" />
+                           </effect>
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Text fill="#084675" fontSmoothingType="LCD" layoutX="240.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ACTE DE NAISSANCE" textAlignment="CENTER" underline="true" wrappingWidth="470.0">
+                           <font>
+                              <Font name="Cantarell Bold" size="38.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="160.0" fitWidth="160.0" layoutX="760.0" layoutY="649.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/logo-mairie.jpg" />
+                           </image>
+                        </ImageView>
+                        <Pane layoutX="80.0" layoutY="143.0" prefHeight="5.0" prefWidth="80.0" style="-fx-background-color: #084675;" />
+                        <ImageView fitHeight="140.0" fitWidth="271.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/ruban.png" />
+                           </image>
+                        </ImageView>
+                        <Pane layoutX="456.0" layoutY="143.0" prefHeight="5.0" prefWidth="462.0" style="-fx-background-color: #084675;" />
+                        <Label layoutX="167.0" layoutY="398.0" prefHeight="36.0" prefWidth="338.0" text="Information sur les parents" textAlignment="CENTER" textFill="#073c61">
+                           <font>
+                              <Font name="Cantarell Regular" size="28.0" />
+                           </font>
+                        </Label>
+                        <Pane layoutX="83.0" layoutY="416.0" prefHeight="5.0" prefWidth="80.0" style="-fx-background-color: #084675;" />
+                        <Pane layoutX="510.0" layoutY="416.0" prefHeight="5.0" prefWidth="411.0" style="-fx-background-color: #084675;" />
                      </children>
                   </Pane>
                </children>

@@ -70,8 +70,7 @@ public class Database {
         port = 3306;
         this.user = user;
         this.password = password;
-//        this.dbName = "mairie"; //Code de Malick
-        this.dbName = "projet_mairie";
+        this.dbName = "mairie";
         url = this.url + host + ":" + port + "/" + this.dbName;
     }
 

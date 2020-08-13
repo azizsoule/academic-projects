@@ -6,9 +6,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.Toggle;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import mairie.Database;
@@ -16,17 +21,27 @@ import mairie.Ex;
 import mairie.Extrait;
 import mairie.Func;
 
+import java.net.URL;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.ResourceBundle;
 
 
-public class DashboardController {
+public class DashboardController implements Initializable {
 
     @FXML
     public TableView extraitList;
     public VBox rootVbox;
+    @FXML
+    public Button btn_valider;
+    @FXML
+    public Label agentUsername;
+    public TextField professionMere;
+    public TextField professionPere;
+    public ComboBox comboSexe;
 
     //************************************************************************
 
@@ -47,9 +62,6 @@ public class DashboardController {
 
     @FXML
     private Pane paneAdd_an;
-
-    @FXML
-    private static Button btn_valider;
 
     @FXML
     private Pane paneList_am;
@@ -100,13 +112,7 @@ public class DashboardController {
     private TextField nomMere;
 
     @FXML
-    private TextField prenomMere;
-
-    @FXML
     private TextField nomPere;
-
-    @FXML
-    private TextField prenomPere;
 
     @FXML
     private TextField domicilePere;
@@ -223,52 +229,103 @@ public class DashboardController {
     }
 
 
-    private static boolean isFormOk(Pane pane){
-        for (Node node:pane.getChildren()
+    private boolean isFormOk(Pane pane){
+        ArrayList<Node> element  = new ArrayList<Node>();
+
+        for (Node pnode:pane.getChildren()
         ) {
-            if (node instanceof TextField && ((TextField) node).getText().trim()==""){
-                btn_valider.setDisable(true);
-                return false;
+
+            if (pnode instanceof VBox ){
+                for (Node vnode: ((VBox) pnode).getChildren()
+                     ) {
+                    if (vnode instanceof VBox){
+                        for (Node v2node:((VBox) vnode).getChildren()
+                             ) {
+                            if (v2node instanceof TextField && ((TextField) v2node).getText().isEmpty()){
+                                v2node.setStyle("-fx-border-color: RED");
+                                return false;
+                            }
+                        }
+                    }
+                }
             }
-            if(node instanceof DatePicker && ((DatePicker) node).getValue()==null){
-                return false;
-            }
+        }
+        if (comboSexe.getValue()==null){
+            comboSexe.setStyle("-fx-border-color: red");
+            return false;
+        }
+        if (dateNaiss.getValue()==null) {
+            dateNaiss.setStyle("-fx-border-color: red");
+            return false;
         }
         return true;
     }
 
+    public void clearFields(Pane pane){
+        ArrayList<Node> element  = new ArrayList<Node>();
+
+        for (Node pnode:pane.getChildren()
+        ) {
+
+            if (pnode instanceof VBox ){
+                for (Node vnode: ((VBox) pnode).getChildren()
+                ) {
+                    if (vnode instanceof VBox){
+                        for (Node v2node:((VBox) vnode).getChildren()
+                        ) {
+                            if (v2node instanceof TextField ){
+                                ((TextField) v2node).clear();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        comboSexe.setValue(null);
+        heure.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,23,0));
+        minutes.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,59,0));
+        dateNaiss.setValue(null);
+    }
+
     public void insertValue(ActionEvent actionEvent) {
         if (isFormOk(paneAdd_an)){
+            String sexeUser = comboSexe.getValue().toString();
 
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
             String date_enreg = simpleDateFormat.format(new Date());
 
             Date dateN= java.sql.Date.valueOf(dateNaiss.getValue());
+            if (dateN.equals(null))
+                AlertBox.showAlertBox("Echec","Echec de l'insertion", Alert.AlertType.ERROR);
+
             String date =  simpleDateFormat.format(dateN);
 
-
-            String heureNaiss = "12:40";
+            String heureNaiss = (String) heure.getValue().toString()+':'+minutes.getValue().toString();
             db.connect();
-
 
 
             System.out.println(date);
             System.out.println(date_enreg);
 
+            Func toDo = resultSet -> {};
+
             Func func = resultSet -> {
             } ;
             try {
-                db.sendQuery("INSERT INTO individus(nom,prenoms,date_naiss,heure_naiss,lieu_naiss,nom_pere,domicile_pere,nom_mere,domicile_mere,date_enregistrem,numero_enregistrem,id_mairie,id_agent) VALUES (?,?,?,?,?,?,?,?,?,?,?,1,1)",new ArrayList<Object>() {
+                db.sendQuery("INSERT INTO individus(nom,prenoms,sexe,date_naiss,heure_naiss,lieu_naiss,nom_pere,domicile_pere,profession_pere,nom_mere,domicile_mere,profession_mere,date_enregistrem,numero_enregistrem,id_mairie,id_agent) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,1,1)",new ArrayList<Object>() {
                             {
                                 add(nom.getText().trim());
                                 add(prenom.getText().trim());
+                                add(sexeUser);
                                 add(date);
                                 add(heureNaiss);
                                 add(lieuNaiss.getText().trim());
                                 add(nomPere.getText().trim());
                                 add(domicilePere.getText().trim());
+                                add(professionPere.getText().trim());
                                 add(nomMere.getText().trim());
                                 add(domicileMere.getText().trim());
+                                add(professionMere.getText().trim());
                                 add(date_enreg);
                                 add(1);
 
@@ -276,6 +333,7 @@ public class DashboardController {
                         },func
                 );
                 AlertBox.showAlertBox("Succès","Insertion effectuée avec succès", Alert.AlertType.INFORMATION);
+                clearFields(paneAdd_an);
 
             } catch (SQLException throwables) {
                 AlertBox.showAlertBox("Echec","Echec de l'insertion", Alert.AlertType.ERROR);
@@ -299,6 +357,23 @@ public class DashboardController {
                     }
                 }
         );
+
+    }
+    public void setLoginInfo(String username){
+        agentUsername.setText(username);
+    }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+        pane_tableau_de_bord.toFront();
+        setActive(btn_tableau_de_bord);
+        final int initialValue = 0;
+        heure.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,23,initialValue));
+        minutes.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,59,initialValue));
+        dateNaiss.setValue(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(new Date())));
+        comboSexe.getItems().add("Homme");
+        comboSexe.getItems().add("Femme");
+
 
     }
 }

@@ -25,11 +25,18 @@ public class LoginController {
     private TextField password;
 
     public void connect(ActionEvent actionEvent) throws IOException {
+        System.out.println(username.getText()+password.getText());
         if (Agent.agentExist(username.getText().trim(), password.getText().trim())) {
             Stage primaryStage = (Stage) loginWindow.getScene().getWindow();
             primaryStage.close();
 
-            Parent root = FXMLLoader.load(getClass().getResource("../views/dashboard.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/dashboard.fxml"));
+            Parent root = (Parent) loader.load();
+            DashboardController dashboardController =loader.getController();
+
+            //On recupère les info de l'utilisateur connecté
+            dashboardController.setLoginInfo(username.getText().trim());
+
             primaryStage.setTitle("DashBoard");
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
