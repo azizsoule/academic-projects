@@ -6,27 +6,36 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import mairie.Database;
-import mairie.Ex;
-import mairie.Extrait;
-import mairie.Func;
+import javafx.stage.Stage;
+import mairie.*;
+import pdfviewer.Controller;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 
 public class DashboardController {
 
     @FXML
     public TableView extraitList;
+
+    @FXML
     public VBox rootVbox;
+
+    @FXML
+    public Button btn_valider;
 
     //************************************************************************
 
@@ -47,9 +56,6 @@ public class DashboardController {
 
     @FXML
     private Pane paneAdd_an;
-
-    @FXML
-    private static Button btn_valider;
 
     @FXML
     private Pane paneList_am;
@@ -129,11 +135,17 @@ public class DashboardController {
     private TableColumn<Ex, String> date_de_naissance;
 
     @FXML
+    private TableColumn<Ex, Button> voir;
+
+    @FXML
+    private TableColumn<Ex, Button> mod;
+
+    @FXML
     private TextField search_field;
 
 
 //    Database db = new Database("root","root", "mairie");
-    Database db = new Database("admin","admin", "projet_mairie");
+    Database db = new Database("root","root", "mairie");
 
     //Variable permettant de contenir les ligne du tableau
     final ObservableList<Ex> data = FXCollections.observableArrayList();
@@ -150,10 +162,69 @@ public class DashboardController {
 
             date_de_naissance.setCellValueFactory(new PropertyValueFactory<Ex, String>("date_de_naissance"));
 
+            voir.setCellValueFactory(new PropertyValueFactory<Ex, Button>("visualiser"));
+
+            mod.setCellValueFactory(new PropertyValueFactory<Ex, Button>("modifier"));
+
             data.clear();
 
             while (resultset.next()) {
-                data.add(new Ex(resultset.getInt("id_extrait"), resultset.getString("nom"), resultset.getString("prenoms"), resultset.getDate("date_naiss").toString()));
+
+                Ex ex_row = new Ex(resultset.getInt("id_extrait"), resultset.getString("nom"), resultset.getString("prenoms"), resultset.getDate("date_naiss").toString(), new Button("Voir"), new Button("Modifier"));
+
+                ex_row.getVisualiser().setOnAction(e -> {
+
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../pdfviewer/PdfViewer.fxml"));
+                    try {
+                        Parent root = (Parent) loader.load();
+                        Controller pdfController = loader.getController();
+
+                        Printer.generatePDF(ex_row.getNom()+ex_row.getId_extrait(), new HashMap<>() {
+                            {
+                                put("NOM","Soule");
+                                put("PRENOMS","Ano");
+                                put("DATE_NAISSANCE","17/12/1999");
+                                put("HEURE_NAISSANCE","12h10");
+                                put("LIEU_NAISSANCE","Quelque part");
+                                put("NOM_MERE","KLOE");
+                                put("NOM_PERE","BABA");
+                                put("FILS_FILLE","FILS");
+                            }
+                        });
+
+                        pdfController.initialize("extraits/"+ex_row.getNom()+ex_row.getId_extrait()+"x.pdf");
+
+                        Stage stage = new Stage();
+                        stage.setScene(new Scene(root,600, 800));
+                        stage.show();
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }
+                });
+
+                ex_row.getModifier().setOnAction(e -> {
+                    paneAdd_an.toFront();
+                    System.out.println(btn_valider.getText());
+                    btn_valider.setText("MODIFIER");
+                    System.out.println(btn_valider.getText());
+                    try {
+                        nom.setText(ex_row.getNom());
+                        prenom.setText(ex_row.getPrenoms());
+
+                        //pere
+                        nomPere.setText(resultset.getString("nom_pere"));
+                        domicilePere.setText(resultset.getString("domicile_pere"));
+
+                        //mere
+                        nomMere.setText(resultset.getString("nom_mere"));
+                        domicilePere.setText(resultset.getString("domicile_mere"));
+
+                    } catch (SQLException throwables) {
+                        throwables.printStackTrace();
+                    }
+                });
+
+                data.add(ex_row);
             }
 
             extraitList.setItems(data);
@@ -213,18 +284,21 @@ public class DashboardController {
             );
         }
         // Pour le stackPane
-        if (actionEvent.getSource() == btn_add_an )
+        if (actionEvent.getSource() == btn_add_an ) {
             paneAdd_an.toFront();
+            btn_valider.setText("VALIDER");
+        }
         if (actionEvent.getSource() == btn_add_am )
             paneAdd_am.toFront();
         if (actionEvent.getSource() == btn_ajouter_am )
             paneAdd_am.toFront();
-        if (actionEvent.getSource() == btn_ajouter_an )
+        if (actionEvent.getSource() == btn_ajouter_an ){
             paneAdd_an.toFront();
+            btn_valider.setText("VALIDER");
+        }
     }
 
-
-    private static boolean isFormOk(Pane pane){
+    private boolean isFormOk(Pane pane){
         for (Node node:pane.getChildren()
         ) {
             if (node instanceof TextField && ((TextField) node).getText().trim()==""){

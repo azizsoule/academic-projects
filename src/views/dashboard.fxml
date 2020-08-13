@@ -659,11 +659,12 @@
                            <content>
                               <TableView fx:id="extraitList" editable="true" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="890.0" tableMenuButtonVisible="true">
                                  <columns>
-                                    <TableColumn fx:id="id_extrait" prefWidth="148.0" text="ID_Extrait" />
-                                    <TableColumn fx:id="name" prefWidth="123.0" text="Nom" />
-                                    <TableColumn fx:id="prenoms" prefWidth="193.0" text="Prénom(s)" />
-                                    <TableColumn fx:id="date_de_naissance" prefWidth="155.0" text="Date de Naissance" />
-                                    <TableColumn prefWidth="331.0" text="Actions" />
+                                    <TableColumn fx:id="id_extrait" prefWidth="107.0" text="ID_Extrait" />
+                                    <TableColumn fx:id="name" prefWidth="133.0" text="Nom" />
+                                    <TableColumn fx:id="prenoms" prefWidth="253.0" text="Prénom(s)" />
+                                    <TableColumn fx:id="date_de_naissance" prefWidth="164.0" text="Date de Naissance" />
+                                    <TableColumn fx:id="voir" prefWidth="112.0" text="Visualiser" />
+                                    <TableColumn fx:id="mod" prefWidth="111.0" text="Modifier" />
                                  </columns>
                               </TableView>
                            </content>

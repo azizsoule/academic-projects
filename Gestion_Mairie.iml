@@ -14,5 +14,9 @@
     <orderEntry type="library" exported="" name="mysql-connector-java-8.0.21" level="application" />
     <orderEntry type="library" name="javafx-sdk-11.0" level="application" />
     <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="PDFNet" level="project" />
+    <orderEntry type="library" name="Lib" level="project" />
+    <orderEntry type="library" name="pdf-renderer-1.0.5" level="project" />
+    <orderEntry type="library" name="itext-5.0.5" level="project" />
   </component>
 </module>
