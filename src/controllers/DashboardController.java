@@ -42,6 +42,13 @@ public class DashboardController implements Initializable {
     public TextField professionMere;
     public TextField professionPere;
     public ComboBox comboSexe;
+    public Button btn_valider_am;
+    public TextField numExtraitConjointe;
+    public DatePicker dateExtraitConjointe;
+    public TextField lieuMariage;
+    public DatePicker dateMariage;
+    public TextField numExtraitConjoint;
+    public DatePicker dateExtraitConjoint;
 
     //************************************************************************
 
@@ -245,6 +252,11 @@ public class DashboardController implements Initializable {
                                 v2node.setStyle("-fx-border-color: RED");
                                 return false;
                             }
+                            if (v2node instanceof DatePicker && ((DatePicker) v2node).getValue()==null){
+                                v2node.setStyle("-fx-border-color: red");
+                                return false;
+                            }
+
                         }
                     }
                 }
@@ -252,10 +264,6 @@ public class DashboardController implements Initializable {
         }
         if (comboSexe.getValue()==null){
             comboSexe.setStyle("-fx-border-color: red");
-            return false;
-        }
-        if (dateNaiss.getValue()==null) {
-            dateNaiss.setStyle("-fx-border-color: red");
             return false;
         }
         return true;
@@ -288,61 +296,81 @@ public class DashboardController implements Initializable {
     }
 
     public void insertValue(ActionEvent actionEvent) {
-        if (isFormOk(paneAdd_an)){
-            String sexeUser = comboSexe.getValue().toString();
+        //Insertion acte de mariage
+        if (actionEvent.getSource()== btn_valider ){
+            if (isFormOk(paneAdd_an)){
+                String sexeUser = comboSexe.getValue().toString();
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                String date_enreg = simpleDateFormat.format(new Date());
 
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            String date_enreg = simpleDateFormat.format(new Date());
+                Date dateN= java.sql.Date.valueOf(dateNaiss.getValue());
+                if (dateN.equals(null))
+                    AlertBox.showAlertBox("Echec","Echec de l'insertion", Alert.AlertType.ERROR);
 
-            Date dateN= java.sql.Date.valueOf(dateNaiss.getValue());
-            if (dateN.equals(null))
-                AlertBox.showAlertBox("Echec","Echec de l'insertion", Alert.AlertType.ERROR);
+                String date =  simpleDateFormat.format(dateN);
 
-            String date =  simpleDateFormat.format(dateN);
+                String heureNaiss = (String) heure.getValue().toString()+':'+minutes.getValue().toString();
+                db.connect();
 
-            String heureNaiss = (String) heure.getValue().toString()+':'+minutes.getValue().toString();
-            db.connect();
+                System.out.println(date);
+                System.out.println(date_enreg);
 
+                Func toDo = resultSet -> {};
 
-            System.out.println(date);
-            System.out.println(date_enreg);
+                Func func = resultSet -> {
+                } ;
+                try {
+                    db.sendQuery("INSERT INTO individus(nom,prenoms,sexe,date_naiss,heure_naiss,lieu_naiss,nom_pere,domicile_pere,profession_pere,nom_mere,domicile_mere,profession_mere,date_enregistrem,numero_enregistrem,id_mairie,id_agent) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,1,1)",new ArrayList<Object>() {
+                                {
+                                    add(nom.getText().trim());
+                                    add(prenom.getText().trim());
+                                    add(sexeUser);
+                                    add(date);
+                                    add(heureNaiss);
+                                    add(lieuNaiss.getText().trim());
+                                    add(nomPere.getText().trim());
+                                    add(domicilePere.getText().trim());
+                                    add(professionPere.getText().trim());
+                                    add(nomMere.getText().trim());
+                                    add(domicileMere.getText().trim());
+                                    add(professionMere.getText().trim());
+                                    add(date_enreg);
+                                    add(1);
 
-            Func toDo = resultSet -> {};
+                                }
+                            },func
+                    );
+                    AlertBox.showAlertBox("Succès","Insertion effectuée avec succès", Alert.AlertType.INFORMATION);
+                    clearFields(paneAdd_an);
 
-            Func func = resultSet -> {
-            } ;
-            try {
-                db.sendQuery("INSERT INTO individus(nom,prenoms,sexe,date_naiss,heure_naiss,lieu_naiss,nom_pere,domicile_pere,profession_pere,nom_mere,domicile_mere,profession_mere,date_enregistrem,numero_enregistrem,id_mairie,id_agent) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,1,1)",new ArrayList<Object>() {
-                            {
-                                add(nom.getText().trim());
-                                add(prenom.getText().trim());
-                                add(sexeUser);
-                                add(date);
-                                add(heureNaiss);
-                                add(lieuNaiss.getText().trim());
-                                add(nomPere.getText().trim());
-                                add(domicilePere.getText().trim());
-                                add(professionPere.getText().trim());
-                                add(nomMere.getText().trim());
-                                add(domicileMere.getText().trim());
-                                add(professionMere.getText().trim());
-                                add(date_enreg);
-                                add(1);
-
-                            }
-                        },func
-                );
-                AlertBox.showAlertBox("Succès","Insertion effectuée avec succès", Alert.AlertType.INFORMATION);
-                clearFields(paneAdd_an);
-
-            } catch (SQLException throwables) {
-                AlertBox.showAlertBox("Echec","Echec de l'insertion", Alert.AlertType.ERROR);
-                throwables.printStackTrace();
-            } finally {
-                db.disconnect();
+                } catch (SQLException throwables) {
+                    AlertBox.showAlertBox("Echec","Echec de l'insertion", Alert.AlertType.ERROR);
+                    throwables.printStackTrace();
+                } finally {
+                    db.disconnect();
+                }
+            }else
+                AlertBox.showAlertBox("Attention","Vous n'avez pas remplit le formulaire correctement", Alert.AlertType.INFORMATION);
+        }
+        if(actionEvent.getSource()==btn_valider_am){
+            if(isFormOk(paneAdd_am)){
+                try{
+                    db.sendQuery("SELECT id_extrait FROM individus WHERE numero_enregistrem=? AND date_enregistrem=?",new ArrayList<Object>()
+                    {
+                        {
+                            add(numExtraitConjoint.getText().trim());
+                            add(dateExtraitConjoint.getValue());
+                        }
+                    },resultSet -> {
+                        if(resultSet.next()){
+                            int id_conjoint = resultSet.getInt("id_extrait");
+                        }
+                    });
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
-        }else
-            AlertBox.showAlertBox("Attention","Vous n'avez pas remplit le formulaire correctement", Alert.AlertType.INFORMATION);
+        }
 
     }
 
@@ -370,10 +398,9 @@ public class DashboardController implements Initializable {
         final int initialValue = 0;
         heure.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,23,initialValue));
         minutes.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,59,initialValue));
-        dateNaiss.setValue(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(new Date())));
+//        dateNaiss.setValue(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(new Date())));
         comboSexe.getItems().add("Homme");
         comboSexe.getItems().add("Femme");
-
 
     }
 }
