@@ -1,10 +1,13 @@
 package controllers;
 
 import animatefx.animation.Bounce;
+import animatefx.animation.FadeIn;
+import animatefx.animation.FadeInDown;
 import animatefx.animation.SlideInLeft;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -19,10 +22,12 @@ import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class LoginController {
+public class LoginController implements Initializable {
 
     @FXML
     private VBox loginWindow;
@@ -35,6 +40,14 @@ public class LoginController {
 
     Integer id;
     Agent agent;
+
+    public TextField getUsername() {
+        return username;
+    }
+
+    public TextField getPassword() {
+        return password;
+    }
 
     public void connect(ActionEvent actionEvent) throws IOException, SQLException {
         System.out.println(username.getText()+password.getText());
@@ -87,9 +100,19 @@ public class LoginController {
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
 
+            FadeInDown fd = new FadeInDown(root);
+            fd.setDelay(Duration.millis(100));
+            fd.play();
+
         } else {
             new SlideInLeft(username).play();
             Notification.showNotification(NotificationType.ERROR,"Echec","Username ou mot de passe incorrect!");
         }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        username.setText("papitou15");
+        password.setText("papitou@mairiepassword99");
     }
 }

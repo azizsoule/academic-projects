@@ -1,5 +1,6 @@
 package controllers;
 
+import animatefx.animation.SlideInRight;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -16,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 import mairie.*;
 import tray.notification.NotificationType;
 
@@ -191,6 +193,8 @@ public class DashboardController implements Initializable {
         if (actionEvent.getSource() == btn_tableau_de_bord)
             setActive(btn_tableau_de_bord);
             pane_tableau_de_bord.toFront();
+            SlideInRight sl = new SlideInRight(pane_tableau_de_bord);
+            sl.setDelay(Duration.millis(0.0D));
 
         if (actionEvent.getSource() == btn_actes_naiss) {
             setActive(btn_actes_naiss);
@@ -236,7 +240,6 @@ public class DashboardController implements Initializable {
         if (actionEvent.getSource() == btn_ajouter_an )
             paneAdd_an.toFront();
     }
-
 
     private boolean isFormOk(Pane pane){
         ArrayList<Node> element  = new ArrayList<Node>();
@@ -481,7 +484,4 @@ public class DashboardController implements Initializable {
 
     }
 
-
 }
-
-
