@@ -1,5 +1,7 @@
 package controllers;
 
+import animatefx.animation.Bounce;
+import animatefx.animation.SlideInLeft;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,8 +11,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import mairie.Agent;
 import mairie.Database;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -34,6 +40,9 @@ public class LoginController {
         System.out.println(username.getText()+password.getText());
 
         if (Agent.agentExist(username.getText().trim(), password.getText().trim())) {
+
+            Notification.showNotification(NotificationType.SUCCESS,"Succès","Vous êtes à présent connecté");
+
             Database db = new Database("root","root","mairie");
             db.connect();
             try {
@@ -74,15 +83,13 @@ public class LoginController {
             //On recupère les info de l'utilisateur connecté
             dashboardController.getAgentInfo(agent);
 
-
-
-
-
             primaryStage.setTitle("DashBoard");
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
+
         } else {
-            AlertBox.showAlertBox("Erreur", "username ou mot de passe incorrect", Alert.AlertType.ERROR);
+            new SlideInLeft(username).play();
+            Notification.showNotification(NotificationType.ERROR,"Echec","Username ou mot de passe incorrect!");
         }
     }
 }

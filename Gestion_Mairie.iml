@@ -31,5 +31,7 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="Junit-5.4.2" level="application" />
+    <orderEntry type="library" name="io.github.typhon0:AnimateFX:1.2.1" level="application" />
+    <orderEntry type="library" name="TrayTester" level="application" />
   </component>
 </module>
