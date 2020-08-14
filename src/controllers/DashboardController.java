@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -23,8 +24,12 @@ import mairie.*;
 import javafx.stage.Stage;
 import mairie.*;
 import pdfviewer.Controller;
+import javafx.stage.Stage;
+import mairie.*;
+import pdfviewer.Controller;
 
 import java.net.URL;
+import java.io.IOException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -32,6 +37,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.HashMap;
 import java.util.HashMap;
 
 
@@ -56,6 +62,9 @@ public class DashboardController implements Initializable {
     public DatePicker dateMariage;
     public TextField numExtraitConjoint;
     public DatePicker dateExtraitConjoint;
+
+    @FXML
+    public Button btn_valider;
 
     @FXML
     public Button btn_valider;
@@ -167,6 +176,7 @@ public class DashboardController implements Initializable {
 //    Database db = new Database("root","root", "mairie");
     Database db = new Database("root","root", "mairie");
 
+    Database db = new Database("root","root", "mairie");
     Database db = new Database("root","root", "mairie");
 
     //Variable permettant de contenir les ligne du tableau
