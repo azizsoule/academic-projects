@@ -10,8 +10,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import mairie.Agent;
+import mairie.Database;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class LoginController {
 
@@ -24,9 +27,43 @@ public class LoginController {
     @FXML
     private TextField password;
 
-    public void connect(ActionEvent actionEvent) throws IOException {
+    Integer id;
+    Agent agent;
+
+    public void connect(ActionEvent actionEvent) throws IOException, SQLException {
         System.out.println(username.getText()+password.getText());
+
         if (Agent.agentExist(username.getText().trim(), password.getText().trim())) {
+            Database db = new Database("root","root","mairie");
+            db.connect();
+            try {
+                db.sendQuery("SELECT * FROM agent WHERE user_name = ? AND mot_d_passe = ?",new ArrayList<Object>(){
+                    {
+                        add(username.getText().trim());
+                        add(password.getText().trim());
+                    }
+                }, resultSet -> {
+                    try {
+                        if (resultSet.next()) {
+                             id = resultSet.getInt("id_agent");
+                        }
+                    } catch (SQLException exception) {
+                        exception.printStackTrace();
+                    }
+                });
+            } catch (SQLException exception) {
+                exception.printStackTrace();
+            }
+            System.out.println(id);
+            try {
+                agent = new Agent (id);
+            }catch (SQLException e){
+                System.out.println("erreur ici");
+                e.printStackTrace();
+            }
+            System.out.println(agent.getNom());
+
+
             Stage primaryStage = (Stage) loginWindow.getScene().getWindow();
             primaryStage.close();
 
@@ -35,7 +72,11 @@ public class LoginController {
             DashboardController dashboardController =loader.getController();
 
             //On recupère les info de l'utilisateur connecté
-            dashboardController.setLoginInfo(username.getText().trim());
+            dashboardController.getAgentInfo(agent);
+
+
+
+
 
             primaryStage.setTitle("DashBoard");
             primaryStage.setScene(new Scene(root));

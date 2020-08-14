@@ -16,10 +16,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import mairie.Database;
-import mairie.Ex;
-import mairie.Extrait;
-import mairie.Func;
+import mairie.*;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -144,6 +141,10 @@ public class DashboardController implements Initializable {
     @FXML
     private TextField search_field;
 
+    Agent agent;
+    int id_conjoint;
+    int id_conjointe;
+
 
     Database db = new Database("root","root", "mairie");
 
@@ -262,9 +263,11 @@ public class DashboardController implements Initializable {
                 }
             }
         }
-        if (comboSexe.getValue()==null){
-            comboSexe.setStyle("-fx-border-color: red");
-            return false;
+        if (pane.equals(paneAdd_an)){
+            if (comboSexe.getValue()==null){
+                comboSexe.setStyle("-fx-border-color: red");
+                return false;
+            }
         }
         return true;
     }
@@ -284,24 +287,39 @@ public class DashboardController implements Initializable {
                             if (v2node instanceof TextField ){
                                 ((TextField) v2node).clear();
                             }
+                            if (v2node instanceof DatePicker){
+                                ((DatePicker) v2node).setValue(null);
+                            }
                         }
                     }
                 }
             }
         }
-        comboSexe.setValue(null);
-        heure.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,23,0));
-        minutes.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,59,0));
-        dateNaiss.setValue(null);
+        if (pane.equals(paneAdd_an)){
+            comboSexe.setValue(null);
+            heure.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,23,0));
+            minutes.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,59,0));
+            dateNaiss.setValue(null);
+        }
+//        if (pane.equals(paneAdd_am)){
+//            comboSexe.setValue(null);
+//            heure.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,23,0));
+//            minutes.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,59,0));
+//            dateNaiss.setValue(null);
+//        }
+//
+
     }
 
     public void insertValue(ActionEvent actionEvent) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String date_enreg = simpleDateFormat.format(new Date());
+
         //Insertion acte de mariage
         if (actionEvent.getSource()== btn_valider ){
             if (isFormOk(paneAdd_an)){
                 String sexeUser = comboSexe.getValue().toString();
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                String date_enreg = simpleDateFormat.format(new Date());
+
 
                 Date dateN= java.sql.Date.valueOf(dateNaiss.getValue());
                 if (dateN.equals(null))
@@ -320,7 +338,7 @@ public class DashboardController implements Initializable {
                 Func func = resultSet -> {
                 } ;
                 try {
-                    db.sendQuery("INSERT INTO individus(nom,prenoms,sexe,date_naiss,heure_naiss,lieu_naiss,nom_pere,domicile_pere,profession_pere,nom_mere,domicile_mere,profession_mere,date_enregistrem,numero_enregistrem,id_mairie,id_agent) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,1,1)",new ArrayList<Object>() {
+                    db.sendQuery("INSERT INTO individus(nom,prenoms,sexe,date_naiss,heure_naiss,lieu_naiss,nom_pere,domicile_pere,profession_pere,nom_mere,domicile_mere,profession_mere,date_enregistrem,numero_enregistrem,id_mairie,id_agent) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",new ArrayList<Object>() {
                                 {
                                     add(nom.getText().trim());
                                     add(prenom.getText().trim());
@@ -335,7 +353,9 @@ public class DashboardController implements Initializable {
                                     add(domicileMere.getText().trim());
                                     add(professionMere.getText().trim());
                                     add(date_enreg);
-                                    add(1);
+                                    add(10);
+                                    add(agent.getId_mairie());
+                                    add(agent.getId_agent());
 
                                 }
                             },func
@@ -352,23 +372,75 @@ public class DashboardController implements Initializable {
             }else
                 AlertBox.showAlertBox("Attention","Vous n'avez pas remplit le formulaire correctement", Alert.AlertType.INFORMATION);
         }
+
+        //Insertion acte de mariage
         if(actionEvent.getSource()==btn_valider_am){
+            //on vérifie que les champs sont bien remplis
             if(isFormOk(paneAdd_am)){
+
+                db.connect();
+
+                //On recupere les différentes dates qu'on convertit en string
+                Date dateN= java.sql.Date.valueOf(dateMariage.getValue());
+                String dateM =  simpleDateFormat.format(dateN);
+
+                Date y= java.sql.Date.valueOf(dateExtraitConjoint.getValue());
+                String dateConjoint =  simpleDateFormat.format(y);
+
+                Date x= java.sql.Date.valueOf(dateExtraitConjointe.getValue());
+                String dateConjointe =  simpleDateFormat.format(x);
+
+                //On recupere les id des différents conjoints
                 try{
+                    //Pour recuperer L'id de l'extrait du conjoint
                     db.sendQuery("SELECT id_extrait FROM individus WHERE numero_enregistrem=? AND date_enregistrem=?",new ArrayList<Object>()
                     {
                         {
-                            add(numExtraitConjoint.getText().trim());
-                            add(dateExtraitConjoint.getValue());
+                            add(Integer.valueOf(numExtraitConjoint.getText().trim()));
+                            add(dateConjoint);
                         }
                     },resultSet -> {
                         if(resultSet.next()){
-                            int id_conjoint = resultSet.getInt("id_extrait");
+                            id_conjoint = resultSet.getInt("id_extrait");
                         }
                     });
-                } catch (Exception e) {
+
+                    //Pour recuperer L'id de l'extrait de la conjointe
+                    db.sendQuery("SELECT id_extrait FROM individus WHERE numero_enregistrem=? AND date_enregistrem=?",new ArrayList<Object>()
+                    {
+                        {
+                            add(Integer.valueOf(numExtraitConjointe.getText().trim()));
+                            add(dateConjointe);
+                        }
+                    },resultSet -> {
+                        if(resultSet.next()){
+                            id_conjointe = resultSet.getInt("id_extrait");
+                        }
+                    });
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
+
+                db.disconnect();
+
+                //On cree un objet acte de mariage a partir des informations
+                ActeMariage acte = new ActeMariage(agent.getId_agent(),dateM,lieuMariage.getText().trim(),id_conjoint,id_conjointe,date_enreg);
+                //On enregistre dans la base de données
+                try {
+                    acte.save();
+                    AlertBox.showAlertBox("Succès","Insertion effectuée avec succès", Alert.AlertType.INFORMATION);
+
+                    //Pour reset le formulaire après insertion
+                    clearFields(paneAdd_am);
+
+                } catch (SQLException throwables) {
+                    AlertBox.showAlertBox("Echec","Echec de l'insertion", Alert.AlertType.ERROR);
+                    throwables.printStackTrace();
+                }
+
+            //Sinon on affiche un message d'erreur
+            }else{
+                AlertBox.showAlertBox("Attention","Vous n'avez pas remplit le formulaire correctement", Alert.AlertType.INFORMATION);
             }
         }
 
@@ -387,22 +459,34 @@ public class DashboardController implements Initializable {
         );
 
     }
-    public void setLoginInfo(String username){
-        agentUsername.setText(username);
+
+    //Pour recuperer les info de l'utilisateur depuis l'interface de connection
+    public void getAgentInfo(Agent agentMairie){
+        //on affiche le nom de l'agent dans le dashboard
+        agentUsername.setText(agentMairie.getNom());
+        //On remplit l'attribut agent du controller pour pouvoir effectuer des insertions et contrôles
+        agent = agentMairie;
     }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        //On charge les setup au demmarage du dashboard
         pane_tableau_de_bord.toFront();
         setActive(btn_tableau_de_bord);
+
+        //Pour les valeurs des spinner(Heure,minutes)
         final int initialValue = 0;
         heure.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,23,initialValue));
         minutes.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,59,initialValue));
 //        dateNaiss.setValue(LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(new Date())));
+
+        //On donne ici les valeurs au comboBox sexe
         comboSexe.getItems().add("Homme");
         comboSexe.getItems().add("Femme");
 
     }
+
+
 }
 
 

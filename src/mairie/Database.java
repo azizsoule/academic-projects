@@ -167,7 +167,7 @@ public class Database {
                     }
 
                     if(arguments.get(i) instanceof Date) {
-                        statement.setDate(i+1, (java.sql.Date) arguments.get(i));
+                        statement.setDate(i+1, (Date) arguments.get(i));
                     }
                 }
             }

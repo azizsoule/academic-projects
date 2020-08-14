@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicReference;
 public class Agent {
     private final Database db;
 
-    private final Integer id_agent;
+    private Integer id_agent;
 
     private String nom;
 
@@ -78,7 +78,7 @@ public class Agent {
 
     //Ce constructeur cree un objet agent mairie à partir d'un id puis execute une requtte et recupere les infos depuis la bd
     //Ce contructeur renvoie une exception dans le cas ou aucun agent correspondant à l'id n'a ete trouve dans la bd
-    Agent(Integer id_ag) throws SQLException{
+    public Agent(Integer id_ag) throws SQLException{
 
         db = new Database();
 
@@ -90,16 +90,25 @@ public class Agent {
                 add(id_ag);
             }
         }, resultSet -> {
-            result.set(resultSet);
+//            result.set(resultSet);
+            if (resultSet.next()){
+                id_agent = resultSet.getInt("id_agent");
+                nom = resultSet.getString("nom");
+                prenoms = resultSet.getString("prenoms");
+                email = resultSet.getString("email");
+                user_name = resultSet.getString("user_name");
+                mot_d_passe = resultSet.getString("mot_d_passe");
+                id_mairie = resultSet.getInt("id_mairie");
+            }
         });
-
-        id_agent = result.get().getInt("id_agent");
-        nom = result.get().getString("nom");
-        prenoms = result.get().getString("prenoms");
-        email = result.get().getString("email");
-        user_name = result.get().getString("user_name");
-        mot_d_passe = result.get().getString("mot_d_passe");
-        id_mairie = result.get().getInt("id_mairie");
+//
+//        id_agent = result.get().getInt("id_agent");
+//        nom = result.get().getString("nom");
+//        prenoms = result.get().getString("prenoms");
+//        email = result.get().getString("email");
+//        user_name = result.get().getString("user_name");
+//        mot_d_passe = result.get().getString("mot_d_passe");
+//        id_mairie = result.get().getInt("id_mairie");
 
         db.disconnect();
 
