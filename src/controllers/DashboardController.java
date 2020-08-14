@@ -27,6 +27,9 @@ import pdfviewer.Controller;
 import javafx.stage.Stage;
 import mairie.*;
 import pdfviewer.Controller;
+import javafx.stage.Stage;
+import mairie.*;
+import pdfviewer.Controller;
 
 import java.net.URL;
 import java.io.IOException;
@@ -62,6 +65,9 @@ public class DashboardController implements Initializable {
     public DatePicker dateMariage;
     public TextField numExtraitConjoint;
     public DatePicker dateExtraitConjoint;
+
+    @FXML
+    public Button btn_valider;
 
     @FXML
     public Button btn_valider;
