@@ -45,6 +45,7 @@ import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.HashMap;
 import java.util.HashMap;
+import java.util.function.Consumer;
 
 
 public class DashboardController implements Initializable {
@@ -178,6 +179,8 @@ public class DashboardController implements Initializable {
     //Variable permettant de contenir les ligne du tableau
     final ObservableList<Ex> data = FXCollections.observableArrayList();
 
+    Integer id_modif = null;
+
     //Expression lamba ayant pour role de remplir le tableView des extraits de naissance
     Func refreshTableView = resultset -> {
         try {
@@ -198,6 +201,25 @@ public class DashboardController implements Initializable {
 
             while (resultset.next()) {
 
+                HashMap<String, Object> values = new HashMap<>() {
+                    {
+                        put("id_extrait",resultset.getInt("id_extrait"));
+                        put("nom",resultset.getString("nom"));
+                        put("prenoms",resultset.getString("prenoms"));
+                        put("sexe",resultset.getString("sexe"));
+                        put("date_naiss",resultset.getDate("date_naiss"));
+                        put("heure_naiss",resultset.getString("heure_naiss"));
+                        put("lieu_naiss",resultset.getString("lieu_naiss"));
+                        put("nom_pere",resultset.getString("nom_pere"));
+                        put("domicile_pere",resultset.getString("domicile_pere"));
+                        put("nom_mere",resultset.getString("nom_mere"));
+                        put("domicile_mere",resultset.getString("domicile_mere"));
+                        put("profession_pere",resultset.getString("profession_pere"));
+                        put("profession_mere",resultset.getString("profession_mere"));
+
+                    }
+                } ;
+
                 Ex ex_row = new Ex(resultset.getInt("id_extrait"), resultset.getString("nom"), resultset.getString("prenoms"), resultset.getDate("date_naiss").toString(), new Button("Voir"), new Button("Modifier"));
 
                 ex_row.getVisualiser().setOnAction(e -> {
@@ -209,14 +231,20 @@ public class DashboardController implements Initializable {
 
                         Printer.generatePDF(ex_row.getNom()+ex_row.getId_extrait(), new HashMap<>() {
                             {
-                                put("NOM","Soule");
-                                put("PRENOMS","Ano");
-                                put("DATE_NAISSANCE","17/12/1999");
-                                put("HEURE_NAISSANCE","12h10");
-                                put("LIEU_NAISSANCE","Quelque part");
-                                put("NOM_MERE","KLOE");
-                                put("NOM_PERE","BABA");
-                                put("FILS_FILLE","FILS");
+                                put("NOM", String.valueOf(values.get("nom")));
+                                put("PRENOMS",String.valueOf(values.get("prenoms")));
+                                put("DATE_NAISSANCE",String.valueOf(values.get("date_naiss").toString()));
+                                put("HEURE_NAISSANCE", String.valueOf(values.get("heure_naiss")));
+                                put("LIEU_NAISSANCE",String.valueOf(values.get("lieu_naiss")));
+                                put("NOM_MERE",String.valueOf(values.get("nom_mere")));
+                                put("NOM_PERE",String.valueOf(values.get("nom_pere")));
+
+                                if (values.get("sexe").equals("Homme")) {
+                                    put("FILS_FILLE","fils");
+                                } else {
+                                    put("FILS_FILLE","fille");
+                                }
+
                             }
                         });
 
@@ -231,23 +259,34 @@ public class DashboardController implements Initializable {
                 });
 
                 ex_row.getModifier().setOnAction(e -> {
+                    id_modif = (Integer) values.get("id_extrait");
+
                     paneAdd_an.toFront();
                     btn_valider.setText("MODIFIER");
-                    try {
-                        nom.setText(ex_row.getNom());
-                        prenom.setText(ex_row.getPrenoms());
+                    nom.setText((String) values.get("nom"));
+                    prenom.setText((String) values.get("prenoms"));
+                    comboSexe.setValue(values.get("sexe"));
+                    lieuNaiss.setText((String) values.get("lieu_naiss"));
+                    dateNaiss.setValue(LocalDate.parse(values.get("date_naiss").toString()));
 
-                        //pere
-                        nomPere.setText(resultset.getString("nom_pere"));
-                        domicilePere.setText(resultset.getString("domicile_pere"));
+                    String time = (String) values.get("heure_naiss");
 
-                        //mere
-                        nomMere.setText(resultset.getString("nom_mere"));
-                        domicilePere.setText(resultset.getString("domicile_mere"));
+                    String h = time.split(":")[0];
+                    String m = time.split(":")[1];
 
-                    } catch (SQLException throwables) {
-                        throwables.printStackTrace();
-                    }
+                    heure.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,23,Integer.parseInt(h)));
+                    minutes.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,59,Integer.parseInt(m)));
+
+                    //pere
+                    nomPere.setText((String) values.get("nom_pere"));
+                    professionPere.setText((String) values.get("profession_pere"));
+                    domicilePere.setText((String) values.get("domicile_pere"));
+
+                    //mere
+                    nomMere.setText((String) values.get("nom_mere"));
+                    professionMere.setText((String) values.get("profession_mere"));
+                    domicileMere.setText((String) values.get("domicile_mere"));
+
                 });
 
                 data.add(ex_row);
@@ -280,18 +319,6 @@ public class DashboardController implements Initializable {
         if (actionEvent.getSource() == btn_actes_naiss) {
             setActive(btn_actes_naiss);
             paneList_an.toFront();
-
-            db.connect();
-
-            try {
-                db.sendQuery("SELECT id_extrait,nom,prenoms,date_naiss FROM individus", refreshTableView);
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-
-            db.disconnect();
-
-
         }
         if (actionEvent.getSource() == btn_acte_mariage) {
             setActive(btn_acte_mariage);
@@ -313,6 +340,15 @@ public class DashboardController implements Initializable {
         }
         // Pour le stackPane
         if (actionEvent.getSource() == btn_add_an ) {
+            /*paneAdd_an.getChildren().forEach(new Consumer<Node>() {
+                @Override
+                public void accept(Node node) {
+                    if(node instanceof TextField) {
+                        ((TextField) node).clear();
+                    }
+                }
+            });*/
+            resetAll_an();
             paneAdd_an.toFront();
             btn_valider.setText("VALIDER");
         }
@@ -321,10 +357,31 @@ public class DashboardController implements Initializable {
         if (actionEvent.getSource() == btn_ajouter_am )
             paneAdd_am.toFront();
         if (actionEvent.getSource() == btn_ajouter_an ){
+            resetAll_an();
             paneAdd_an.toFront();
             btn_valider.setText("VALIDER");
         }
     }
+
+    public void resetAll_an() {
+
+        nom.clear();
+        prenom.clear();
+        comboSexe.setValue("Sexe");
+        heure.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,23,0));
+        minutes.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,59,0));
+        dateNaiss.setValue(LocalDate.now());
+        lieuNaiss.clear();
+        nomPere.clear();
+        nomMere.clear();
+        domicilePere.clear();
+        domicileMere.clear();
+        professionMere.clear();
+        professionPere.clear();
+
+    }
+
+    public void resetAll_am() {}
 
     private boolean isFormOk(Pane pane){
         ArrayList<Node> element  = new ArrayList<Node>();
@@ -419,39 +476,73 @@ public class DashboardController implements Initializable {
                 String heureNaiss = (String) heure.getValue().toString()+':'+minutes.getValue().toString();
                 db.connect();
 
-                try {
-                    db.sendQuery("INSERT INTO individus(nom,prenoms,sexe,date_naiss,heure_naiss,lieu_naiss,nom_pere,domicile_pere,profession_pere,nom_mere,domicile_mere,profession_mere,date_enregistrem,numero_enregistrem,id_mairie,id_agent) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",new ArrayList<Object>() {
-                                {
-                                    add(nom.getText().trim());
-                                    add(prenom.getText().trim());
-                                    add(sexeUser);
-                                    add(date);
-                                    add(heureNaiss);
-                                    add(lieuNaiss.getText().trim());
-                                    add(nomPere.getText().trim());
-                                    add(domicilePere.getText().trim());
-                                    add(professionPere.getText().trim());
-                                    add(nomMere.getText().trim());
-                                    add(domicileMere.getText().trim());
-                                    add(professionMere.getText().trim());
-                                    add(date_enreg);
-                                    add(10);
-                                    add(agent.getId_mairie());
-                                    add(agent.getId_agent());
+                if(btn_valider.getText().equals("VALIDER")) {
+                    try {
+                        db.sendQuery("INSERT INTO individus(nom,prenoms,sexe,date_naiss,heure_naiss,lieu_naiss,nom_pere,domicile_pere,profession_pere,nom_mere,domicile_mere,profession_mere,date_enregistrem,numero_enregistrem,id_mairie,id_agent) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",new ArrayList<Object>() {
+                                    {
+                                        add(nom.getText().trim());
+                                        add(prenom.getText().trim());
+                                        add(sexeUser);
+                                        add(date);
+                                        add(heureNaiss);
+                                        add(lieuNaiss.getText().trim());
+                                        add(nomPere.getText().trim());
+                                        add(domicilePere.getText().trim());
+                                        add(professionPere.getText().trim());
+                                        add(nomMere.getText().trim());
+                                        add(domicileMere.getText().trim());
+                                        add(professionMere.getText().trim());
+                                        add(date_enreg);
+                                        add(10);
+                                        add(agent.getId_mairie());
+                                        add(agent.getId_agent());
 
-                                }
-                            },resultSet -> {}
-                    );
-                    Operation.insert(date_enreg,"Edition ACTE DE NAISSANCE",agent.getId_agent());
-                    Notification.showNotification(NotificationType.SUCCESS,"Succès","Insertion éffectuée avec succès");
-                    clearFields(paneAdd_an);
+                                    }
+                                },resultSet -> {}
+                        );
+                        Operation.insert(date_enreg,"Edition ACTE DE NAISSANCE",agent.getId_agent());
+                        Notification.showNotification(NotificationType.SUCCESS,"Succès","Insertion éffectuée avec succès");
+                        clearFields(paneAdd_an);
 
-                } catch (SQLException throwables) {
-                    Notification.showNotification(NotificationType.ERROR,"Echec","Echec de l'insertion");
-                    throwables.printStackTrace();
-                } finally {
-                    db.disconnect();
+                    } catch (SQLException throwables) {
+                        Notification.showNotification(NotificationType.ERROR,"Echec","Echec de l'insertion");
+                        throwables.printStackTrace();
+                    } finally {
+                        db.disconnect();
+                    }
+                }else {
+                    try {
+                        db.sendQuery("UPDATE individus SET nom=?,prenoms=?,sexe=?,date_naiss=?,heure_naiss=?,lieu_naiss=?,nom_pere=?,domicile_pere=?,profession_pere=?,nom_mere=?,domicile_mere=?,profession_mere=?,id_agent=? WHERE id_extrait=?",new ArrayList<Object>() {
+                                    {
+                                        add(nom.getText().trim());
+                                        add(prenom.getText().trim());
+                                        add(sexeUser);
+                                        add(date);
+                                        add(heureNaiss);
+                                        add(lieuNaiss.getText().trim());
+                                        add(nomPere.getText().trim());
+                                        add(domicilePere.getText().trim());
+                                        add(professionPere.getText().trim());
+                                        add(nomMere.getText().trim());
+                                        add(domicileMere.getText().trim());
+                                        add(professionMere.getText().trim());
+                                        add(agent.getId_agent());
+                                        add(id_modif);
+                                    }
+                                },resultSet -> {}
+                        );
+                        Operation.insert(date_enreg,"MODIFICATION ACTE DE NAISSANCE",agent.getId_agent());
+                        Notification.showNotification(NotificationType.SUCCESS,"Succès","Modification éffectuée avec succès");
+                        clearFields(paneAdd_an);
+
+                    } catch (SQLException throwables) {
+                        Notification.showNotification(NotificationType.ERROR,"Echec","Echec de l'insertion");
+                        throwables.printStackTrace();
+                    } finally {
+                        db.disconnect();
+                    }
                 }
+
             }else
                 AlertBox.showAlertBox("Attention","Vous n'avez pas remplit le formulaire correctement", Alert.AlertType.INFORMATION);
         }
@@ -566,6 +657,16 @@ public class DashboardController implements Initializable {
         //On donne ici les valeurs au comboBox sexe
         comboSexe.getItems().add("Homme");
         comboSexe.getItems().add("Femme");
+
+        db.connect();
+
+        try {
+            db.sendQuery("SELECT * FROM individus", refreshTableView);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        db.disconnect();
 
     }
 

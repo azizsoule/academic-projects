@@ -342,6 +342,62 @@
                         </Pane>
                      </children>
                   </Pane>
+                  <Pane fx:id="paneList_an" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="940.0" style="-fx-background-color: #fff;">
+                     <children>
+                        <Pane layoutX="45.0" layoutY="115.0" prefHeight="5.0" prefWidth="870.0" style="-fx-background-color: rgb(0, 196, 196);" />
+                        <Pane layoutX="45.0" layoutY="102.0" prefHeight="5.0" prefWidth="285.0" style="-fx-background-color: rgb(0, 196, 196);" />
+                        <Label alignment="CENTER" layoutX="338.0" layoutY="81.0" prefHeight="35.0" prefWidth="285.0" style="-fx-font: #fff; -fx-border-color: rgb(0, 196, 196);" text="ACTES DE NAISSANCE" textAlignment="CENTER" textFill="#3a97a8">
+                           <font>
+                              <Font name="Agency FB" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="394.0" layoutY="750.0" prefHeight="35.0" prefWidth="206.0" style="-fx-background-color: #f5f5f5;" text="with baby 5 |  2020" textAlignment="CENTER" textFill="#026f83">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <ScrollPane layoutX="13.0" layoutY="199.0" prefHeight="476.0" prefWidth="894.0">
+                           <content>
+                              <TableView fx:id="extraitList" editable="true" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="890.0" tableMenuButtonVisible="true">
+                                 <columns>
+                                    <TableColumn fx:id="id_extrait" prefWidth="107.0" text="ID_Extrait" />
+                                    <TableColumn fx:id="name" prefWidth="133.0" text="Nom" />
+                                    <TableColumn fx:id="prenoms" prefWidth="253.0" text="Prénom(s)" />
+                                    <TableColumn fx:id="date_de_naissance" prefWidth="164.0" text="Date de Naissance" />
+                                    <TableColumn fx:id="voir" prefWidth="112.0" text="Visualiser" />
+                                    <TableColumn fx:id="mod" prefWidth="111.0" text="Modifier" />
+                                 </columns>
+                              </TableView>
+                           </content>
+                        </ScrollPane>
+                        <TextField fx:id="search_field" layoutX="253.0" layoutY="141.0" onAction="#search" prefHeight="35.0" prefWidth="470.0" promptText="Rechercher">
+                           <padding>
+                              <Insets left="25.0" right="25.0" />
+                           </padding>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextField>
+                        <Pane layoutX="647.0" layoutY="108.0" prefHeight="5.0" prefWidth="285.0" style="-fx-background-color: rgb(0, 196, 196);" />
+                        <Pane layoutX="689.0" layoutY="143.0" prefHeight="32.0" prefWidth="33.0" style="-fx-background-color: #f5f5f5;">
+                           <children>
+                              <ImageView fitHeight="20.0" fitWidth="23.0" layoutX="6.0" layoutY="6.0">
+                                 <image>
+                                    <Image url="@icons/icons8_Search_52px.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Button fx:id="btn_ajouter_an" accessibleText="IUHYGTFD" cache="true" layoutX="296.0" layoutY="688.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#openPane" prefHeight="32.0" prefWidth="412.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" styleClass="Hover-top" stylesheets="@style.css" text="AJOUTER ACTE DE NAISSANCE" textAlignment="CENTER" textFill="WHITE">
+                           <effect>
+                              <DropShadow color="#000000c0" height="7.42" radius="3.58" width="8.9" />
+                           </effect>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </Pane>
                   <Pane fx:id="paneAdd_am" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="940.0" style="-fx-background-color: white;" StackPane.alignment="CENTER">
                      <children>
                         <ImageView fitHeight="553.0" fitWidth="381.0" layoutX="279.0" layoutY="247.0" opacity="0.1" pickOnBounds="true" preserveRatio="true">
@@ -470,35 +526,34 @@
                         </VBox>
                      </children>
                   </Pane>
-                  <Pane fx:id="paneList_an" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="940.0" style="-fx-background-color: #fff;">
+                  <Pane fx:id="paneList_am" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="940.0" style="-fx-background-color: #fff;" StackPane.alignment="CENTER">
                      <children>
-                        <Pane layoutX="45.0" layoutY="115.0" prefHeight="5.0" prefWidth="870.0" style="-fx-background-color: rgb(0, 196, 196);" />
-                        <Pane layoutX="45.0" layoutY="102.0" prefHeight="5.0" prefWidth="285.0" style="-fx-background-color: rgb(0, 196, 196);" />
-                        <Label alignment="CENTER" layoutX="338.0" layoutY="81.0" prefHeight="35.0" prefWidth="285.0" style="-fx-font: #fff; -fx-border-color: rgb(0, 196, 196);" text="ACTES DE NAISSANCE" textAlignment="CENTER" textFill="#3a97a8">
+                        <Pane layoutX="62.0" layoutY="123.0" prefHeight="5.0" prefWidth="870.0" style="-fx-background-color: rgb(0, 196, 196);" />
+                        <Pane layoutX="62.0" layoutY="110.0" prefHeight="5.0" prefWidth="285.0" style="-fx-background-color: rgb(0, 196, 196);" />
+                        <Label alignment="CENTER" layoutX="355.0" layoutY="89.0" prefHeight="35.0" prefWidth="285.0" style="-fx-font: #fff; -fx-border-color: rgb(0, 196, 196);" text="ACTES DE MARIAGE" textAlignment="CENTER" textFill="#3a97a8">
                            <font>
                               <Font name="Agency FB" size="24.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="394.0" layoutY="750.0" prefHeight="35.0" prefWidth="206.0" style="-fx-background-color: #f5f5f5;" text="with baby 5 |  2020" textAlignment="CENTER" textFill="#026f83">
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="394.0" layoutY="660.0" prefHeight="35.0" prefWidth="206.0" style="-fx-background-color: #f5f5f5;" text="with baby 5 |  2020" textAlignment="CENTER" textFill="#026f83">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="14.0" />
                            </font>
                         </Label>
-                        <ScrollPane layoutX="13.0" layoutY="199.0" prefHeight="476.0" prefWidth="894.0">
+                        <ScrollPane layoutX="62.0" layoutY="199.0" prefHeight="395.0" prefWidth="870.0">
                            <content>
-                              <TableView fx:id="extraitList" editable="true" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="890.0" tableMenuButtonVisible="true">
+                              <TableView editable="true" prefHeight="415.0" prefWidth="896.0" tableMenuButtonVisible="true">
                                  <columns>
-                                    <TableColumn fx:id="id_extrait" prefWidth="107.0" text="ID_Extrait" />
-                                    <TableColumn fx:id="name" prefWidth="133.0" text="Nom" />
-                                    <TableColumn fx:id="prenoms" prefWidth="253.0" text="Prénom(s)" />
-                                    <TableColumn fx:id="date_de_naissance" prefWidth="164.0" text="Date de Naissance" />
-                                    <TableColumn fx:id="voir" prefWidth="112.0" text="Visualiser" />
-                                    <TableColumn fx:id="mod" prefWidth="111.0" text="Modifier" />
+                                    <TableColumn prefWidth="148.0" text="ID_Extrait" />
+                                    <TableColumn prefWidth="123.0" text="Nom" />
+                                    <TableColumn prefWidth="193.0" text="Prénom(s)" />
+                                    <TableColumn prefWidth="155.0" text="Date de Naissance" />
+                                    <TableColumn prefWidth="331.0" text="Actions" />
                                  </columns>
                               </TableView>
                            </content>
                         </ScrollPane>
-                        <TextField fx:id="search_field" layoutX="253.0" layoutY="141.0" onAction="#search" prefHeight="35.0" prefWidth="470.0" promptText="Rechercher">
+                        <TextField layoutX="253.0" layoutY="141.0" prefHeight="35.0" prefWidth="470.0" promptText="Rechercher">
                            <padding>
                               <Insets left="25.0" right="25.0" />
                            </padding>
@@ -516,13 +571,16 @@
                               </ImageView>
                            </children>
                         </Pane>
-                        <Button fx:id="btn_ajouter_an" accessibleText="IUHYGTFD" cache="true" layoutX="296.0" layoutY="688.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#openPane" prefHeight="32.0" prefWidth="412.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" styleClass="Hover-top" stylesheets="@style.css" text="AJOUTER ACTE DE NAISSANCE" textAlignment="CENTER" textFill="WHITE">
+                        <Button fx:id="btn_ajouter_am" accessibleText="IUHYGTFD" cache="true" layoutX="296.0" layoutY="611.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#openPane" prefHeight="32.0" prefWidth="412.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" styleClass="Hover-top" stylesheets="@style.css" text="AJOUTER ACTE DE MARIAGE" textAlignment="CENTER" textFill="WHITE">
                            <effect>
                               <DropShadow color="#000000c0" height="7.42" radius="3.58" width="8.9" />
                            </effect>
                            <font>
-                              <Font size="15.0" />
+                              <Font name="Arial Rounded MT Bold" size="15.0" />
                            </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Button>
                      </children>
                   </Pane>
@@ -731,64 +789,6 @@
                            </font>
                         </Label>
 
-                     </children>
-                  </Pane>
-                  <Pane fx:id="paneList_am" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="940.0" style="-fx-background-color: #fff;" StackPane.alignment="CENTER">
-                     <children>
-                        <Pane layoutX="62.0" layoutY="123.0" prefHeight="5.0" prefWidth="870.0" style="-fx-background-color: rgb(0, 196, 196);" />
-                        <Pane layoutX="62.0" layoutY="110.0" prefHeight="5.0" prefWidth="285.0" style="-fx-background-color: rgb(0, 196, 196);" />
-                        <Label alignment="CENTER" layoutX="355.0" layoutY="89.0" prefHeight="35.0" prefWidth="285.0" style="-fx-font: #fff; -fx-border-color: rgb(0, 196, 196);" text="ACTES DE MARIAGE" textAlignment="CENTER" textFill="#3a97a8">
-                           <font>
-                              <Font name="Agency FB" size="24.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="394.0" layoutY="660.0" prefHeight="35.0" prefWidth="206.0" style="-fx-background-color: #f5f5f5;" text="with baby 5 |  2020" textAlignment="CENTER" textFill="#026f83">
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <ScrollPane layoutX="62.0" layoutY="199.0" prefHeight="395.0" prefWidth="870.0">
-                           <content>
-                              <TableView editable="true" prefHeight="415.0" prefWidth="896.0" tableMenuButtonVisible="true">
-                                 <columns>
-                                    <TableColumn prefWidth="148.0" text="ID_Extrait" />
-                                    <TableColumn prefWidth="123.0" text="Nom" />
-                                    <TableColumn prefWidth="193.0" text="Prénom(s)" />
-                                    <TableColumn prefWidth="155.0" text="Date de Naissance" />
-                                    <TableColumn prefWidth="331.0" text="Actions" />
-                                 </columns>
-                              </TableView>
-                           </content>
-                        </ScrollPane>
-                        <TextField layoutX="253.0" layoutY="141.0" prefHeight="35.0" prefWidth="470.0" promptText="Rechercher">
-                           <padding>
-                              <Insets left="25.0" right="25.0" />
-                           </padding>
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </TextField>
-                        <Pane layoutX="647.0" layoutY="108.0" prefHeight="5.0" prefWidth="285.0" style="-fx-background-color: rgb(0, 196, 196);" />
-                        <Pane layoutX="689.0" layoutY="143.0" prefHeight="32.0" prefWidth="33.0" style="-fx-background-color: #f5f5f5;">
-                           <children>
-                              <ImageView fitHeight="20.0" fitWidth="23.0" layoutX="6.0" layoutY="6.0">
-                                 <image>
-                                    <Image url="@icons/icons8_Search_52px.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </Pane>
-                        <Button fx:id="btn_ajouter_am" accessibleText="IUHYGTFD" cache="true" layoutX="296.0" layoutY="611.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#openPane" prefHeight="32.0" prefWidth="412.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" styleClass="Hover-top" stylesheets="@style.css" text="AJOUTER ACTE DE MARIAGE" textAlignment="CENTER" textFill="WHITE">
-                           <effect>
-                              <DropShadow color="#000000c0" height="7.42" radius="3.58" width="8.9" />
-                           </effect>
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="15.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
                      </children>
                   </Pane>
                </children>
