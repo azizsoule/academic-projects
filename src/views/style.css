@@ -25,11 +25,11 @@
     -fx-translate-y: -3px;
     -fx-box-shadow: 0px 10px 20px rgba(0,0,0,0.4);
 }
-.quit-btn:active
-{
-    -fx-translate-y: -1px;
-    -fx-background-color : #1620A1;
-}
+/*.quit-btn:active*/
+/*{*/
+/*    -fx-translate-y: -1px;*/
+/*    -fx-background-color : #1620A1;*/
+/*}*/
 
 /* Hover effect */
 .Hover-top

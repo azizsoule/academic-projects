@@ -1,5 +1,6 @@
 package controllers;
 
+import animatefx.animation.SlideInRight;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -20,6 +21,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 import mairie.*;
 import javafx.stage.Stage;
 import mairie.*;
@@ -30,6 +32,7 @@ import pdfviewer.Controller;
 import javafx.stage.Stage;
 import mairie.*;
 import pdfviewer.Controller;
+import tray.notification.NotificationType;
 
 import java.net.URL;
 import java.io.IOException;
@@ -179,10 +182,6 @@ public class DashboardController implements Initializable {
     int id_conjoint;
     int id_conjointe;
 
-//    Database db = new Database("root","root", "mairie");
-    Database db = new Database("root","root", "mairie");
-
-    Database db = new Database("root","root", "mairie");
     Database db = new Database("root","root", "mairie");
 
     //Variable permettant de contenir les ligne du tableau
@@ -286,6 +285,8 @@ public class DashboardController implements Initializable {
         if (actionEvent.getSource() == btn_tableau_de_bord)
             setActive(btn_tableau_de_bord);
             pane_tableau_de_bord.toFront();
+            SlideInRight sl = new SlideInRight(pane_tableau_de_bord);
+            sl.setDelay(Duration.millis(0.0D));
 
         if (actionEvent.getSource() == btn_actes_naiss) {
             setActive(btn_actes_naiss);
@@ -336,8 +337,6 @@ public class DashboardController implements Initializable {
         }
     }
 
-    private boolean isFormOk(Pane pane){
-        for (Node node:pane.getChildren()
     private boolean isFormOk(Pane pane){
         ArrayList<Node> element  = new ArrayList<Node>();
 
@@ -419,8 +418,8 @@ public class DashboardController implements Initializable {
         //Insertion acte de mariage
         if (actionEvent.getSource()== btn_valider ){
             if (isFormOk(paneAdd_an)){
-                String sexeUser = comboSexe.getValue().toString();
 
+                String sexeUser = comboSexe.getValue().toString();
 
                 Date dateN= java.sql.Date.valueOf(dateNaiss.getValue());
                 if (dateN.equals(null))
@@ -431,13 +430,6 @@ public class DashboardController implements Initializable {
                 String heureNaiss = (String) heure.getValue().toString()+':'+minutes.getValue().toString();
                 db.connect();
 
-                System.out.println(date);
-                System.out.println(date_enreg);
-
-                Func toDo = resultSet -> {};
-
-                Func func = resultSet -> {
-                } ;
                 try {
                     db.sendQuery("INSERT INTO individus(nom,prenoms,sexe,date_naiss,heure_naiss,lieu_naiss,nom_pere,domicile_pere,profession_pere,nom_mere,domicile_mere,profession_mere,date_enregistrem,numero_enregistrem,id_mairie,id_agent) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",new ArrayList<Object>() {
                                 {
@@ -459,13 +451,14 @@ public class DashboardController implements Initializable {
                                     add(agent.getId_agent());
 
                                 }
-                            },func
+                            },resultSet -> {}
                     );
-                    AlertBox.showAlertBox("Succès","Insertion effectuée avec succès", Alert.AlertType.INFORMATION);
+                    Operation.insert(date_enreg,"Edition ACTE DE NAISSANCE",agent.getId_agent());
+                    Notification.showNotification(NotificationType.SUCCESS,"Succès","Insertion éffectuée avec succès");
                     clearFields(paneAdd_an);
 
                 } catch (SQLException throwables) {
-                    AlertBox.showAlertBox("Echec","Echec de l'insertion", Alert.AlertType.ERROR);
+                    Notification.showNotification(NotificationType.ERROR,"Echec","Echec de l'insertion");
                     throwables.printStackTrace();
                 } finally {
                     db.disconnect();
@@ -521,7 +514,6 @@ public class DashboardController implements Initializable {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-
                 db.disconnect();
 
                 //On cree un objet acte de mariage a partir des informations
@@ -529,6 +521,7 @@ public class DashboardController implements Initializable {
                 //On enregistre dans la base de données
                 try {
                     acte.save();
+                    Operation.insert(date_enreg,"Edition ACTE DE MARIAGE",agent.getId_agent());
                     AlertBox.showAlertBox("Succès","Insertion effectuée avec succès", Alert.AlertType.INFORMATION);
 
                     //Pour reset le formulaire après insertion
@@ -587,7 +580,4 @@ public class DashboardController implements Initializable {
 
     }
 
-
 }
-
-
