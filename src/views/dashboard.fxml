@@ -26,6 +26,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<!--suppress ALL -->
+
 <AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DashboardController">
    <children>
       <SplitPane dividerPositions="0.25" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -204,64 +206,6 @@
             <StackPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="940.0" style="-fx-border-color: black;" SplitPane.resizableWithParent="false">
                <children>
                   <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="940.0" style="-fx-background-color: #000;" StackPane.alignment="CENTER" />
-                  <Pane fx:id="paneList_am" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="940.0" style="-fx-background-color: #fff;" StackPane.alignment="CENTER">
-                     <children>
-                        <Pane layoutX="62.0" layoutY="123.0" prefHeight="5.0" prefWidth="870.0" style="-fx-background-color: rgb(0, 196, 196);" />
-                        <Pane layoutX="62.0" layoutY="110.0" prefHeight="5.0" prefWidth="285.0" style="-fx-background-color: rgb(0, 196, 196);" />
-                        <Label alignment="CENTER" layoutX="355.0" layoutY="89.0" prefHeight="35.0" prefWidth="285.0" style="-fx-font: #fff; -fx-border-color: rgb(0, 196, 196);" text="ACTES DE MARIAGE" textAlignment="CENTER" textFill="#3a97a8">
-                           <font>
-                              <Font name="Agency FB" size="24.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="394.0" layoutY="660.0" prefHeight="35.0" prefWidth="206.0" style="-fx-background-color: #f5f5f5;" text="with baby 5 |  2020" textAlignment="CENTER" textFill="#026f83">
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <ScrollPane layoutX="62.0" layoutY="199.0" prefHeight="395.0" prefWidth="870.0">
-                           <content>
-                              <TableView editable="true" prefHeight="415.0" prefWidth="896.0" tableMenuButtonVisible="true">
-                                 <columns>
-                                    <TableColumn prefWidth="148.0" text="ID_Extrait" />
-                                    <TableColumn prefWidth="123.0" text="Nom" />
-                                    <TableColumn prefWidth="193.0" text="Prénom(s)" />
-                                    <TableColumn prefWidth="155.0" text="Date de Naissance" />
-                                    <TableColumn prefWidth="331.0" text="Actions" />
-                                 </columns>
-                              </TableView>
-                           </content>
-                        </ScrollPane>
-                        <TextField layoutX="253.0" layoutY="141.0" prefHeight="35.0" prefWidth="470.0" promptText="Rechercher">
-                           <padding>
-                              <Insets left="25.0" right="25.0" />
-                           </padding>
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </TextField>
-                        <Pane layoutX="647.0" layoutY="108.0" prefHeight="5.0" prefWidth="285.0" style="-fx-background-color: rgb(0, 196, 196);" />
-                        <Pane layoutX="689.0" layoutY="143.0" prefHeight="32.0" prefWidth="33.0" style="-fx-background-color: #f5f5f5;">
-                           <children>
-                              <ImageView fitHeight="20.0" fitWidth="23.0" layoutX="6.0" layoutY="6.0">
-                                 <image>
-                                    <Image url="@icons/icons8_Search_52px.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </Pane>
-                        <Button fx:id="btn_ajouter_am" accessibleText="IUHYGTFD" cache="true" layoutX="296.0" layoutY="611.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#openPane" prefHeight="32.0" prefWidth="412.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" styleClass="Hover-top" stylesheets="@style.css" text="AJOUTER ACTE DE MARIAGE" textAlignment="CENTER" textFill="WHITE">
-                           <effect>
-                              <DropShadow color="#000000c0" height="7.42" radius="3.58" width="8.9" />
-                           </effect>
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="15.0" />
-                           </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
-                        </Button>
-                     </children>
-                  </Pane>
                   <Pane fx:id="pane_tableau_de_bord" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="940.0" style="-fx-background-color: #fff;" StackPane.alignment="CENTER">
                      <children>
                         <Pane layoutX="257.0" layoutY="109.0" prefHeight="81.0" prefWidth="80.0" style="-fx-background-color: rgb(0, 150, 150);">
@@ -398,6 +342,134 @@
                         </Pane>
                      </children>
                   </Pane>
+                  <Pane fx:id="paneAdd_am" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="940.0" style="-fx-background-color: white;" StackPane.alignment="CENTER">
+                     <children>
+                        <ImageView fitHeight="553.0" fitWidth="381.0" layoutX="279.0" layoutY="247.0" opacity="0.1" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/armoiries.png" />
+                           </image>
+                        </ImageView>
+                        <VBox layoutX="87.0" layoutY="209.0" prefHeight="178.0" prefWidth="326.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #084675; -fx-border-radius: 5;">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <children>
+                              <VBox layoutX="22.0" layoutY="271.0" prefHeight="66.0" prefWidth="505.0" spacing="5.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="N° extrait Conjoint" underline="true" wrappingWidth="149.15199279785156">
+                                       <font>
+                                          <Font name="Cantarell Bold" size="16.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="numExtraitConjoint" prefHeight="64.0" prefWidth="388.0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="66.0" prefWidth="505.0" spacing="5.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date extrait Conjoint" underline="true" wrappingWidth="183.11997985839844">
+                                       <font>
+                                          <Font name="Cantarell Bold" size="16.0" />
+                                       </font>
+                                    </Text>
+                                    <DatePicker fx:id="dateExtraitConjoint" prefHeight="46.0" prefWidth="388.0" showWeekNumbers="true" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                        <Label alignment="CENTER" layoutX="276.0" layoutY="155.0" lineSpacing="10.0" prefHeight="39.0" prefWidth="387.0" text="Informations sur les conjoints" textAlignment="CENTER" textFill="#073454">
+                           <font>
+                              <Font name="Cantarell Regular" size="30.0" />
+                           </font>
+                        </Label>
+                        <Pane layoutX="90.0" layoutY="177.0" prefHeight="5.0" prefWidth="168.0" style="-fx-background-color: #084675;" />
+                        <Button fx:id="btn_valider_am" accessibleText="IUHYGTFD" cache="true" layoutX="195.0" layoutY="647.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#insertValue" prefHeight="32.0" prefWidth="550.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" styleClass="Hover-top" stylesheets="@style.css" text="VALIDER" textAlignment="CENTER" textFill="WHITE">
+                           <effect>
+                              <DropShadow color="#000000c0" height="7.42" radius="3.58" width="8.9" />
+                           </effect>
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="15.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="367.0" layoutY="700.0" prefHeight="35.0" prefWidth="206.0" style="-fx-background-color: #f5f5f5;" text="with baby 5 |  2020" textAlignment="CENTER" textFill="#026f83">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Text fill="#084675" fontSmoothingType="LCD" layoutX="244.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ACTE DE MARIAGE" textAlignment="CENTER" underline="true" wrappingWidth="470.0">
+                           <font>
+                              <Font name="Cantarell Bold" size="38.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="160.0" fitWidth="160.0" layoutX="90.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/logo-mairie.jpg" />
+                           </image>
+                        </ImageView>
+                        <Pane layoutX="671.0" layoutY="177.0" prefHeight="5.0" prefWidth="215.0" style="-fx-background-color: #084675;" />
+                        <ImageView fitHeight="169.0" fitWidth="160.0" layoutX="691.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@icons/logo-mairie.jpg" />
+                           </image>
+                        </ImageView>
+                        <VBox layoutX="219.0" layoutY="419.0" prefHeight="178.0" prefWidth="500.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #084675; -fx-border-radius: 5;">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <children>
+                              <VBox prefHeight="71.0" prefWidth="388.0" spacing="5.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date de mariage" underline="true">
+                                       <font>
+                                          <Font name="Cantarell Bold" size="16.0" />
+                                       </font>
+                                    </Text>
+                                    <DatePicker fx:id="dateMariage" prefHeight="46.0" prefWidth="483.0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="66.0" prefWidth="505.0" spacing="5.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lieu de Mariage" underline="true">
+                                       <font>
+                                          <Font name="Cantarell Bold" size="16.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="lieuMariage" prefHeight="64.0" prefWidth="388.0" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="508.0" layoutY="209.0" prefHeight="178.0" prefWidth="326.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #084675; -fx-border-radius: 5;">
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                           <children>
+                              <VBox layoutX="22.0" layoutY="271.0" prefHeight="66.0" prefWidth="505.0" spacing="5.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="N° extrait Conjointe" underline="true" wrappingWidth="149.15199279785156">
+                                       <font>
+                                          <Font name="Cantarell Bold" size="16.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="numExtraitConjointe" prefHeight="64.0" prefWidth="388.0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="66.0" prefWidth="505.0" spacing="5.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date extrait Conjointe" underline="true" wrappingWidth="183.11997985839844">
+                                       <font>
+                                          <Font name="Cantarell Bold" size="16.0" />
+                                       </font>
+                                    </Text>
+                                    <DatePicker fx:id="dateExtraitConjointe" prefHeight="46.0" prefWidth="388.0" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </Pane>
                   <Pane fx:id="paneList_an" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="940.0" style="-fx-background-color: #fff;">
                      <children>
                         <Pane layoutX="45.0" layoutY="115.0" prefHeight="5.0" prefWidth="870.0" style="-fx-background-color: rgb(0, 196, 196);" />
@@ -412,15 +484,16 @@
                               <Font name="Arial Rounded MT Bold" size="14.0" />
                            </font>
                         </Label>
-                        <ScrollPane layoutX="20.0" layoutY="197.0" prefHeight="476.0" prefWidth="910.0">
+                        <ScrollPane layoutX="13.0" layoutY="199.0" prefHeight="476.0" prefWidth="894.0">
                            <content>
-                              <TableView fx:id="extraitList" editable="true" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="908.0" tableMenuButtonVisible="true">
+                              <TableView fx:id="extraitList" editable="true" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="890.0" tableMenuButtonVisible="true">
                                  <columns>
-                                    <TableColumn fx:id="id_extrait" prefWidth="148.0" text="ID_Extrait" />
-                                    <TableColumn fx:id="name" prefWidth="123.0" text="Nom" />
-                                    <TableColumn fx:id="prenoms" prefWidth="193.0" text="Prénom(s)" />
-                                    <TableColumn fx:id="date_de_naissance" prefWidth="155.0" text="Date de Naissance" />
-                                    <TableColumn prefWidth="331.0" text="Actions" />
+                                    <TableColumn fx:id="id_extrait" prefWidth="107.0" text="ID_Extrait" />
+                                    <TableColumn fx:id="name" prefWidth="133.0" text="Nom" />
+                                    <TableColumn fx:id="prenoms" prefWidth="253.0" text="Prénom(s)" />
+                                    <TableColumn fx:id="date_de_naissance" prefWidth="164.0" text="Date de Naissance" />
+                                    <TableColumn fx:id="voir" prefWidth="112.0" text="Visualiser" />
+                                    <TableColumn fx:id="mod" prefWidth="111.0" text="Modifier" />
                                  </columns>
                               </TableView>
                            </content>
@@ -433,7 +506,7 @@
                               <Font size="15.0" />
                            </font>
                         </TextField>
-                        <Pane layoutX="630.0" layoutY="100.0" prefHeight="5.0" prefWidth="285.0" style="-fx-background-color: rgb(0, 196, 196);" />
+                        <Pane layoutX="647.0" layoutY="108.0" prefHeight="5.0" prefWidth="285.0" style="-fx-background-color: rgb(0, 196, 196);" />
                         <Pane layoutX="689.0" layoutY="143.0" prefHeight="32.0" prefWidth="33.0" style="-fx-background-color: #f5f5f5;">
                            <children>
                               <ImageView fitHeight="20.0" fitWidth="23.0" layoutX="6.0" layoutY="6.0">
@@ -448,11 +521,8 @@
                               <DropShadow color="#000000c0" height="7.42" radius="3.58" width="8.9" />
                            </effect>
                            <font>
-                              <Font name="Arial Rounded MT Bold" size="15.0" />
+                              <Font size="15.0" />
                            </font>
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
                         </Button>
                      </children>
                   </Pane>
@@ -620,7 +690,7 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </padding>
                         </VBox>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="392.0" layoutY="711.0" prefHeight="35.0" prefWidth="206.0" style="-fx-background-color: #f5f5f5;" text="with baby 5 |  2020" textAlignment="CENTER" textFill="#026f83">
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="392.0" layoutY="718.0" prefHeight="35.0" prefWidth="206.0" style="-fx-background-color: #f5f5f5;" text="with baby 5 |  2020" textAlignment="CENTER" textFill="#026f83">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="14.0" />
                            </font>
@@ -653,28 +723,44 @@
                            </image>
                         </ImageView>
                         <Pane layoutX="456.0" layoutY="143.0" prefHeight="5.0" prefWidth="462.0" style="-fx-background-color: #084675;" />
-                        <Label layoutX="167.0" layoutY="398.0" prefHeight="36.0" prefWidth="338.0" text="Information sur les parents" textAlignment="CENTER" textFill="#073c61">
+                        <Pane layoutX="87.0" layoutY="420.0" prefHeight="5.0" prefWidth="80.0" style="-fx-background-color: #084675;" />
+                        <Pane layoutX="514.0" layoutY="420.0" prefHeight="5.0" prefWidth="411.0" style="-fx-background-color: #084675;" />
+                        <Label layoutX="177.0" layoutY="400.0" prefHeight="36.0" prefWidth="341.0" text="Information sur les parents" textAlignment="CENTER" textFill="#073c61">
+                           <font>
+                              <Font name="Cantarell Regular" size="28.0" />
+                           </font>
                         </Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="394.0" layoutY="772.0" prefHeight="35.0" prefWidth="206.0" style="-fx-background-color: #f5f5f5;" text="with baby 5 |  2020" textAlignment="CENTER" textFill="#026f83">
+
+                     </children>
+                  </Pane>
+                  <Pane fx:id="paneList_am" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="940.0" style="-fx-background-color: #fff;" StackPane.alignment="CENTER">
+                     <children>
+                        <Pane layoutX="62.0" layoutY="123.0" prefHeight="5.0" prefWidth="870.0" style="-fx-background-color: rgb(0, 196, 196);" />
+                        <Pane layoutX="62.0" layoutY="110.0" prefHeight="5.0" prefWidth="285.0" style="-fx-background-color: rgb(0, 196, 196);" />
+                        <Label alignment="CENTER" layoutX="355.0" layoutY="89.0" prefHeight="35.0" prefWidth="285.0" style="-fx-font: #fff; -fx-border-color: rgb(0, 196, 196);" text="ACTES DE MARIAGE" textAlignment="CENTER" textFill="#3a97a8">
+                           <font>
+                              <Font name="Agency FB" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="394.0" layoutY="660.0" prefHeight="35.0" prefWidth="206.0" style="-fx-background-color: #f5f5f5;" text="with baby 5 |  2020" textAlignment="CENTER" textFill="#026f83">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="14.0" />
                            </font>
                         </Label>
-                        <ScrollPane layoutX="13.0" layoutY="199.0" prefHeight="476.0" prefWidth="894.0">
+                        <ScrollPane layoutX="62.0" layoutY="199.0" prefHeight="395.0" prefWidth="870.0">
                            <content>
-                              <TableView fx:id="extraitList" editable="true" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="890.0" tableMenuButtonVisible="true">
+                              <TableView editable="true" prefHeight="415.0" prefWidth="896.0" tableMenuButtonVisible="true">
                                  <columns>
-                                    <TableColumn fx:id="id_extrait" prefWidth="107.0" text="ID_Extrait" />
-                                    <TableColumn fx:id="name" prefWidth="133.0" text="Nom" />
-                                    <TableColumn fx:id="prenoms" prefWidth="253.0" text="Prénom(s)" />
-                                    <TableColumn fx:id="date_de_naissance" prefWidth="164.0" text="Date de Naissance" />
-                                    <TableColumn fx:id="voir" prefWidth="112.0" text="Visualiser" />
-                                    <TableColumn fx:id="mod" prefWidth="111.0" text="Modifier" />
+                                    <TableColumn prefWidth="148.0" text="ID_Extrait" />
+                                    <TableColumn prefWidth="123.0" text="Nom" />
+                                    <TableColumn prefWidth="193.0" text="Prénom(s)" />
+                                    <TableColumn prefWidth="155.0" text="Date de Naissance" />
+                                    <TableColumn prefWidth="331.0" text="Actions" />
                                  </columns>
                               </TableView>
                            </content>
                         </ScrollPane>
-                        <TextField fx:id="search_field" layoutX="253.0" layoutY="141.0" onAction="#search" prefHeight="35.0" prefWidth="470.0" promptText="Rechercher">
+                        <TextField layoutX="253.0" layoutY="141.0" prefHeight="35.0" prefWidth="470.0" promptText="Rechercher">
                            <padding>
                               <Insets left="25.0" right="25.0" />
                            </padding>
@@ -692,59 +778,7 @@
                               </ImageView>
                            </children>
                         </Pane>
-                        <Button fx:id="btn_ajouter_an" accessibleText="IUHYGTFD" cache="true" layoutX="296.0" layoutY="688.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#openPane" prefHeight="32.0" prefWidth="412.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" styleClass="Hover-top" stylesheets="@style.css" text="AJOUTER ACTE DE NAISSANCE" textAlignment="CENTER" textFill="WHITE">
-                           <effect>
-                              <DropShadow color="#000000c0" height="7.42" radius="3.58" width="8.9" />
-                           </effect>
-                           <font>
-                              <Font name="Cantarell Regular" size="28.0" />
-                           </font>
-                        </Label>
-                        <Pane layoutX="83.0" layoutY="416.0" prefHeight="5.0" prefWidth="80.0" style="-fx-background-color: #084675;" />
-                        <Pane layoutX="510.0" layoutY="416.0" prefHeight="5.0" prefWidth="411.0" style="-fx-background-color: #084675;" />
-                     </children>
-                  </Pane>
-                  <Pane fx:id="paneAdd_am" minHeight="-Infinity" minWidth="-Infinity" prefHeight="870.0" prefWidth="940.0" style="-fx-background-color: white;" StackPane.alignment="CENTER">
-                     <children>
-                        <ImageView fitHeight="553.0" fitWidth="381.0" layoutX="279.0" layoutY="247.0" opacity="0.1" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@icons/armoiries.png" />
-                           </image>
-                        </ImageView>
-                        <VBox layoutX="87.0" layoutY="209.0" prefHeight="178.0" prefWidth="326.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #084675; -fx-border-radius: 5;">
-                           <padding>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </padding>
-                           <children>
-                              <VBox layoutX="22.0" layoutY="271.0" prefHeight="66.0" prefWidth="505.0" spacing="5.0">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="N° extrait Conjoint" underline="true" wrappingWidth="149.15199279785156">
-                                       <font>
-                                          <Font name="Cantarell Bold" size="16.0" />
-                                       </font>
-                                    </Text>
-                                    <TextField fx:id="numExtraitConjoint" prefHeight="64.0" prefWidth="388.0" />
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="66.0" prefWidth="505.0" spacing="5.0">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date extrait Conjoint" underline="true" wrappingWidth="183.11997985839844">
-                                       <font>
-                                          <Font name="Cantarell Bold" size="16.0" />
-                                       </font>
-                                    </Text>
-                                    <DatePicker fx:id="dateExtraitConjoint" prefHeight="46.0" prefWidth="388.0" showWeekNumbers="true" />
-                                 </children>
-                              </VBox>
-                           </children>
-                        </VBox>
-                        <Label alignment="CENTER" layoutX="276.0" layoutY="155.0" lineSpacing="10.0" prefHeight="39.0" prefWidth="387.0" text="Informations sur les conjoints" textAlignment="CENTER" textFill="#073454">
-                           <font>
-                              <Font name="Cantarell Regular" size="30.0" />
-                           </font>
-                        </Label>
-                        <Pane layoutX="90.0" layoutY="177.0" prefHeight="5.0" prefWidth="168.0" style="-fx-background-color: #084675;" />
-                        <Button fx:id="btn_valider_am" accessibleText="IUHYGTFD" cache="true" layoutX="195.0" layoutY="647.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#insertValue" prefHeight="32.0" prefWidth="550.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" styleClass="Hover-top" stylesheets="@style.css" text="VALIDER" textAlignment="CENTER" textFill="WHITE">
+                        <Button fx:id="btn_ajouter_am" accessibleText="IUHYGTFD" cache="true" layoutX="296.0" layoutY="611.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#openPane" prefHeight="32.0" prefWidth="412.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" styleClass="Hover-top" stylesheets="@style.css" text="AJOUTER ACTE DE MARIAGE" textAlignment="CENTER" textFill="WHITE">
                            <effect>
                               <DropShadow color="#000000c0" height="7.42" radius="3.58" width="8.9" />
                            </effect>
@@ -755,81 +789,6 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="367.0" layoutY="700.0" prefHeight="35.0" prefWidth="206.0" style="-fx-background-color: #f5f5f5;" text="with baby 5 |  2020" textAlignment="CENTER" textFill="#026f83">
-                           <font>
-                              <Font name="Arial Rounded MT Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <Text fill="#084675" fontSmoothingType="LCD" layoutX="244.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ACTE DE MARIAGE" textAlignment="CENTER" underline="true" wrappingWidth="470.0">
-                           <font>
-                              <Font name="Cantarell Bold" size="38.0" />
-                           </font>
-                        </Text>
-                        <ImageView fitHeight="160.0" fitWidth="160.0" layoutX="90.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@icons/logo-mairie.jpg" />
-                           </image>
-                        </ImageView>
-                        <Pane layoutX="671.0" layoutY="177.0" prefHeight="5.0" prefWidth="215.0" style="-fx-background-color: #084675;" />
-                        <ImageView fitHeight="169.0" fitWidth="160.0" layoutX="691.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@icons/logo-mairie.jpg" />
-                           </image>
-                        </ImageView>
-                        <VBox layoutX="219.0" layoutY="419.0" prefHeight="178.0" prefWidth="500.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #084675; -fx-border-radius: 5;">
-                           <padding>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </padding>
-                           <children>
-                              <VBox prefHeight="71.0" prefWidth="388.0" spacing="5.0">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date de mariage" underline="true">
-                                       <font>
-                                          <Font name="Cantarell Bold" size="16.0" />
-                                       </font>
-                                    </Text>
-                                    <DatePicker fx:id="dateMariage" prefHeight="46.0" prefWidth="483.0" />
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="66.0" prefWidth="505.0" spacing="5.0">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lieu de Mariage" underline="true">
-                                       <font>
-                                          <Font name="Cantarell Bold" size="16.0" />
-                                       </font>
-                                    </Text>
-                                    <TextField fx:id="lieuMariage" prefHeight="64.0" prefWidth="388.0" />
-                                 </children>
-                              </VBox>
-                           </children>
-                        </VBox>
-                        <VBox layoutX="508.0" layoutY="209.0" prefHeight="178.0" prefWidth="326.0" spacing="15.0" style="-fx-border-style: solid; -fx-border-width: 2; -fx-border-color: #084675; -fx-border-radius: 5;">
-                           <padding>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </padding>
-                           <children>
-                              <VBox layoutX="22.0" layoutY="271.0" prefHeight="66.0" prefWidth="505.0" spacing="5.0">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="N° extrait Conjointe" underline="true" wrappingWidth="149.15199279785156">
-                                       <font>
-                                          <Font name="Cantarell Bold" size="16.0" />
-                                       </font>
-                                    </Text>
-                                    <TextField fx:id="numExtraitConjointe" prefHeight="64.0" prefWidth="388.0" />
-                                 </children>
-                              </VBox>
-                              <VBox prefHeight="66.0" prefWidth="505.0" spacing="5.0">
-                                 <children>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date extrait Conjointe" underline="true" wrappingWidth="183.11997985839844">
-                                       <font>
-                                          <Font name="Cantarell Bold" size="16.0" />
-                                       </font>
-                                    </Text>
-                                    <DatePicker fx:id="dateExtraitConjointe" prefHeight="46.0" prefWidth="388.0" />
-                                 </children>
-                              </VBox>
-                           </children>
-                        </VBox>
                      </children>
                   </Pane>
                </children>

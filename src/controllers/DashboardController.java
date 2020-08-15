@@ -232,9 +232,7 @@ public class DashboardController implements Initializable {
 
                 ex_row.getModifier().setOnAction(e -> {
                     paneAdd_an.toFront();
-                    System.out.println(btn_valider.getText());
                     btn_valider.setText("MODIFIER");
-                    System.out.println(btn_valider.getText());
                     try {
                         nom.setText(ex_row.getNom());
                         prenom.setText(ex_row.getPrenoms());
