@@ -1,6 +1,7 @@
 package controllers;
 
 import animatefx.animation.SlideInRight;
+import com.github.royken.converter.FrenchNumberToWords;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -9,33 +10,21 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.Toggle;
-import javafx.scene.control.ToggleGroup;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 import mairie.*;
 import javafx.stage.Stage;
-import mairie.*;
-import pdfviewer.Controller;
-import javafx.stage.Stage;
-import mairie.*;
-import pdfviewer.Controller;
-import javafx.stage.Stage;
-import mairie.*;
 import pdfviewer.Controller;
 import tray.notification.NotificationType;
 
 import java.net.URL;
-import java.io.IOException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -44,14 +33,22 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.HashMap;
-import java.util.HashMap;
-import java.util.function.Consumer;
+import java.util.concurrent.atomic.AtomicReference;
 
 
 public class DashboardController implements Initializable {
 
     @FXML
     public TableView extraitList;
+
+    @FXML
+    private Label countExtraits;
+
+    @FXML
+    private Label countActes;
+
+    @FXML
+    private Label countAgents;
 
     @FXML
     public VBox rootVbox;
@@ -71,6 +68,8 @@ public class DashboardController implements Initializable {
     public DatePicker dateExtraitConjoint;
 
     //************************************************************************
+    @FXML
+    private AnchorPane dash_root_pane;
 
     @FXML
     private Button btn_tableau_de_bord;
@@ -170,6 +169,36 @@ public class DashboardController implements Initializable {
     @FXML
     private TextField search_field;
 
+    //********************************************************************
+
+    @FXML
+    private TableView actesList;
+
+    @FXML
+    private TableColumn<Mar, Integer> id_acte_mar;
+
+    @FXML
+    private TableColumn<Mar, String> nom_conjoint;
+
+    @FXML
+    private TableColumn<Mar, String> nom_conjointe;
+
+    @FXML
+    private TableColumn<Mar, String> date_mar;
+
+    @FXML
+    private TableColumn<Mar, String> lieu_mar;
+
+    @FXML
+    private TableColumn<Mar, Button> voir_am;
+
+    @FXML
+    private TableColumn<Mar, Button> mod_am;
+
+    @FXML
+    private TextField search_am_field;
+
+
     Agent agent;
     int id_conjoint;
     int id_conjointe;
@@ -177,12 +206,14 @@ public class DashboardController implements Initializable {
     Database db = new Database("root","root", "mairie");
 
     //Variable permettant de contenir les ligne du tableau
-    final ObservableList<Ex> data = FXCollections.observableArrayList();
+    final ObservableList<Ex> extraitsData = FXCollections.observableArrayList();
+
+    final ObservableList<Mar> actesData = FXCollections.observableArrayList();
 
     Integer id_modif = null;
 
     //Expression lamba ayant pour role de remplir le tableView des extraits de naissance
-    Func refreshTableView = resultset -> {
+    Func refreshExtraitTableView = resultset -> {
         try {
 
             id_extrait.setCellValueFactory(new PropertyValueFactory<Ex, Integer>("id_extrait"));
@@ -197,7 +228,7 @@ public class DashboardController implements Initializable {
 
             mod.setCellValueFactory(new PropertyValueFactory<Ex, Button>("modifier"));
 
-            data.clear();
+            extraitsData.clear();
 
             while (resultset.next()) {
 
@@ -231,13 +262,24 @@ public class DashboardController implements Initializable {
 
                         Printer.generatePDF(ex_row.getNom()+ex_row.getId_extrait(), new HashMap<>() {
                             {
+                                java.sql.Date date =(java.sql.Date) values.get("date_naiss");
+
+                                String [] month = {"janvier", "février", "mars", "avril", "mai", "juin", "juillet", "aout", "septembre", "octobre", "novembre", "décembre"};
+
+                                String time = (String) values.get("heure_naiss");
+
                                 put("NOM", String.valueOf(values.get("nom")));
                                 put("PRENOMS",String.valueOf(values.get("prenoms")));
-                                put("DATE_NAISSANCE",String.valueOf(values.get("date_naiss").toString()));
-                                put("HEURE_NAISSANCE", String.valueOf(values.get("heure_naiss")));
+                                put("DATE_NAISSANCE",String.valueOf(FrenchNumberToWords.convert(date.getDate())+" "+ month[date.getMonth()]+ " " + FrenchNumberToWords.convert(date.getYear()+1900)));
+                                put("HEURE_NAISSANCE", String.valueOf(FrenchNumberToWords.convert(Integer.valueOf(time.split(":")[0])) + " heure(s) " + FrenchNumberToWords.convert(Integer.valueOf(time.split(":")[1])) + " minutes "));
                                 put("LIEU_NAISSANCE",String.valueOf(values.get("lieu_naiss")));
                                 put("NOM_MERE",String.valueOf(values.get("nom_mere")));
                                 put("NOM_PERE",String.valueOf(values.get("nom_pere")));
+                                put("LIEU_DELIVRE", "Abidjan");
+                                put("DATE_DELIVRE", java.sql.Date.valueOf(LocalDate.now()).toString());
+                                put("NOM_OFFICIER", "Miage Gi");
+                                put("DATE_REG", java.sql.Date.valueOf(LocalDate.now()).toString());
+                                put("N_REGISTRE", String.valueOf(ex_row.getId_extrait()));
 
                                 if (values.get("sexe").equals("Homme")) {
                                     put("FILS_FILLE","fils");
@@ -248,11 +290,11 @@ public class DashboardController implements Initializable {
                             }
                         });
 
-                        pdfController.initialize("extraits/"+ex_row.getNom()+ex_row.getId_extrait()+"x.pdf");
+                        /*pdfController.initialize("extraits/"+ex_row.getNom()+ex_row.getId_extrait()+"x.pdf");
 
                         Stage stage = new Stage();
                         stage.setScene(new Scene(root,600, 800));
-                        stage.show();
+                        stage.show();*/
                     } catch (IOException ioException) {
                         ioException.printStackTrace();
                     }
@@ -289,10 +331,121 @@ public class DashboardController implements Initializable {
 
                 });
 
-                data.add(ex_row);
+                extraitsData.add(ex_row);
             }
 
-            extraitList.setItems(data);
+            extraitList.setItems(extraitsData);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    };
+
+    Func refreshActeTableView = resultset -> {
+        try {
+
+            id_acte_mar.setCellValueFactory(new PropertyValueFactory<Mar, Integer>("id_acte_mar"));
+
+            nom_conjoint.setCellValueFactory(new PropertyValueFactory<Mar, String>("nom_conjoint"));
+
+            nom_conjointe.setCellValueFactory(new PropertyValueFactory<Mar, String>("nom_conjointe"));
+
+            date_mar.setCellValueFactory(new PropertyValueFactory<Mar, String>("date_mar"));
+
+            lieu_mar.setCellValueFactory(new PropertyValueFactory<Mar, String>("lieu_mariage"));
+
+            voir_am.setCellValueFactory(new PropertyValueFactory<Mar, Button>("visualiser"));
+
+            mod_am.setCellValueFactory(new PropertyValueFactory<Mar, Button>("modifier"));
+
+
+            actesData.clear();
+
+            while (resultset.next()) {
+
+                /*HashMap<String, Object> values = new HashMap<>() {
+                    {
+                        put("id_act_mar",resultset.getInt("id_acte_mar"));
+                        put("id_ext_conjoint",resultset.getInt("id_extrait_conjoint"));
+                        put("id_ext_conjointe",resultset.getInt("id_extrait_conjointe"));
+                        put("lieu_mar",resultset.getString("lieu_mariage"));
+                        put("date_mar",resultset.getDate("date_mar"));
+
+                    }
+                } ;*/
+
+                AtomicReference<String> nom_conje = new AtomicReference<>();
+                AtomicReference<String> nom_conj = new AtomicReference<>();
+
+                try {
+                    db.sendQuery("SELECT nom,prenoms FROM individus WHERE id_extrait=?", new ArrayList<Object>() {
+                        {
+                            add(resultset.getInt("id_extrait_conjoint"));
+                        }
+                    }, resultSet -> {
+                        if (resultSet.next())
+                            nom_conj.set(resultSet.getString("nom") + " " + resultSet.getString("prenoms"));
+                    });
+
+                    db.sendQuery("SELECT nom,prenoms FROM individus WHERE id_extrait=?", new ArrayList<Object>() {
+                        {
+                            add(resultset.getInt("id_extrait_conjointe"));
+                        }
+                    }, resultSet -> {
+                        if (resultSet.next())
+                            nom_conje.set(resultSet.getString("nom") + " " + resultSet.getString("prenoms"));
+                    });
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+
+                Mar mar_row = new Mar(resultset.getInt("id_acte_mar"), resultset.getDate("date_mar").toString(),resultset.getString("lieu_mariage"),nom_conj.get(),nom_conje.get(),new Button("Voir"), new Button("Modifier"));
+
+                mar_row.getVisualiser().setOnAction(e -> {
+
+                    /*FXMLLoader loader = new FXMLLoader(getClass().getResource("../pdfviewer/PdfViewer.fxml"));
+                    try {
+                        Parent root = (Parent) loader.load();
+                        Controller pdfController = loader.getController();
+
+                        Printer.generatePDF(ex_row.getNom()+ex_row.getId_extrait(), new HashMap<>() {
+                            {
+                                put("NOM", String.valueOf(values.get("nom")));
+                                put("PRENOMS",String.valueOf(values.get("prenoms")));
+                                put("DATE_NAISSANCE",String.valueOf(values.get("date_naiss").toString()));
+                                put("HEURE_NAISSANCE", String.valueOf(values.get("heure_naiss")));
+                                put("LIEU_NAISSANCE",String.valueOf(values.get("lieu_naiss")));
+                                put("NOM_MERE",String.valueOf(values.get("nom_mere")));
+                                put("NOM_PERE",String.valueOf(values.get("nom_pere")));
+
+                                if (values.get("sexe").equals("Homme")) {
+                                    put("FILS_FILLE","fils");
+                                } else {
+                                    put("FILS_FILLE","fille");
+                                }
+
+                            }
+                        });
+
+                        pdfController.initialize("extraits/"+ex_row.getNom()+ex_row.getId_extrait()+"x.pdf");
+
+                        Stage stage = new Stage();
+                        stage.setScene(new Scene(root,600, 800));
+                        stage.show();
+                    } catch (IOException ioException) {
+                        ioException.printStackTrace();
+                    }*/
+                    AlertBox.showAlertBox("Information", "Fonctionnalité indisponible pour le moment", Alert.AlertType.INFORMATION );
+                });
+
+                mar_row.getModifier().setOnAction(e -> {
+                    AlertBox.showAlertBox("Information", "Fonctionnalité indisponible pour le moment", Alert.AlertType.INFORMATION );
+                });
+
+                actesData.add(mar_row);
+            }
+
+            actesList.setItems(actesData);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -332,6 +485,24 @@ public class DashboardController implements Initializable {
             alertBox.showAndWait().ifPresent(
                     pressedButton-> {
                         if (pressedButton == ButtonType.OK) {
+                            Operation.insert(new SimpleDateFormat("yyyy-MM-dd").format(new Date()), "DECONNEXION", agent.getId_agent());
+
+                            Stage primaryStage = (Stage) dash_root_pane.getScene().getWindow();
+                            primaryStage.close();
+
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/login.fxml"));
+                            Parent root = null;
+
+                            try {
+                                root = loader.load();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            primaryStage.setTitle("Connectez Vous !");
+                            primaryStage.setScene(new Scene(root));
+                            primaryStage.show();
+
                             System.out.println("Vous etes a présent deconnecté");
                         }else
                             alertBox.close();
@@ -348,7 +519,7 @@ public class DashboardController implements Initializable {
                     }
                 }
             });*/
-            resetAll_an();
+            clearFields(paneAdd_an);
             paneAdd_an.toFront();
             btn_valider.setText("VALIDER");
         }
@@ -357,31 +528,11 @@ public class DashboardController implements Initializable {
         if (actionEvent.getSource() == btn_ajouter_am )
             paneAdd_am.toFront();
         if (actionEvent.getSource() == btn_ajouter_an ){
-            resetAll_an();
+            clearFields(paneAdd_an);
             paneAdd_an.toFront();
             btn_valider.setText("VALIDER");
         }
     }
-
-    public void resetAll_an() {
-
-        nom.clear();
-        prenom.clear();
-        comboSexe.setValue("Sexe");
-        heure.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,23,0));
-        minutes.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0,59,0));
-        dateNaiss.setValue(LocalDate.now());
-        lieuNaiss.clear();
-        nomPere.clear();
-        nomMere.clear();
-        domicilePere.clear();
-        domicileMere.clear();
-        professionMere.clear();
-        professionPere.clear();
-
-    }
-
-    public void resetAll_am() {}
 
     private boolean isFormOk(Pane pane){
         ArrayList<Node> element  = new ArrayList<Node>();
@@ -507,8 +658,6 @@ public class DashboardController implements Initializable {
                     } catch (SQLException throwables) {
                         Notification.showNotification(NotificationType.ERROR,"Echec","Echec de l'insertion");
                         throwables.printStackTrace();
-                    } finally {
-                        db.disconnect();
                     }
                 }else {
                     try {
@@ -538,10 +687,16 @@ public class DashboardController implements Initializable {
                     } catch (SQLException throwables) {
                         Notification.showNotification(NotificationType.ERROR,"Echec","Echec de l'insertion");
                         throwables.printStackTrace();
-                    } finally {
-                        db.disconnect();
                     }
                 }
+
+                try {
+                    db.sendQuery("SELECT * FROM individus", refreshExtraitTableView);
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+
+                db.disconnect();
 
             }else
                 AlertBox.showAlertBox("Attention","Vous n'avez pas remplit le formulaire correctement", Alert.AlertType.INFORMATION);
@@ -594,14 +749,13 @@ public class DashboardController implements Initializable {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-                db.disconnect();
 
                 //On cree un objet acte de mariage a partir des informations
                 ActeMariage acte = new ActeMariage(agent.getId_agent(),dateM,lieuMariage.getText().trim(),id_conjoint,id_conjointe,date_enreg);
                 //On enregistre dans la base de données
                 try {
                     acte.save();
-                    Operation.insert(date_enreg,"Edition ACTE DE MARIAGE",agent.getId_agent());
+                    Operation.insert(date_enreg,"AJOUT ACTE DE MARIAGE",agent.getId_agent());
                     AlertBox.showAlertBox("Succès","Insertion effectuée avec succès", Alert.AlertType.INFORMATION);
 
                     //Pour reset le formulaire après insertion
@@ -612,7 +766,15 @@ public class DashboardController implements Initializable {
                     throwables.printStackTrace();
                 }
 
-            //Sinon on affiche un message d'erreur
+                try {
+                    db.sendQuery("SELECT * FROM acte_de_mariage", refreshActeTableView);
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+
+                db.disconnect();
+
+                //Sinon on affiche un message d'erreur
             }else{
                 AlertBox.showAlertBox("Attention","Vous n'avez pas remplit le formulaire correctement", Alert.AlertType.INFORMATION);
             }
@@ -626,8 +788,8 @@ public class DashboardController implements Initializable {
                 new ChangeListener<String>() {
                     @Override
                     public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                        data.clear();
-                        Extrait.search(t1, refreshTableView);
+                        extraitsData.clear();
+                        Extrait.search(t1, refreshExtraitTableView);
                     }
                 }
         );
@@ -661,7 +823,13 @@ public class DashboardController implements Initializable {
         db.connect();
 
         try {
-            db.sendQuery("SELECT * FROM individus", refreshTableView);
+            db.sendQuery("SELECT * FROM individus", refreshExtraitTableView);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        try {
+            db.sendQuery("SELECT * FROM acte_de_mariage", refreshActeTableView);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

@@ -1,7 +1,6 @@
 package controllers;
 
 
-import animatefx.animation.FadeIn;
 import animatefx.animation.SlideInLeft;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,25 +8,31 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import mairie.Agent;
 import mairie.Database;
+import mairie.Operation;
 import tray.notification.NotificationType;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
 
     @FXML
     private VBox loginWindow;
+
+    @FXML
+    private Button btn_close;
 
     @FXML
     private TextField username;
@@ -50,6 +55,8 @@ public class LoginController implements Initializable {
         System.out.println(username.getText()+password.getText());
 
         if (Agent.agentExist(username.getText().trim(), password.getText().trim())) {
+
+            //Operation.insert(new SimpleDateFormat("yyyy-MM-dd").format(new Date()), "CONNEXION", agent.getId_agent());
 
             Notification.showNotification(NotificationType.SUCCESS,"Succès","Vous êtes à présent connecté");
 
@@ -111,5 +118,10 @@ public class LoginController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         username.setText("papitou15");
         password.setText("papitou@mairiepassword99");
+    }
+
+    public void closeWindow(ActionEvent actionEvent) {
+        Stage primaryStage = (Stage) loginWindow.getScene().getWindow();
+        primaryStage.close();
     }
 }

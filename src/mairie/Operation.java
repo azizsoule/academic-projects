@@ -8,7 +8,7 @@ public class Operation {
         Database db = new Database();
         db.connect();
         try {
-            db.sendQuery("INSERT INTO operation(date_operation,libelle-operation,id_agent) VALUES (?,?,?)",new ArrayList<Object>(){
+            db.sendQuery("INSERT INTO operation(date_operation,libelle_operation,id_agent) VALUES (?,?,?)",new ArrayList<Object>(){
                 {
                     add(date_op);
                     add(libelle);

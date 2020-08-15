@@ -1,13 +1,8 @@
 package mairie;
 
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.pdf.PdfReader;
-import com.itextpdf.text.pdf.PdfStamper;
-import com.itextpdf.text.pdf.PdfWriter;
 import com.pdftron.pdf.*;
 import com.pdftron.sdf.SDFDoc;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -59,11 +54,19 @@ public class Printer {
 
 
             System.out.println("Save at extraits/"+name+".pdf");
+
+            ProcessBuilder builder = new ProcessBuilder();
+            builder.command("evince","extraits/"+name+".pdf");
+            try {
+                builder.start();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        PdfReader reader = null;
+        /*PdfReader reader = null;
 
         try {
             reader = new PdfReader("extraits/"+name+".pdf");
@@ -73,7 +76,7 @@ public class Printer {
             reader.close();
         } catch (IOException | DocumentException e) {
             e.printStackTrace();
-        }
+        }*/
 
     }
 

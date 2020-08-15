@@ -41,5 +41,6 @@
     <orderEntry type="library" name="TrayTester" level="project" />
     <orderEntry type="library" name="PDFNet" level="project" />
     <orderEntry type="library" name="pdf-renderer-1.0.5" level="project" />
+    <orderEntry type="library" name="converter-1.1 (1)" level="project" />
   </component>
 </module>

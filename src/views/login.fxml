@@ -19,7 +19,7 @@
                <children>
                   <TextField fx:id="username" layoutX="100.0" layoutY="164.0" prefHeight="26.0" prefWidth="226.0" promptText="Nom d'utilisateur" />
                   <Button layoutX="138.0" layoutY="281.0" mnemonicParsing="false" onAction="#connect" prefHeight="32.0" prefWidth="151.0" text="Se connecter" textAlignment="CENTER" />
-                  <Button layoutX="326.0" layoutY="364.0" mnemonicParsing="false" styleClass="quit-btn" stylesheets="@style.css" text="Quitter" textAlignment="CENTER" />
+                  <Button fx:id="btn_close" layoutX="326.0" layoutY="364.0" mnemonicParsing="false" onAction="#closeWindow" styleClass="quit-btn" stylesheets="@style.css" text="Quitter" textAlignment="CENTER" />
                   <Text layoutX="141.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20px;" text="Connexion" textAlignment="CENTER" wrappingWidth="110.86457824707031" />
                   <ImageView fitHeight="164.0" fitWidth="281.0">
                      <image>
