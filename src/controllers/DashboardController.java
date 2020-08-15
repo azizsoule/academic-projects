@@ -69,15 +69,6 @@ public class DashboardController implements Initializable {
     public TextField numExtraitConjoint;
     public DatePicker dateExtraitConjoint;
 
-    @FXML
-    public Button btn_valider;
-
-    @FXML
-    public Button btn_valider;
-
-    @FXML
-    public Button btn_valider;
-
     //************************************************************************
 
     @FXML
