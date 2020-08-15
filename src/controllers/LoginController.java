@@ -1,7 +1,6 @@
 package controllers;
 
-import animatefx.animation.Bounce;
-import animatefx.animation.FadeIn;
+
 import animatefx.animation.FadeInDown;
 import animatefx.animation.SlideInLeft;
 import javafx.event.ActionEvent;
@@ -10,16 +9,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import mairie.Agent;
 import mairie.Database;
-import tray.animations.AnimationType;
 import tray.notification.NotificationType;
-import tray.notification.TrayNotification;
 
 import java.io.IOException;
 import java.net.URL;
@@ -36,7 +33,7 @@ public class LoginController implements Initializable {
     private TextField username;
 
     @FXML
-    private TextField password;
+    private PasswordField password;
 
     Integer id;
     Agent agent;
@@ -49,7 +46,7 @@ public class LoginController implements Initializable {
         return password;
     }
 
-    public void connect(ActionEvent actionEvent) throws IOException, SQLException {
+    public void connect(ActionEvent actionEvent) throws IOException {
         System.out.println(username.getText()+password.getText());
 
         if (Agent.agentExist(username.getText().trim(), password.getText().trim())) {
@@ -59,7 +56,7 @@ public class LoginController implements Initializable {
             Database db = new Database("root","root","mairie");
             db.connect();
             try {
-                db.sendQuery("SELECT * FROM agent WHERE user_name = ? AND mot_d_passe = ?",new ArrayList<Object>(){
+                db.sendQuery("SELECT * FROM agent WHERE user_name = ? AND mot_d_passe = ?", new ArrayList<>() {
                     {
                         add(username.getText().trim());
                         add(password.getText().trim());
@@ -90,7 +87,7 @@ public class LoginController implements Initializable {
             primaryStage.close();
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../views/dashboard.fxml"));
-            Parent root = (Parent) loader.load();
+            Parent root = loader.load();
             DashboardController dashboardController =loader.getController();
 
             //On recupère les info de l'utilisateur connecté
