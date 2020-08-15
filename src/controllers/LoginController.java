@@ -1,7 +1,7 @@
 package controllers;
 
 
-import animatefx.animation.FadeInDown;
+import animatefx.animation.FadeIn;
 import animatefx.animation.SlideInLeft;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -96,10 +96,10 @@ public class LoginController implements Initializable {
             primaryStage.setTitle("DashBoard");
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
-
-            FadeInDown fd = new FadeInDown(root);
-            fd.setDelay(Duration.millis(100));
-            fd.play();
+//
+//            FadeIn fd = new FadeIn(root);
+//            fd.setDelay(Duration.millis(1000));
+//            fd.play();
 
         } else {
             new SlideInLeft(username).play();
