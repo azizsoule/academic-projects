@@ -14,6 +14,10 @@
     <orderEntry type="library" exported="" name="mysql-connector-java-8.0.21" level="application" />
     <orderEntry type="library" name="javafx-sdk-11.0" level="application" />
     <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="PDFNet" level="project" />
+    <orderEntry type="library" name="Lib" level="project" />
+    <orderEntry type="library" name="pdf-renderer-1.0.5" level="project" />
+    <orderEntry type="library" name="itext-5.0.5" level="project" />
     <orderEntry type="module-library" exported="">
       <library name="JUnit5.4">
         <CLASSES>
@@ -31,6 +35,10 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="Junit-5.4.2" level="application" />
+    <orderEntry type="library" name="PDFNet" level="project" />
+    <orderEntry type="library" name="Lib" level="project" />
+    <orderEntry type="library" name="pdf-renderer-1.0.5" level="project" />
+    <orderEntry type="library" name="itext-5.0.5" level="project" />
     <orderEntry type="library" name="io.github.typhon0:AnimateFX:1.2.1" level="application" />
     <orderEntry type="library" name="TrayTester" level="application" />
   </component>

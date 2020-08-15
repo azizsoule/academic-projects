@@ -33,11 +33,12 @@ public class Extrait {
 
     private final Date date_enregistrem;
 
-    private final Integer numero_enregistrem;
+    private static Integer numero_enregistrem;
 
     private final Integer id_mairie;
 
     private final Integer id_agent;
+
 
     public Integer getId_extrait() {
         return id_extrait;

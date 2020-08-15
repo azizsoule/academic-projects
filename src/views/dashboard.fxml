@@ -654,6 +654,48 @@
                         </ImageView>
                         <Pane layoutX="456.0" layoutY="143.0" prefHeight="5.0" prefWidth="462.0" style="-fx-background-color: #084675;" />
                         <Label layoutX="167.0" layoutY="398.0" prefHeight="36.0" prefWidth="338.0" text="Information sur les parents" textAlignment="CENTER" textFill="#073c61">
+                        </Label>
+                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="394.0" layoutY="772.0" prefHeight="35.0" prefWidth="206.0" style="-fx-background-color: #f5f5f5;" text="with baby 5 |  2020" textAlignment="CENTER" textFill="#026f83">
+                           <font>
+                              <Font name="Arial Rounded MT Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <ScrollPane layoutX="13.0" layoutY="199.0" prefHeight="476.0" prefWidth="894.0">
+                           <content>
+                              <TableView fx:id="extraitList" editable="true" minHeight="-Infinity" minWidth="-Infinity" prefHeight="474.0" prefWidth="890.0" tableMenuButtonVisible="true">
+                                 <columns>
+                                    <TableColumn fx:id="id_extrait" prefWidth="107.0" text="ID_Extrait" />
+                                    <TableColumn fx:id="name" prefWidth="133.0" text="Nom" />
+                                    <TableColumn fx:id="prenoms" prefWidth="253.0" text="Prénom(s)" />
+                                    <TableColumn fx:id="date_de_naissance" prefWidth="164.0" text="Date de Naissance" />
+                                    <TableColumn fx:id="voir" prefWidth="112.0" text="Visualiser" />
+                                    <TableColumn fx:id="mod" prefWidth="111.0" text="Modifier" />
+                                 </columns>
+                              </TableView>
+                           </content>
+                        </ScrollPane>
+                        <TextField fx:id="search_field" layoutX="253.0" layoutY="141.0" onAction="#search" prefHeight="35.0" prefWidth="470.0" promptText="Rechercher">
+                           <padding>
+                              <Insets left="25.0" right="25.0" />
+                           </padding>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </TextField>
+                        <Pane layoutX="647.0" layoutY="108.0" prefHeight="5.0" prefWidth="285.0" style="-fx-background-color: rgb(0, 196, 196);" />
+                        <Pane layoutX="689.0" layoutY="143.0" prefHeight="32.0" prefWidth="33.0" style="-fx-background-color: #f5f5f5;">
+                           <children>
+                              <ImageView fitHeight="20.0" fitWidth="23.0" layoutX="6.0" layoutY="6.0">
+                                 <image>
+                                    <Image url="@icons/icons8_Search_52px.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </Pane>
+                        <Button fx:id="btn_ajouter_an" accessibleText="IUHYGTFD" cache="true" layoutX="296.0" layoutY="688.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#openPane" prefHeight="32.0" prefWidth="412.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);" styleClass="Hover-top" stylesheets="@style.css" text="AJOUTER ACTE DE NAISSANCE" textAlignment="CENTER" textFill="WHITE">
+                           <effect>
+                              <DropShadow color="#000000c0" height="7.42" radius="3.58" width="8.9" />
+                           </effect>
                            <font>
                               <Font name="Cantarell Regular" size="28.0" />
                            </font>
