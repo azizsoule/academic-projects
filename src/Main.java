@@ -3,14 +3,25 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("views/login.fxml"));
+        /*Parent root = FXMLLoader.load(getClass().getResource("views/login.fxml"));
         primaryStage.setTitle("Connectez Vous !");
         primaryStage.setScene(new Scene(root));
+        primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.centerOnScreen();
+        primaryStage.show();
+
+         */
+
+        Parent root = FXMLLoader.load(getClass().getResource("views/splash.fxml"));
+        primaryStage.setScene(new Scene(root));
+        primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.centerOnScreen();
         primaryStage.show();
     }
 

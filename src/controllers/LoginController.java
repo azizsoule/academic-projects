@@ -102,6 +102,7 @@ public class LoginController implements Initializable {
 
             primaryStage.setTitle("DashBoard");
             primaryStage.setScene(new Scene(root));
+            primaryStage.setMaximized(true);
             primaryStage.show();
 //
 //            FadeIn fd = new FadeIn(root);

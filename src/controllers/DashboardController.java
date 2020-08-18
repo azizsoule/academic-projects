@@ -113,6 +113,9 @@ public class DashboardController implements Initializable {
     @FXML
     private Button btn_add_an;
 
+    @FXML
+    private Button exit;
+
 //    textfields
 
 
@@ -473,6 +476,25 @@ public class DashboardController implements Initializable {
             setActive(btn_actes_naiss);
             paneList_an.toFront();
         }
+
+        if (actionEvent.getSource() == exit) {
+            setActive(exit);
+            Alert alertBox = new Alert(Alert.AlertType.CONFIRMATION);
+            alertBox.setTitle("Confirmation");
+            alertBox.setContentText("Voulez-vous vraiment quitter ?");
+            alertBox.showAndWait().ifPresent(
+                    pressedButton-> {
+                        if (pressedButton == ButtonType.OK) {
+                            Operation.insert(new SimpleDateFormat("yyyy-MM-dd").format(new Date()), "FERMETURE LOGICIEL", agent.getId_agent());
+
+                            Stage primaryStage = (Stage) dash_root_pane.getScene().getWindow();
+                            primaryStage.close();
+                        }else
+                            alertBox.close();
+                    }
+            );
+        }
+
         if (actionEvent.getSource() == btn_acte_mariage) {
             setActive(btn_acte_mariage);
             paneList_am.toFront();
