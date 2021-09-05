@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <meta content="" name="description-gambolthemes">
+    <meta content="" name="author-gambolthemes">
+    <title></title>
+    <link href="css/styles.css" rel="stylesheet">
+    <link href="css/admin-style.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+
+    <th:block layout:fragment="links"></th:block>
+
+</head>
+<body class="sb-nav-fixed">
+<nav class="sb-topnav navbar navbar-expand navbar-light bg-clr">
+    <a class="navbar-brand logo-brand" href="index.html">Supermarket</a>
+    <button class="btn btn-link btn-sm order-1 order-lg-0" href="#" id="sidebarToggle"><i class="fas fa-bars"></i>
+    </button>
+    <a class="frnt-link" href=""><i class="fas fa-external-link-alt"></i>Home</a>
+    <ul class="navbar-nav ml-auto mr-md-0">
+        <li class="nav-item dropdown">
+            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
+               href="#"
+               id="userDropdown" role="button"><i class="fas fa-user fa-fw"></i></a>
+            <div aria-labelledby="userDropdown" class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item admin-dropdown-item" href="edit_profile.html">Edit Profile</a>
+                <a class="dropdown-item admin-dropdown-item" href="change_password.html">Change Password</a>
+                <a class="dropdown-item admin-dropdown-item" href="login.html">Logout</a>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+<div id="layoutSidenav">
+
+    <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <div class="sb-sidenav-menu">
+                <div class="nav">
+                    <a class="nav-link active" href="index.html">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        Dashboard
+                    </a>
+
+                    <a aria-controls="collapseCategories" aria-expanded="false" class="nav-link collapsed"
+                       data-target="#collapseCatalogue"
+                       data-toggle="collapse" href="#">
+                        <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+                        Catalogues
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div aria-labelledby="headingTwo" class="collapse" data-parent="#sidenavAccordion"
+                         id="collapseCatalogue">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link sub_nav_link" href="catalogue.html">All Catalogs</a>
+                            <a class="nav-link sub_nav_link" href="add_catalogue.html">Add catalogs</a>
+                        </nav>
+                    </div>
+
+                    <a aria-controls="collapseCategories" aria-expanded="false" class="nav-link collapsed"
+                       data-target="#collapseCategories"
+                       data-toggle="collapse" href="#">
+                        <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+                        Categories
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div aria-labelledby="headingTwo" class="collapse" data-parent="#sidenavAccordion"
+                         id="collapseCategories">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link sub_nav_link" href="category.html">All Categories</a>
+                            <a class="nav-link sub_nav_link" href="add_category.html">Add Category</a>
+                        </nav>
+                    </div>
+
+                    <a aria-controls="collapseCategories" aria-expanded="false" class="nav-link collapsed"
+                       data-target="#collapseDictionnary"
+                       data-toggle="collapse" href="#">
+                        <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                        Dictionnary
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div aria-labelledby="headingTwo" class="collapse" data-parent="#sidenavAccordion"
+                         id="collapseDictionnary">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link sub_nav_link" href="dictionnary.html">All words</a>
+                            <a class="nav-link sub_nav_link" href="add_dictionnary.html">Add word</a>
+                        </nav>
+                    </div>
+
+
+                    <a aria-controls="collapseProducts" aria-expanded="false" class="nav-link collapsed"
+                       data-target="#collapseProducts"
+                       data-toggle="collapse" href="#">
+                        <div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>
+                        Products
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div aria-labelledby="headingTwo" class="collapse" data-parent="#sidenavAccordion"
+                         id="collapseProducts">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link sub_nav_link" href="products.html">All Products</a>
+                            <a class="nav-link sub_nav_link" href="add_product.html">Add Product</a>
+                        </nav>
+                    </div>
+
+                    <a class="nav-link" href="orders.html">
+                        <div class="sb-nav-link-icon"><i class="fas fa-cart-arrow-down"></i></div>
+                        Orders
+                    </a>
+                    <a class="nav-link" href="customers.html">
+                        <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                        Customers
+                    </a>
+                    <a class="nav-link" href="offers.html">
+                        <div class="sb-nav-link-icon"><i class="fas fa-gift"></i></div>
+                        Offers
+                    </a>
+
+                    <a aria-controls="collapseSettings" aria-expanded="false" class="nav-link collapsed"
+                       data-target="#collapseSettings"
+                       data-toggle="collapse" href="#">
+                        <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
+                        Setting
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div aria-labelledby="headingTwo" class="collapse" data-parent="#sidenavAccordion"
+                         id="collapseSettings">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link sub_nav_link" href="payment_setting.html">Payment Settings</a>
+                        </nav>
+                    </div>
+                    <a class="nav-link" href="reports.html">
+                        <div class="sb-nav-link-icon"><i class="fas fa-chart-bar"></i></div>
+                        Reports
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div id="layoutSidenav_content">
+        <th:block layout:fragment="content"></th:block>
+        <footer class="py-4 bg-footer mt-auto">
+            <div class="container-fluid">
+                <div class="d-flex align-items-center justify-content-between small">
+                    <div class="text-muted-1">© 2021 <b> Supermarket</b>. by Groupe5</div>
+                    <div class="footer-links">
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="vendor/chart/highcharts.js"></script>
+<script src="vendor/chart/exporting.js"></script>
+<script src="vendor/chart/export-data.js"></script>
+<script src="vendor/chart/accessibility.js"></script>
+<script src="js/scripts.js"></script>
+<script src="js/chart.js"></script>
+<th:block layout:fragment="scripts"></th:block>
+</body>
+
+</html>
