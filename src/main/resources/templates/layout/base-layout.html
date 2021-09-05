@@ -27,9 +27,9 @@
                href="#"
                id="userDropdown" role="button"><i class="fas fa-user fa-fw"></i></a>
             <div aria-labelledby="userDropdown" class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item admin-dropdown-item" href="edit_profile.html">Edit Profile</a>
-                <a class="dropdown-item admin-dropdown-item" href="change_password.html">Change Password</a>
-                <a class="dropdown-item admin-dropdown-item" href="login.html">Logout</a>
+                <a class="dropdown-item admin-dropdown-item" th:href="@{/profile}">Edit Profile</a>
+                <a class="dropdown-item admin-dropdown-item" th:href="@{/change-password}">Change Password</a>
+                <a class="dropdown-item admin-dropdown-item" th:href="@{/logout}">Logout</a>
             </div>
         </li>
     </ul>
@@ -67,11 +67,11 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-cart-arrow-down"></i></div>
                         Orders
                     </a>
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" th:href="@{/customers}">
                         <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                         Customers
                     </a>
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" th:href="@{/discounts}">
                         <div class="sb-nav-link-icon"><i class="fas fa-gift"></i></div>
                         Offers
                     </a>
@@ -86,10 +86,10 @@
                     <div aria-labelledby="headingTwo" class="collapse" data-parent="#sidenavAccordion"
                          id="collapseSettings">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link sub_nav_link" href="payment_setting.html">Payment Settings</a>
+                            <a class="nav-link sub_nav_link" th:href="@{/payment-setting}">Payment Settings</a>
                         </nav>
                     </div>
-                    <a class="nav-link" href="reports.html">
+                    <a class="nav-link" th:href="@{/reports}">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-bar"></i></div>
                         Reports
                     </a>
@@ -99,7 +99,9 @@
     </div>
 
     <div id="layoutSidenav_content">
-        <th:block layout:fragment="content"></th:block>
+        <th:block layout:fragment="content">
+
+        </th:block>
         <footer class="py-4 bg-footer mt-auto">
             <div class="container-fluid">
                 <div class="d-flex align-items-center justify-content-between small">
