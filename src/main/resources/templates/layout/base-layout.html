@@ -55,6 +55,7 @@
                        data-toggle="collapse" href="#">
                         <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
                         Categories
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
                     <div aria-labelledby="headingTwo" class="collapse" data-parent="#sidenavAccordion"
                          id="collapseCategories">
@@ -68,11 +69,11 @@
                         Dictionnary
                     </a>
 
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" th:href="@{/products}">
                         <div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>
                         Products
                     </a>
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" th:href="@{/orders}">
                         <div class="sb-nav-link-icon"><i class="fas fa-cart-arrow-down"></i></div>
                         Orders
                     </a>
@@ -96,8 +97,8 @@
                          id="collapseSettings">
                         <nav class="sb-sidenav-menu-nested nav">
                             <a class="nav-link sub_nav_link" th:href="@{/payment-setting}">Payment Settings</a>
-                            <a class="nav-link sub_nav_link" href="payment_setting.html">Region</a>
-                            <a class="nav-link sub_nav_link" href="payment_setting.html">Cyties</a>
+                            <a class="nav-link sub_nav_link" href="#">Region</a>
+                            <a class="nav-link sub_nav_link" href="#">Cyties</a>
                         </nav>
                     </div>
                     <a class="nav-link" th:href="@{/reports}">
