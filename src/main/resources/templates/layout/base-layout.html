@@ -41,33 +41,43 @@
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
-                    <a class="nav-link active" href="">
+                    <a class="nav-link active" href="/">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         Dashboard
                     </a>
 
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" th:href="@{/catalogs}">
                         <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
                         Catalogs
                     </a>
-                    <a class="nav-link" href="#">
+                    <a aria-controls="collapseSettings" aria-expanded="false" class="nav-link collapsed"
+                       data-target="#collapseCategories"
+                       data-toggle="collapse" href="#">
                         <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
                         Categories
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
-                    <a class="nav-link" href="#">
+                    <div aria-labelledby="headingTwo" class="collapse" data-parent="#sidenavAccordion"
+                         id="collapseCategories">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link sub_nav_link" th:href="@{/categories}">All Categories</a>
+                            <a class="nav-link sub_nav_link" th:href="@{/sub-categories}">Sub Categories</a>
+                        </nav>
+                    </div>
+                    <a class="nav-link" th:href="@{/comment-filter}">
                         <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                         Dictionnary
                     </a>
 
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" th:href="@{/products}">
                         <div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>
                         Products
                     </a>
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" th:href="@{/orders}">
                         <div class="sb-nav-link-icon"><i class="fas fa-cart-arrow-down"></i></div>
                         Orders
                     </a>
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="">
                         <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                         Customers
                     </a>
@@ -87,6 +97,8 @@
                          id="collapseSettings">
                         <nav class="sb-sidenav-menu-nested nav">
                             <a class="nav-link sub_nav_link" href="payment_setting.html">Payment Settings</a>
+                            <a class="nav-link sub_nav_link" href="payment_setting.html">Region</a>
+                            <a class="nav-link sub_nav_link" href="payment_setting.html">Cyties</a>
                         </nav>
                     </div>
                     <a class="nav-link" href="reports.html">
