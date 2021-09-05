@@ -33,4 +33,9 @@ public class PaymentDetail {
     @JoinColumn(name = "payment_method_id_payment_method")
     private PaymentMethod paymentMethod;
 
+    @PrePersist
+    public void prePersist() {
+        createdAt = new Date();
+    }
+
 }

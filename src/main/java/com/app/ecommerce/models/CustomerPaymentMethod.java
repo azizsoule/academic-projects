@@ -12,11 +12,11 @@ import java.util.Date;
 @NoArgsConstructor
 @Getter
 @Setter
-public class UserPaymentMethod {
+public class CustomerPaymentMethod {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUserPayment;
+    private Long idCustomerPayment;
 
     private String ccNumber;
 
@@ -27,8 +27,8 @@ public class UserPaymentMethod {
     private String phoneNumber;
 
     @ManyToOne
-    @JoinColumn(name = "user_id_user")
-    private User user;
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
     @ManyToOne
     @JoinColumn(name = "payment_method_id_payment_type")

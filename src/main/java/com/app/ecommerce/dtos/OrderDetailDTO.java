@@ -4,9 +4,9 @@ public class OrderDetailDTO {
     private Long idOrder;
     private java.sql.Timestamp createdAt;
     private Float total;
+    private Long customerId;
     private String codeOrderState;
     private Long paymentDetailIdPaymentDetail;
-    private Long userIdUser;
 
     public Long getIdOrder() {
         return this.idOrder;
@@ -32,6 +32,14 @@ public class OrderDetailDTO {
         this.total = total;
     }
 
+    public Long getCustomerId() {
+        return this.customerId;
+    }
+
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
+    }
+
     public String getCodeOrderState() {
         return this.codeOrderState;
     }
@@ -46,13 +54,5 @@ public class OrderDetailDTO {
 
     public void setPaymentDetailIdPaymentDetail(Long paymentDetailIdPaymentDetail) {
         this.paymentDetailIdPaymentDetail = paymentDetailIdPaymentDetail;
-    }
-
-    public Long getUserIdUser() {
-        return this.userIdUser;
-    }
-
-    public void setUserIdUser(Long userIdUser) {
-        this.userIdUser = userIdUser;
     }
 }

@@ -3,6 +3,7 @@ package com.app.ecommerce.dtos;
 public class PaymentMethodDTO {
     private Long idPaymentMethod;
     private Boolean available;
+    private String image;
     private String label;
     private String provider;
 
@@ -20,6 +21,14 @@ public class PaymentMethodDTO {
 
     public void setAvailable(Boolean available) {
         this.available = available;
+    }
+
+    public String getImage() {
+        return this.image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getLabel() {

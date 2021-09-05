@@ -6,14 +6,21 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+@Table(name = "image")
 @Entity
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
-public class Dictionnary {
+public class Image {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_dictionnary", nullable = false)
-    private Long idWord;
-    private String label;
+    private Long id;
+
+    String image;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "article_id_article")
+    Article article;
+
 }

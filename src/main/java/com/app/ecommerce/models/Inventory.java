@@ -12,6 +12,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 public class Inventory {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idIventory;

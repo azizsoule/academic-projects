@@ -20,6 +20,8 @@ public class Catalog {
     @Column(length = 30)
     private String label;
 
+    private String image;
+
     @OneToMany(mappedBy = "catalog", cascade = CascadeType.ALL)
     private Set<Category> categories;
 

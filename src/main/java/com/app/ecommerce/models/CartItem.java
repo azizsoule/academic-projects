@@ -1,6 +1,6 @@
 package com.app.ecommerce.models;
 
-import com.app.ecommerce.models.utils.Item;
+import com.app.ecommerce.models.supers.Item;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,7 +19,7 @@ public class CartItem extends Item {
     private Article article;
 
     @ManyToOne
-    @JoinColumn(name = "user_id_user")
-    private User user;
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
 }

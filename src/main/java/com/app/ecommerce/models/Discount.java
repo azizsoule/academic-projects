@@ -14,6 +14,7 @@ import java.util.Set;
 @Getter
 @Setter
 public class Discount {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idDiscount;
@@ -28,7 +29,7 @@ public class Discount {
 
     private int discountPercent;
 
-    private float discoutValue;
+    private float discountAmount;
 
     private boolean percentage;
 
@@ -44,11 +45,10 @@ public class Discount {
     private Set<Article> articles;
 
     @ManyToMany
-    @JoinTable(name = "discount_user",
+    @JoinTable(name = "discount_customer",
             joinColumns = @JoinColumn(name = "discount_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id"))
-    private Set<User> users;
-
+            inverseJoinColumns = @JoinColumn(name = "customer_id"))
+    private Set<Customer> customers;
 
     @PrePersist
     public void prePersist() {

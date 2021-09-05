@@ -21,6 +21,8 @@ public class Category {
     @Column(length = 30)
     private String label;
 
+    private String image;
+
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private Set<SubCategory> subCategories;
 

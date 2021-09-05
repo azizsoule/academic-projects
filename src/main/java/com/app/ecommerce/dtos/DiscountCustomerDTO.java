@@ -1,8 +1,8 @@
 package com.app.ecommerce.dtos;
 
-public class DiscountUserDTO {
+public class DiscountCustomerDTO {
     private Long discountId;
-    private Long userId;
+    private Long customerId;
 
     public Long getDiscountId() {
         return this.discountId;
@@ -12,11 +12,11 @@ public class DiscountUserDTO {
         this.discountId = discountId;
     }
 
-    public Long getUserId() {
-        return this.userId;
+    public Long getCustomerId() {
+        return this.customerId;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
     }
 }

@@ -2,11 +2,12 @@ package com.app.ecommerce.dtos;
 
 public class AddressDTO {
     private Long idAddress;
+    private Boolean def;
     private String firstName;
     private String label;
     private String lastName;
     private Long cityIdCity;
-    private Long userIdUser;
+    private Long customerId;
 
     public Long getIdAddress() {
         return this.idAddress;
@@ -14,6 +15,14 @@ public class AddressDTO {
 
     public void setIdAddress(Long idAddress) {
         this.idAddress = idAddress;
+    }
+
+    public Boolean getDef() {
+        return this.def;
+    }
+
+    public void setDef(Boolean def) {
+        this.def = def;
     }
 
     public String getFirstName() {
@@ -48,11 +57,11 @@ public class AddressDTO {
         this.cityIdCity = cityIdCity;
     }
 
-    public Long getUserIdUser() {
-        return this.userIdUser;
+    public Long getCustomerId() {
+        return this.customerId;
     }
 
-    public void setUserIdUser(Long userIdUser) {
-        this.userIdUser = userIdUser;
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
     }
 }

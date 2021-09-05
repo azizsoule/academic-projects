@@ -23,12 +23,14 @@ public class Address {
 
     private String label;
 
+    private Boolean def;
+
     @ManyToOne
     @JoinColumn(name = "city_id_city")
     private City city;
 
     @ManyToOne
-    @JoinColumn(name = "user_id_user")
-    private User user;
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
 }

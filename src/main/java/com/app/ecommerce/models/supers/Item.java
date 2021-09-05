@@ -1,4 +1,4 @@
-package com.app.ecommerce.models.utils;
+package com.app.ecommerce.models.supers;
 
 import javax.persistence.*;
 import java.util.Date;

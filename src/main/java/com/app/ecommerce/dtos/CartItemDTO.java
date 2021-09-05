@@ -5,7 +5,7 @@ public class CartItemDTO {
     private java.sql.Timestamp createdAt;
     private Integer quantity;
     private Long articleIdArticle;
-    private Long userIdUser;
+    private Long customerId;
 
     public Long getIdItem() {
         return this.idItem;
@@ -39,11 +39,11 @@ public class CartItemDTO {
         this.articleIdArticle = articleIdArticle;
     }
 
-    public Long getUserIdUser() {
-        return this.userIdUser;
+    public Long getCustomerId() {
+        return this.customerId;
     }
 
-    public void setUserIdUser(Long userIdUser) {
-        this.userIdUser = userIdUser;
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
     }
 }

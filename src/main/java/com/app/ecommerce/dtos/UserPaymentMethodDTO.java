@@ -1,20 +1,20 @@
 package com.app.ecommerce.dtos;
 
 public class UserPaymentMethodDTO {
-    private Long idUserPayment;
+    private Long idCustomerPayment;
     private java.sql.Timestamp ccExpirationDate;
     private String ccNumber;
     private String cvv;
     private String phoneNumber;
+    private Long customerId;
     private Long paymentMethodIdPaymentType;
-    private Long userIdUser;
 
-    public Long getIdUserPayment() {
-        return this.idUserPayment;
+    public Long getIdCustomerPayment() {
+        return this.idCustomerPayment;
     }
 
-    public void setIdUserPayment(Long idUserPayment) {
-        this.idUserPayment = idUserPayment;
+    public void setIdCustomerPayment(Long idCustomerPayment) {
+        this.idCustomerPayment = idCustomerPayment;
     }
 
     public java.sql.Timestamp getCcExpirationDate() {
@@ -49,19 +49,19 @@ public class UserPaymentMethodDTO {
         this.phoneNumber = phoneNumber;
     }
 
+    public Long getCustomerId() {
+        return this.customerId;
+    }
+
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
+    }
+
     public Long getPaymentMethodIdPaymentType() {
         return this.paymentMethodIdPaymentType;
     }
 
     public void setPaymentMethodIdPaymentType(Long paymentMethodIdPaymentType) {
         this.paymentMethodIdPaymentType = paymentMethodIdPaymentType;
-    }
-
-    public Long getUserIdUser() {
-        return this.userIdUser;
-    }
-
-    public void setUserIdUser(Long userIdUser) {
-        this.userIdUser = userIdUser;
     }
 }

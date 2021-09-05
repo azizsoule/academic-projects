@@ -1,6 +1,6 @@
 package com.app.ecommerce.models;
 
-import com.app.ecommerce.models.utils.Item;
+import com.app.ecommerce.models.supers.Item;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

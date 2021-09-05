@@ -1,60 +1,28 @@
 package com.app.ecommerce.models;
 
+import com.app.ecommerce.models.supers.Person;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
-import java.util.Date;
-import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Table(name = "user")
 @Entity
 @NoArgsConstructor
 @Getter
 @Setter
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUser;
-
-    private String username;
-
-    private String password;
-
-    private String firstName;
-
-    private String lastName;
-
-    private String phoneNumber;
-
-    private String email;
-
-    private Date createdAt;
-
-    private boolean blocked;
-
-    @OneToMany(mappedBy = "user")
-    private Set<Address> addresses;
-
-    @OneToMany(mappedBy = "user")
-    private Set<UserPaymentMethod> userPaymentMethods;
+public class User extends Person {
 
     @ManyToOne
     @JoinColumn(name = "user_group_id_user_group")
     private UserGroup userGroup;
 
-    @OneToMany(mappedBy = "user")
-    private Set<CartItem> cartItems;
-
-    @OneToMany(mappedBy = "user")
-    private Set<Comment> comments;
-
-    @OneToMany(mappedBy = "user", orphanRemoval = true)
-    private Set<Order> orders;
-
-    @ManyToMany(mappedBy = "users")
-    private Set<Discount> discounts;
+    @ManyToOne
+    @JoinColumn(name = "sex_id_sex")
+    private Sex sex;
 
 }
