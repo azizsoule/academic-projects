@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MainController {
     private static final String URI="";
-    private static final String VIEW="catalogue";
+    private static final String VIEW="add_product";
 
     @Autowired
     private ArticleService service;
