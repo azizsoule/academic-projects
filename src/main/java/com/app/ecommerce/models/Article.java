@@ -28,9 +28,16 @@ public class Article {
 
     private float price;
 
-    private int nbrComment;
+    private int commentCount;
 
     private int ratingSum;
+
+    private String image;
+
+    private String brand;
+
+    @OneToMany(mappedBy = "article")
+    private Set<Image> images;
 
     @OneToMany(mappedBy = "article")
     private Set<Comment> comments;
@@ -51,5 +58,8 @@ public class Article {
 
     @OneToOne(mappedBy = "article")
     private OrderItem orderItem;
+
+    @OneToOne(mappedBy = "article")
+    private WishItem wishItem;
 
 }

@@ -2,6 +2,7 @@ package com.app.ecommerce.dtos;
 
 public class CategoryDTO {
     private Long idCategory;
+    private String image;
     private String label;
     private Long catalogIdCatalog;
 
@@ -11,6 +12,14 @@ public class CategoryDTO {
 
     public void setIdCategory(Long idCategory) {
         this.idCategory = idCategory;
+    }
+
+    public String getImage() {
+        return this.image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getLabel() {

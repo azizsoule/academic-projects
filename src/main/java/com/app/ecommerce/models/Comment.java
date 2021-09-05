@@ -28,7 +28,7 @@ public class Comment {
     private Article article;
 
     @ManyToOne
-    @JoinColumn(name = "user_id_user")
-    private User user;
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
 }

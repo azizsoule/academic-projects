@@ -24,10 +24,12 @@ public class PaymentMethod {
 
     private String provider;
 
+    private String image;
+
     @OneToMany(mappedBy = "paymentMethod")
     private List<PaymentDetail> paymentDetails;
 
     @OneToMany(mappedBy = "paymentMethod")
-    private List<UserPaymentMethod> userPaymentMethods;
+    private List<CustomerPaymentMethod> customerPaymentMethods;
 
 }

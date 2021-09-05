@@ -26,4 +26,9 @@ public class UserGroup {
     @OneToMany(mappedBy = "userGroup")
     private Set<User> users;
 
+    @PrePersist
+    public void prePersist() {
+        createdAt = new Date();
+    }
+
 }
