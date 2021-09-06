@@ -41,8 +41,7 @@ public class CatalogController {
     * Si oui on recupère les info relatives a ce catague et on envoie le tout a la vue*/
     @GetMapping(URI + "/{id}")
     private String getCatalogById(@PathVariable("id") Long id, Model model) {
-        if (catalogService.findById(id) != null)
-            model.addAttribute("catalogDTO", catalogService.findById(id));
+        model.addAttribute("catalogDTO", catalogService.findById(id));
         return EDIT_VIEW;
     }
     /*Pour l'insertion en bd on passe juste en paramètre de la methode l'objet qu'on souhaite
