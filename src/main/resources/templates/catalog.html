@@ -12,7 +12,7 @@
                     </ol>
                     <div class="row justify-content-between">
                         <div class="col-lg-12">
-                            <a href="add_catalogue.html" class="add-btn hover-btn">Add New</a>
+                            <a th:href="@{/add-catalog}" class="add-btn hover-btn">Add New</a>
                         </div>
                         <div class="col-lg-3 col-md-4">
                             <div class="bulk-section mt-30">
@@ -59,25 +59,21 @@
                                                 <th style="width:60px">ID</th>
                                                 <th style="width:130px">Image</th>
                                                 <th>Name</th>
-                                                <th>Description</th>
-                                                <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
+                                            <tr th:each="catalog:${catalogs}">
                                                 <td><input type="checkbox" class="check-item" name="ids[]" value="11"></td>
-                                                <td>1</td>
-                                                <td>
+                                                <td th:text="${catalog.idCatalog}">1</td>
+                                                <td th:text="${catalog.image}">
                                                     <div class="cate-img">
                                                         <img src="images/category/icon-1.svg" alt="">
                                                     </div>
                                                 </td>
-                                                <td>Fruits and Vegetables</td>
-                                                <td></td>
-                                                <td><span class="badge-item badge-status">Active</span></td>
+                                                <td th:text="${catalog.label}">Fruits and Vegetables</td>
                                                 <td class="action-btns">
-                                                    <a href="add_catalogue.html" class="edit-btn"><i
+                                                    <a th:href="@{/catalogs/{id}(id=${catalog.idCatalog})}" class="edit-btn"><i
                                                             class="fas fa-edit"></i> Edit</a>
                                                 </td>
                                             </tr>

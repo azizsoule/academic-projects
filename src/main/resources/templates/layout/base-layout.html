@@ -7,10 +7,10 @@
     <meta content="" name="description-gambolthemes">
     <meta content="" name="author-gambolthemes">
     <title></title>
-    <link href="css/styles.css" rel="stylesheet">
-    <link href="css/admin-style.css" rel="stylesheet">
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+    <link th:href="@{/css/admin-style.css}" rel="stylesheet">
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet">
 
     <th:block layout:fragment="links"></th:block>
 
@@ -126,14 +126,14 @@
         </footer>
     </div>
 </div>
-<script src="js/jquery-3.4.1.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="vendor/chart/highcharts.js"></script>
-<script src="vendor/chart/exporting.js"></script>
-<script src="vendor/chart/export-data.js"></script>
-<script src="vendor/chart/accessibility.js"></script>
-<script src="js/scripts.js"></script>
-<script src="js/chart.js"></script>
+<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/vendor/chart/highcharts.js}"></script>
+<script th:src="@{/vendor/chart/exporting.js}"></script>
+<script th:src="@{/vendor/chart/export-data.js}"></script>
+<script th:src="@{/vendor/chart/accessibility.js}"></script>
+<script th:src="@{/js/scripts.js}"></script>
+<script th:src="@{/js/chart.js}"></script>
 <th:block layout:fragment="scripts"></th:block>
 </body>
 
