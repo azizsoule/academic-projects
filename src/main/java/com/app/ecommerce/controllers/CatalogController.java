@@ -1,6 +1,7 @@
 package com.app.ecommerce.controllers;
 
 import com.app.ecommerce.dtos.CatalogDTO;
+import com.app.ecommerce.dtos.CategoryDTO;
 import com.app.ecommerce.services.CatalogService;
 import com.app.ecommerce.utils.Router;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,6 +87,6 @@ public class CatalogController {
             System.out.println(e.getMessage());
             ra.addFlashAttribute("fail", "Fail to delete !");
         }
-        return Router.redirectTo(ADD_URI);
+        return Router.redirectTo(URI);
     }
 }
