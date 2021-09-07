@@ -1,8 +1,6 @@
 package com.app.ecommerce.controllers;
 
 import com.app.ecommerce.dtos.CatalogDTO;
-import com.app.ecommerce.services.CustomerService;
-import com.app.ecommerce.services.PaymentDetailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.app.ecommerce.dtos.OrderDetailDTO;
@@ -20,7 +18,6 @@ public class OrderController {
     private static final String URI = "/orders";
     private static final String ADD_URI = "/add-order";
     private static final String LIST_VIEW = "orders";
-    private static final String LIST_CUSTOMMER = "customer";
     private static final String VIEW = "add_order";
     private static final String EDIT_VIEW = "edit_order";
 
@@ -28,16 +25,9 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @Autowired
-    private CustomerService customerService;
-
-    @Autowired
-    private PaymentDetailService paymentDetailService;
-
-
     @GetMapping(URI)
     private String getOrders(Model model) {
-        model.addAttribute("orders",customerService.findAll());
+        model.addAttribute("orders",orderService.findAll());
         return LIST_VIEW;
 
     }

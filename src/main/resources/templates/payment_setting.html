@@ -10,19 +10,18 @@
                     <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
                     <li class="breadcrumb-item active">Payment Setting</li>
                 </ol>
-                <div class="row">
+                <div class="row" th:each="payment:${payments}">
                     <div class="col-lg-4 col-md-6">
                         <div class="left-side-tabs">
                             <div class="dashboard-left-links">
-                                <a href="payment_setting.html" class="user-item active"><i class="fab fa-paypal"></i>Paypal</a>
-                                <a href="payment_setting_stripe.html" class="user-item"><i class="fab fa-stripe"></i>Stripe</a>
+                                <a  th:text="${payment.label}" class="user-item active"><i  class="fab fa-paypal"></i>Paypal</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-8 col-md-6">
                         <div class="card card-static-2 mb-30">
                             <div class="card-title-2">
-                                <h4>Paypal Setting</h4>
+                                <h4 th:text="${payment.label}">Paypal </h4>
                             </div>
                             <div class="card-body-table">
                                 <div class="news-content-right pd-20">
@@ -31,23 +30,19 @@
                                             <div class="form-group">
                                                 <label class="form-label">Active*</label>
                                                 <select id="status" name="status" class="form-control">
-                                                    <option selected>Yes</option>
-                                                    <option value="1">No</option>
+                                                    <option selected th:text="${payment.available}">Yes</option>
+
                                                 </select>
                                             </div>
                                             <div class="form-group">
-                                                <label class="form-label">Sandbox*</label>
+                                                <label class="form-label">Provider*</label>
                                                 <select id="status" name="status" class="form-control">
-                                                    <option selected>Yes</option>
-                                                    <option value="1">No</option>
+                                                    <option selected th:text="${payment.provider}" >Orange</option>
+
                                                 </select>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="form-label">Paypal Email*</label>
-                                                <input type="email" class="form-control" value="gambol943@gmail.com"
-                                                       placeholder="Enter paypal email">
-                                            </div>
-                                            <button class="save-btn hover-btn" type="submit">Save Changes</button>
+
+                                            <button class="save-btn hover-btn" type="submit">Update</button>
                                         </div>
                                     </div>
                                 </div>
