@@ -11,7 +11,7 @@
             </ol>
             <div class="row justify-content-between">
                 <div class="col-lg-12">
-                    <a href="add_dictionnary.html" class="add-btn hover-btn">Add New</a>
+                    <a th:href="@{/add-dictionary}" class="add-btn hover-btn">Add New</a>
                 </div>
                 <div class="col-lg-3 col-md-4">
                     <div class="bulk-section mt-30">
@@ -54,21 +54,21 @@
                                         <th style="width:60px"><input type="checkbox" class="check-all"></th>
                                         <th style="width:60px">ID</th>
                                         <th>word</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                        <!--<th>Status</th>
+                                         <th>Action</th>-->
                                     </tr>
                                     </thead>
                                     <tbody>
 
-                                    <tr>
+                                    <tr th:each="Word:${comment_filter}">
                                         <td><input type="checkbox" class="check-item" name="ids[]" value="4"></td>
-                                        <td>8</td>
-                                        <td>Mercon</td>
-                                        <td><span class="badge-item badge-status">Active</span></td>
+                                        <td th:text="${Word.idDictionary}">8</td>
+                                        <td th:text="${Word.label}">Mercon</td>
+                                       <!-- <td><span class="badge-item badge-status">Active</span></td>
                                         <td class="action-btns">
                                             <a href="add_category.html" class="edit-btn"><i class="fas fa-edit"></i>
-                                                Edit</a>
-                                        </td>
+                                                delete</a>
+                                        </td>-->
                                     </tr>
 
                                     </tbody>

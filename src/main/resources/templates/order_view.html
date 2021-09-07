@@ -1,34 +1,44 @@
 <!DOCTYPE html>
-<html lang="en"xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org"
+<html lang="en"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org"
       layout:decorate="~{layout/base-layout}">
 <th:block layout:fragment="content" >
-        <main>
-            <div class="container-fluid">
-                <h2 class="mt-30 page-title">Orders</h2>
-                <ol class="breadcrumb mb-30">
-                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="orders.html">Orders</a></li>
-                    <li class="breadcrumb-item active">Order View</li>
-                </ol>
-                <div class="row">
-                    <div class="col-xl-12 col-md-12">
-                        <div class="card card-static-2 mb-30">
-                            <div class="card-title-2">
-                                <h2 class="title1458">Invoice</h2>
-                                <span class="order-id">Order #ORDR-123456</span>
-                            </div>
+    <main>
+        <div class="container-fluid">
+            <h2 class="mt-30 page-title">Orders</h2>
+            <ol class="breadcrumb mb-30">
+                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                <li class="breadcrumb-item"><a th:href="@/orders">Orders</a></li>
+                <li class="breadcrumb-item active">Order Edit</li>
+            </ol>
+            </ol>
+            <!--Alerts for submissions-->
+            <div class="alert alert-success" th:if="${success}"><i class="fa fa-check-circle"></i>
+                [[${success}]]
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">x</button>
+            </div>
+            <div class="alert alert-danger" th:if="${fail}"><i class="fa fa-exclamation-circle"></i>
+                [[${fail}]]
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">x</button>
+            </div>
+
+            <div class="row">
+                <div class="col-xl-12 col-md-12">
+                    <div class="card card-static-2 mb-30">
+                        <div class="card-title-2">
+                            <h2 class="title1458">Invoice</h2>
+                            <span class="order-id" th:field="*{codeOrderState}">Order #ORDR-123456</span>
+                        </div>
+                        <form method="post" th:object="${orderDetailDTO}" th:action="@{/orders/{id}/update(id = *{idOrder})}">
                             <div class="invoice-content">
                                 <div class="row">
                                     <div class="col-lg-6 col-sm-6">
                                         <div class="ordr-date">
-                                            <b>Order Date :</b> 29 May 2020
+                                            <b >Order Date :</b> 29 May 2020
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-sm-6">
                                         <div class="ordr-date right-text">
-                                            <b>Order Date :</b><br>
-                                            #0000, St No. 8,<br>
-                                            Shahid Karnail Singh Nagar,<br>
+                                           <div  th:field="*{customerId}">Shahid Karnail Singh Nagar,<br></div>
                                             MBD Mall,<br>
                                             Frozpur road,<br>
                                             Ludhiana,<br>
@@ -54,7 +64,7 @@
                                                         </thead>
                                                         <tbody>
                                                         <tr>
-                                                            <td>1</td>
+                                                            <td th:field="*{idOrder}">1</td>
                                                             <td>
                                                                 <a href="#" target="_blank">Product Title Here</a>
                                                             </td>
@@ -62,28 +72,21 @@
                                                             <td class="text-center">1</td>
                                                             <td class="text-center">$15</td>
                                                         </tr>
-                                                        <tr>
-                                                            <td>2</td>
-                                                            <td>
-                                                                <a href="#" target="_blank">Product Title Here</a>
-                                                            </td>
-                                                            <td class="text-center">$12</td>
-                                                            <td class="text-center">1</td>
-                                                            <td class="text-center">$12</td>
-                                                        </tr>
+
                                                         </tbody>
                                                     </table>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="col-lg-7"></div>
                                     <div class="col-lg-5">
                                         <div class="order-total-dt">
-                                            <div class="order-total-left-text">
+                                            <div class="order-total-left-text" >
                                                 Sub Total
                                             </div>
-                                            <div class="order-total-right-text">
+                                            <div class="order-total-right-text" th:field="*{total}">
                                                 $27
                                             </div>
                                         </div>
@@ -99,26 +102,36 @@
                                             <div class="order-total-left-text fsz-18">
                                                 Total Amount
                                             </div>
-                                            <div class="order-total-right-text fsz-18">
+                                            <div class="order-total-right-text fsz-18" th:field="*{total}">
                                                 $27
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-7"></div>
-                                    <div class="col-lg-5">
+                                    <!--<div class="col-lg-5">
                                         <div class="select-status">
                                             <label for="status">Status*</label>
-                                            <div class="status-active">
-                                                Pending
+                                            <div class="input-group">
+                                                <select id="status" name="status" class="custom-select">
+                                                    <option selected>Pending</option>
+                                                    <option value="1">Cancel</option>
+                                                    <option value="2">Progress</option>
+                                                    <option value="3">Completed</option>
+                                                </select>
+                                                <div class="input-group-append">
+                                                    <button class="status-btn hover-btn" type="submit">Submit</button>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>-->
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
-        </main>
+        </div>
+    </main>
 </th:block>
+
 </html>
