@@ -27,8 +27,8 @@
                             <h4>Edit Sub-Category</h4>
                         </div>
                         <div class="card-body-table">
-                            <form method="post" th:object="${subCategoryDTO}"
-                                  th:action="@{/sub-categories/{id}/update(id=${subCategoryDTO.idSubCategory})}">
+                            <form method="post" th:object="${subCategory}"
+                                  th:action="@{/sub-categories/{id}/update(id=*{idSubCategory})}">
                                 <input type="hidden" th:field="*{idSubCategory}">
                                 <div class="news-content-right pd-20">
                                     <div class="form-group">
@@ -38,7 +38,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">Category*</label>
-                                        <select th:field="*{categoryIdCategory}" class="form-control">
+                                        <select th:field="*{category.idCategory}" class="form-control">
                                             <option th:each="category:${categories}" th:value="${category.idCategory}"
                                                     th:text="${category.label}">Fruits & Vegetables
                                             </option>

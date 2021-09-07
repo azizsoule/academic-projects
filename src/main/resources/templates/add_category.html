@@ -28,7 +28,7 @@
 
 
                         <div class="card-body-table">
-                            <form method="post" th:object="${categoryDTO}" th:action="@{/categories/save}">
+                            <form method="post" th:object="${category}" th:action="@{/categories/save}">
                                 <div class="news-content-right pd-20">
                                     <div class="form-group">
                                         <label class="form-label">Name*</label>
@@ -37,7 +37,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">Catalog*</label>
-                                        <select th:field="*{catalogIdCatalog}" class="form-control">
+                                        <select th:field="*{catalog.idCatalog}" class="form-control">
                                             <option th:each="cat:${catalogs}" th:value="${cat.idCatalog}"
                                                     th:text="${cat.label}">Fruits & Vegetables
                                             </option>

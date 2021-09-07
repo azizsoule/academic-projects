@@ -61,22 +61,22 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
+                                    <tr th:each="article:${articles}">
                                         <td><input type="checkbox" class="check-item" name="ids[]" value="10"></td>
-                                        <td>1</td>
+                                        <td th:text="${article.idArticle}">1</td>
                                         <td>
                                             <div class="cate-img-5">
                                                 <img src="images/product/img-1.jpg" alt="">
                                             </div>
                                         </td>
-                                        <td>Product Name Here</td>
-                                        <td>Vegetables &amp; Fruits</td>
+                                        <td th:text="${article.label}">Product Name Here</td>
+                                        <td th:text="${article.subCategory.category.label}">Vegetables &amp; Fruits</td>
                                         <td>8 hours ago</td>
                                         <td><span class="badge-item badge-status">Active</span></td>
                                         <td class="action-btns">
-                                            <a href="product_view.html" class="view-shop-btn" title="View"><i
+                                            <a th:href="@{/articles/{id}(id=${article.idArticle})}" class="view-shop-btn" title="View"><i
                                                     class="fas fa-eye"></i></a>
-                                            <a href="add_product.html" class="edit-btn" title="Edit"><i
+                                            <a th:href="@{/articles/{id}/edit(id=${article.idArticle})}" class="edit-btn" title="Edit"><i
                                                     class="fas fa-edit"></i></a>
                                         </td>
                                     </tr>

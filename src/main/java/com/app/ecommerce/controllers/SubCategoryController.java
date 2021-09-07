@@ -1,8 +1,6 @@
 package com.app.ecommerce.controllers;
 
-import com.app.ecommerce.dtos.CategoryDTO;
-import com.app.ecommerce.dtos.SubCategoryDTO;
-import com.app.ecommerce.services.CatalogService;
+import com.app.ecommerce.models.SubCategory;
 import com.app.ecommerce.services.CategoryService;
 import com.app.ecommerce.services.SubCategoryService;
 import com.app.ecommerce.utils.Router;
@@ -36,20 +34,20 @@ public class SubCategoryController {
 
     @GetMapping(ADD_URI)
     private String getSubCategory(Model model) {
-        model.addAttribute("subCategoryDTO", new SubCategoryDTO());
+        model.addAttribute("subCategory", new SubCategory());
         model.addAttribute("categories", categoryService.findAll());
         return VIEW;
     }
 
     @GetMapping(URI + "/{id}")
     private String getSubCategoryById(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("subCategoryDTO", subCategoryService.findById(id));
+        model.addAttribute("subCategory", subCategoryService.findById(id));
         model.addAttribute("categories", categoryService.findAll());
         return EDIT_VIEW;
     }
 
     @PostMapping(URI + "/save")
-    private String postCategory(SubCategoryDTO dto, RedirectAttributes ra) {
+    private String postCategory(SubCategory dto, RedirectAttributes ra) {
         try {
             subCategoryService.save(dto);
             ra.addFlashAttribute("success", "Successfully saved !");
@@ -61,7 +59,7 @@ public class SubCategoryController {
     }
 
     @PostMapping(URI + "/{id}/update")
-    private String updateSubCategory(@PathVariable("id") Long id, SubCategoryDTO dto,
+    private String updateSubCategory(@PathVariable("id") Long id, SubCategory dto,
                                   RedirectAttributes ra) {
         try {
             subCategoryService.update(dto);
@@ -74,7 +72,7 @@ public class SubCategoryController {
     }
 
     @PostMapping(URI + "/{id}/delete")
-    private String deleteSubCategory(@PathVariable("id") Long id, SubCategoryDTO dto, RedirectAttributes ra) {
+    private String deleteSubCategory(@PathVariable("id") Long id, SubCategory dto, RedirectAttributes ra) {
         try {
             subCategoryService.delete(dto);
             ra.addFlashAttribute("success", "Successfully deleted !");

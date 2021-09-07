@@ -55,6 +55,7 @@
                                         <th style="width:60px"><input type="checkbox" class="check-all"></th>
                                         <th style="width:60px">ID</th>
                                         <th>Name</th>
+                                        <th>Category</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -64,6 +65,7 @@
                                         <td><input type="checkbox" class="check-item" name="ids[]" th:value="${subCategory.idSubCategory}"></td>
                                         <td th:text="${subCategory.idSubCategory}">8</td>
                                         <td th:text="${subCategory.label}">Personal Care</td>
+                                        <td th:text="${subCategory.category.label}">Category Name</td>
                                         <td class="action-btns">
                                             <a th:href="@{/sub-categories/{id}(id=${subCategory.idSubCategory})}" class="edit-btn"><i class="fas fa-edit"></i> Edit</a>
                                         </td>
