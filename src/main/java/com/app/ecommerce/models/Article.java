@@ -42,7 +42,7 @@ public class Article {
     @OneToMany(mappedBy = "article")
     private Set<Comment> comments;
 
-    @OneToOne
+    @OneToOne(orphanRemoval = true,cascade = CascadeType.ALL)
     @JoinColumn(name = "inventory_id_inventory")
     private Inventory inventory;
 

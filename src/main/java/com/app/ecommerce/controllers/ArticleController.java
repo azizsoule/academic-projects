@@ -42,14 +42,20 @@ public class ArticleController implements BaseController<Article, Long> {
 
     @GetMapping(URI + "/{id}/edit")
     public String edit(@PathVariable(name = "id") Long id, Model model) {
-        getById(id, model);
+        model.addAttribute("article", service.findById(id));
+        model.addAttribute("subCategories", subCategoryService.findAll());
         return EDIT_VIEW;
     }
 
     @Override
     @GetMapping(ADD_URI)
     public String add(Model model) {
-        model.addAttribute("article", new Article());
+        Article article = new Article();
+        article.setLabel("testArticle");
+        article.setSku("SKUTEST");
+        article.setBrand("testBrand");
+        article.setPrice(250000);
+        model.addAttribute("article", article);
         model.addAttribute("subCategories", subCategoryService.findAll());
         return ADD_VIEW;
     }

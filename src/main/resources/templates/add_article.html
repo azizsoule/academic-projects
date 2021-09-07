@@ -55,6 +55,10 @@
                                         <input type="text" th:field="*{sku}" class="form-control" placeholder="sku" required>
                                     </div>
                                     <div class="form-group">
+                                        <label class="form-label">Qte*</label>
+                                        <input type="number" th:field="*{inventory.quantity}" class="form-control" placeholder="0" min="0" required>
+                                    </div>
+                                    <div class="form-group">
                                         <label class="form-label">Sub-category*</label>
                                         <select th:field="*{subCategory.idSubCategory}" class="form-control" required>
                                             <option th:each="subCategory:${subCategories}" th:value="${subCategory.idSubCategory}"

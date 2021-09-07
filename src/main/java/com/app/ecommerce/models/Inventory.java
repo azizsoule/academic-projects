@@ -19,7 +19,7 @@ public class Inventory {
 
     private int quantity;
 
-    @OneToOne(mappedBy = "inventory", optional = false)
+    @OneToOne(mappedBy = "inventory")
     private Article article;
 
 }
