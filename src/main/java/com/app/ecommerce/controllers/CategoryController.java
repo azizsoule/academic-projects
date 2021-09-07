@@ -1,7 +1,6 @@
 package com.app.ecommerce.controllers;
 
-import com.app.ecommerce.dtos.CatalogDTO;
-import com.app.ecommerce.dtos.CategoryDTO;
+import com.app.ecommerce.models.Category;
 import com.app.ecommerce.services.CatalogService;
 import com.app.ecommerce.services.CategoryService;
 import com.app.ecommerce.utils.Router;
@@ -34,24 +33,23 @@ public class CategoryController {
 
 
     @GetMapping(ADD_URI)
-    private String getCategory(Model model) {
-        model.addAttribute("categoryDTO", new CategoryDTO());
+    private String addCategory(Model model) {
+        model.addAttribute("category", new Category());
         model.addAttribute("catalogs", catalogService.findAll());
         return VIEW;
     }
 
     @GetMapping(URI + "/{id}")
     private String getCategoryById(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("categoryDTO", categoryService.findById(id));
+        model.addAttribute("category", categoryService.findById(id));
         model.addAttribute("catalogs", catalogService.findAll());
         return EDIT_VIEW;
     }
 
     @PostMapping(URI + "/save")
-    private String postCategory(CategoryDTO categoryDTO, RedirectAttributes ra) {
+    private String postCategory(Category category, RedirectAttributes ra) {
         try {
-            System.out.println(categoryDTO);
-            categoryService.save(categoryDTO);
+            categoryService.save(category);
             ra.addFlashAttribute("success", "Successfully saved !");
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -61,10 +59,10 @@ public class CategoryController {
     }
 
     @PostMapping(URI + "/{id}/update")
-    private String updateCategory(@PathVariable("id") Long id, CategoryDTO categoryDTO,
+    private String updateCategory(@PathVariable("id") Long id, Category category,
                                   RedirectAttributes ra) {
         try {
-            categoryService.update(categoryDTO);
+            categoryService.update(category);
             ra.addAttribute("id", id).addFlashAttribute("success", "Successfully updated !");
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -74,9 +72,9 @@ public class CategoryController {
     }
 
     @PostMapping(URI + "/{id}/delete")
-    private String deleteCatalog(@PathVariable("id") Long id, CategoryDTO catalogDTO, RedirectAttributes ra) {
+    private String deleteCatalog(@PathVariable("id") Long id, Category category, RedirectAttributes ra) {
         try {
-            categoryService.delete(catalogDTO);
+            categoryService.delete(category);
             ra.addFlashAttribute("success", "Successfully deleted !");
         } catch (Exception e) {
             System.out.println(e.getMessage());

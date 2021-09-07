@@ -26,7 +26,7 @@
                             <h4>Add New Catalog</h4>
                         </div>
                         <div class="card-body-table">
-                            <form method="post" th:object="${catalogDTO}" th:action="@{/add-catalog/save}">
+                            <form method="post" th:object="${catalog}" th:action="@{/add-catalog/save}">
                                 <div class="news-content-right pd-20">
                                     <div class="form-group">
                                         <label class="form-label">Name*</label>

@@ -1,7 +1,6 @@
 package com.app.ecommerce.controllers;
 
-import com.app.ecommerce.dtos.CatalogDTO;
-import com.app.ecommerce.dtos.CategoryDTO;
+import com.app.ecommerce.models.Catalog;
 import com.app.ecommerce.services.CatalogService;
 import com.app.ecommerce.utils.Router;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +30,7 @@ public class CatalogController {
 
     @GetMapping(ADD_URI)
     private String getCatalog(Model model) {
-        model.addAttribute("catalogDTO", new CatalogDTO());
+        model.addAttribute("catalog", new Catalog());
         return VIEW;
     }
     /*Pour afficher un catalog particulier
@@ -41,15 +40,15 @@ public class CatalogController {
     * Si oui on recupère les info relatives a ce catague et on envoie le tout a la vue*/
     @GetMapping(URI + "/{id}")
     private String getCatalogById(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("catalogDTO", catalogService.findById(id));
+        model.addAttribute("catalog", catalogService.findById(id));
         return EDIT_VIEW;
     }
     /*Pour l'insertion en bd on passe juste en paramètre de la methode l'objet qu'on souhaite
     * enregistrer en ensuite on utilise les services appropriés pour eefectuer la sauvegarde*/
     @PostMapping(ADD_URI + "/save")
-    private String postCatalog(CatalogDTO catalogDTO, RedirectAttributes ra) {
+    private String postCatalog(Catalog catalog, RedirectAttributes ra) {
         try {
-            catalogService.save(catalogDTO);
+            catalogService.save(catalog);
             ra.addFlashAttribute("success", "Successfully saved !");
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -62,10 +61,10 @@ public class CatalogController {
     * Si la mise a jour s'est bien passé on retourne sur la page de mise a jour du catalogue portant l'id dans l'url
     * avec un message de succès et un message d'échec sinon*/
     @PostMapping(URI + "/{id}/update")
-    private String updateCatalog(@PathVariable("id") Long id, CatalogDTO catalogDTO,
+    private String updateCatalog(@PathVariable("id") Long id, Catalog Catalog,
                                  RedirectAttributes ra) {
         try {
-            catalogService.update(catalogDTO);
+            catalogService.update(Catalog);
             ra.addAttribute("id", id).addFlashAttribute("success", "Successfully updated !");
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -78,9 +77,9 @@ public class CatalogController {
     * NB: je n'ai pas encore terminé l'affichage des messages de succes ou d'echec en pratique
     * les methodes marchent correctements c'est juste que le message ne s'affiche pas car j'ai pas encore implémenté*/
     @PostMapping(URI + "/{id}/delete")
-    private String deleteCatalog(@PathVariable("id") Long id, CatalogDTO catalogDTO, RedirectAttributes ra) {
+    private String deleteCatalog(@PathVariable("id") Long id, Catalog Catalog, RedirectAttributes ra) {
         try {
-            catalogService.delete(catalogDTO);
+            catalogService.delete(Catalog);
             ra.addFlashAttribute("success", "Successfully deleted !");
         } catch (Exception e) {
             System.out.println(e.getMessage());

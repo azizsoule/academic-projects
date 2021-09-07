@@ -28,6 +28,15 @@
                     <li class="breadcrumb-item"><a th:href="@{/articles}">Articles</a></li>
                     <li class="breadcrumb-item active">Add</li>
                 </ol>
+                <!--Alerts for submissions-->
+                <div class="alert alert-success" th:if="${success}"><i class="fa fa-check-circle"></i>
+                    [[${success}]]
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">x</button>
+                </div>
+                <div class="alert alert-danger" th:if="${fail}"><i class="fa fa-exclamation-circle"></i>
+                    [[${fail}]]
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">x</button>
+                </div>
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
                         <div class="card card-static-2 mb-30">
@@ -35,25 +44,35 @@
                                 <h4>Add New Article</h4>
                             </div>
                             <div class="card-body-table">
-                                <div class="news-content-right pd-20">
+                                <form method="post" th:object="${article}" th:action="@{/articles/save}">
+                                    <div class="news-content-right pd-20">
                                     <div class="form-group">
                                         <label class="form-label">Name*</label>
-                                        <input type="text" class="form-control" placeholder="Category Name">
+                                        <input type="text" th:field="*{label}" class="form-control" placeholder="Name" required>
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-label">Category*</label>
-                                        <select id="categtory" name="categtory" class="form-control">
-                                            <option selected>--Select Category--</option>
-                                            <option value="1">Fruits & Vegetables</option>
+                                        <label class="form-label">Sku*</label>
+                                        <input type="text" th:field="*{sku}" class="form-control" placeholder="sku" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Qte*</label>
+                                        <input type="number" th:field="*{inventory.quantity}" class="form-control" placeholder="0" min="0" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Sub-category*</label>
+                                        <select th:field="*{subCategory.idSubCategory}" class="form-control" required>
+                                            <option th:each="subCategory:${subCategories}" th:value="${subCategory.idSubCategory}"
+                                                    th:text="${subCategory.label}">Fruits & Vegetables
+                                            </option>
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-label">MRP*</label>
-                                        <input type="text" class="form-control" placeholder="$0">
+                                        <label class="form-label">Brand*</label>
+                                        <input type="text" th:field="*{brand}" class="form-control" placeholder="Apple,Samsung...">
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-label">Discount MRP*</label>
-                                        <input type="text" class="form-control" placeholder="$0">
+                                        <label class="form-label">Price*</label>
+                                        <input type="number" th:field="*{price}" class="form-control" placeholder="$0" required>
                                     </div>
                                     <div class="form-group">
                                         <label class="form-label">Status*</label>
@@ -75,7 +94,7 @@
                                         <div class="input-group">
                                             <div class="custom-file">
                                                 <input type="file" class="custom-file-input" id="inputGroupFile04"
-                                                       aria-describedby="inputGroupFileAddon04">
+                                                       aria-describedby="inputGroupFileAddon04" name="image">
                                                 <label class="custom-file-label" for="inputGroupFile04">Choose
                                                     Image</label>
                                             </div>
@@ -105,6 +124,7 @@
                                     </div>
                                     <button class="save-btn hover-btn" type="submit">Add New Product</button>
                                 </div>
+                                </form>
                             </div>
                         </div>
                     </div>

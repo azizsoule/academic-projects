@@ -26,7 +26,7 @@
                             <h4>Edit Catalog</h4>
                         </div>
                         <div class="card-body-table">
-                            <form method="post" th:object="${catalogDTO}" th:action="@{/catalogs/{id}/update(id = *{idCatalog})}">
+                            <form method="post" th:object="${catalog}" th:action="@{/catalogs/{id}/update(id = *{idCatalog})}">
                                 <input type="hidden" th:field="*{idCatalog}">
                                 <div class="news-content-right pd-20">
                                     <div class="form-group">
