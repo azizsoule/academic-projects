@@ -15,7 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class CommentFilterController {
-    private static final String URI="/comment_filter";
+    private static final String URI="/comment-filter";
     private static final String ADD_URI="/add-dictionary";
     private static final String LIST_VIEW="dictionnary";
     private static final String VIEW="add_dictionnary";
@@ -26,7 +26,7 @@ public class CommentFilterController {
 
     @GetMapping(URI)
     private String getWords(Model model){
-        model.addAttribute("comment_filter",dictionaryService.findAll());
+        model.addAttribute("words",dictionaryService.findAll());
             return LIST_VIEW;
     }
 
@@ -52,6 +52,17 @@ public class CommentFilterController {
             ra.addFlashAttribute("fail", "Registration failure !");
         }
         return Router.redirectTo(ADD_URI);
+    }
+    @PostMapping(URI + "/{id}/update")
+    private String updateWord(@PathVariable("id") Long id,DictionaryDTO dictionaryDTO, RedirectAttributes ra) {
+        try {
+            dictionaryService.update(dictionaryDTO);
+            ra.addAttribute("id",id).addFlashAttribute("success", "Successfully updated !");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            ra.addAttribute("id",id).addFlashAttribute("fail", "Update failure !");
+        }
+        return Router.redirectTo(URI + "/{id}");
     }
 
    @PostMapping(URI + "/{id}/delete")

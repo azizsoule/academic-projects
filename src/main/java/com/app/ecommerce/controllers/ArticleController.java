@@ -74,7 +74,7 @@ public class ArticleController implements BaseController<Article, Long> {
     }
 
     @Override
-    @GetMapping(URI + "/{id}/update")
+    @PostMapping(URI + "/{id}/update")
     public String update(Article obj, @PathVariable(name = "id") Long id, RedirectAttributes ra) {
         try {
             service.update(obj);
@@ -83,7 +83,7 @@ public class ArticleController implements BaseController<Article, Long> {
             System.out.println(e.getMessage());
             ra.addAttribute("id", id).addFlashAttribute("fail", "Update failure !");
         }
-        return Router.redirectTo(URI + "/{id}");
+        return Router.redirectTo(URI + "/{id}/edit");
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.app.ecommerce.models;
 
+import com.app.ecommerce.utils.Generator;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,7 +24,7 @@ public class Article {
 
     private String description;
 
-    @Column(length = 20)
+    @Column(length = 20, unique = true)
     private String sku;
 
     private float price;
@@ -62,4 +63,9 @@ public class Article {
     @OneToOne(mappedBy = "article")
     private WishItem wishItem;
 
+
+    @PrePersist
+    public void prePersist() {
+        sku = "SKU"+Generator.generate(5);
+    }
 }
