@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Table(name = "article")
@@ -40,8 +41,8 @@ public class Article {
     @OneToMany(mappedBy = "article")
     private Set<Image> images;
 
-    @OneToMany(mappedBy = "article")
-    private Set<Comment> comments;
+    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
+    private Set<Comment> comments = new HashSet<>();
 
     @OneToOne(orphanRemoval = true,cascade = CascadeType.ALL)
     @JoinColumn(name = "inventory_id_inventory")

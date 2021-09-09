@@ -1,7 +1,10 @@
 package com.app.ecommerce.controllers;
 
 import com.app.ecommerce.models.Article;
+import com.app.ecommerce.models.Comment;
+import com.app.ecommerce.models.Customer;
 import com.app.ecommerce.services.ArticleService;
+import com.app.ecommerce.services.CommentService;
 import com.app.ecommerce.services.SubCategoryService;
 import com.app.ecommerce.utils.Router;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +27,8 @@ public class ArticleController implements BaseController<Article, Long> {
     private ArticleService service;
     @Autowired
     private SubCategoryService subCategoryService;
+    @Autowired
+    private CommentService commentService;
 
     @Override
     @GetMapping(URI)

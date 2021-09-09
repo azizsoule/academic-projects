@@ -50,7 +50,7 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
                         Catalogs
                     </a>
-                    <a aria-controls="collapseSettings" aria-expanded="false" class="nav-link collapsed"
+                    <a aria-controls="collapseCategories" aria-expanded="false" class="nav-link collapsed"
                        data-target="#collapseCategories"
                        data-toggle="collapse" href="#">
                         <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
@@ -64,11 +64,20 @@
                             <a class="nav-link sub_nav_link" th:href="@{/sub-categories}">Sub Categories</a>
                         </nav>
                     </div>
-                    <a class="nav-link" th:href="@{/comment-filter}">
-                        <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                        Dictionnary
+                    <a aria-controls="collapseComment" aria-expanded="false" class="nav-link collapsed"
+                       data-target="#collapseComment"
+                       data-toggle="collapse" href="#">
+                        <div class="sb-nav-link-icon"><i class="fas fa-comments"></i></div>
+                        Comments filter
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
-
+                    <div aria-labelledby="headingTwo" class="collapse" data-parent="#sidenavAccordion"
+                         id="collapseComment">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link sub_nav_link" th:href="@{/dictionnary}"><i class="fas fa-book-open"></i>&ensp;Dictionnary</a>
+                            <a class="nav-link sub_nav_link" th:href="@{/comment-filter}"><i class="fas fa-comment-dots"></i>&ensp;Comments</a>
+                        </nav>
+                    </div>
                     <a class="nav-link" th:href="@{/articles}">
                         <div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>
                         Articles

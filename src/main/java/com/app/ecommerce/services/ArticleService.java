@@ -2,6 +2,7 @@ package com.app.ecommerce.services;
 
 import com.app.ecommerce.models.Article;
 import com.app.ecommerce.repositories.ArticleRepository;
+import com.app.ecommerce.utils.FilterSytem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,6 @@ public class ArticleService {
 
     @Autowired
     private ArticleRepository repository;
-
     public Article findById(Long id) {
         return repository.getById(id);
     }
