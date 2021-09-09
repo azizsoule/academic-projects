@@ -17,6 +17,8 @@ import javax.persistence.Table;
 @Setter
 public class User extends Person {
 
+    private String username;
+
     @ManyToOne
     @JoinColumn(name = "user_group_id_user_group")
     private UserGroup userGroup;
