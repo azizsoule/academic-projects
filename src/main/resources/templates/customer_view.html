@@ -6,9 +6,9 @@
         <div class="container-fluid">
             <h2 class="mt-30 page-title">Customers</h2>
             <ol class="breadcrumb mb-30">
-                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="customers.html">Customers</a></li>
-                <li class="breadcrumb-item active">Customer View</li>
+                <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                <li class="breadcrumb-item"><a th:href="@{/customers}">Customers</a></li>
+                <li class="breadcrumb-item active">View</li>
             </ol>
             <div class="row">
                 <div class="col-lg-5 col-md-6">
@@ -19,13 +19,13 @@
                                     <img src="images/avatar/img-1.jpg" alt="">
                                 </div>
                                 <div class="shopowner-dt-left mt-4">
-                                    <h4>Joginder Singh</h4>
+                                    <h4 th:text="${customer.firstName +' '+customer.lastName}">Joginder Singh</h4>
                                     <span>Customer</span>
                                 </div>
                                 <ul class="product-dt-purchases">
                                     <li>
                                         <div class="product-status">
-                                            Purchased <span class="badge-item-2 badge-status">15</span>
+                                            Purchased <span class="badge-item-2 badge-status" th:text="${customer.orders.size()}">15</span>
                                         </div>
                                     </li>
                                     <!-- <li>
@@ -37,26 +37,26 @@
                                 <div class="shopowner-dts">
                                     <div class="shopowner-dt-list">
                                         <span class="left-dt">Name</span>
-                                        <span class="right-dt">Joginder Singh</span>
+                                        <span th:text="${customer.firstName +' '+customer.lastName}" class="right-dt">Joginder Singh</span>
                                     </div>
                                     <div class="shopowner-dt-list">
                                         <span class="left-dt">Username</span>
-                                        <span class="right-dt">joginder</span>
+                                        <span th:text="${customer.firstName +' '+customer.lastName}" class="right-dt">joginder</span>
                                     </div>
                                     <div class="shopowner-dt-list">
                                         <span class="left-dt">Email</span>
-                                        <span class="right-dt"><a
+                                        <span th:text="${customer.email}" class="right-dt"><a
                                                 href=""
                                                 class="__cf_email__"
                                                 data-cfemail="6b18010a185a595b592b0c060a020745080406">[email&#160;protected]</a></span>
                                     </div>
                                     <div class="shopowner-dt-list">
                                         <span class="left-dt">Phone</span>
-                                        <span class="right-dt">+918437176189</span>
+                                        <span th:text="${customer.phoneNumber}" class="right-dt">+918437176189</span>
                                     </div>
                                     <div class="shopowner-dt-list">
                                         <span class="left-dt">Address</span>
-                                        <span class="right-dt">Ludhiana, Punjab</span>
+                                        <span th:text="${customer.birthDate}" class="right-dt">Ludhiana, Punjab</span>
                                     </div>
                                 </div>
                             </div>

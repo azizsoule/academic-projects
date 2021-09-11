@@ -1,6 +1,5 @@
 package com.app.ecommerce.controllers;
 
-import com.app.ecommerce.dtos.UserGroupDTO;
 import com.app.ecommerce.models.UserGroup;
 import com.app.ecommerce.services.UserGroupService;
 import com.app.ecommerce.utils.Router;
@@ -15,8 +14,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class GroupUserController {
 
-    private static final String URI = "/userGroups";
-    private static final String ADD_URI = "/add-userGroup";
+    private static final String URI = "/groups";
+    private static final String ADD_URI = "/add-group";
     private static final String LIST_VIEW = "group_user";
     private static final String VIEW = "add_userGroup";
     /*private static final String EDIT_VIEW = "edit_groupUser";*/
@@ -43,9 +42,9 @@ public class GroupUserController {
     }*/
 
     @PostMapping(ADD_URI + "/save")
-    private String postUserGroup(UserGroupDTO UserGroupDTO, RedirectAttributes ra) {
+    private String postUserGroup(UserGroup userGroup, RedirectAttributes ra) {
         try {
-            userGroupService.save(UserGroupDTO);
+            userGroupService.save(userGroup);
             ra.addFlashAttribute("success", "Successfully saved !");
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -55,10 +54,10 @@ public class GroupUserController {
     }
 
     @PostMapping(URI + "/{id}/update")
-    private String updateUserGroup(@PathVariable("id") Long id, UserGroupDTO UserGroupDTO,
+    private String updateUserGroup(@PathVariable("id") Long id, UserGroup userGroup,
                               RedirectAttributes ra) {
         try {
-            userGroupService.update(UserGroupDTO);
+            userGroupService.update(userGroup);
             ra.addAttribute("id", id).addFlashAttribute("success", "Successfully updated !");
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -68,9 +67,9 @@ public class GroupUserController {
     }
 
     @PostMapping(URI + "/{id}/delete")
-    private String deleteUserGroup(@PathVariable("id") Long id, UserGroupDTO UserGroupDTO, RedirectAttributes ra) {
+    private String deleteUserGroup(@PathVariable("id") Long id, UserGroup userGroup, RedirectAttributes ra) {
         try {
-            userGroupService.delete(UserGroupDTO);
+            userGroupService.delete(userGroup);
             ra.addFlashAttribute("success", "Successfully deleted !");
         } catch (Exception e) {
             System.out.println(e.getMessage());

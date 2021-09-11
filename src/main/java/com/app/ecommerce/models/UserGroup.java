@@ -30,6 +30,10 @@ public class UserGroup {
     @JoinTable(name = "user_group_privilege")
     private Set<Privilege> privileges;
 
+    public UserGroup(String label){
+        this.label = label;
+    }
+
     @PrePersist
     public void prePersist() {
         createdAt = new Date();

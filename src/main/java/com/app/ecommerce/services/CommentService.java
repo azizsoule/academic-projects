@@ -30,7 +30,6 @@ public class CommentService extends BaseService<Comment, Long> {
 
     @Override
     public Comment save(Comment comment) {
-//        filter(comment);
         return repository.save(comment);
     }
 
@@ -48,9 +47,14 @@ public class CommentService extends BaseService<Comment, Long> {
         return repository.findByBlockedIsTrue();
     }
 
-    public void filter(Comment comment){
-        int i = (int) dictionaryService.findAll().stream().filter(word -> comment.getContent().contains(word.getLabel())).count();
-        if(i > 0) comment.setBlocked(true);
+    @Transactional
+    public void block(Long id){
+        repository.block(true,id);
     }
+    @Transactional
+    public void unblock(Long id){
+        repository.block(false,id);
+    }
+
 
 }

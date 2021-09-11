@@ -87,5 +87,27 @@ public class CommentFilterController {
         model.addAttribute("comments",commentService.blockedComments());
         return COMMENT_LIST_VIEW;
     }
+    @GetMapping(C_URI+ "/{id}/block")
+    private String blockComment(@PathVariable("id") Long id, RedirectAttributes ra){
+        try {
+            commentService.block(id);
+            ra.addFlashAttribute("success", "Successfully blocked !");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            ra.addFlashAttribute("fail", "Block failure !");
+        }
+        return Router.redirectTo(C_URI);
+    }
+    @GetMapping(C_URI+ "/{id}/unblock")
+    private String unBlockComment(@PathVariable("id") Long id, RedirectAttributes ra){
+        try {
+            commentService.unblock(id);
+            ra.addFlashAttribute("success", "Successfully unblock comment !");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            ra.addFlashAttribute("fail", "Unblock failure !");
+        }
+        return Router.redirectTo(C_URI);
+    }
 
 }

@@ -1,40 +1,31 @@
 package com.app.ecommerce.services;
 
-import com.app.ecommerce.dtos.CustomerDTO;
 import com.app.ecommerce.models.Customer;
 import com.app.ecommerce.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CustomerService extends BaseService<CustomerDTO, Long> {
+public class CustomerService extends BaseService<Customer, Long> {
 
     @Autowired
     CustomerRepository repository;
 
     @Override
-    public CustomerDTO findById(Long aLong) {
-        Customer customer = repository.getById(aLong);
-        return modelMapper().map(customer, CustomerDTO.class);
+    public Customer findById(Long aLong) {
+        return repository.getById(aLong);
     }
 
     @Override
-    public List<CustomerDTO> findAll() {
-        List<Customer> customers = repository.findAll();
-        List<CustomerDTO> customerDTOS = new ArrayList<>();
-        customers.forEach(customer -> {
-            customerDTOS.add(modelMapper().map(customer, CustomerDTO.class));
-        });
-        return customerDTOS;
+    public List<Customer> findAll() {
+        return repository.findAll();
     }
 
     @Override
-    public CustomerDTO save(CustomerDTO customerDTO) {
-        Customer customer = repository.save(modelMapper().map(customerDTO, Customer.class));
-        return modelMapper().map(customer, CustomerDTO.class);
+    public Customer save(Customer customer) {
+        return repository.save(customer);
     }
 
     @Override
@@ -43,8 +34,8 @@ public class CustomerService extends BaseService<CustomerDTO, Long> {
     }
 
     @Override
-    public void delete(CustomerDTO customerDTO) {
-        repository.delete(modelMapper().map(customerDTO, Customer.class));
+    public void delete(Customer customer) {
+        repository.delete(customer);
     }
 
 }

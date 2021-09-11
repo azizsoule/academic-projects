@@ -27,4 +27,9 @@ public class Privilege {
     @ManyToMany(mappedBy = "privileges", fetch = FetchType.EAGER)
     private Set<UserGroup> groups;
 
+    public Privilege(String label, String description){
+        this.label=label;
+        this.description=description;
+    }
+
 }

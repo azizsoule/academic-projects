@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Arrays;
 
@@ -44,6 +45,12 @@ class FilterSytemTest {
         comment.setCustomer(customerRepository.getById(1L));
         Comment saved = commentRepository.saveAndFlush(comment);
         assertFalse(commentRepository.getById(saved.getIdComment()).isBlocked());
+
+    }
+    @Test
+    void showPassword() {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(11);
+        System.out.println(passwordEncoder.encode("sapassword"));
 
     }
 //    @Test

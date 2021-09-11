@@ -44,7 +44,7 @@ public class UserController {
     }*/
 
     @PostMapping(ADD_URI + "/save")
-    private String postUser(UserDTO userDTO, RedirectAttributes ra) {
+    private String postUser(User userDTO, RedirectAttributes ra) {
         try {
             userService.save(userDTO);
             ra.addFlashAttribute("success", "Successfully saved !");
@@ -56,7 +56,7 @@ public class UserController {
     }
 
     @PostMapping(URI + "/{id}/update")
-    private String updateUser(@PathVariable("id") Long id, UserDTO userDTO,
+    private String updateUser(@PathVariable("id") Long id, User userDTO,
                                  RedirectAttributes ra) {
         try {
             userService.update(userDTO);
@@ -69,7 +69,7 @@ public class UserController {
     }
 
     @PostMapping(URI + "/{id}/delete")
-    private String deleteCatalog(@PathVariable("id") Long id, UserDTO userDTO, RedirectAttributes ra) {
+    private String deleteCatalog(@PathVariable("id") Long id, User userDTO, RedirectAttributes ra) {
         try {
             userService.delete(userDTO);
             ra.addFlashAttribute("success", "Successfully deleted !");
