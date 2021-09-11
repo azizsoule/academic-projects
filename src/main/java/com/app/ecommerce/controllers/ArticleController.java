@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class ArticleController implements BaseController<Article, Long> {
     private static final String URI = "/articles";
@@ -33,20 +36,38 @@ public class ArticleController implements BaseController<Article, Long> {
     @Override
     @GetMapping(URI)
     public String getAll(Model model) {
-        model.addAttribute("articles", service.findAll());
+       List<Article> recommendedList = new ArrayList<>();
+        List<Article> articles = service.findAll();
+        articles.forEach(article -> {
+             int i =1;
+             if (article.getComments().size()!=0 && article.getRatingSum()!=0) {
+                 if (article.getRatingSum() / article.getComments().size() >= 3 && i <= 5) {
+                     recommendedList.add(article);
+                     i +=1;
+                 }
+             }
+        });
+        System.out.println("***********************"+recommendedList.size());
+        model.addAttribute("articles", articles);
+        model.addAttribute("recommend",recommendedList);
         return LIST_VIEW;
     }
 
     @Override
     @GetMapping(URI + "/{id}")
+
     public String getById(@PathVariable(name = "id") Long id, Model model) {
+
         model.addAttribute("article", service.findById(id));
         model.addAttribute("subCategories", subCategoryService.findAll());
+
+
         return VIEW;
     }
 
     @GetMapping(URI + "/{id}/edit")
     public String edit(@PathVariable(name = "id") Long id, Model model) {
+
         model.addAttribute("article", service.findById(id));
         model.addAttribute("subCategories", subCategoryService.findAll());
         return EDIT_VIEW;
@@ -91,6 +112,8 @@ public class ArticleController implements BaseController<Article, Long> {
         return Router.redirectTo(URI + "/{id}/edit");
     }
 
+
+
     @Override
     @GetMapping(URI + "/{id}/delete")
     public String delete(Article obj, @PathVariable(name = "id") Long id, RedirectAttributes ra) {
@@ -103,4 +126,5 @@ public class ArticleController implements BaseController<Article, Long> {
         }
         return Router.redirectTo(URI);
     }
+
 }
