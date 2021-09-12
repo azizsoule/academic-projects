@@ -2,7 +2,9 @@
 <html lang="en"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org"
       layout:decorate="~{layout/base-layout}">
 <th:block layout:fragment="content" >
-        <main>
+    <link rel="stylesheet" type="text/css" th:href="@{/data-tables/datatables.min.css}"/>
+
+    <main>
             <div class="container-fluid">
                 <h2 class="mt-30 page-title">Orders</h2>
                 <ol class="breadcrumb mb-30">
@@ -43,7 +45,7 @@
                             </div>
                             <div class="card-body-table">
                                 <div class="table-responsive">
-                                    <table class="table ucp-table table-hover">
+                                    <table class="table ucp-table table-hover" id="orders-table">
                                         <thead>
                                         <tr >
                                             <th style="width:60px"><input type="checkbox" class="check-all"></th>
@@ -85,4 +87,13 @@
             </div>
         </main>
 </th:block>
+
+<th:block layout:fragment="scripts">
+    <script>
+        $(document).ready( function () {
+            $('#orders-table').DataTable();
+        } );
+    </script>
+</th:block>
+
 </html>

@@ -3,6 +3,8 @@
       layout:decorate="~{layout/base-layout}">
 
 <th:block layout:fragment="content">
+    <link rel="stylesheet" type="text/css" th:href="@{/data-tables/datatables.min.css}"/>
+
     <main>
         <div class="container-fluid">
             <h2 class="mt-30 page-title">UserGroup</h2>
@@ -52,7 +54,7 @@
                         </div>
                         <div class="card-body-table">
                             <div class="table-responsive">
-                                <table class="table ucp-table table-hover">
+                                <table class="table ucp-table table-hover" id="groupUser-table">
                                     <thead>
                                     <tr>
                                         <th style="width:60px"><input type="checkbox" class="check-all"></th>
@@ -82,6 +84,14 @@
             </div>
         </div>
     </main>
+</th:block>
+
+<th:block layout:fragment="scripts">
+    <script>
+        $(document).ready( function () {
+            $('#groupUser-table').DataTable();
+        } );
+    </script>
 </th:block>
 
 </html>
