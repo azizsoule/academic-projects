@@ -18,7 +18,7 @@ public class OrderController {
     private static final String URI = "/orders";
     private static final String ADD_URI = "/add-order";
     private static final String LIST_VIEW = "orders";
-    private static final String VIEW = "add_order";
+    private static final String VIEW = "order_view";
     private static final String EDIT_VIEW = "edit_order";
 
 
@@ -40,9 +40,11 @@ public class OrderController {
 
     @GetMapping(URI + "/{id}")
     private String getOrderById(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("orderDetailDTO", orderService.findById(id));
-        return EDIT_VIEW;
+        model.addAttribute("order", orderService.findById(id));
+        return VIEW;
     }
+
+
 
      @PostMapping(ADD_URI + "/save")
     private String postOrder(OrderDetailDTO orderDetailDTO, RedirectAttributes ra) {
