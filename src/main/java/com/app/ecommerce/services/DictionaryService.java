@@ -1,41 +1,53 @@
 package com.app.ecommerce.services;
 
-import com.app.ecommerce.dtos.DictionaryDTO;
 import com.app.ecommerce.models.Dictionary;
+import com.app.ecommerce.repositories.CommentRepository;
 import com.app.ecommerce.repositories.DictionaryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-public class DictionaryService extends BaseService<DictionaryDTO, Long> {
+public class DictionaryService extends BaseService<Dictionary, Long> {
 
     @Autowired
     DictionaryRepository repository;
 
+    @Autowired
+    CommentRepository commentRepository;
+
     @Override
-    public DictionaryDTO findById(Long aLong) {
-        Dictionary dictionary = repository.getById(aLong);
-        return modelMapper().map(dictionary, DictionaryDTO.class);
+    public Dictionary findById(Long aLong) {
+        return repository.getById(aLong);
     }
 
     @Override
-    public List<DictionaryDTO> findAll() {
-        List<DictionaryDTO> dictionaryDTOS = new ArrayList<>();
-        List<Dictionary> dictionaries = repository.findAll();
-        dictionaries.forEach(dictionary -> {
-            dictionaryDTOS.add(modelMapper().map(dictionary, DictionaryDTO.class));
-        });
-        return dictionaryDTOS;
+    public List<Dictionary> findAll() {
+        return repository.findAll();
     }
 
     @Override
-    public DictionaryDTO save(DictionaryDTO dictionaryDTO) {
-        Dictionary dictionary = repository.save(modelMapper().map(dictionaryDTO, Dictionary.class));
-        return modelMapper().map(dictionary, DictionaryDTO.class);
+    @Transactional
+    public Dictionary save(Dictionary dictionary) {
+        Dictionary savedDico = repository.save(dictionary);
+//        if (commentRepository.count() != 0) {
+//            commentRepository.findAll().forEach(comment -> {
+//                if (comment.getContent().contains(savedDico.getLabel())) {
+//                    if (!comment.isBlocked()) {
+//                        comment.setBlocked(true);
+//                    }
+//                    commentRepository.save(comment);
+//                }
+//            });
+//        }
+        return savedDico;
     }
+    public void saveAll(Iterable<Dictionary> dictionary) {
+        repository.saveAll(dictionary);
+    }
+
 
     @Override
     public void deleteById(Long aLong) {
@@ -43,7 +55,7 @@ public class DictionaryService extends BaseService<DictionaryDTO, Long> {
     }
 
     @Override
-    public void delete(DictionaryDTO dictionaryDTO) {
-        repository.delete(modelMapper().map(dictionaryDTO, Dictionary.class));
+    public void delete(Dictionary dictionary) {
+        repository.delete(modelMapper().map(dictionary, Dictionary.class));
     }
 }

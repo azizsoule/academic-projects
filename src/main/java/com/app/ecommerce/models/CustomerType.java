@@ -15,14 +15,15 @@ public class CustomerType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ctype_id")
     private Long idCustomerType;
 
     @Column(length = 30)
     private String label;
 
-    private int start;
+    private int startValue;
 
-    private int end;
+    private int endValue;
 
     @OneToMany(mappedBy = "customerType")
     private Set<Customer> customers;

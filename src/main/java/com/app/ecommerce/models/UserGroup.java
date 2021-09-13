@@ -26,6 +26,14 @@ public class UserGroup {
     @OneToMany(mappedBy = "userGroup")
     private Set<User> users;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_group_privilege")
+    private Set<Privilege> privileges;
+
+    public UserGroup(String label){
+        this.label = label;
+    }
+
     @PrePersist
     public void prePersist() {
         createdAt = new Date();

@@ -7,17 +7,18 @@
     <meta content="" name="description-gambolthemes">
     <meta content="" name="author-gambolthemes">
     <title></title>
-    <link href="css/styles.css" rel="stylesheet">
-    <link href="css/admin-style.css" rel="stylesheet">
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+    <link th:href="@{/css/admin-style.css}" rel="stylesheet">
+    <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/data-tables/datatables.min.css}"/>
 
     <th:block layout:fragment="links"></th:block>
 
 </head>
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-light bg-clr">
-    <a class="navbar-brand logo-brand" href="index.html">Supermarket</a>
+    <a class="navbar-brand logo-brand" href="/">Market-Admin</a>
     <button class="btn btn-link btn-sm order-1 order-lg-0" href="#" id="sidebarToggle"><i class="fas fa-bars"></i>
     </button>
     <a class="frnt-link" href=""><i class="fas fa-external-link-alt"></i>Home</a>
@@ -50,7 +51,7 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
                         Catalogs
                     </a>
-                    <a aria-controls="collapseSettings" aria-expanded="false" class="nav-link collapsed"
+                    <a aria-controls="collapseCategories" aria-expanded="false" class="nav-link collapsed"
                        data-target="#collapseCategories"
                        data-toggle="collapse" href="#">
                         <div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
@@ -64,14 +65,23 @@
                             <a class="nav-link sub_nav_link" th:href="@{/sub-categories}">Sub Categories</a>
                         </nav>
                     </div>
-                    <a class="nav-link" th:href="@{/comment-filter}">
-                        <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                        Dictionnary
+                    <a aria-controls="collapseComment" aria-expanded="false" class="nav-link collapsed"
+                       data-target="#collapseComment"
+                       data-toggle="collapse" href="#">
+                        <div class="sb-nav-link-icon"><i class="fas fa-comments"></i></div>
+                        Comments filter
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
-
-                    <a class="nav-link" th:href="@{/products}">
+                    <div aria-labelledby="headingTwo" class="collapse" data-parent="#sidenavAccordion"
+                         id="collapseComment">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link sub_nav_link" th:href="@{/dictionnary}"><i class="fas fa-book-open"></i>&ensp;Dictionnary</a>
+                            <a class="nav-link sub_nav_link" th:href="@{/comment-filter}"><i class="fas fa-comment-dots"></i>&ensp;Comments</a>
+                        </nav>
+                    </div>
+                    <a class="nav-link" th:href="@{/articles}">
                         <div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>
-                        Products
+                        Articles
                     </a>
                     <a class="nav-link" th:href="@{/orders}">
                         <div class="sb-nav-link-icon"><i class="fas fa-cart-arrow-down"></i></div>
@@ -85,6 +95,22 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-gift"></i></div>
                         Offers
                     </a>
+
+                    <a aria-controls="collapseUser" aria-expanded="false" class="nav-link collapsed"
+                       data-target="#collapseUser"
+                       data-toggle="collapse" href="#">
+                        <div class="sb-nav-link-icon"><i class="fas fa-user-shield"></i></div>
+                        Manage access
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div aria-labelledby="headingTwo" class="collapse" data-parent="#sidenavAccordion"
+                         id="collapseUser">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link sub_nav_link" th:href="@{/users}"><i class="fas fa-user"></i>&ensp;Users</a>
+                            <a class="nav-link sub_nav_link" th:href="@{/groups}"><i class="fas fa-user-friends"></i>&ensp;User Groups</a>
+                            <a class="nav-link sub_nav_link" th:href="@{/permissions}"><i class="fas fa-user-cog"></i>&ensp;Roles and permission</a>
+                        </nav>
+                    </div>
 
                     <a aria-controls="collapseSettings" aria-expanded="false" class="nav-link collapsed"
                        data-target="#collapseSettings"
@@ -126,14 +152,15 @@
         </footer>
     </div>
 </div>
-<script src="js/jquery-3.4.1.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="vendor/chart/highcharts.js"></script>
-<script src="vendor/chart/exporting.js"></script>
-<script src="vendor/chart/export-data.js"></script>
-<script src="vendor/chart/accessibility.js"></script>
-<script src="js/scripts.js"></script>
-<script src="js/chart.js"></script>
+<script th:src="@{/js/jquery-3.4.1.min.js}"></script>
+<script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/vendor/chart/highcharts.js}"></script>
+<script th:src="@{/vendor/chart/exporting.js}"></script>
+<script th:src="@{/vendor/chart/export-data.js}"></script>
+<script th:src="@{/vendor/chart/accessibility.js}"></script>
+<script th:src="@{/js/scripts.js}"></script>
+<script th:src="@{/js/chart.js}"></script>
+<script type="text/javascript" th:src="@{/data-tables/datatables.min.js}"></script>
 <th:block layout:fragment="scripts"></th:block>
 </body>
 

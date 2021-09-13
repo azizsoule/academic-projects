@@ -1,11 +1,15 @@
 package com.app.ecommerce.models.supers;
 
 import com.app.ecommerce.models.Sex;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @MappedSuperclass
+@Getter
+@Setter
 public class Person {
 
     @Id
@@ -26,7 +30,7 @@ public class Person {
 
     private Date createdAt;
 
-    private boolean blocked;
+    private boolean blocked=false;
 
     @PrePersist
     public void prePersist() {

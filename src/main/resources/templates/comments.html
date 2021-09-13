@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/base-layout}">
+<th:block layout:fragment="content" >
+    <main>
+        <div class="container-fluid">
+            <h2 class="mt-30 page-title">Comments</h2>
+            <ol class="breadcrumb mb-30">
+                <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                <li class="breadcrumb-item active">Comments</li>
+            </ol>
+            <!--Alerts for submissions-->
+            <div class="alert alert-success" th:if="${success}"><i class="fa fa-check-circle"></i>
+                [[${success}]]
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">x</button>
+            </div>
+            <div class="alert alert-danger" th:if="${fail}"><i class="fa fa-exclamation-circle"></i>
+                [[${fail}]]
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">x</button>
+            </div>
+            <div class="row justify-content-between">
+                <div class="col-lg-3 col-md-4">
+                    <div class="bulk-section mt-30">
+                        <div class="input-group">
+                            <select id="action" name="action" class="form-control">
+                                <option selected>Bulk Actions</option>
+                                <option value="1">Active</option>
+                                <option value="2">Inactive</option>
+                                <option value="3">Delete</option>
+                            </select>
+                            <div class="input-group-append">
+                                <button class="status-btn hover-btn" type="submit">Apply</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="bulk-section mt-30">
+                        <div class="search-by-name-input">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <div class="input-group">
+                            <div class="input-group-append">
+                                <button class="status-btn hover-btn" type="submit">Search article</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12">
+                    <div class="card card-static-2 mt-30 mb-30">
+                        <div class="card-title-2">
+                            <h4>All articles</h4>
+                        </div>
+                        <div class="card-body-table">
+                            <div class="table-responsive">
+                                <table class="table ucp-table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th style="width:60px"><input type="checkbox" class="check-all"></th>
+                                        <th style="width:60px">ID</th>
+                                        <th>Content</th>
+                                        <th>From Article</th>
+                                        <th>By customer</th>
+                                        <th>CreatedAt</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="comment:${comments}">
+                                        <td><input type="checkbox" class="check-item" name="ids[]" value="10"></td>
+                                        <td th:text="${comment.idComment}">1</td>
+                                        <td th:text="${comment.content}"></td>
+                                        <td><a th:text="${comment.article.label}" th:href="@{/articles/{id}(id=${comment.article.idArticle})}"></a></td>
+                                        <td><a th:text="${comment.customer.firstName}" th:href="@{/customers/{id}(id=${comment.customer.id})}"></a></td>
+                                        <td th:text="${comment.createdAt}">8 hours ago</td>
+                                        <td><span th:class="${comment.blocked ? 'badge-item badge-status':'badge-item badge-success'}" th:text="${comment.blocked ? 'Blocked' : 'UnBlocked'}">Active</span></td>
+                                        <td class="action-btns" >
+                                            <a th:if="${comment.blocked}" th:href="@{/comment-filter/{id}/unblock(id=${comment.idComment})}" class="view-shop-btn" title="View"><i
+                                                    class="fas fa-lock-open"></i></a>
+                                            <a th:unless="${comment.blocked}" th:href="@{/comment-filter/{id}/block(id=${comment.idComment})}" class="edit-btn" title="Edit"><i
+                                                    class="fas fa-lock"></i></a>
+                                        </td>
+                                    </tr>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</th:block  >
+
+
+</html>

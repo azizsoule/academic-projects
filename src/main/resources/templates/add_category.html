@@ -6,61 +6,60 @@
         <div class="container-fluid">
             <h2 class="mt-30 page-title">Categories</h2>
             <ol class="breadcrumb mb-30">
-                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="category.html">Categories</a></li>
+                <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                <li class="breadcrumb-item"><a th:href="@{/categories}">Categories</a></li>
                 <li class="breadcrumb-item active">Add Category</li>
             </ol>
+            <!--Alerts for submissions-->
+            <div class="alert alert-success" th:if="${success}"><i class="fa fa-check-circle"></i>
+                [[${success}]]
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">x</button>
+            </div>
+            <div class="alert alert-danger" th:if="${fail}"><i class="fa fa-exclamation-circle"></i>
+                [[${fail}]]
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">x</button>
+            </div>
             <div class="row">
-                <div class="col-lg-6 col-md-6">
+                <div class="col-lg-12 col-md-12">
                     <div class="card card-static-2 mb-30">
                         <div class="card-title-2">
                             <h4>Add New Category</h4>
                         </div>
+
+
                         <div class="card-body-table">
-                            <div class="news-content-right pd-20">
-                                <div class="form-group">
-                                    <label class="form-label">Name*</label>
-                                    <input type="text" class="form-control" placeholder="Category Name">
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Status*</label>
-                                    <select id="status" name="status" class="form-control">
-                                        <option selected>Active</option>
-                                        <option value="1">Inactive</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Category*</label>
-                                    <select id="catalogue" name="catalogue" class="form-control">
-                                        <option selected></option>
-                                        <option value="1">Electronique</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-label">Category Image*</label>
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="inputGroupFile04"
-                                                   aria-describedby="inputGroupFileAddon04">
-                                            <label class="custom-file-label" for="inputGroupFile04">Choose
-                                                Image</label>
+                            <form method="post" th:object="${category}" th:action="@{/categories/save}">
+                                <div class="news-content-right pd-20">
+                                    <div class="form-group">
+                                        <label class="form-label">Name*</label>
+                                        <input type="text" th:field="*{label}" class="form-control"
+                                               placeholder="Category Name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Catalog*</label>
+                                        <select th:field="*{catalog.idCatalog}" class="form-control">
+                                            <option th:each="cat:${catalogs}" th:value="${cat.idCatalog}"
+                                                    th:text="${cat.label}">Fruits & Vegetables
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">Category Image*</label>
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" th:field="*{image}"
+                                                       aria-describedby="inputGroupFileAddon04">
+                                                <label class="custom-file-label" for="image">Choose
+                                                    Image</label>
+                                            </div>
+                                        </div>
+                                        <div class="add-cate-img">
+                                            <img src="images/category/icon-1.svg" alt="">
                                         </div>
                                     </div>
-                                    <div class="add-cate-img">
-                                        <img src="images/category/icon-1.svg" alt="">
-                                    </div>
+                                    <button class="save-btn hover-btn" type="submit">Add New Category</button>
                                 </div>
-                                <div class="form-group">
-                                    <label class="form-label">Description*</label>
-                                    <div class="card card-editor">
-                                        <div class="content-editor">
-                                                <textarea class="text-control"
-                                                          placeholder="Enter Description"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="save-btn hover-btn" type="submit">Add New Category</button>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>

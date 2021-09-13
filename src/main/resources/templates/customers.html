@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org"
       layout:decorate="~{layout/base-layout}">
+
 <th:block layout:fragment="content">
+    <link rel="stylesheet" type="text/css" th:href="@{/data-tables/datatables.min.css}"/>
     <main>
         <div class="container-fluid">
             <h2 class="mt-30 page-title">Customers</h2>
             <ol class="breadcrumb mb-30">
-                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
                 <li class="breadcrumb-item active">Customers</li>
             </ol>
             <div class="row">
@@ -17,7 +19,7 @@
                         </div>
                         <div class="card-body-table">
                             <div class="table-responsive">
-                                <table class="table ucp-table table-hover">
+                                <table class="table ucp-table table-hover" id="customers-table">
                                     <thead>
                                     <tr>
                                         <th style="width:60px"><input type="checkbox" class="check-all"></th>
@@ -31,26 +33,26 @@
                                     </thead>
                                     <tbody>
 
-                                    <tr>
+                                    <tr th:each="customer:${customers}">
                                         <td><input type="checkbox" class="check-item" name="ids[]" value="1"></td>
-                                        <td>6</td>
+                                        <td th:text="${customer.id}">6</td>
                                         <td>
                                             <div class="cate-img-6">
                                                 <img src="images/avatar/img-6.jpg" alt="">
                                             </div>
                                         </td>
-                                        <td>Davinder Singh</td>
-                                        <td><a href=""
+                                        <td th:text="${customer.firstName +' '+customer.lastName}">Davinder Singh</td>
+                                        <td th:text="${customer.email}"><a href=""
                                                class="__cf_email__"
                                                data-cfemail="afcbced9c6c1cbcaddefcad7cec2dfc3ca81ccc0c2">[email&#160;protected]</a>
                                         </td>
-                                        <td>+911234567890</td>
+                                        <td th:text="${customer.phoneNumber}">+911234567890</td>
                                         <td class="action-btns">
-                                            <a href="customer_view.html" class="view-shop-btn" title="View"><i
+                                            <a th:href="@{/customers/{id}/view(id=${customer.id})}" class="view-shop-btn" title="View"><i
                                                     class="fas fa-eye"></i></a>
-                                            <a href="customer_edit.html" class="edit-btn" title="Edit"><i
+                                            <a th:href="@{/customers/{id}(id=${customer.id})}" class="edit-btn" title="Edit"><i
                                                     class="fas fa-edit"></i></a>
-                                            <a href="#" class="delete-btn" title="Delete"><i
+                                            <a th:href="@{/customers/{id}/delete(id=${customer.id})}" class="delete-btn" title="Delete"><i
                                                     class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
@@ -67,6 +69,13 @@
 
 <th:block layout:fragment="scripts">
     <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+
+        <script>
+            $(document).ready( function () {
+                $('#customers-table').DataTable();
+            } );
+        </script>
+
 </th:block>
 
 </html>

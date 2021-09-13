@@ -1,13 +1,16 @@
 package com.app.ecommerce.models;
 
+import com.app.ecommerce.utils.CommentFilter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 
-@Table(name = "comment")
+@Table(name = "customer_comment")
 @Entity
+@EntityListeners(CommentFilter.class)
 @NoArgsConstructor
 @Getter
 @Setter
@@ -17,18 +20,24 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idComment;
 
-    private int rating;
+    private int rating=0;
 
     private String content;
 
     private boolean blocked;
 
+    private Date createdAt;
+
     @ManyToOne
-    @JoinColumn(name = "article_id_article")
+    @JoinColumn(name = "id_article")
     private Article article;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
+    @PrePersist
+    public void prePersist() {
+        createdAt = new Date();
+    }
 }

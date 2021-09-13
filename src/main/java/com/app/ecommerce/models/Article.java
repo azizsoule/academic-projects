@@ -1,10 +1,14 @@
 package com.app.ecommerce.models;
 
+import com.app.ecommerce.utils.Constants;
+import com.app.ecommerce.utils.Generator;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Table(name = "article")
@@ -21,37 +25,36 @@ public class Article {
     @Column(length = 50)
     private String label;
 
+    @Type(type ="text")
     private String description;
 
-    @Column(length = 20)
+    @Column(length = 20, unique = true)
     private String sku;
 
     private float price;
 
-    private int commentCount;
-
-    private int ratingSum;
+    private int ratingSum = 0;
 
     private String image;
 
     private String brand;
 
-    @OneToMany(mappedBy = "article")
-    private Set<Image> images;
+    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
+    private Set<Image> images  = new HashSet<>();
 
-    @OneToMany(mappedBy = "article")
-    private Set<Comment> comments;
+    @OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
+    private Set<Comment> comments = new HashSet<>();
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "inventory_id_inventory")
+    @OneToOne(orphanRemoval = true,cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_inventory")
     private Inventory inventory;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "sub_category_id_sub_category")
+    @ManyToOne
+    @JoinColumn(name = "id_sub_category")
     private SubCategory subCategory;
 
     @ManyToMany(mappedBy = "articles")
-    private Set<Discount> discounts;
+    private Set<Discount> discounts = new HashSet<>();
 
     @OneToOne(mappedBy = "article")
     private CartItem cartItem;
@@ -62,4 +65,15 @@ public class Article {
     @OneToOne(mappedBy = "article")
     private WishItem wishItem;
 
+    @Transient
+    public String getMainImage() {
+        if (image == null) return null;
+        return "/"+ Constants.ARTICLES_MEDIA_DIR +"/" + sku + "/" + image;
+    }
+
+
+    @PrePersist
+    public void prePersist() {
+        sku = "SKU"+Generator.generate(5);
+    }
 }

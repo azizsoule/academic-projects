@@ -33,7 +33,7 @@ public class Discount {
 
     private boolean percentage;
 
-    private boolean enabled;
+    private boolean enabled = true;
 
     private Date createdAt;
 

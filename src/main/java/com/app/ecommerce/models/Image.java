@@ -19,8 +19,12 @@ public class Image {
 
     String image;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "article_id_article")
     Article article;
+
+    public Image(String image){
+        this.image = image;
+    }
 
 }

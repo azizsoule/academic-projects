@@ -1,44 +1,65 @@
 package com.app.ecommerce.services;
 
-import com.app.ecommerce.dtos.UserDTO;
 import com.app.ecommerce.models.User;
 import com.app.ecommerce.repositories.UserRepository;
+import com.app.ecommerce.utils.Constants;
+import com.app.ecommerce.utils.Generator;
+import com.app.ecommerce.utils.MailSender;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
-@Service
-public class UserService extends BaseService<UserDTO, Long> {
+@Service("userDetailsService")
+public class UserService extends BaseService<User, Long> implements UserDetailsService {
 
-    @Autowired
-    private UserRepository repository;
+    private final UserRepository repository;
 
-    @Override
-    public UserDTO findById(Long idUser) {
-        User user = repository.getById(idUser);
-        return modelMapper().map(user, UserDTO.class);
+    private final JavaMailSender mailSender;
+
+    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(Constants.ENCRYPTION_STRENGTH);
+
+    public UserService(UserRepository repository, JavaMailSender mailSender) {
+        this.repository = repository;
+        this.mailSender = mailSender;
     }
 
     @Override
-    public List<UserDTO> findAll() {
-        List<User> users = repository.findAll();
-        List<UserDTO> userDTOS = new ArrayList<>();
-        users.forEach(user -> {
-            UserDTO userDTO = modelMapper().map(user, UserDTO.class);
-            userDTOS.add(userDTO);
-        });
-        return userDTOS;
+    public User findById(Long idUser) {
+        return repository.getById(idUser);
     }
 
     @Override
-    public UserDTO save(UserDTO userDTO) {
-        User user = modelMapper().map(userDTO, User.class);
-        user = repository.save(user);
-        userDTO = modelMapper().map(user, UserDTO.class);
-        return userDTO;
+    public List<User> findAll() {
+        return repository.findAll();
     }
+
+    @Override
+    public User save(User user) {
+        return repository.save(user);
+    }
+    public User register(User user) {
+        user.setBlocked(false);
+        user.setPasswordExpired(false);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        return save(user);
+    }
+    public void registerNewUser(User user) {
+        user.setBlocked(false);
+        user.setPasswordExpired(false);
+        String userPassword = Generator.generatePassword(8);
+        user.setPassword(passwordEncoder.encode(userPassword));
+        User savedUser = save(user);
+        savedUser.setPassword(userPassword);
+        sendMailToUser(savedUser);
+    }
+
+
 
     @Override
     public void deleteById(Long idUser) {
@@ -46,9 +67,33 @@ public class UserService extends BaseService<UserDTO, Long> {
     }
 
     @Override
-    public void delete(UserDTO userDTO) {
-        User user = modelMapper().map(userDTO, User.class);
+    public void delete(User user) {
         repository.delete(user);
     }
+    public Long count(){
+        return repository.count();
+    }
 
+    @Override
+    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+        try {
+            final User user = repository.findByUsernameOrEmail(s,s);
+            if (user == null) {
+                throw new UsernameNotFoundException("E-mail ou mot de passe incorrect !");
+            }
+            return user;
+        } catch (final Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+    private void sendMailToUser(User user){
+        Thread thread = new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                MailSender.sendEmailMessage(user,mailSender);
+            }
+        };
+        thread.start();
+    }
 }
