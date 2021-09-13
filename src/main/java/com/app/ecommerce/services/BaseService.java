@@ -1,9 +1,11 @@
 package com.app.ecommerce.services;
 
+import io.debezium.data.Envelope;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public abstract class BaseService<DTO, ID> {
@@ -28,5 +30,7 @@ public abstract class BaseService<DTO, ID> {
     public abstract void deleteById(ID id);
 
     public abstract void delete(DTO dto);
+
+    public abstract void replicateData(Map<String, Object> data, Envelope.Operation operation);
 
 }
