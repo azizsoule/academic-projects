@@ -42,8 +42,8 @@ public class CatalogService extends BaseService<Catalog, Long> {
         repository.delete(modelMapper().map(Catalog, Catalog.class));
     }
 
-    public void replicateData(Map<String, Object> catalogData, Envelope.Operation operation) {
-        final Catalog catalog = this.modelMapper().map(catalogData, Catalog.class);
+    public void replicateData(Map<String, Object> data, Envelope.Operation operation) {
+        final Catalog catalog = this.modelMapper().map(data, Catalog.class);
         if (Envelope.Operation.DELETE == operation) {
             deleteById(catalog.getIdCatalog());
         } else {

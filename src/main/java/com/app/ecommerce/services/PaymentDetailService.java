@@ -1,40 +1,33 @@
 package com.app.ecommerce.services;
 
-import com.app.ecommerce.dtos.PaymentDetailDTO;
 import com.app.ecommerce.models.PaymentDetail;
 import com.app.ecommerce.repositories.PaymentDetailRepository;
+import io.debezium.data.Envelope;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
-public class PaymentDetailService extends BaseService<PaymentDetailDTO, Long> {
+public class PaymentDetailService extends BaseService<PaymentDetail, Long> {
 
     @Autowired
     PaymentDetailRepository repository;
 
     @Override
-    public PaymentDetailDTO findById(Long aLong) {
-        PaymentDetail paymentDetail = repository.getById(aLong);
-        return modelMapper().map(paymentDetail, PaymentDetailDTO.class);
+    public PaymentDetail findById(Long aLong) {
+        return repository.getById(aLong);
     }
 
     @Override
-    public List<PaymentDetailDTO> findAll() {
-        List<PaymentDetailDTO> paymentDetailDTOS = new ArrayList<>();
-        List<PaymentDetail> paymentDetails = repository.findAll();
-        paymentDetails.forEach(paymentDetail -> {
-            paymentDetailDTOS.add(modelMapper().map(paymentDetail, PaymentDetailDTO.class));
-        });
-        return paymentDetailDTOS;
+    public List<PaymentDetail> findAll() {
+                return repository.findAll();
     }
 
     @Override
-    public PaymentDetailDTO save(PaymentDetailDTO paymentDetailDTO) {
-        PaymentDetail paymentDetail = repository.save(modelMapper().map(paymentDetailDTO, PaymentDetail.class));
-        return modelMapper().map(paymentDetail, PaymentDetailDTO.class);
+    public PaymentDetail save(PaymentDetail paymentDetail) {
+        return repository.save(paymentDetail);
     }
 
     @Override
@@ -43,8 +36,17 @@ public class PaymentDetailService extends BaseService<PaymentDetailDTO, Long> {
     }
 
     @Override
-    public void delete(PaymentDetailDTO paymentDetailDTO) {
-        repository.delete(modelMapper().map(paymentDetailDTO, PaymentDetail.class));
+    public void delete(PaymentDetail paymentDetail) {
+        repository.delete(paymentDetail);
+    }
+
+    public void replicateData(Map<String, Object> data, Envelope.Operation operation) {
+        final PaymentDetail paymentDetail = this.modelMapper().map(data, PaymentDetail.class);
+        if (Envelope.Operation.DELETE == operation) {
+            deleteById(paymentDetail.getIdPaymentDetail());
+        } else {
+            save(paymentDetail);
+        }
     }
 
 }

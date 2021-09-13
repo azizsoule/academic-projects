@@ -1,11 +1,14 @@
 package com.app.ecommerce.services;
 
+import com.app.ecommerce.models.Catalog;
 import com.app.ecommerce.models.Customer;
 import com.app.ecommerce.repositories.CustomerRepository;
+import io.debezium.data.Envelope;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class CustomerService extends BaseService<Customer, Long> {
@@ -36,6 +39,15 @@ public class CustomerService extends BaseService<Customer, Long> {
     @Override
     public void delete(Customer customer) {
         repository.delete(customer);
+    }
+
+    public void replicateData(Map<String, Object> data, Envelope.Operation operation) {
+        final Customer customer = this.modelMapper().map(data, Customer.class);
+        if (Envelope.Operation.DELETE == operation) {
+            deleteById(customer.getId());
+        } else {
+            save(customer);
+        }
     }
 
 }

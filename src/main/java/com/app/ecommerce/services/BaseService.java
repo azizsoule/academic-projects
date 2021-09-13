@@ -31,6 +31,4 @@ public abstract class BaseService<DTO, ID> {
 
     public abstract void delete(DTO dto);
 
-    public abstract void replicateData(Map<String, Object> data, Envelope.Operation operation);
-
 }
