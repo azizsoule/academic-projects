@@ -1,18 +1,16 @@
 package com.app.ecommerce.models;
 
-import com.app.ecommerce.utils.FilterSytem;
+import com.app.ecommerce.utils.CommentFilter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.logging.Filter;
 
-@Table(name = "comment")
+@Table(name = "customer_comment")
 @Entity
-@EntityListeners(FilterSytem.class)
+@EntityListeners(CommentFilter.class)
 @NoArgsConstructor
 @Getter
 @Setter
@@ -22,7 +20,7 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idComment;
 
-    private int rating;
+    private int rating=0;
 
     private String content;
 
@@ -31,18 +29,15 @@ public class Comment {
     private Date createdAt;
 
     @ManyToOne
-    @JoinColumn(name = "article_id_article")
+    @JoinColumn(name = "id_article")
     private Article article;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-
     @PrePersist
     public void prePersist() {
-//        FilterSytem filterSytem = new FilterSytem();
-//        filterSytem.filter(this);
         createdAt = new Date();
     }
 }

@@ -20,7 +20,7 @@
 </head>
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-light bg-clr">
-    <a class="navbar-brand logo-brand" href="index.html">Supermarket</a>
+    <a class="navbar-brand logo-brand" href="/">Market-Admin</a>
     <button class="btn btn-link btn-sm order-1 order-lg-0" href="#" id="sidebarToggle"><i class="fas fa-bars"></i>
     </button>
     <a class="frnt-link" href=""><i class="fas fa-external-link-alt"></i>Home</a>
@@ -97,6 +97,22 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-gift"></i></div>
                         Offers
                     </a>
+
+                    <a aria-controls="collapseUser" aria-expanded="false" class="nav-link collapsed"
+                       data-target="#collapseUser"
+                       data-toggle="collapse" href="#">
+                        <div class="sb-nav-link-icon"><i class="fas fa-user-shield"></i></div>
+                        Manage access
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div aria-labelledby="headingTwo" class="collapse" data-parent="#sidenavAccordion"
+                         id="collapseUser">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link sub_nav_link" th:href="@{/users}"><i class="fas fa-user"></i>&ensp;Users</a>
+                            <a class="nav-link sub_nav_link" th:href="@{/groups}"><i class="fas fa-user-friends"></i>&ensp;User Groups</a>
+                            <a class="nav-link sub_nav_link" th:href="@{/permissions}"><i class="fas fa-user-cog"></i>&ensp;Roles and permission</a>
+                        </nav>
+                    </div>
 
                     <a aria-controls="collapseSettings" aria-expanded="false" class="nav-link collapsed"
                        data-target="#collapseSettings"

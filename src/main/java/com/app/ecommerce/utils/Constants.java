@@ -1,8 +1,8 @@
 package com.app.ecommerce.utils;
 
 public class Constants {
-    public static final String MEDIA_DIR="cashMedia/";
-    public static final String USERS_MEDIA_DIR= MEDIA_DIR+"users";
+    public static final String MEDIA_DIR="e-media/";
+    public static final String ARTICLES_MEDIA_DIR= MEDIA_DIR+"articles";
     public static final String PARTNERS_MEDIA_DIR = MEDIA_DIR+"partners";
 
 

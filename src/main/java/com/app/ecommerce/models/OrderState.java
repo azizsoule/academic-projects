@@ -18,7 +18,7 @@ public class OrderState {
     @Column(name = "code_order_state", nullable = false, length = 30)
     private String codeOrderState;
 
-    @Column(length = 20)
+    @Column(length = 30)
     private String label;
 
     @OneToMany(mappedBy = "orderState")

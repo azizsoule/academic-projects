@@ -15,7 +15,7 @@ import javax.persistence.*;
 public class CartItem extends Item {
 
     @OneToOne
-    @JoinColumn(name = "article_id_article")
+    @JoinColumn(name = "id_article")
     private Article article;
 
     @ManyToOne

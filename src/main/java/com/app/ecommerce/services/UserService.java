@@ -3,7 +3,10 @@ package com.app.ecommerce.services;
 import com.app.ecommerce.models.User;
 import com.app.ecommerce.repositories.UserRepository;
 import com.app.ecommerce.utils.Constants;
+import com.app.ecommerce.utils.Generator;
+import com.app.ecommerce.utils.MailSender;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -15,10 +18,16 @@ import java.util.List;
 @Service("userDetailsService")
 public class UserService extends BaseService<User, Long> implements UserDetailsService {
 
-    @Autowired
-    private UserRepository repository;
+    private final UserRepository repository;
+
+    private final JavaMailSender mailSender;
 
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(Constants.ENCRYPTION_STRENGTH);
+
+    public UserService(UserRepository repository, JavaMailSender mailSender) {
+        this.repository = repository;
+        this.mailSender = mailSender;
+    }
 
     @Override
     public User findById(Long idUser) {
@@ -35,9 +44,21 @@ public class UserService extends BaseService<User, Long> implements UserDetailsS
         return repository.save(user);
     }
     public User register(User user) {
+        user.setBlocked(false);
+        user.setPasswordExpired(false);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return save(user);
     }
+    public void registerNewUser(User user) {
+        user.setBlocked(false);
+        user.setPasswordExpired(false);
+        String userPassword = Generator.generatePassword(8);
+        user.setPassword(passwordEncoder.encode(userPassword));
+        User savedUser = save(user);
+        savedUser.setPassword(userPassword);
+        sendMailToUser(savedUser);
+    }
+
 
 
     @Override
@@ -64,5 +85,15 @@ public class UserService extends BaseService<User, Long> implements UserDetailsS
         } catch (final Exception e) {
             throw new RuntimeException(e);
         }
+    }
+    private void sendMailToUser(User user){
+        Thread thread = new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                MailSender.sendEmailMessage(user,mailSender);
+            }
+        };
+        thread.start();
     }
 }

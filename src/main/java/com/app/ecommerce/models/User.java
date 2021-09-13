@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@Table(name = "user")
+@Table(name = "admin_user")
 @Entity
 @NoArgsConstructor
 @Getter
@@ -28,7 +28,7 @@ public class User extends Person implements UserDetails {
     private boolean passwordExpired = false;
 
     @ManyToOne
-    @JoinColumn(name = "user_group_id_user_group")
+    @JoinColumn(name = "id_user_group")
     private UserGroup userGroup;
 
     @ManyToOne

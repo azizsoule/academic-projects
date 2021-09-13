@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserGroupService extends BaseService<UserGroup, Long> {
@@ -21,7 +22,7 @@ public class UserGroupService extends BaseService<UserGroup, Long> {
 
     @Override
     public List<UserGroup> findAll() {
-        return repository.findAll();
+        return repository.findAll().stream().filter(userGroup -> !userGroup.getLabel().equals("SUPER_ADMIN")).collect(Collectors.toList());
     }
 
     @Override

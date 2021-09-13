@@ -2,7 +2,6 @@ package com.app.ecommerce.services;
 
 import com.app.ecommerce.models.Comment;
 import com.app.ecommerce.repositories.CommentRepository;
-import com.app.ecommerce.utils.FilterSytem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

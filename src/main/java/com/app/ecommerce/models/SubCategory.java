@@ -20,6 +20,8 @@ public class SubCategory {
     @Column(length = 30)
     private String label;
 
+    private String image;
+
     @ManyToOne
     private Category category;
 
