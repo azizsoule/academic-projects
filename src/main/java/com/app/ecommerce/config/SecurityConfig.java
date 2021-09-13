@@ -42,7 +42,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             "/assets/**",
                             "/vendor/**",
                             "/js/**",
-                            "/ajax/**"
+                            "/ajax/**",
+                            "/*.js",
+                            "/www.google-analytics.com/analytics.js"
 //                            "/scss/**"
                     ).permitAll()
                     .anyRequest().authenticated()

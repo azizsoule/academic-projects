@@ -56,21 +56,23 @@
                                     <thead>
                                     <tr>
                                         <th style="width:60px"><input type="checkbox" class="check-all"></th>
-                                        <!--<th style="width:60px">ID</th>-->
+                                        <th style="width:60px">ID</th>
                                         <th>FirstName</th>
                                         <th>Lastname</th>
                                         <th>Groupe</th>
-                                        <!--<th>Privilege</th>-->
+                                        <th>Email</th>
+                                        <th>Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr th:each="user:${users}">
                                         <td><input type="checkbox" class="check-item" name="ids[]" value="11"></td>
-                                        <!--<td th:text="${user.idUser}">1</td>
-                                        <td th:text="${user.label}">Fruits and Vegetables</td>-->
+                                        <td th:text="${user.id}">1</td>
+                                        <!--<td th:text="${user.label}">Fruits and Vegetables</td>-->
                                         <td th:text="${user.firstName}"></td>
                                         <td th:text="${user.lastName}"></td>
-                                        <td th:text="${user.userGroupIdUserGroup}"></td>
+                                        <td th:text="${user.userGroup.label}"></td>
+                                        <td th:text="${user.email}"></td>
 
                                         <td class="action-btns">
                                             <a th:href="@{/users/{id}(id=${user.id})}" class="edit-btn"><i

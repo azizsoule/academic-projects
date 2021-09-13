@@ -1,6 +1,5 @@
 package com.app.ecommerce.services;
 
-import com.app.ecommerce.dtos.ImageDTO;
 import com.app.ecommerce.models.Image;
 import com.app.ecommerce.repositories.ImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,30 +9,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ImageService extends BaseService<ImageDTO, Long> {
+public class ImageService extends BaseService<Image, Long> {
 
     @Autowired
     ImageRepository repository;
 
     @Override
-    public ImageDTO findById(Long aLong) {
-        Image image = repository.getById(aLong);
-        return modelMapper().map(image, ImageDTO.class);
+    public Image findById(Long aLong) {
+        return repository.getById(aLong);
     }
 
     @Override
-    public List<ImageDTO> findAll() {
-        List<ImageDTO> imageDTOS = new ArrayList<>();
-        List<Image> images = repository.findAll();
-        images.forEach(image -> {
-            imageDTOS.add(modelMapper().map(image, ImageDTO.class));
-        });
-        return imageDTOS;
+    public List<Image> findAll() {
+        return repository.findAll();
     }
 
     @Override
-    public ImageDTO save(ImageDTO imageDTO) {
-        return null;
+    public Image save(Image image) {
+        return repository.save(image);
     }
 
     @Override
@@ -42,8 +35,8 @@ public class ImageService extends BaseService<ImageDTO, Long> {
     }
 
     @Override
-    public void delete(ImageDTO imageDTO) {
-        repository.delete(modelMapper().map(imageDTO, Image.class));
+    public void delete(Image image) {
+        repository.delete(image);
     }
 
 }

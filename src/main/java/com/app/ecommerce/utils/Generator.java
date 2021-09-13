@@ -3,6 +3,15 @@ import java.util.Date;
 import java.util.UUID;
 
 public class Generator {
+    public static String generatePassword(int taille){
+        UUID idOne = UUID.randomUUID();
+        String str=""+idOne;
+        if(taille > 16){
+            return str;
+        }else{
+            return str.substring(0,taille);
+        }
+    }
     public static String generate(int taille){
         UUID idOne = UUID.randomUUID();
         String str=""+idOne;

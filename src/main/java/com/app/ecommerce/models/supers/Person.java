@@ -30,7 +30,7 @@ public class Person {
 
     private Date createdAt;
 
-    private boolean blocked;
+    private boolean blocked=false;
 
     @PrePersist
     public void prePersist() {

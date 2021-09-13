@@ -41,8 +41,6 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
         });
         UserGroup sadminGroup = createGroupeIfNotFound("SUPER_ADMIN",savedPrivileges);
         User user = new User("sa","sapassword");
-        user.setBlocked(false);
-        user.setPasswordExpired(false);
         user.setUserGroup(sadminGroup);
         userService.register(user);
     }

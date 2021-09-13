@@ -69,7 +69,7 @@
                                         <td th:text="${article.idArticle}">1</td>
                                         <td>
                                             <div class="cate-img-5">
-                                                <img src="images/product/img-1.jpg" alt="">
+                                                <img th:src="@{${article.getMainImage()}}" alt="image Article">
                                             </div>
                                         </td>
                                         <td th:text="${article.label}">Product Name Here</td>

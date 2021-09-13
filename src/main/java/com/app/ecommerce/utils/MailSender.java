@@ -1,6 +1,6 @@
 package com.app.ecommerce.utils;
 
-import com.app.ecommerce.dtos.UserDTO;
+import com.app.ecommerce.models.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -9,7 +9,7 @@ public class MailSender {
     @Value("${spring.mail.username}")
     private static String mail;
 
-    public static void sendEmailMessage(final UserDTO user, JavaMailSender javaMailSender) throws org.springframework.mail.MailException{
+    public static void sendEmailMessage(final User user, JavaMailSender javaMailSender) throws org.springframework.mail.MailException{
         final String recipientAddress = user.getEmail();
         final String subject = "Information de connexion";
 

@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Table(name = "sex")
 @Entity
@@ -21,9 +22,9 @@ public class Sex {
     private String label;
 
     @OneToMany(mappedBy = "sex")
-    private List<Customer> customers;
+    private Set<Customer> customers;
 
     @OneToMany(mappedBy = "sex")
-    private List<User> users;
+    private Set<User> users;
 
 }

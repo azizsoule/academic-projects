@@ -7,7 +7,7 @@
             <h2 class="mt-30 page-title">UserGroup</h2>
             <ol class="breadcrumb mb-30">
                 <li class="breadcrumb-item"><a href="">Dashboard</a></li>
-                <li class="breadcrumb-item"><a th:href="@{/userGroups}">UserGroup</a></li>
+                <li class="breadcrumb-item"><a th:href="@{/groups}">UserGroup</a></li>
                 <li class="breadcrumb-item active">Add UserGroup</li>
             </ol>
 
@@ -28,7 +28,7 @@
                             <h4>Add New UserGroup</h4>
                         </div>
                         <div class="card-body-table">
-                            <form method="post" th:object="${userGroup}" th:action="@{/add-userGroup/save}">
+                            <form method="post" th:object="${userGroup}" th:action="@{/add-group/save}">
                                 <div class="news-content-right pd-20">
                                     <div class="form-group">
                                         <label class="form-label">Name*</label>

@@ -17,7 +17,7 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
-class FilterSytemTest {
+class CommentFilterTest {
     @Autowired
     CommentRepository commentRepository;
 
