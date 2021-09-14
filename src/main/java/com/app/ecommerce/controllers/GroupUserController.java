@@ -18,9 +18,9 @@ public class GroupUserController {
 
     private static final String URI = "/groups";
     private static final String ADD_URI = "/add-group";
-    private static final String LIST_VIEW = "group_user";
-    private static final String VIEW = "add_userGroup";
-    /*private static final String EDIT_VIEW = "edit_groupUser";*/
+    private static final String LIST_VIEW = "user_group";
+    private static final String VIEW = "add_user_group";
+    private static final String EDIT_VIEW = "edit_user_group";
 
     @Autowired
     private UserGroupService userGroupService;
@@ -37,11 +37,11 @@ public class GroupUserController {
         return VIEW;
     }
 
-  /*  @GetMapping(URI + "/{id}")
+    @GetMapping(URI + "/{id}")
     private String getUserId(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("user", userGroupService.findById(id));
+        model.addAttribute("userGroup", userGroupService.findById(id));
         return EDIT_VIEW;
-    }*/
+    }
 
     @PostMapping(ADD_URI + "/save")
     private String postUserGroup(UserGroup userGroup, RedirectAttributes ra) {

@@ -24,4 +24,9 @@ public class OrderState {
     @OneToMany(mappedBy = "orderState")
     private Set<Order> orders;
 
+    public OrderState(String code,String label){
+        codeOrderState=code;
+        this.label=label;
+    }
+
 }

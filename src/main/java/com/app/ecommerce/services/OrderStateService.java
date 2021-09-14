@@ -1,6 +1,5 @@
 package com.app.ecommerce.services;
 
-import com.app.ecommerce.dtos.OrderStateDTO;
 import com.app.ecommerce.models.OrderState;
 import com.app.ecommerce.repositories.OrderStateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,31 +9,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class OrderStateService extends BaseService<OrderStateDTO, String> {
+public class OrderStateService extends BaseService<OrderState, String> {
 
     @Autowired
     OrderStateRepository repository;
 
     @Override
-    public OrderStateDTO findById(String s) {
-        OrderState orderState = repository.getById(s);
-        return modelMapper().map(orderState, OrderStateDTO.class);
+    public OrderState findById(String s) {
+        return repository.getById(s);
     }
 
     @Override
-    public List<OrderStateDTO> findAll() {
-        List<OrderStateDTO> orderStateDTOS = new ArrayList<>();
-        List<OrderState> orderStates = repository.findAll();
-        orderStates.forEach(orderState -> {
-            orderStateDTOS.add(modelMapper().map(orderState, OrderStateDTO.class));
-        });
-        return orderStateDTOS;
+    public List<OrderState> findAll() {
+        return repository.findAll();
     }
 
     @Override
-    public OrderStateDTO save(OrderStateDTO orderStateDTO) {
-        OrderState orderState = repository.save(modelMapper().map(orderStateDTO, OrderState.class));
-        return modelMapper().map(orderState, OrderStateDTO.class);
+    public OrderState save(OrderState orderState) {
+        return repository.save(orderState);
     }
 
     @Override
@@ -43,7 +35,7 @@ public class OrderStateService extends BaseService<OrderStateDTO, String> {
     }
 
     @Override
-    public void delete(OrderStateDTO orderStateDTO) {
-        repository.delete(modelMapper().map(orderStateDTO, OrderState.class));
+    public void delete(OrderState orderState) {
+        repository.delete(orderState);
     }
 }
