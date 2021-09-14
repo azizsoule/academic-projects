@@ -1,12 +1,15 @@
 package com.app.ecommerce.services;
 
+import com.app.ecommerce.models.Catalog;
 import com.app.ecommerce.models.Comment;
 import com.app.ecommerce.repositories.CommentRepository;
+import io.debezium.data.Envelope;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class CommentService extends BaseService<Comment, Long> {
@@ -56,4 +59,12 @@ public class CommentService extends BaseService<Comment, Long> {
     }
 
 
+    public void replicateData(Map<String, Object> data, Envelope.Operation operation) {
+        final Comment comment = this.modelMapper().map(data, Comment.class);
+        if (Envelope.Operation.DELETE == operation) {
+            deleteById(comment.getIdComment());
+        } else {
+            save(comment);
+        }
+    }
 }

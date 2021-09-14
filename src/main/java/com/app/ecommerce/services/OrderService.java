@@ -2,39 +2,35 @@ package com.app.ecommerce.services;
 
 import com.app.ecommerce.dtos.OrderDetailDTO;
 import com.app.ecommerce.models.Order;
+import com.app.ecommerce.models.OrderItem;
 import com.app.ecommerce.repositories.OrderRepository;
+import io.debezium.data.Envelope;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
-public class OrderService extends BaseService<OrderDetailDTO, Long> {
+public class OrderService extends BaseService<Order, Long> {
 
     @Autowired
     OrderRepository repository;
 
     @Override
-    public OrderDetailDTO findById(Long aLong) {
-        Order order = repository.getById(aLong);
-        return modelMapper().map(order, OrderDetailDTO.class);
+    public Order findById(Long aLong) {
+        return repository.getById(aLong);
     }
 
     @Override
-    public List<OrderDetailDTO> findAll() {
-        List<OrderDetailDTO> orderDetailDTOS = new ArrayList<>();
-        List<Order> orders = repository.findAll();
-        orders.forEach(order -> {
-            orderDetailDTOS.add(modelMapper().map(order, OrderDetailDTO.class));
-        });
-        return orderDetailDTOS;
+    public List<Order> findAll() {
+        return repository.findAll();
     }
 
     @Override
-    public OrderDetailDTO save(OrderDetailDTO orderDetailDTO) {
-        Order order = repository.save(modelMapper().map(orderDetailDTO, Order.class));
-        return modelMapper().map(order, OrderDetailDTO.class);
+    public Order save(Order order) {
+        return repository.save(order);
     }
 
     @Override
@@ -43,8 +39,17 @@ public class OrderService extends BaseService<OrderDetailDTO, Long> {
     }
 
     @Override
-    public void delete(OrderDetailDTO orderDetailDTO) {
-        repository.delete(modelMapper().map(orderDetailDTO, Order.class));
+    public void delete(Order order) {
+        repository.delete(modelMapper().map(order, Order.class));
+    }
+
+    public void replicateData(Map<String, Object> data, Envelope.Operation operation) {
+        final Order order = this.modelMapper().map(data, Order.class);
+        if (Envelope.Operation.DELETE == operation) {
+            deleteById(order.getIdOrder());
+        } else {
+            save(order);
+        }
     }
 
 }

@@ -47,12 +47,12 @@ public class CatalogListener {
 
         log.info("Key = '" + sourceRecord.key() + "' value = '" + sourceRecord.value() + "'");
 
-        Struct sourceRecordChangeValue= (Struct) sourceRecord.value();
+        Struct sourceRecordChangeValue = (Struct) sourceRecord.value();
 
         if (sourceRecordChangeValue != null) {
             Operation operation = Operation.forCode((String) sourceRecordChangeValue.get(OPERATION));
 
-            if(operation != Operation.READ) {
+            if (operation != Operation.READ) {
                 String record = operation == Operation.DELETE ? BEFORE : AFTER; // Handling Update & Insert operations.
 
                 Struct struct = (Struct) sourceRecordChangeValue.get(record);
