@@ -1,6 +1,7 @@
 package com.app.ecommerce.listeners;
 
-import com.app.ecommerce.services.PaymentDetailService;
+import com.app.ecommerce.services.*;
+import com.app.ecommerce.utils.Table;
 import io.debezium.config.Configuration;
 import io.debezium.embedded.Connect;
 import io.debezium.engine.DebeziumEngine;
@@ -11,6 +12,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.apache.kafka.connect.data.Field;
 import org.apache.kafka.connect.data.Struct;
 import org.apache.kafka.connect.source.SourceRecord;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -26,19 +28,35 @@ import static java.util.stream.Collectors.toMap;
 
 @Slf4j
 @Component
-public class PaymentDetailListener {
+public class DebeziumListener {
+
     private final Executor executor = Executors.newSingleThreadExecutor();
-    private final PaymentDetailService paymentDetailService;
     private final DebeziumEngine<RecordChangeEvent<SourceRecord>> debeziumEngine;
+    @Autowired
+    CatalogService catalogService;
+    @Autowired
+    CategoryService categoryService;
+    @Autowired
+    CommentService commentService;
+    @Autowired
+    CustomerService customerService;
+    @Autowired
+    OrderItemService orderItemService;
+    @Autowired
+    OrderService orderService;
+    @Autowired
+    OrderStateService orderStateService;
+    @Autowired
+    PaymentDetailService paymentDetailService;
+    @Autowired
+    SexService sexService;
 
-    public PaymentDetailListener(Configuration customerConnectorConfiguration, PaymentDetailService paymentDetailService) {
+    public DebeziumListener(Configuration customerConnectorConfiguration) {
 
-        this.debeziumEngine = DebeziumEngine.create(ChangeEventFormat.of(Connect.class))
+        debeziumEngine = DebeziumEngine.create(ChangeEventFormat.of(Connect.class))
                 .using(customerConnectorConfiguration.asProperties())
                 .notifying(this::handleChangeEvent)
                 .build();
-
-        this.paymentDetailService = paymentDetailService;
     }
 
     private void handleChangeEvent(RecordChangeEvent<SourceRecord> sourceRecordRecordChangeEvent) {
@@ -47,10 +65,10 @@ public class PaymentDetailListener {
         log.info("Key = '" + sourceRecord.key() + "' value = '" + sourceRecord.value() + "'");
 
         Struct sourceRecordChangeValue = (Struct) sourceRecord.value();
-
         if (sourceRecordChangeValue != null) {
             Operation operation = Operation.forCode((String) sourceRecordChangeValue.get(OPERATION));
-
+            Struct source = (Struct) sourceRecordChangeValue.get(SOURCE);
+            String tableName = (String) source.get("table");
             if (operation != Operation.READ) {
                 String record = operation == Operation.DELETE ? BEFORE : AFTER; // Handling Update & Insert operations.
 
@@ -60,8 +78,31 @@ public class PaymentDetailListener {
                         .filter(fieldName -> struct.get(fieldName) != null)
                         .map(fieldName -> Pair.of(fieldName, struct.get(fieldName)))
                         .collect(toMap(Pair::getKey, Pair::getValue));
-
-                this.paymentDetailService.replicateData(payload, operation);
+                switch (tableName) {
+                    case Table.CATALOG:
+                        catalogService.replicateData(payload, operation);
+                    case Table.CUSTOMER:
+                        customerService.replicateData(payload, operation);
+                        break;
+                    case Table.CUSTOMER_COMMENT:
+                        commentService.replicateData(payload, operation);
+                        break;
+                    case Table.ORDER_DETAIL:
+                        orderService.replicateData(payload, operation);
+                        break;
+                    case Table.ORDER_ITEM:
+                        orderItemService.replicateData(payload, operation);
+                        break;
+                    case Table.PAYMENT_DETAIL:
+                        paymentDetailService.replicateData(payload, operation);
+                        break;
+                    case Table.SEX:
+                        sexService.replicateData(payload, operation);
+                        break;
+                    default:
+                        System.out.println("Pas de service configuré pour cet table");
+                        break;
+                }
                 log.info("Updated Data: {} with Operation: {}", payload, operation.name());
             }
         }
@@ -69,7 +110,7 @@ public class PaymentDetailListener {
 
     @PostConstruct
     private void start() {
-        this.executor.execute(debeziumEngine);
+        this.executor.execute(this.debeziumEngine);
     }
 
     @PreDestroy
@@ -78,6 +119,5 @@ public class PaymentDetailListener {
             this.debeziumEngine.close();
         }
     }
-
 
 }

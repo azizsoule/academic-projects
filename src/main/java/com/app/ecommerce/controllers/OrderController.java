@@ -1,13 +1,12 @@
 package com.app.ecommerce.controllers;
 
-import com.app.ecommerce.dtos.CatalogDTO;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import com.app.ecommerce.dtos.OrderDetailDTO;
+import com.app.ecommerce.models.Order;
 import com.app.ecommerce.services.OrderService;
 import com.app.ecommerce.utils.Router;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -34,7 +33,7 @@ public class OrderController {
 
     @GetMapping(ADD_URI)
     private String getOrder(Model model){
-        model.addAttribute("orderDetailDTO",new OrderDetailDTO());
+        model.addAttribute("Order",new Order());
         return VIEW;
     }
 
@@ -47,9 +46,9 @@ public class OrderController {
 
 
      @PostMapping(ADD_URI + "/save")
-    private String postOrder(OrderDetailDTO orderDetailDTO, RedirectAttributes ra) {
+    private String postOrder(Order Order, RedirectAttributes ra) {
         try {
-            orderService.save(orderDetailDTO);
+            orderService.save(Order);
             ra.addFlashAttribute("success", "Successfully saved !");
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -60,10 +59,10 @@ public class OrderController {
 
 
     @PostMapping(URI + "/{id}/update")
-    private String updateOrder(@PathVariable("id") Long id, OrderDetailDTO orderDetailDTO,
+    private String updateOrder(@PathVariable("id") Long id, Order Order,
                                  RedirectAttributes ra) {
         try {
-            orderService.update(orderDetailDTO);
+            orderService.update(Order);
             ra.addAttribute("id", id).addFlashAttribute("success", "Successfully updated !");
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -73,9 +72,9 @@ public class OrderController {
     }
 
     @PostMapping(URI + "/{id}/delete")
-    private String deleteOrder(@PathVariable("id") Long id, OrderDetailDTO orderDetailDTO, RedirectAttributes ra) {
+    private String deleteOrder(@PathVariable("id") Long id, Order Order, RedirectAttributes ra) {
         try {
-            orderService.delete(orderDetailDTO);
+            orderService.delete(Order);
             ra.addFlashAttribute("success", "Successfully deleted !");
         } catch (Exception e) {
             System.out.println(e.getMessage());

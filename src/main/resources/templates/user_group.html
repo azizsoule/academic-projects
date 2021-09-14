@@ -68,11 +68,11 @@
                                     <tr th:each="userGroup:${userGroups}">
                                         <td><input type="checkbox" class="check-item" name="ids[]" value="11"></td>
                                         <td th:text="${userGroup.idUserGroup}">1</td>
-                                        <td th:text="${userGroup.label}">Fruits and Vegetables</td>
-                                        <td th:text="${userGroup.createdAt}">Fruits and Vegetables</td>
+                                        <td th:text="${userGroup.label}"></td>
+                                        <td th:text="${userGroup.createdAt}"></td>
                                         <td class="action-btns">
-                                            <a th:href="@{/userGroups/{id}(id=${userGroup.idUserGroup})}" class="edit-btn"><i
-                                                    class="fas fa-edit"></i> Edit</a>
+                                            <a th:href="@{/groups/{id}(id=${userGroup.idUserGroup})}" class="edit-btn"><i
+                                                    class="fas fa-edit"></i>Edit</a>
                                         </td>
                                     </tr>
 

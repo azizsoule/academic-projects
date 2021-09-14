@@ -1,12 +1,15 @@
 package com.app.ecommerce.services;
 
+import com.app.ecommerce.models.Comment;
 import com.app.ecommerce.models.Sex;
 import com.app.ecommerce.repositories.SexRepository;
+import io.debezium.data.Envelope;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class SexService extends BaseService<Sex, Long> {
@@ -37,6 +40,15 @@ public class SexService extends BaseService<Sex, Long> {
     @Override
     public void delete(Sex sex) {
         repository.delete(sex);
+    }
+
+    public void replicateData(Map<String, Object> data, Envelope.Operation operation) {
+        final Sex sex = this.modelMapper().map(data, Sex.class);
+        if (Envelope.Operation.DELETE == operation) {
+            deleteById(sex.getIdSex());
+        } else {
+            save(sex);
+        }
     }
 
 }

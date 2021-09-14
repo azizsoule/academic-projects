@@ -1,6 +1,5 @@
 package com.app.ecommerce.services;
 
-import com.app.ecommerce.models.Catalog;
 import com.app.ecommerce.models.Comment;
 import com.app.ecommerce.repositories.CommentRepository;
 import io.debezium.data.Envelope;
