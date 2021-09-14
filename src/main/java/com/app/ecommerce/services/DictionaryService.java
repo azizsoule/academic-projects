@@ -1,22 +1,20 @@
 package com.app.ecommerce.services;
 
+import com.app.ecommerce.models.Catalog;
 import com.app.ecommerce.models.Dictionary;
-import com.app.ecommerce.repositories.CommentRepository;
 import com.app.ecommerce.repositories.DictionaryRepository;
+import io.debezium.data.Envelope;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class DictionaryService extends BaseService<Dictionary, Long> {
 
     @Autowired
     DictionaryRepository repository;
-
-    @Autowired
-    CommentRepository commentRepository;
 
     @Override
     public Dictionary findById(Long aLong) {
@@ -29,25 +27,9 @@ public class DictionaryService extends BaseService<Dictionary, Long> {
     }
 
     @Override
-    @Transactional
     public Dictionary save(Dictionary dictionary) {
-        Dictionary savedDico = repository.save(dictionary);
-//        if (commentRepository.count() != 0) {
-//            commentRepository.findAll().forEach(comment -> {
-//                if (comment.getContent().contains(savedDico.getLabel())) {
-//                    if (!comment.isBlocked()) {
-//                        comment.setBlocked(true);
-//                    }
-//                    commentRepository.save(comment);
-//                }
-//            });
-//        }
-        return savedDico;
+        return repository.save(dictionary);
     }
-    public void saveAll(Iterable<Dictionary> dictionary) {
-        repository.saveAll(dictionary);
-    }
-
 
     @Override
     public void deleteById(Long aLong) {
@@ -56,6 +38,16 @@ public class DictionaryService extends BaseService<Dictionary, Long> {
 
     @Override
     public void delete(Dictionary dictionary) {
-        repository.delete(modelMapper().map(dictionary, Dictionary.class));
+        repository.delete(dictionary);
     }
+
+    public void replicateData(Map<String, Object> dictionaryData, Envelope.Operation operation) {
+        final Dictionary dictionary = this.modelMapper().map(dictionaryData, Dictionary.class);
+        if (Envelope.Operation.DELETE == operation) {
+            this.deleteById(dictionary.getIdWord());
+        } else {
+            this.save(dictionary);
+        }
+    }
+
 }

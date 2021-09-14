@@ -1,40 +1,34 @@
 package com.app.ecommerce.services;
 
-import com.app.ecommerce.dtos.PubDTO;
+import com.app.ecommerce.models.Article;
 import com.app.ecommerce.models.Pub;
 import com.app.ecommerce.repositories.PubRepository;
+import io.debezium.data.Envelope;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
-public class PubService extends BaseService<PubDTO, Long> {
+public class PubService extends BaseService<Pub, Long> {
 
     @Autowired
     PubRepository repository;
 
     @Override
-    public PubDTO findById(Long aLong) {
-        Pub pub = repository.getById(aLong);
-        return modelMapper().map(pub, PubDTO.class);
+    public Pub findById(Long aLong) {
+        return repository.getById(aLong);
     }
 
     @Override
-    public List<PubDTO> findAll() {
-        List<PubDTO> pubDTOS = new ArrayList<>();
-        List<Pub> pubs = repository.findAll();
-        pubs.forEach(pub -> {
-            pubDTOS.add(modelMapper().map(pub, PubDTO.class));
-        });
-        return pubDTOS;
+    public List<Pub> findAll() {
+        return repository.findAll();
     }
 
     @Override
-    public PubDTO save(PubDTO pubDTO) {
-        Pub pub = repository.save(modelMapper().map(pubDTO, Pub.class));
-        return modelMapper().map(pub, PubDTO.class);
+    public Pub save(Pub pub) {
+        return repository.save(pub);
     }
 
     @Override
@@ -43,8 +37,17 @@ public class PubService extends BaseService<PubDTO, Long> {
     }
 
     @Override
-    public void delete(PubDTO pubDTO) {
-        repository.delete(modelMapper().map(pubDTO, Pub.class));
+    public void delete(Pub pub) {
+        repository.delete(pub);
+    }
+
+    public void replicateData(Map<String, Object> data, Envelope.Operation operation) {
+        final Pub pub = this.modelMapper().map(data, Pub.class);
+        if (Envelope.Operation.DELETE == operation) {
+            this.deleteById(pub.getIdPub());
+        } else {
+            this.save(pub);
+        }
     }
 
 }

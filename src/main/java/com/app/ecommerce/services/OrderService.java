@@ -1,14 +1,11 @@
 package com.app.ecommerce.services;
 
-import com.app.ecommerce.dtos.OrderDetailDTO;
 import com.app.ecommerce.models.Order;
-import com.app.ecommerce.models.OrderItem;
 import com.app.ecommerce.repositories.OrderRepository;
 import io.debezium.data.Envelope;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 

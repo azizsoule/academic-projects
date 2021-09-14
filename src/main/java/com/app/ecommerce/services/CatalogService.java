@@ -2,9 +2,7 @@ package com.app.ecommerce.services;
 
 import com.app.ecommerce.models.Catalog;
 import com.app.ecommerce.repositories.CatalogRepository;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.debezium.data.Envelope;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

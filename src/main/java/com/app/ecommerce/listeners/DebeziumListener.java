@@ -33,7 +33,7 @@ public class DebeziumListener {
     private final Executor executor = Executors.newSingleThreadExecutor();
     private final DebeziumEngine<RecordChangeEvent<SourceRecord>> debeziumEngine;
     @Autowired
-    AdressService adressService;
+    AddressService adressService;
     @Autowired
     ArticleService articleService;
     @Autowired

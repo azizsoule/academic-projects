@@ -2,12 +2,12 @@ package com.app.ecommerce.services;
 
 import com.app.ecommerce.models.UserGroup;
 import com.app.ecommerce.repositories.UserGroupRepository;
+import io.debezium.data.Envelope;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Map;
 
 @Service
 public class UserGroupService extends BaseService<UserGroup, Long> {
@@ -22,12 +22,11 @@ public class UserGroupService extends BaseService<UserGroup, Long> {
 
     @Override
     public List<UserGroup> findAll() {
-        return repository.findAll().stream().filter(userGroup -> !userGroup.getLabel().equals("SUPER_ADMIN")).collect(Collectors.toList());
+        return repository.findAll();
     }
 
     @Override
     public UserGroup save(UserGroup userGroup) {
-        userGroup.setLabel(userGroup.getLabel().trim().replace(" ","_").toUpperCase());
         return repository.save(userGroup);
     }
 
@@ -40,8 +39,14 @@ public class UserGroupService extends BaseService<UserGroup, Long> {
     public void delete(UserGroup userGroup) {
         repository.delete(userGroup);
     }
-    public Long count(){
-        return repository.count();
+
+    public void replicateData(Map<String, Object> data, Envelope.Operation operation) {
+        final UserGroup userGroup = this.modelMapper().map(data, UserGroup.class);
+        if (Envelope.Operation.DELETE == operation) {
+            this.deleteById(userGroup.getIdUserGroup());
+        } else {
+            this.save(userGroup);
+        }
     }
 
 }

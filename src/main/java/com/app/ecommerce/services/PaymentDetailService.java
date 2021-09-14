@@ -22,7 +22,7 @@ public class PaymentDetailService extends BaseService<PaymentDetail, Long> {
 
     @Override
     public List<PaymentDetail> findAll() {
-                return repository.findAll();
+        return repository.findAll();
     }
 
     @Override

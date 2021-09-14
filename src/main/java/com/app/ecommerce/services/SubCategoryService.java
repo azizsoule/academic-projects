@@ -1,11 +1,14 @@
 package com.app.ecommerce.services;
 
+import com.app.ecommerce.models.Catalog;
 import com.app.ecommerce.models.SubCategory;
 import com.app.ecommerce.repositories.SubCategoryRepository;
+import io.debezium.data.Envelope;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class SubCategoryService extends BaseService<SubCategory, Long> {
@@ -36,6 +39,15 @@ public class SubCategoryService extends BaseService<SubCategory, Long> {
     @Override
     public void delete(SubCategory subCategory) {
         repository.delete(subCategory);
+    }
+
+    public void replicateData(Map<String, Object> data, Envelope.Operation operation) {
+        final SubCategory subCategory = this.modelMapper().map(data, SubCategory.class);
+        if (Envelope.Operation.DELETE == operation) {
+            this.deleteById(subCategory.getIdSubCategory());
+        } else {
+            this.save(subCategory);
+        }
     }
 
 }

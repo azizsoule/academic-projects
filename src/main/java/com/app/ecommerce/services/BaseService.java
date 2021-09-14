@@ -1,33 +1,33 @@
 package com.app.ecommerce.services;
 
+import io.debezium.data.Envelope;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
-public abstract class BaseService<DTO, ID> {
+public abstract class BaseService<ENTITY, ID> {
 
     private final ModelMapper modelMapper = new ModelMapper();
 
     public ModelMapper modelMapper() {
-        modelMapper.getConfiguration().setSkipNullEnabled(true);
         return modelMapper;
     }
 
-    public abstract DTO findById(ID id);
+    public abstract ENTITY findById(ID id);
 
-    public abstract List<DTO> findAll();
+    public abstract List<ENTITY> findAll();
 
-    public abstract DTO save(DTO dto);
+    public abstract ENTITY save(ENTITY entity);
 
-    public DTO update(DTO dto) {
-        return this.save(dto);
+    public ENTITY update(ENTITY entity) {
+        return this.save(entity);
     }
 
     public abstract void deleteById(ID id);
 
-    public abstract void delete(DTO dto);
-
+    public abstract void delete(ENTITY entity);
 
 }

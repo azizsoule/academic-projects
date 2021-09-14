@@ -5,7 +5,6 @@ import com.app.ecommerce.repositories.CommentRepository;
 import io.debezium.data.Envelope;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -15,9 +14,6 @@ public class CommentService extends BaseService<Comment, Long> {
 
     @Autowired
     CommentRepository repository;
-
-    @Autowired
-    private DictionaryService dictionaryService;
 
     @Override
     public Comment findById(Long aLong) {
@@ -44,20 +40,6 @@ public class CommentService extends BaseService<Comment, Long> {
         repository.delete(comment);
     }
 
-    public List<Comment> blockedComments(){
-        return repository.findByBlockedIsTrue();
-    }
-
-    @Transactional
-    public void block(Long id){
-        repository.block(true,id);
-    }
-    @Transactional
-    public void unblock(Long id){
-        repository.block(false,id);
-    }
-
-
     public void replicateData(Map<String, Object> data, Envelope.Operation operation) {
         final Comment comment = this.modelMapper().map(data, Comment.class);
         if (Envelope.Operation.DELETE == operation) {
@@ -66,4 +48,5 @@ public class CommentService extends BaseService<Comment, Long> {
             save(comment);
         }
     }
+
 }

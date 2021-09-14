@@ -1,40 +1,33 @@
 package com.app.ecommerce.services;
 
-import com.app.ecommerce.dtos.UserPaymentMethodDTO;
 import com.app.ecommerce.models.CustomerPaymentMethod;
 import com.app.ecommerce.repositories.CustomerPaymentMethodRepository;
+import io.debezium.data.Envelope;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
-public class CustomerPaymentMethodService extends BaseService<UserPaymentMethodDTO, Long> {
+public class CustomerPaymentMethodService extends BaseService<CustomerPaymentMethod, Long> {
 
     @Autowired
     CustomerPaymentMethodRepository repository;
 
     @Override
-    public UserPaymentMethodDTO findById(Long aLong) {
-        CustomerPaymentMethod customerPaymentMethod = repository.getById(aLong);
-        return modelMapper().map(customerPaymentMethod, UserPaymentMethodDTO.class);
+    public CustomerPaymentMethod findById(Long aLong) {
+        return repository.getById(aLong);
     }
 
     @Override
-    public List<UserPaymentMethodDTO> findAll() {
-        List<UserPaymentMethodDTO> userPaymentMethodDTOS = new ArrayList<>();
-        List<CustomerPaymentMethod> customerPaymentMethods = repository.findAll();
-        customerPaymentMethods.forEach(customerPaymentMethod -> {
-            userPaymentMethodDTOS.add(modelMapper().map(customerPaymentMethod, UserPaymentMethodDTO.class));
-        });
-        return userPaymentMethodDTOS;
+    public List<CustomerPaymentMethod> findAll() {
+        return repository.findAll();
     }
 
     @Override
-    public UserPaymentMethodDTO save(UserPaymentMethodDTO userPaymentMethodDTO) {
-        CustomerPaymentMethod customerPaymentMethod = repository.save(modelMapper().map(userPaymentMethodDTO, CustomerPaymentMethod.class));
-        return modelMapper().map(customerPaymentMethod, UserPaymentMethodDTO.class);
+    public CustomerPaymentMethod save(CustomerPaymentMethod userPaymentMethod) {
+        return repository.save(userPaymentMethod);
     }
 
     @Override
@@ -43,8 +36,17 @@ public class CustomerPaymentMethodService extends BaseService<UserPaymentMethodD
     }
 
     @Override
-    public void delete(UserPaymentMethodDTO userPaymentMethodDTO) {
-        repository.delete(modelMapper().map(userPaymentMethodDTO, CustomerPaymentMethod.class));
+    public void delete(CustomerPaymentMethod customerPaymentMethod) {
+        repository.delete(customerPaymentMethod);
+    }
+
+    public void replicateData(Map<String, Object> data, Envelope.Operation operation) {
+        final CustomerPaymentMethod customerPaymentMethod = this.modelMapper().map(data, CustomerPaymentMethod.class);
+        if (Envelope.Operation.DELETE == operation) {
+            deleteById(customerPaymentMethod.getIdCustomerPayment());
+        } else {
+            save(customerPaymentMethod);
+        }
     }
 
 }

@@ -1,6 +1,5 @@
 package com.app.ecommerce.models;
 
-import com.app.ecommerce.utils.CommentFilter;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,7 +9,6 @@ import java.util.Date;
 
 @Table(name = "customer_comment")
 @Entity
-@EntityListeners(CommentFilter.class)
 @NoArgsConstructor
 @Getter
 @Setter
