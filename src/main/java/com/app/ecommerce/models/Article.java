@@ -56,8 +56,8 @@ public class Article {
     @ManyToMany(mappedBy = "articles")
     private Set<Discount> discounts = new HashSet<>();
 
-    @OneToOne(mappedBy = "article")
-    private CartItem cartItem;
+    @OneToMany(mappedBy = "article")
+    private Set<CartItem> cartItems;
 
     @OneToMany(mappedBy = "article")
     private Set<OrderItem> orderItems;

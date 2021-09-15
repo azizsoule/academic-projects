@@ -1,7 +1,9 @@
 package com.app.ecommerce.controllers;
 
 import com.app.ecommerce.models.Order;
+import com.app.ecommerce.models.OrderState;
 import com.app.ecommerce.services.OrderService;
+import com.app.ecommerce.services.OrderStateService;
 import com.app.ecommerce.utils.Router;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +25,8 @@ public class OrderController {
 
     @Autowired
     private OrderService orderService;
+    @Autowired
+    private OrderStateService orderStateService;
 
     @GetMapping(URI)
     private String getOrders(Model model) {
@@ -43,11 +47,17 @@ public class OrderController {
         return VIEW;
     }
     @GetMapping(URI + "/{id}/{status}")
-    private String g(@PathVariable("id") Long id,@PathVariable("status") String status, Model model) {
+    private String valid(@PathVariable("id") Long id,@PathVariable("status") String status, RedirectAttributes ra) {
         OrderState state = orderStateService.findById(status);
         Order order = orderService.findById(id);
         order.setOrderState(state);
-        orderService.save(order);
+        try {
+            orderService.save(order);
+            ra.addFlashAttribute("success", "Validation success !");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            ra.addFlashAttribute("fail", "Validation failure !");
+        }
         return Router.redirectTo(URI);
     }
 

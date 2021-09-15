@@ -32,4 +32,9 @@ public class PaymentMethod {
     @OneToMany(mappedBy = "paymentMethod")
     private List<CustomerPaymentMethod> customerPaymentMethods;
 
+    public PaymentMethod(String label, boolean available, String provider) {
+        this.label = label;
+        this.available = available;
+        this.provider = provider;
+    }
 }

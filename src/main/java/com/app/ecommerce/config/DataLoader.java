@@ -1,10 +1,10 @@
 package com.app.ecommerce.config;
 
-import com.app.ecommerce.models.OrderState;
-import com.app.ecommerce.models.Privilege;
-import com.app.ecommerce.models.User;
-import com.app.ecommerce.models.UserGroup;
+import com.app.ecommerce.models.*;
 import com.app.ecommerce.repositories.OrderStateRepository;
+import com.app.ecommerce.repositories.PaymentMethodRepository;
+import com.app.ecommerce.repositories.SexRepository;
+import com.app.ecommerce.services.PaymentMethodService;
 import com.app.ecommerce.services.PrivilegeService;
 import com.app.ecommerce.services.UserGroupService;
 import com.app.ecommerce.services.UserService;
@@ -30,6 +30,10 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
     @Autowired
     OrderStateRepository orderStateRepository;
+    @Autowired
+    PaymentMethodRepository paymentMethodRepository;
+    @Autowired
+    SexRepository sexRepository;
 
 
     @Override
@@ -40,7 +44,22 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
                 new OrderState("COMPLETE", "Terminnée"),
                 new OrderState("CANCELED", "Annulée")
         ));
+        List<PaymentMethod> paymentMethods = new ArrayList<>(Arrays.asList(
+                new PaymentMethod("Paiement à la livraison", true,"YOU"),
+                new PaymentMethod("Orange Money",true, "ORANGE"),
+                new PaymentMethod("Moov Money",true, "MOOV"),
+                new PaymentMethod("MO MO",true, "MTN"),
+                new PaymentMethod("VISA",false, "VISA"),
+                new PaymentMethod("PAYPAL",false, "PAYPAL")
+        ));
+        List<Sex> sexes = new ArrayList<>(Arrays.asList(
+                new Sex("HOMME"),
+                new Sex("FEMME"),
+                new Sex("AUTRE")
+        ));
         orderStateRepository.saveAll(orderStates);
+        paymentMethodRepository.saveAll(paymentMethods);
+        sexRepository.saveAll(sexes);
         String [] accessList = {"CATALOG", "CATEGORIE", "SUB_CATEGORIE",};
         List<String> privileges = Arrays.asList(accessList);
         List<Privilege> savedPrivileges= new ArrayList<>();

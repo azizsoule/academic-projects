@@ -27,13 +27,17 @@ public class MainController {
         List<Order> orders = orderService.findAll();
         List<Order> completeOrder = orders.stream().filter(order -> order.getOrderState().getCodeOrderState().equals("COMPLETE")).collect(Collectors.toList());
         int nbrCanceled= (int) orders.stream().filter(order -> order.getOrderState().getCodeOrderState().equals("CANCELED")).count();
+        int nbrPending= (int) orders.stream().filter(order -> order.getOrderState().getCodeOrderState().equals("PENDING")).count();
         AtomicInteger nbrPurchased = new AtomicInteger();
+        AtomicInteger totalAmount = new AtomicInteger();
         completeOrder.forEach(order -> {
             order.getOrderItems().forEach(orderItem -> nbrPurchased.addAndGet(orderItem.getQuantity()));
         });
         model.addAttribute("recentOrders", orderService.findRecentOrders());
         model.addAttribute("nbrPurchased", nbrPurchased.intValue());
         model.addAttribute("nbrCanceled", nbrCanceled);
+        model.addAttribute("nbrComplete", completeOrder.size());
+        model.addAttribute("nbrPending", nbrPending);
         return VIEW;
     }
 

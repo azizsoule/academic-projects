@@ -143,7 +143,7 @@ public class ArticleController implements BaseController<Article, Long> {
     @GetMapping(URI + "/{id}/delete")
     public String delete(Article obj, @PathVariable(name = "id") Long id, RedirectAttributes ra) {
         try {
-            service.delete(obj);
+            service.deleteById(id);
             ra.addFlashAttribute("success", "Successfully deleted !");
         } catch (Exception e) {
             System.out.println(e.getMessage());

@@ -27,4 +27,7 @@ public class Sex {
     @OneToMany(mappedBy = "sex")
     private Set<User> users;
 
+    public Sex(String label) {
+        this.label = label;
+    }
 }
