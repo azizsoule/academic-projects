@@ -71,7 +71,6 @@ public class ArticleController implements BaseController<Article, Long> {
         model.addAttribute("article", service.findById(id));
         model.addAttribute("subCategories", subCategoryService.findAll());
 
-
         return VIEW;
     }
 

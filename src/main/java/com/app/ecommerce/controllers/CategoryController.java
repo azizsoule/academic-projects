@@ -55,13 +55,13 @@ public class CategoryController {
     }
 
     @PostMapping(URI + "/save")
-    private String postCategory(@RequestParam("categoryImage") MultipartFile multipartFile, Category category, RedirectAttributes ra) {
+    private String postCategory(@RequestParam("file") MultipartFile multipartFile, Category category, RedirectAttributes ra) {
         try {
             if(!multipartFile.isEmpty()){
                 String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
                 category.setImage(fileName);
                 categoryService.save(category);
-                String uploadDir = Constants.CATEGORIES_MEDIA_DIR+'/'+category.getIdCategory();
+                String uploadDir = Constants.CATEGORIES_MEDIA_DIR+'/';
                 MediaSaver.saveFile(uploadDir, fileName, multipartFile);
             }
             ra.addFlashAttribute("success", "Successfully saved !");

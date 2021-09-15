@@ -44,6 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             "/js/**",
                             "/ajax/**",
                             "/*.js",
+                            "/e-media/**",
                             "/www.google-analytics.com/analytics.js"
 //                            "/scss/**"
                     ).permitAll()

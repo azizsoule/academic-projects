@@ -1,5 +1,6 @@
 package com.app.ecommerce.controllers;
 
+import com.app.ecommerce.models.Category;
 import com.app.ecommerce.models.Region;
 import com.app.ecommerce.services.RegionService;
 import com.app.ecommerce.utils.Router;
@@ -17,6 +18,7 @@ public class RegionController {
     private static final String ADD_URI = "/add-region";
     private static final String LIST_VIEW="region";
     private static final String VIEW="add_region";
+    private static final String EDIT_VIEW="edit_region";
 
     @Autowired
     private RegionService regionService;
@@ -36,7 +38,7 @@ public class RegionController {
     @GetMapping(URI+"/{id}")
     public String getRegion(@PathVariable(name = "id")Long id, Model model){
         model.addAttribute("region", regionService.findById(id));
-        return VIEW;
+        return EDIT_VIEW;
     }
 
     @PostMapping(ADD_URI + "/save")
@@ -49,5 +51,17 @@ public class RegionController {
             ra.addFlashAttribute("fail", "Registration failure !");
         }
         return Router.redirectTo(ADD_URI);
+    }
+    @PostMapping(URI + "/{id}/update")
+    private String updateRegion(@PathVariable("id") Long id, Region region,
+                                  RedirectAttributes ra) {
+        try {
+            regionService.save(region);
+            ra.addAttribute("id", id).addFlashAttribute("success", "Successfully updated !");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            ra.addAttribute("id", id).addFlashAttribute("fail", "Update failure !");
+        }
+        return Router.redirectTo(URI + "/{id}");
     }
 }

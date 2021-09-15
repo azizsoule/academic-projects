@@ -1,5 +1,6 @@
 package com.app.ecommerce.models;
 
+import com.app.ecommerce.utils.Constants;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,5 +30,11 @@ public class Category {
     @ManyToOne
     @JoinColumn(name = "catalog_id_catalog")
     private Catalog catalog;
+
+    @Transient
+    public String getMainImage() {
+        if (image == null) return null;
+        return "/"+ Constants.CATEGORIES_MEDIA_DIR +"/"+ image;
+    }
 
 }

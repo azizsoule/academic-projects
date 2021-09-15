@@ -12,8 +12,9 @@ import java.nio.file.Paths;
 public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        exposeDirectory(Constants.ARTICLES_MEDIA_DIR, registry);
-        exposeDirectory(Constants.PARTNERS_MEDIA_DIR, registry);
+        exposeDirectory(Constants.MEDIA_DIR, registry);
+//        exposeDirectory(Constants.CATEGORIES_MEDIA_DIR, registry);
+//        exposeDirectory(Constants.CATALOGS_MEDIA_DIR, registry);
     }
 
     private void exposeDirectory(String dirName, ResourceHandlerRegistry registry) {

@@ -2,14 +2,21 @@ package com.app.ecommerce.controllers;
 
 import com.app.ecommerce.models.Catalog;
 import com.app.ecommerce.services.CatalogService;
+import com.app.ecommerce.utils.Constants;
+import com.app.ecommerce.utils.MediaSaver;
 import com.app.ecommerce.utils.Router;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.Objects;
 
 @Controller
 public class CatalogController {
@@ -46,9 +53,15 @@ public class CatalogController {
     /*Pour l'insertion en bd on passe juste en paramètre de la methode l'objet qu'on souhaite
     * enregistrer en ensuite on utilise les services appropriés pour eefectuer la sauvegarde*/
     @PostMapping(ADD_URI + "/save")
-    private String postCatalog(Catalog catalog, RedirectAttributes ra) {
+    private String postCatalog(@RequestParam("file") MultipartFile multipartFile,Catalog catalog, RedirectAttributes ra) {
         try {
-            catalogService.save(catalog);
+            if(!multipartFile.isEmpty()){
+                String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
+                catalog.setImage(fileName);
+                catalogService.save(catalog);
+                String uploadDir = Constants.CATALOGS_MEDIA_DIR+'/';
+                MediaSaver.saveFile(uploadDir, fileName, multipartFile);
+            }
             ra.addFlashAttribute("success", "Successfully saved !");
         } catch (Exception e) {
             System.out.println(e.getMessage());

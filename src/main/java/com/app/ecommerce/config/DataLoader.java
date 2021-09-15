@@ -37,7 +37,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
         if(initialDataAlreadySetup()) return;
         List<OrderState> orderStates = new ArrayList<>(Arrays.asList(
                 new OrderState("PENDING", "En cours"),
-                new OrderState("COMPLETED", "Terminnée"),
+                new OrderState("COMPLETE", "Terminnée"),
                 new OrderState("CANCELED", "Annulée")
         ));
         orderStateRepository.saveAll(orderStates);

@@ -1,5 +1,6 @@
 package com.app.ecommerce.models;
 
+import com.app.ecommerce.utils.Constants;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,5 +25,11 @@ public class Catalog {
 
     @OneToMany(mappedBy = "catalog", cascade = CascadeType.ALL)
     private Set<Category> categories;
+
+    @Transient
+    public String getMainImage() {
+        if (image == null) return null;
+        return "/"+ Constants.CATALOGS_MEDIA_DIR +"/" + image;
+    }
 
 }

@@ -27,9 +27,8 @@
                             <h4>Add New Category</h4>
                         </div>
 
-
                         <div class="card-body-table">
-                            <form method="post" th:object="${category}" th:action="@{/categories/save}">
+                            <form method="post" th:object="${category}" th:action="@{/categories/save}" enctype="multipart/form-data">
                                 <div class="news-content-right pd-20">
                                     <div class="form-group">
                                         <label class="form-label">Name*</label>
@@ -48,7 +47,7 @@
                                         <label class="form-label">Category Image*</label>
                                         <div class="input-group">
                                             <div class="">
-                                                <input type="file" class="file form-control-file" id="inputGroupFile04" name="articleImage" required>
+                                                <input type="file" class="file form-control-file" id="inputGroupFile04" name="file" required>
                                             </div>
                                         </div>
                                     </div>
@@ -65,7 +64,14 @@
 <th:block layout:fragment="scripts">
     <script>
         // with plugin options
-        $("#inputGroupFile04").fileinput({'showUpload':false, 'previewFileType':'any'});
+        var url1 = 'http://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/FullMoon2010.jpg/631px-FullMoon2010.jpg',
+            url2 = 'http://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Earth_Eastern_Hemisphere.jpg/600px-Earth_Eastern_Hemisphere.jpg';
+        $("#inputGroupFile04").fileinput({
+            'showUpload':false,
+            'previewFileType':'any',
+            initialPreview: [url1, url2],
+            initialPreviewAsData: true,
+        });
     </script>
 </th:block>
 </html>

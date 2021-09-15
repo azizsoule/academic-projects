@@ -47,6 +47,9 @@ public class CommentService extends BaseService<Comment, Long> {
     public List<Comment> blockedComments(){
         return repository.findByBlockedIsTrue();
     }
+    public List<Comment> unblockedComments(){
+        return repository.findByBlockedIsFalse();
+    }
 
     @Transactional
     public void block(Long id){

@@ -8,7 +8,7 @@
             <ol class="breadcrumb mb-30">
                 <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
                 <li class="breadcrumb-item"><a th:href="@{/orders}">Orders</a></li>
-                <li class="breadcrumb-item active">Order Edit</li>
+                <li class="breadcrumb-item active">Order view</li>
             </ol>
             </ol>
             </div>
@@ -39,21 +39,21 @@
                                     <div class="shopowner-dt-list">
                                         <div class="product-status" >
                                             <span class="left-dt">Payment</span>
-                                            <span class="right-dt" th:text="${order.paymentDetailIdPaymentDetail}"></span>
+                                            <span class="right-dt" th:text="${order.paymentDetail.paymentMethod.label}"></span>
 
                                         </div>
                                     </div>
                                     <div class="shopowner-dt-list">
                                         <div class="product-status" >
                                             <span class="left-dt">Customer</span>
-                                            <span class="right-dt" th:text="${order.customerId}"></span>
+                                            <span class="right-dt" th:text="${order.customer.email}"></span>
 
                                         </div>
                                     </div>
                                     <div class="shopowner-dt-list">
                                         <div class="product-status" >
                                             <span class="left-dt">State</span>
-                                            <span class="right-dt" th:text="${order.codeOrderState}"></span>
+                                            <span class="right-dt" th:text="${order.orderState.codeOrderState}"></span>
                                         </div>
                                     </div>
 

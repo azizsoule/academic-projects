@@ -1,5 +1,6 @@
 package com.app.ecommerce.models;
 
+import com.app.ecommerce.utils.Constants;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,5 +23,11 @@ public class Pub {
     String image;
 
     boolean forSlider;
+
+    @Transient
+    public String getMainImage() {
+        if (image == null) return null;
+        return "/"+ Constants.PUBS_MEDIA_DIR +"/" + image;
+    }
 
 }

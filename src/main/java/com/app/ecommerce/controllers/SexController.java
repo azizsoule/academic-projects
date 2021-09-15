@@ -1,5 +1,6 @@
 package com.app.ecommerce.controllers;
 
+import com.app.ecommerce.models.Dictionary;
 import com.app.ecommerce.models.Sex;
 import com.app.ecommerce.services.SexService;
 import com.app.ecommerce.utils.Router;
@@ -17,6 +18,7 @@ public class SexController {
     private static final String ADD_URI="/add-sex";
     private static final String LIST_VIEW="sex";
     private static final String VIEW="add_sex";
+    private static final String EDIT_VIEW="edit_sex";
 
     @Autowired
     private SexService service;
@@ -36,7 +38,7 @@ public class SexController {
     @GetMapping(URI+"/{id}")
     public String getSex(@PathVariable(name = "id")Long id, Model model){
         model.addAttribute("sex", service.findById(id));
-        return VIEW;
+        return EDIT_VIEW;
     }
 
     @PostMapping(ADD_URI + "/save")
@@ -49,5 +51,16 @@ public class SexController {
             ra.addFlashAttribute("fail", "Registration failure !");
         }
         return Router.redirectTo(ADD_URI);
+    }
+    @PostMapping(URI + "/{id}/update")
+    private String updateSex(@PathVariable("id") Long id, Sex sex, RedirectAttributes ra) {
+        try {
+            service.update(sex);
+            ra.addAttribute("id",id).addFlashAttribute("success", "Successfully updated !");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            ra.addAttribute("id",id).addFlashAttribute("fail", "Update failure !");
+        }
+        return Router.redirectTo(URI + "/{id}");
     }
 }

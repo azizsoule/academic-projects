@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en"  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org"
       layout:decorate="~{layout/base-layout}">
+<link rel="stylesheet" type="text/css" th:href="@{/data-tables/datatables.min.css}"/>
 <th:block layout:fragment="content" >
-    <link rel="stylesheet" type="text/css" th:href="@{/data-tables/datatables.min.css}"/>
-
     <main>
             <div class="container-fluid">
                 <h2 class="mt-30 page-title">Orders</h2>
@@ -12,20 +11,6 @@
                     <li class="breadcrumb-item active">Orders</li>
                 </ol>
                 <div class="row justify-content-between">
-                    <div class="col-lg-3 col-md-4">
-                        <div class="bulk-section mb-30">
-                            <div class="input-group">
-                                <select id="action" name="action" class="form-control">
-                                    <option selected>Bulk Actions</option>
-                                    <option value="4">Complete</option>
-                                    <option value="5">Delete</option>
-                                </select>
-                                <div class="input-group-append">
-                                    <button class="status-btn hover-btn" type="submit">Apply</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="bulk-section mb-30">
                             <div class="search-by-name-input">
@@ -51,10 +36,10 @@
                                             <th style="width:60px"><input type="checkbox" class="check-all"></th>
                                             <th style="width:130px">Order ID</th>
                                             <th style="width:200px">Date</th>
-                                            <!--<th style="width:300px">Address</th>
-                                            <th style="width:130px">Status</th>-->
+                                            <th style="width:300px">Address</th>
                                             <th style="width:130px">Total</th>
-                                            <th style="width:100px"></th>
+                                            <th style="width:130px">Status</th>
+                                            <th style="width:100px">Action</th>
                                         </tr>
                                         </thead>
 
@@ -63,17 +48,17 @@
                                             <td><input type="checkbox" class="check-item" name="ids[]" value="1"></td>
                                             <td th:text="${order.idOrder}"></td>
                                             <td th:text="${order.createdAt}"> </td>
-                                            <!--<td>#0000, St No. 8, Shahid Karnail Singh Nagar, MBD Mall, Frozpur road,
+                                            <td th:text="${order.address.label+', '+order.address.city.label+', '+order.address.city.region.label}">#0000, St No. 8, Shahid Karnail Singh Nagar, MBD Mall, Frozpur road,
                                                 Ludhiana, 141001
                                             </td>
-                                            <td>
-                                                 <span class="badge-item badge-status">Pending</span>
-                                            </td>-->
                                             <td th:text="${order.total}"></td>
+                                            <td>
+                                                 <span th:class="${order.orderState.codeOrderState=='PENDING' ? 'badge-item badge-status' : (order.orderState.codeOrderState=='COMPLETE' ? 'badge-item badge-success' : 'badge-item badge-danger') }" th:text="${order.orderState.codeOrderState}">Pending</span>
+                                            </td>
                                             <td class="action-btns">
-                                                <a th:href="@{/orders/{id}/(id=${order.idOrder})}" class="views-btn"><i
-                                                        class="fas fa-eye"></i></a>
-
+                                                <a th:href="@{/orders/{id}/(id=${order.idOrder})}" class="views-btn"><i class="fas fa-eye"></i></a>
+                                                <a th:if="${order.orderState.codeOrderState=='PENDING'}" th:href="@{/orders/{id}/{status}(id=${order.idOrder},status=${'COMPLETE'})}" class="btn btn-success"><i class="fas fa-check"></i></a>
+                                                <a th:if="${order.orderState.codeOrderState=='PENDING'}" th:href="@{/orders/{id}/{status}(id=${order.idOrder},status=${'CANCELED'})}" class="btn btn-danger">X</a>
                                             </td>
                                         </tr>
                                         </tbody>

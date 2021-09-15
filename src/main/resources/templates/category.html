@@ -68,7 +68,7 @@
                                         <td th:text="${category.idCategory}">8</td>
                                         <td>
                                             <div class="cate-img">
-                                                <img src="images/category/icon-8.svg" alt="">
+                                                <img th:src="@{${category.getMainImage()}}" th:alt="${category.image}">
                                             </div>
                                         </td>
                                         <td th:text="${category.label}">Personal Care</td>

@@ -59,11 +59,11 @@ public class Article {
     @OneToOne(mappedBy = "article")
     private CartItem cartItem;
 
-    @OneToOne(mappedBy = "article")
-    private OrderItem orderItem;
+    @OneToMany(mappedBy = "article")
+    private Set<OrderItem> orderItems;
 
-    @OneToOne(mappedBy = "article")
-    private WishItem wishItem;
+    @OneToMany(mappedBy = "article")
+    private Set<WishItem> wishItems;
 
     @Transient
     public String getMainImage() {

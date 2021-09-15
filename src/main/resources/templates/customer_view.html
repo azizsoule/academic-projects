@@ -25,7 +25,7 @@
                                 <ul class="product-dt-purchases">
                                     <li>
                                         <div class="product-status">
-                                            Purchased <span class="badge-item-2 badge-status" th:text="${customer.orders.size()}">15</span>
+                                            Orders <span class="badge-item-2 badge-status" th:text="${customer.orders.size()}">15</span>
                                         </div>
                                     </li>
                                     <!-- <li>
@@ -56,7 +56,7 @@
                                     </div>
                                     <div class="shopowner-dt-list">
                                         <span class="left-dt">Address</span>
-                                        <span th:text="${customer.birthDate}" class="right-dt">Ludhiana, Punjab</span>
+                                        <span th:each="address:${customer.addresses}" class="right-dt" th:text="${address.label}">Ludhiana, Punjab</span>
                                     </div>
                                 </div>
                             </div>

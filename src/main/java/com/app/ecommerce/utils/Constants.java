@@ -8,6 +8,7 @@ public class Constants {
     public static final String CATEGORIES_MEDIA_DIR = MEDIA_DIR+"categories";
     public static final String SUB_CATEGORIES_MEDIA_DIR = MEDIA_DIR+"sub-categories";
     public static final String PAYMENT_METHODS_MEDIA_DIR = MEDIA_DIR+"payment-methods";
+    public static final String PUBS_MEDIA_DIR=MEDIA_DIR+"pubs";
 
     /*FOR WEB SECURITY ONLY*/
     public static final String REMEMBER_ME_KEY="e-@pplic@tion";

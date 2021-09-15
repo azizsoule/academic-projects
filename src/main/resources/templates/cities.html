@@ -69,7 +69,7 @@
                                         <td><input type="checkbox" class="check-item" name="ids[]" value="11"></td>
                                         <td th:text="${city.idCity}">1</td>
                                         <td th:text="${city.label}">Fruits and Vegetables</td>
-                                        <td th:text="${city.region.idRegion}">Fruits and Vegetables</td>
+                                        <td th:text="${city.region.label}">Fruits and Vegetables</td>
                                         <td class="action-btns">
                                             <a th:href="@{/cities/{id}(id=${city.idCity})}" class="edit-btn"><i
                                                     class="fas fa-edit"></i> Edit</a>

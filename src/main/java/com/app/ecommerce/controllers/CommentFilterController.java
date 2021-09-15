@@ -84,7 +84,8 @@ public class CommentFilterController {
 
     @GetMapping(C_URI)
     private String getBlockedComment(Model model){
-        model.addAttribute("comments",commentService.blockedComments());
+        model.addAttribute("blockedComments",commentService.blockedComments());
+        model.addAttribute("comments",commentService.unblockedComments());
         return COMMENT_LIST_VIEW;
     }
     @GetMapping(C_URI+ "/{id}/block")
