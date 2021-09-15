@@ -1,6 +1,6 @@
 Highcharts.chart('earningGraph', {
     chart: {type: 'areaspline', borderWidth: 0, style: {fontFamily: 'Roboto', fontWeight: '500',}},
-    title: {text: '2020 Income & Order Summary'},
+    title: {text: '2021 Income & Order Summary'},
     subtitle: {text: 'Show monthly wise income & order graph.'},
     legend: {
         layout: 'vertical',

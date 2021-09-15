@@ -3,11 +3,9 @@ package com.app.ecommerce.config;
 import com.app.ecommerce.models.*;
 import com.app.ecommerce.repositories.OrderStateRepository;
 import com.app.ecommerce.repositories.PaymentMethodRepository;
+import com.app.ecommerce.repositories.RegionRepository;
 import com.app.ecommerce.repositories.SexRepository;
-import com.app.ecommerce.services.PaymentMethodService;
-import com.app.ecommerce.services.PrivilegeService;
-import com.app.ecommerce.services.UserGroupService;
-import com.app.ecommerce.services.UserService;
+import com.app.ecommerce.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -27,6 +25,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
     @Autowired
     PrivilegeService privilegeService;
+    @Autowired
+    RegionRepository regionRepository;
 
     @Autowired
     OrderStateRepository orderStateRepository;
@@ -57,9 +57,15 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
                 new Sex("FEMME"),
                 new Sex("AUTRE")
         ));
+        List<Region> regions = new ArrayList<>(Arrays.asList(
+                new Region("Région des lagunes"),
+                new Region("Région de l'agneby tiassa"),
+                new Region("Région du moronou")
+        ));
         orderStateRepository.saveAll(orderStates);
         paymentMethodRepository.saveAll(paymentMethods);
         sexRepository.saveAll(sexes);
+        regionRepository.saveAll(regions);
         String [] accessList = {"CATALOG", "CATEGORIE", "SUB_CATEGORIE",};
         List<String> privileges = Arrays.asList(accessList);
         List<Privilege> savedPrivileges= new ArrayList<>();
