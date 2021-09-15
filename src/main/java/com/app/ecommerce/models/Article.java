@@ -55,12 +55,12 @@ public class Article {
     private Set<Discount> discounts = new HashSet<>();
 
     @OneToMany(mappedBy = "article")
-    private Set<CartItem> cartItem;
+    private Set<CartItem> cartItems;
 
     @OneToMany(mappedBy = "article")
-    private Set<OrderItem> orderItem;
+    private Set<OrderItem> orderItems;
 
     @OneToMany(mappedBy = "article")
-    private Set<WishItem> wishItem;
+    private Set<WishItem> wishItems;
 
 }
