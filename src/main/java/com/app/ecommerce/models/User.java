@@ -4,9 +4,6 @@ import com.app.ecommerce.models.supers.Person;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -21,7 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-public class User extends Person implements UserDetails {
+public class User extends Person {
 
     private String username;
 
@@ -40,51 +37,4 @@ public class User extends Person implements UserDetails {
         setPassword(password);
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return getGrantedAuthorities(userGroup);
-    }
-
-    private List<GrantedAuthority> getGrantedAuthorities(UserGroup group) {
-        final List<GrantedAuthority> authorities = new ArrayList<>();
-        try{
-            for (final String privilege : getPrivileges(group)) {
-                authorities.add(new SimpleGrantedAuthority(privilege));
-            }
-        } catch (Exception e) {
-            System.out.println("L'user n'a peut être pas de groupe user");
-            authorities.add(new SimpleGrantedAuthority("USER"));
-            throw new RuntimeException(e);
-        }
-        return authorities;
-    }
-
-    private List<String> getPrivileges(UserGroup group) {
-        List<String> privileges = new ArrayList<>();
-        for (Privilege privilege : group.getPrivileges()) {
-            privileges.add(privilege.getLabel());
-        }
-        privileges.add(group.getLabel()+"_GROUP");
-        return privileges;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return !isBlocked();
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return !isPasswordExpired();
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
 }

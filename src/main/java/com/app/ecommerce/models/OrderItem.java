@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Setter
 public class OrderItem extends Item {
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "article_id_article")
     private Article article;
 

@@ -99,105 +99,111 @@ public class DebeziumListener {
         log.info("Key = '" + sourceRecord.key() + "' value = '" + sourceRecord.value() + "'");
 
         Struct sourceRecordChangeValue = (Struct) sourceRecord.value();
-        if (sourceRecordChangeValue != null) {
-            Operation operation = Operation.forCode((String) sourceRecordChangeValue.get(OPERATION));
-            Struct source = (Struct) sourceRecordChangeValue.get(SOURCE);
-            String tableName = (String) source.get("table");
-            if (operation != Operation.READ) {
-                String record = operation == Operation.DELETE ? BEFORE : AFTER; // Handling Update & Insert operations.
 
-                Struct struct = (Struct) sourceRecordChangeValue.get(record);
-                Map<String, Object> payload = struct.schema().fields().stream()
-                        .map(Field::name)
-                        .filter(fieldName -> struct.get(fieldName) != null)
-                        .map(fieldName -> Pair.of(fieldName, struct.get(fieldName)))
-                        .collect(toMap(Pair::getKey, Pair::getValue));
-                switch (tableName) {
-                    case Table.ADDRESS:
-                        adressService.replicateData(payload, operation);
-                        break;
-                    case Table.ADMIN_USER:
-                        userService.replicateData(payload, operation);
-                        break;
-                    case Table.ARTICLE:
-                        articleService.replicateData(payload, operation);
-                        break;
-                    case Table.CART_ITEM:
-                        cartItemService.replicateData(payload, operation);
-                        break;
-                    case Table.CATALOG:
-                        catalogService.replicateData(payload, operation);
-                        break;
-                    case Table.CATEGORY:
-                        categoryService.replicateData(payload, operation);
-                        break;
-                    case Table.CITY:
-                        cityService.replicateData(payload, operation);
-                        break;
-                    case Table.CUSTOMER:
-                        customerService.replicateData(payload, operation);
-                        break;
-                    case Table.CUSTOMER_COMMENT:
-                        commentService.replicateData(payload, operation);
-                        break;
-                    case Table.CUSTOMER_TYPE:
-                        customerTypeService.replicateData(payload, operation);
-                        break;
-                    case Table.DICTIONARY:
-                        dictionaryService.replicateData(payload, operation);
-                        break;
-                    case Table.DISCOUNT:
-                        discountService.replicateData(payload, operation);
-                        break;
-                    case Table.IMAGE:
-                        imageService.replicateData(payload, operation);
-                        break;
-                    case Table.INVENTORY:
-                        inventoryService.replicateData(payload, operation);
-                        break;
-                    case Table.ORDER_DETAIL:
-                        orderService.replicateData(payload, operation);
-                        break;
-                    case Table.ORDER_ITEM:
-                        orderItemService.replicateData(payload, operation);
-                        break;
-                    case Table.ORDER_STATE:
-                        orderStateService.replicateData(payload, operation);
-                        break;
-                    case Table.PAYMENT_DETAIL:
-                        paymentDetailService.replicateData(payload, operation);
-                        break;
-                    case Table.PAYMENT_METHOD:
-                        paymentMethodService.replicateData(payload, operation);
-                        break;
-                    case Table.PRIVILEGE:
-                        privilegeService.replicateData(payload, operation);
-                        break;
-                    case Table.PUB:
-                        pubService.replicateData(payload, operation);
-                        break;
-                    case Table.REGION:
-                        regionService.replicateData(payload, operation);
-                        break;
-                    case Table.SEX:
-                        sexService.replicateData(payload, operation);
-                        break;
-                    case Table.SUB_CATEGORY:
-                        subCategoryService.replicateData(payload, operation);
-                        break;
-                    case Table.USER_GROUP:
-                        userGroupService.replicateData(payload, operation);
-                        break;
-                    case Table.WISH_ITEM:
-                        wishItemService.replicateData(payload, operation);
-                        break;
-                    default:
-                        System.out.println("Pas de service configuré pour cet table");
-                        break;
+        try {
+            if (sourceRecordChangeValue != null) {
+                Operation operation = Operation.forCode((String) sourceRecordChangeValue.get(OPERATION));
+                Struct source = (Struct) sourceRecordChangeValue.get(SOURCE);
+                String tableName = (String) source.get("table");
+                if (operation != Operation.READ) {
+                    String record = operation == Operation.DELETE ? BEFORE : AFTER; // Handling Update & Insert operations.
+
+                    Struct struct = (Struct) sourceRecordChangeValue.get(record);
+                    Map<String, Object> payload = struct.schema().fields().stream()
+                            .map(Field::name)
+                            .filter(fieldName -> struct.get(fieldName) != null)
+                            .map(fieldName -> Pair.of(fieldName, struct.get(fieldName)))
+                            .collect(toMap(Pair::getKey, Pair::getValue));
+                    switch (tableName) {
+                        case Table.ADDRESS:
+                            adressService.replicateData(payload, operation);
+                            break;
+                        case Table.ADMIN_USER:
+                            userService.replicateData(payload, operation);
+                            break;
+                        case Table.ARTICLE:
+                            articleService.replicateData(payload, operation);
+                            break;
+                        case Table.CART_ITEM:
+                            cartItemService.replicateData(payload, operation);
+                            break;
+                        case Table.CATALOG:
+                            catalogService.replicateData(payload, operation);
+                            break;
+                        case Table.CATEGORY:
+                            categoryService.replicateData(payload, operation);
+                            break;
+                        case Table.CITY:
+                            cityService.replicateData(payload, operation);
+                            break;
+                        case Table.CUSTOMER:
+                            customerService.replicateData(payload, operation);
+                            break;
+                        case Table.CUSTOMER_COMMENT:
+                            commentService.replicateData(payload, operation);
+                            break;
+                        case Table.CUSTOMER_TYPE:
+                            customerTypeService.replicateData(payload, operation);
+                            break;
+                        case Table.DICTIONARY:
+                            dictionaryService.replicateData(payload, operation);
+                            break;
+                        case Table.DISCOUNT:
+                            discountService.replicateData(payload, operation);
+                            break;
+                        case Table.IMAGE:
+                            imageService.replicateData(payload, operation);
+                            break;
+                        case Table.INVENTORY:
+                            inventoryService.replicateData(payload, operation);
+                            break;
+                        case Table.ORDER_DETAIL:
+                            orderService.replicateData(payload, operation);
+                            break;
+                        case Table.ORDER_ITEM:
+                            orderItemService.replicateData(payload, operation);
+                            break;
+                        case Table.ORDER_STATE:
+                            orderStateService.replicateData(payload, operation);
+                            break;
+                        case Table.PAYMENT_DETAIL:
+                            paymentDetailService.replicateData(payload, operation);
+                            break;
+                        case Table.PAYMENT_METHOD:
+                            paymentMethodService.replicateData(payload, operation);
+                            break;
+                        case Table.PRIVILEGE:
+                            privilegeService.replicateData(payload, operation);
+                            break;
+                        case Table.PUB:
+                            pubService.replicateData(payload, operation);
+                            break;
+                        case Table.REGION:
+                            regionService.replicateData(payload, operation);
+                            break;
+                        case Table.SEX:
+                            sexService.replicateData(payload, operation);
+                            break;
+                        case Table.SUB_CATEGORY:
+                            subCategoryService.replicateData(payload, operation);
+                            break;
+                        case Table.USER_GROUP:
+                            userGroupService.replicateData(payload, operation);
+                            break;
+                        case Table.WISH_ITEM:
+                            wishItemService.replicateData(payload, operation);
+                            break;
+                        default:
+                            System.out.println("Pas de service configuré pour cet table");
+                            break;
+                    }
+                    log.info("Updated Data: {} with Operation: {}", payload, operation.name());
                 }
-                log.info("Updated Data: {} with Operation: {}", payload, operation.name());
             }
+        } catch (Exception e) {
+
         }
+
     }
 
     @PostConstruct

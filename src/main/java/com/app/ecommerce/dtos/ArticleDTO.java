@@ -10,8 +10,8 @@ public class ArticleDTO {
     private Float price;
     private Integer ratingSum;
     private String sku;
-    private Long inventoryIdInventory;
-    private Long subCategoryIdSubCategory;
+    private InventoryDTO inventoryDTO;
+    private SubCategoryDTO subCategoryDTO;
 
     public Long getIdArticle() {
         return this.idArticle;
@@ -85,19 +85,19 @@ public class ArticleDTO {
         this.sku = sku;
     }
 
-    public Long getInventoryIdInventory() {
-        return this.inventoryIdInventory;
+    public InventoryDTO getInventoryDTO() {
+        return inventoryDTO;
     }
 
-    public void setInventoryIdInventory(Long inventoryIdInventory) {
-        this.inventoryIdInventory = inventoryIdInventory;
+    public void setInventoryDTO(InventoryDTO inventoryDTO) {
+        this.inventoryDTO = inventoryDTO;
     }
 
-    public Long getSubCategoryIdSubCategory() {
-        return this.subCategoryIdSubCategory;
+    public SubCategoryDTO getSubCategoryDTO() {
+        return subCategoryDTO;
     }
 
-    public void setSubCategoryIdSubCategory(Long subCategoryIdSubCategory) {
-        this.subCategoryIdSubCategory = subCategoryIdSubCategory;
+    public void setSubCategoryDTO(SubCategoryDTO subCategoryDTO) {
+        this.subCategoryDTO = subCategoryDTO;
     }
 }

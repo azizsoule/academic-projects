@@ -54,13 +54,13 @@ public class Article {
     @ManyToMany(mappedBy = "articles")
     private Set<Discount> discounts = new HashSet<>();
 
-    @OneToOne(mappedBy = "article")
-    private CartItem cartItem;
+    @OneToMany(mappedBy = "article")
+    private Set<CartItem> cartItem;
 
-    @OneToOne(mappedBy = "article")
-    private OrderItem orderItem;
+    @OneToMany(mappedBy = "article")
+    private Set<OrderItem> orderItem;
 
-    @OneToOne(mappedBy = "article")
-    private WishItem wishItem;
+    @OneToMany(mappedBy = "article")
+    private Set<WishItem> wishItem;
 
 }
