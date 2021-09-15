@@ -14,8 +14,7 @@ public class RegionService{
     RegionRepository repository;
 
     public Region findById(Long aLong) {
-        Region region = repository.getById(aLong);
-        return region;
+        return repository.getById(aLong);
     }
 
     public List<Region> findAll() {

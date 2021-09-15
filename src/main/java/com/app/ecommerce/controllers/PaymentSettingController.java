@@ -30,7 +30,6 @@ public class PaymentSettingController {
 
     @GetMapping(URI+"/{id}")
     public String getPayment(@PathVariable(name = "id")Long id, Model model){
-
         return VIEW;
     }
 }

@@ -1,8 +1,10 @@
 package com.app.ecommerce.config;
 
+import com.app.ecommerce.models.OrderState;
 import com.app.ecommerce.models.Privilege;
 import com.app.ecommerce.models.User;
 import com.app.ecommerce.models.UserGroup;
+import com.app.ecommerce.repositories.OrderStateRepository;
 import com.app.ecommerce.services.PrivilegeService;
 import com.app.ecommerce.services.UserGroupService;
 import com.app.ecommerce.services.UserService;
@@ -26,10 +28,19 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
     @Autowired
     PrivilegeService privilegeService;
 
+    @Autowired
+    OrderStateRepository orderStateRepository;
+
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         if(initialDataAlreadySetup()) return;
+        List<OrderState> orderStates = new ArrayList<>(Arrays.asList(
+                new OrderState("PENDING", "En cours"),
+                new OrderState("COMPLETED", "Terminnée"),
+                new OrderState("CANCELED", "Annulée")
+        ));
+        orderStateRepository.saveAll(orderStates);
         String [] accessList = {"CATALOG", "CATEGORIE", "SUB_CATEGORIE",};
         List<String> privileges = Arrays.asList(accessList);
         List<Privilege> savedPrivileges= new ArrayList<>();

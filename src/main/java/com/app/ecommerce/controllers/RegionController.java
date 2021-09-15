@@ -1,6 +1,5 @@
 package com.app.ecommerce.controllers;
 
-import com.app.ecommerce.dtos.CatalogDTO;
 import com.app.ecommerce.models.Region;
 import com.app.ecommerce.services.RegionService;
 import com.app.ecommerce.utils.Router;

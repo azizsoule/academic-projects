@@ -99,7 +99,6 @@ public class ArticleController implements BaseController<Article, Long> {
     @PostMapping(URI + "/save")
     public String post(Article obj, @RequestParam("articleImage") MultipartFile multipartFile, RedirectAttributes ra, @RequestParam("files") MultipartFile[] multipartFiles) {
         try {
-//            ArrayList<MultipartFile> liste = new ArrayList<MultipartFile>(Arrays.asList(multipartFiles));
             Article article;
             if(!multipartFile.isEmpty()){
                 String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
@@ -117,15 +116,6 @@ public class ArticleController implements BaseController<Article, Long> {
                         MediaSaver.saveFile(uploadDir1, fname, file);
                     }
                 }
-//                liste.forEach(multipartFile1 -> {
-//                    article.getImages().add(new Image(StringUtils.cleanPath(Objects.requireNonNull(multipartFile1.getOriginalFilename()))));
-//                    String uploadDir1 = Constants.ARTICLES_MEDIA_DIR+'/'+ article.getSku();
-//                    try {
-//                        MediaSaver.saveFile(uploadDir1, fileName, multipartFile1);
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//                });
             }
             ra.addFlashAttribute("success", "Successfully saved !");
         } catch (Exception e) {

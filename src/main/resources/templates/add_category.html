@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org"
       layout:decorate="~{layout/base-layout}">
+
 <th:block layout:fragment="content">
     <main>
         <div class="container-fluid">
@@ -46,15 +47,9 @@
                                     <div class="form-group">
                                         <label class="form-label">Category Image*</label>
                                         <div class="input-group">
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" th:field="*{image}"
-                                                       aria-describedby="inputGroupFileAddon04">
-                                                <label class="custom-file-label" for="image">Choose
-                                                    Image</label>
+                                            <div class="">
+                                                <input type="file" class="file form-control-file" id="inputGroupFile04" name="articleImage" required>
                                             </div>
-                                        </div>
-                                        <div class="add-cate-img">
-                                            <img src="images/category/icon-1.svg" alt="">
                                         </div>
                                     </div>
                                     <button class="save-btn hover-btn" type="submit">Add New Category</button>
@@ -67,5 +62,10 @@
         </div>
     </main>
 </th:block>
-
+<th:block layout:fragment="scripts">
+    <script>
+        // with plugin options
+        $("#inputGroupFile04").fileinput({'showUpload':false, 'previewFileType':'any'});
+    </script>
+</th:block>
 </html>

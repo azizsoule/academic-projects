@@ -1,16 +1,24 @@
 package com.app.ecommerce.controllers;
 
 import com.app.ecommerce.models.Category;
+import com.app.ecommerce.models.Image;
 import com.app.ecommerce.services.CatalogService;
 import com.app.ecommerce.services.CategoryService;
+import com.app.ecommerce.utils.Constants;
+import com.app.ecommerce.utils.MediaSaver;
 import com.app.ecommerce.utils.Router;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.Objects;
 
 @Controller
 public class CategoryController {
@@ -47,9 +55,15 @@ public class CategoryController {
     }
 
     @PostMapping(URI + "/save")
-    private String postCategory(Category category, RedirectAttributes ra) {
+    private String postCategory(@RequestParam("categoryImage") MultipartFile multipartFile, Category category, RedirectAttributes ra) {
         try {
-            categoryService.save(category);
+            if(!multipartFile.isEmpty()){
+                String fileName = StringUtils.cleanPath(Objects.requireNonNull(multipartFile.getOriginalFilename()));
+                category.setImage(fileName);
+                categoryService.save(category);
+                String uploadDir = Constants.CATEGORIES_MEDIA_DIR+'/'+category.getIdCategory();
+                MediaSaver.saveFile(uploadDir, fileName, multipartFile);
+            }
             ra.addFlashAttribute("success", "Successfully saved !");
         } catch (Exception e) {
             System.out.println(e.getMessage());
