@@ -27,6 +27,9 @@ public class OrderService extends BaseService<Order, Long> {
     public List<Order> findAll() {
         return repository.findAll();
     }
+    public List<Order> findRecentOrders() {
+        return repository.findRecentOrders();
+    }
 
     @Override
     public Order save(Order order) {

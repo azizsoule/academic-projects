@@ -1,6 +1,6 @@
 package com.app.ecommerce.controllers;
 
-import com.app.ecommerce.dtos.CatalogDTO;
+import com.app.ecommerce.models.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.app.ecommerce.dtos.OrderDetailDTO;
@@ -47,7 +47,7 @@ public class OrderController {
 
 
      @PostMapping(ADD_URI + "/save")
-    private String postOrder(OrderDetailDTO orderDetailDTO, RedirectAttributes ra) {
+    private String postOrder(Order orderDetailDTO, RedirectAttributes ra) {
         try {
             orderService.save(orderDetailDTO);
             ra.addFlashAttribute("success", "Successfully saved !");
@@ -60,10 +60,10 @@ public class OrderController {
 
 
     @PostMapping(URI + "/{id}/update")
-    private String updateOrder(@PathVariable("id") Long id, OrderDetailDTO orderDetailDTO,
-                                 RedirectAttributes ra) {
+    private String updateOrder(@PathVariable("id") Long id, Order orderDetailDTO,
+                               RedirectAttributes ra) {
         try {
-            orderService.update(orderDetailDTO);
+                orderService.update(orderDetailDTO);
             ra.addAttribute("id", id).addFlashAttribute("success", "Successfully updated !");
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -73,7 +73,7 @@ public class OrderController {
     }
 
     @PostMapping(URI + "/{id}/delete")
-    private String deleteOrder(@PathVariable("id") Long id, OrderDetailDTO orderDetailDTO, RedirectAttributes ra) {
+    private String deleteOrder(@PathVariable("id") Long id, Order orderDetailDTO, RedirectAttributes ra) {
         try {
             orderService.delete(orderDetailDTO);
             ra.addFlashAttribute("success", "Successfully deleted !");
