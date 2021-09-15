@@ -10,51 +10,47 @@
                 <li class="breadcrumb-item"><a th:href="@{/orders}">Orders</a></li>
                 <li class="breadcrumb-item active">Order view</li>
             </ol>
-            </ol>
-            </div>
-
             <div class="row" >
                 <div class="col-lg-5 col-md-6">
                     <div class="card card-static-2 mb-30">
                         <div class="card-body-table">
                             <div class="shopowner-content-left text-center pd-20">
                                 <div class="customer_img">
-                                    <img src="images/avatar/img-1.jpg" alt="">
+                                    <img th:src="@{/images/cart.jpg}" alt="cart">
+                                </div>
+                                <div class="shopowner-dt-left mt-4">
+                                    <h4>ORDERNO[[${order.idOrder}]]</h4>
+                                    <span>Customer</span>
                                 </div>
                                 <ul class="product-dt-purchases">
+                                    <li>
+                                        <div class="product-status">
+                                            Articles <span class="badge-item-2 badge-status" th:text="${order.orderItems.size()}">15</span>
+                                        </div>
+                                    </li>
                                 </ul>
                                 <div class="shopowner-dts">
 
                                     <div class="shopowner-dt-list">
+                                        <span class="left-dt">Total</span>
                                         <div class="right-dt" th:text="${order.total}">
-                                            Total
                                         </div>
                                     </div>
                                     <div class="shopowner-dt-list">
-                                        <div class="product-status" >
                                             <span class="left-dt">Date</span>
-                                            <span  th:text="${order.createdAt}" class="right-dt"></span>
-                                        </div>
+                                            <div th:text="${order.createdAt}" class="right-dt"></div>
                                     </div>
                                     <div class="shopowner-dt-list">
-                                        <div class="product-status" >
                                             <span class="left-dt">Payment</span>
-                                            <span class="right-dt" th:text="${order.paymentDetail.paymentMethod.label}"></span>
-
-                                        </div>
+                                            <div class="right-dt" th:text="${order.paymentDetail.paymentMethod.label}"></div>
                                     </div>
                                     <div class="shopowner-dt-list">
-                                        <div class="product-status" >
-                                            <span class="left-dt">Customer</span>
-                                            <span class="right-dt" th:text="${order.customer.email}"></span>
-
-                                        </div>
+                                            <span class="left-dt">Customer email</span>
+                                            <div class="right-dt" th:text="${order.customer.email}"></div>
                                     </div>
                                     <div class="shopowner-dt-list">
-                                        <div class="product-status" >
                                             <span class="left-dt">State</span>
-                                            <span class="right-dt" th:text="${order.orderState.codeOrderState}"></span>
-                                        </div>
+                                            <span th:class="${order.orderState.codeOrderState=='PENDING' ? 'right-dt badge-item badge-status' : (order.orderState.codeOrderState=='COMPLETE' ? 'right-dt badge-item badge-success' : 'right-dt badge-item badge-danger') }" th:text="${order.orderState.codeOrderState}"></span>
                                     </div>
 
                                 </div>
@@ -63,7 +59,10 @@
                 </div>
 
             </div>
+                <div class="col-lg-7 col-md-6">
 
+                </div>
+            </div>
         </div>
     </main>
 </th:block>

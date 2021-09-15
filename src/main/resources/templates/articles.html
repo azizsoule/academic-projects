@@ -11,6 +11,15 @@
                 <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
                 <li class="breadcrumb-item active">Articles</li>
             </ol>
+            <!--Alerts for submissions-->
+            <div class="alert alert-success" th:if="${success}"><i class="fa fa-check-circle"></i>
+                [[${success}]]
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">x</button>
+            </div>
+            <div class="alert alert-danger" th:if="${fail}"><i class="fa fa-exclamation-circle"></i>
+                [[${fail}]]
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">x</button>
+            </div>
             <div class="row justify-content-between">
                 <div class="col-lg-12">
                     <a th:href="@{/add-article}" class="add-btn hover-btn">Add New</a>
@@ -81,6 +90,8 @@
                                                     class="fas fa-eye"></i></a>
                                             <a th:href="@{/articles/{id}/edit(id=${article.idArticle})}" class="edit-btn" title="Edit"><i
                                                     class="fas fa-edit"></i></a>
+                                            <a th:href="@{/articles/{id}/delete(id=${article.idArticle})}" class="delete-btn" title="Delete"><i
+                                                    class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
 

@@ -15,7 +15,7 @@ layout:decorate="~{layout/base-layout}">
                     <div class="dashboard-report-card purple">
                         <div class="card-content">
                             <span class="card-title">Purchased items</span>
-                            <span class="card-count" th:text="">2</span>
+                            <span class="card-count" th:text="${nbrPurchased}">2</span>
                         </div>
                         <div class="card-media">
                             <i class="fab fa-rev"></i>
@@ -26,7 +26,7 @@ layout:decorate="~{layout/base-layout}">
                     <div class="dashboard-report-card red">
                         <div class="card-content">
                             <span class="card-title">Order Cancel</span>
-                            <span class="card-count">0</span>
+                            <span class="card-count" th:text="${nbrCanceled}">0</span>
                         </div>
                         <div class="card-media">
                             <i class="far fa-times-circle"></i>
@@ -36,8 +36,8 @@ layout:decorate="~{layout/base-layout}">
                 <div class="col-xl-3 col-md-6">
                     <div class="dashboard-report-card info">
                         <div class="card-content">
-                            <span class="card-title">Most ordered </span>
-                            <span class="card-count">5</span>
+                            <span class="card-title">Order Complete </span>
+                            <span class="card-count" th:text="${nbrComplete}">5</span>
                         </div>
                         <div class="card-media">
                             <i class="fas fa-sync-alt rpt_icon"></i>
@@ -68,11 +68,11 @@ layout:decorate="~{layout/base-layout}">
                     <div class="card card-static-2 mb-30">
                         <div class="card-title-2">
                             <h4>Recent Orders</h4>
-                            <a href="orders.html" class="view-btn hover-btn">View All</a>
+                            <a th:href="@{/orders}" class="view-btn hover-btn">View All</a>
                         </div>
                         <div class="card-body-table">
                             <div class="table-responsive">
-                                <table class="table ucp-table table-hover" th:each="order:${recentOrders}">
+                                <table class="table ucp-table table-hover">
                                     <thead>
                                     <tr >
                                         <th style="width:130px">Order ID</th>
@@ -84,26 +84,16 @@ layout:decorate="~{layout/base-layout}">
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
+                                    <tr th:each="order:${recentOrders}">
                                         <td th:text="${order.idOrder}">ORDER12345</td>
-                                        <td>
-                                            <a target="_blank" th:text="${order.orderItems}">Product Title Here</a>
+                                        <td th:text="${order.createdAt}"></td>
+
+                                        <td th:text="${order.address.label+', '+order.address.city.label}">
                                         </td>
-                                        <td th:text="${order.createdAt}">
-                                            <!--<span class="delivery-time">15/06/2020</span>
-                                            <span class="delivery-time">4:00PM - 6.00PM</span>-->
-                                        </td>
-                                        <td th:text="${order.address.label}">
-                                        </td>
-                                        <td>
-                                            <span class="badge-item badge-status" th:text="${order.orderState.label}"></span>
+                                        <td><span th:class="${order.orderState.codeOrderState=='PENDING' ? 'badge-item badge-status' : (order.orderState.codeOrderState=='COMPLETE' ? 'badge-item badge-success' : 'badge-item badge-danger') }" th:text="${order.orderState.codeOrderState}"></span>
                                         </td>
                                         <td th:text="${order.total}"></td>
-
                                     </tr>
-
-
-
                                     </tbody>
                                 </table>
                             </div>

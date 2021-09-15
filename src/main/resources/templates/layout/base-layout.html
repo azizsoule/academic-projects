@@ -42,7 +42,7 @@
             <div aria-labelledby="userDropdown" class="dropdown-menu dropdown-menu-right">
                 <a class="dropdown-item admin-dropdown-item" href="edit_profile.html">Edit Profile</a>
                 <a class="dropdown-item admin-dropdown-item" href="change_password.html">Change Password</a>
-                <a class="dropdown-item admin-dropdown-item" href="login.html">Logout</a>
+                <a class="dropdown-item admin-dropdown-item" href="/logout">Logout</a>
             </div>
         </li>
     </ul>
@@ -134,7 +134,7 @@
                     <div aria-labelledby="headingTwo" class="collapse" data-parent="#sidenavAccordion"
                          id="collapseSettings">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link sub_nav_link" th:href="@{/payment-setting}">Payment Settings</a>
+                            <a class="nav-link sub_nav_link" th:href="@{/payment-methods}">Payment Settings</a>
                             <a class="nav-link sub_nav_link" th:href="@{/regions}">Region</a>
                             <a class="nav-link sub_nav_link" th:href="@{/cities}">Cyties</a>
                             <a class="nav-link sub_nav_link" th:href="@{/sexes}">Sex</a>

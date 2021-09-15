@@ -73,9 +73,9 @@
                                             <tr th:each="catalog:${catalogs}">
                                                 <td><input type="checkbox" class="check-item" name="ids[]" value="11"></td>
                                                 <td th:text="${catalog.idCatalog}">1</td>
-                                                <td th:text="${catalog.image}">
+                                                <td>
                                                     <div class="cate-img">
-                                                        <img src="images/category/icon-1.svg" alt="">
+                                                        <img th:src="@{${catalog.getMainImage()}}" th:alt="${catalog.image}">
                                                     </div>
                                                 </td>
                                                 <td th:text="${catalog.label}">Fruits and Vegetables</td>
