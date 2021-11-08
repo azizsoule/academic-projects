@@ -1,6 +1,7 @@
 package com.app.ecommerce.models;
 
 import com.app.ecommerce.utils.Constants;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,6 +28,7 @@ public class Category {
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private Set<SubCategory> subCategories;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "catalog_id_catalog")
     private Catalog catalog;

@@ -44,6 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                             "/js/**",
                             "/ajax/**",
                             "/*.js",
+                            "/api/**",
                             "/e-media/**",
                             "/www.google-analytics.com/analytics.js"
 //                            "/scss/**"
@@ -69,7 +70,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // @formatter:on
     }
-
 
     @Bean
     public DaoAuthenticationProvider authProvider() {
