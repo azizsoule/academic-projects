@@ -1,0 +1,14 @@
+#board > .text-field:focused {
+    -fx-border-style: solid;
+    -fx-border-color: blue;
+    -fx-border-width: 5;
+}
+
+.current-clue {
+    -fx-selection-bar: red;
+    -fx-selection-bar-non-focused: red;
+}
+
+#board > .text-field:disabled {
+    -fx-opacity: 1;
+}
