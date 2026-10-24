@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "540687429925",
+    "project_id": "asna-chat-miage",
+    "storage_bucket": "asna-chat-miage.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:540687429925:android:cbb2cc729d66b7fcc36acc",
+        "android_client_info": {
+          "package_name": "com.example.asna_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "540687429925-o6kko6bklc8d9gepis15jl2lj4cdmq4a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4DVBh7N1a6OYwxRV9IRyM53AMnX1-RHM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "540687429925-o6kko6bklc8d9gepis15jl2lj4cdmq4a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
