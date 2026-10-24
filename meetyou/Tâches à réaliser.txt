@@ -1,0 +1,43 @@
+TACHES A REALISER :
+
+-Mot de passe contrôle de saisie ---> ok
+-Combobox select profil recherchés ---> ok
+-Villes et pays (cacher les villes affichées précédemment)--->ok
+-Partie Messagerie --->ok
+-Activer une discussion onclick ->ok
+-Partie centre d'intérets afficher les ci (disabled) --> ok
+-Fonction getMatch()---> ok
+-Ajouter bouton dans la partie profil --> ok
+-Gerer le volet pré-discussion de la partie messagerie --> ok
+-Gérer l'image de profil --> ok
+
+-Infos a afficher sur le profil :
+  (user)
+  nom -> ok
+  photo
+  religion -> ok
+  prenoms -> ok
+  sexe -> ok
+  age -> ok
+  profession -> ok
+  nationalite -> ok
+  ville -> ok
+  pays -> ok
+  commentaire -> ok
+
+  (profil recherché)
+  age_deb -> ok
+  age_fin -> ok
+  sexe -> ok
+  teint -> ok
+  taille_deb -> ok
+  taille_fin -> ok
+  morphologie -> ok
+  nationalite -> ok
+  religion -> ok
+  commentaire -> ok
+
+A gerer plus tard
+  -Ameliorer Design div sender(partie message)
+  -Statut de la personne personne connectée
+  -Gérer l'image de cover
