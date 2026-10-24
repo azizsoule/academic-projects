@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+
+    <!-- Basic page needs
+	============================================ -->
+	<title th:replace="fragments/title :: title"></title>
+    <meta charset="utf-8">
+    <meta name="keywords"
+          content="boostrap, responsive, html5, css3, jquery, theme, multicolor, parallax, retina, business"/>
+    <meta name="author" content="Magentech">
+    <meta name="robots" content="index, follow"/>
+
+    <!-- Mobile specific metas
+    ============================================ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- Favicon
+    ============================================ -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" th:href="@{/ico/apple-touch-icon-144-precomposed.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" th:href="@{/ico/apple-touch-icon-114-precomposed.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" th:href="@{/ico/apple-touch-icon-72-precomposed.png}">
+    <link rel="apple-touch-icon-precomposed" th:href="@{/ico/apple-touch-icon-57-precomposed.png}">
+    <link rel="shortcut icon" th:href="@{/ico/favicon.png}">
+
+    <!-- Google web fonts
+    ============================================ -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+
+    <!-- Libs CSS
+	============================================ -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap/css/bootstrap.min.css}">
+    <link th:href="@{/css/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{/js/datetimepicker/bootstrap-datetimepicker.min.css}" rel="stylesheet">
+    <link th:href="@{/js/owl-carousel/owl.carousel.css}" rel="stylesheet">
+    <link th:href="@{/css/themecss/lib.css}" rel="stylesheet">
+    <link th:href="@{/js/jquery-ui/jquery-ui.min.css}" rel="stylesheet">
+
+    <!-- Theme CSS
+    ============================================ -->
+    <link th:href="@{/css/themecss/so_megamenu.css}" rel="stylesheet">
+    <link th:href="@{/css/themecss/so-categories.css}" rel="stylesheet">
+    <link th:href="@{/css/themecss/so-listing-tabs.css}" rel="stylesheet">
+    <link th:href="@{/css/footer1.css}" rel="stylesheet">
+    <link th:href="@{/css/header1.css}" rel="stylesheet">
+    <link id="color_scheme" th:href="@{/css/theme.css}" rel="stylesheet">
+    <link th:href="@{/css/responsive.css}" rel="stylesheet">
+
+
+</head>
+
+<body class="res layout-subpage">
+<div id="wrapper" class="wrapper-full ">
+
+    <!-- Header Container  -->
+    <header th:replace="fragments/header :: header" ></header>
+    <!-- //Header Container  -->
+
+    <!-- Main Container  -->
+    <div class="main-container container">
+        <ul class="breadcrumb">
+            <li><a th:href="@{#}"><i class="fa fa-home"></i></a></li>
+            <li><a th:href="@{#}">Page</a></li>
+            <li><a th:href="@{#}">About Us</a></li>
+        </ul>
+
+        <div class="row">
+            <div id="content" class="col-sm-12">
+
+                <div class="about-us about-demo-1">
+                    <div class="row">
+                        <div class="col-lg-5 col-md-5 about-image"><img th:src="@{/image/demo/about/wellcometoshop.png}"
+                                                                        alt="About Us"></div>
+                        <div class="col-lg-7 col-md-7 about-info">
+                            <h2 class="about-title"><span>About Us</span></h2>
+                            <div class="about-text">
+                                <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
+                                    dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
+                                    nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
+                                    quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet
+                                    nec, vulputate eget, arcu. </p>
+                                <p> Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
+                                    dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
+                                    nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
+                                    quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet
+                                    nec, vulputate eget, arcu.</p>
+                                <p> Nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium
+                                    quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet
+                                    nec, vulputate eget, arcu. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 what-client-say">
+                            <div class="client-say-content">
+                                <h2 class="about-title line-hori"><span>What Clients Say</span></h2>
+                                <div class="client-say-slider">
+                                    <div id="ytcs579bfc965e489183711469840534"
+                                         class="yt-content-slider owl-theme yt-content-slider-style-1 arrow-default owl2-carousel owl2-theme owl2-loaded"
+                                         data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6"
+                                         data-margin="30" data-item_lg="1" data-item_sm="1" data-item_xs="1"
+                                         data-arrows="no" data-pagination="yes" data-lazyload="yes" data-loop="no"
+                                         data-hoverpause="no">
+                                        <div class="yt-content-slide yt-clearfix yt-content-wrap">
+                                            <div class="item">
+                                                <p class="des-member des-client">“Lorem ipsum dolor sit amet,
+                                                    consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                                                    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient
+                                                    montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
+                                                    pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+                                                    Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
+                                                    arcu.”</p>
+                                                <h3 class="name-member">Jennifer lawrence</h3>
+                                                <p class="job-member">Co Founder</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="yt-content-slide yt-clearfix yt-content-wrap">
+                                            <div class="item">
+                                                <p class="des-member des-client">“Lorem ipsum dolor sit amet,
+                                                    consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                                                    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient
+                                                    montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
+                                                    pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+                                                    Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
+                                                    arcu.”</p>
+                                                <h3 class="name-member">Jennifer lawrence</h3>
+                                                <p class="job-member">Co Founder</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="yt-content-slide yt-clearfix yt-content-wrap">
+                                            <div class="item">
+                                                <p class="des-member des-client">“Lorem ipsum dolor sit amet,
+                                                    consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                                                    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient
+                                                    montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
+                                                    pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+                                                    Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
+                                                    arcu.”</p>
+                                                <h3 class="name-member">Jennifer lawrence</h3>
+                                                <p class="job-member">Co Founder</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="yt-content-slide yt-clearfix yt-content-wrap">
+                                            <div class="item">
+                                                <p class="des-member des-client">“Lorem ipsum dolor sit amet,
+                                                    consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+                                                    Aenean massa. Cum sociis natoque penatibus et magnis dis parturient
+                                                    montes, nascetur ridiculus mus. Donec quam felis, ultricies nec,
+                                                    pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+                                                    Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
+                                                    arcu.”</p>
+                                                <h3 class="name-member">Jennifer lawrence</h3>
+                                                <p class="job-member">Co Founder</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 our-team">
+                            <div class="our-team-content">
+                                <h2 class="about-title line-hori"><span>Our Team</span></h2>
+                                <div class="our-team-slider">
+                                    <div id="ytcs579bfc965e78d103041469840534"
+                                         class="yt-content-slider owl-theme yt-content-slider-style-1 arrow-default owl2-carousel owl2-theme owl2-loaded"
+                                         data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6"
+                                         data-margin="30" data-item_lg="4" data-item_sm="3" data-item_xs="1"
+                                         data-arrows="yes" data-pagination="no" data-lazyload="yes" data-loop="no"
+                                         data-hoverpause="no">
+                                        <div class="yt-content-slide yt-clearfix yt-content-wrap">
+                                            <div class="item">
+                                                <div class="member">
+                                                    <div class="member-image"><img
+                                                            th:src="@{/image/demo/about/ibk.jpg}"
+                                                            alt="Image Client"></div>
+                                                    <div class="member-info">
+                                                        <h3 class="name-member">KONE IBRAHIM ZIE</h3>
+                                                        <p class="job-member">Founder</p>
+                                                        <p class="des-member">Lorem ipsum dolor sit amet, consectetur
+                                                            adipiscing elit. Integer condimentum</p>
+                                                        <ul class="social-member">
+                                                            <li class="social-icon rss"><a class="fa fa-rss"
+                                                                                           th:href="@{#}"
+                                                                                           title="RSS"><span>RSS</span></a>
+                                                            </li>
+                                                            <li class="social-icon facebook"><a class="fa fa-facebook"
+                                                                                                th:href="@{#}"
+                                                                                                title="Facebook"><span>Facebook</span></a>
+                                                            </li>
+                                                            <li class="social-icon twitter"><a class="fa fa-twitter"
+                                                                                               th:href="@{#}"
+                                                                                               title="Twitter"><span>Twitter</span></a>
+                                                            </li>
+                                                            <li class="social-icon google"><a class="fa fa-google"
+                                                                                              th:href="@{#}"
+                                                                                              title="Google"><span>Google</span></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="yt-content-slide yt-clearfix yt-content-wrap">
+                                            <div class="item">
+                                                <div class="member">
+                                                    <div class="member-image"><img
+                                                            th:src="@{/image/demo/about/ibk.jpg}"
+                                                            alt="Image Client"></div>
+                                                    <div class="member-info">
+                                                        <h3 class="name-member">OUATTARA ZELE MARIAM</h3>
+                                                        <p class="job-member">Co Founder</p>
+                                                        <p class="des-member">Lorem ipsum dolor sit amet, consectetur
+                                                            adipiscing elit. Integer condimentum</p>
+                                                        <ul class="social-member">
+                                                            <li class="social-icon rss"><a class="fa fa-rss"
+                                                                                           th:href="@{#}"
+                                                                                           title="RSS"><span>RSS</span></a>
+                                                            </li>
+                                                            <li class="social-icon facebook"><a class="fa fa-facebook"
+                                                                                                th:href="@{#}"
+                                                                                                title="Facebook"><span>Facebook</span></a>
+                                                            </li>
+                                                            <li class="social-icon twitter"><a class="fa fa-twitter"
+                                                                                               th:href="@{#}"
+                                                                                               title="Twitter"><span>Twitter</span></a>
+                                                            </li>
+                                                            <li class="social-icon google"><a class="fa fa-google"
+                                                                                              th:href="@{#}"
+                                                                                              title="Google"><span>Google</span></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="yt-content-slide yt-clearfix yt-content-wrap">
+                                            <div class="item">
+                                                <div class="member">
+                                                    <div class="member-image"><img
+                                                            th:src="@{/image/demo/about/ibk.jpg}"
+                                                            alt="Image Client"></div>
+                                                    <div class="member-info">
+                                                        <h3 class="name-member">ANO N'GANZA Agni Activate</h3>
+                                                        <p class="job-member">Co Founder</p>
+                                                        <p class="des-member">Lorem ipsum dolor sit amet, consectetur
+                                                            adipiscing elit. Integer condimentum</p>
+                                                        <ul class="social-member">
+                                                            <li class="social-icon rss"><a class="fa fa-rss"
+                                                                                           th:href="@{#}"
+                                                                                           title="RSS"><span>RSS</span></a>
+                                                            </li>
+                                                            <li class="social-icon facebook"><a class="fa fa-facebook"
+                                                                                                th:href="@{#}"
+                                                                                                title="Facebook"><span>Facebook</span></a>
+                                                            </li>
+                                                            <li class="social-icon twitter"><a class="fa fa-twitter"
+                                                                                               th:href="@{#}"
+                                                                                               title="Twitter"><span>Twitter</span></a>
+                                                            </li>
+                                                            <li class="social-icon google"><a class="fa fa-google"
+                                                                                              th:href="@{#}"
+                                                                                              title="Google"><span>Google</span></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="yt-content-slide yt-clearfix yt-content-wrap">
+                                            <div class="item">
+                                                <div class="member">
+                                                    <div class="member-image"><img
+                                                            th:src="@{/image/demo/about/ibk.jpg}"
+                                                            alt="Image Client"></div>
+                                                    <div class="member-info">
+                                                        <h3 class="name-member">SOULE AREMOU Yoruba 1ère</h3>
+                                                        <p class="job-member">Co Founder</p>
+                                                        <p class="des-member">Lorem ipsum dolor sit amet, consectetur
+                                                            adipiscing elit. Integer condimentum</p>
+                                                        <ul class="social-member">
+                                                            <li class="social-icon rss"><a class="fa fa-rss"
+                                                                                           th:href="@{#}"
+                                                                                           title="RSS"><span>RSS</span></a>
+                                                            </li>
+                                                            <li class="social-icon facebook"><a class="fa fa-facebook"
+                                                                                                th:href="@{#}"
+                                                                                                title="Facebook"><span>Facebook</span></a>
+                                                            </li>
+                                                            <li class="social-icon twitter"><a class="fa fa-twitter"
+                                                                                               th:href="@{#}"
+                                                                                               title="Twitter"><span>Twitter</span></a>
+                                                            </li>
+                                                            <li class="social-icon google"><a class="fa fa-google"
+                                                                                              th:href="@{#}"
+                                                                                              title="Google"><span>Google</span></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="yt-content-slide yt-clearfix yt-content-wrap">
+                                            <div class="item">
+                                                <div class="member">
+                                                    <div class="member-image"><img
+                                                            th:src="@{/image/demo/about/ibk.jpg}"
+                                                            alt="Image Client"></div>
+                                                    <div class="member-info">
+                                                        <h3 class="name-member">MIAN AUGUIN célestin</h3>
+                                                        <p class="job-member">Co Founder</p>
+                                                        <p class="des-member">Lorem ipsum dolor sit amet, consectetur
+                                                            adipiscing elit. Integer condimentum</p>
+                                                        <ul class="social-member">
+                                                            <li class="social-icon rss"><a class="fa fa-rss"
+                                                                                           th:href="@{#}"
+                                                                                           title="RSS"><span>RSS</span></a>
+                                                            </li>
+                                                            <li class="social-icon facebook"><a class="fa fa-facebook"
+                                                                                                th:href="@{#}"
+                                                                                                title="Facebook"><span>Facebook</span></a>
+                                                            </li>
+                                                            <li class="social-icon twitter"><a class="fa fa-twitter"
+                                                                                               th:href="@{#}"
+                                                                                               title="Twitter"><span>Twitter</span></a>
+                                                            </li>
+                                                            <li class="social-icon google"><a class="fa fa-google"
+                                                                                              th:href="@{#}"
+                                                                                              title="Google"><span>Google</span></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="yt-content-slide yt-clearfix yt-content-wrap">
+                                            <div class="item">
+                                                <div class="member">
+                                                    <div class="member-image"><img
+                                                            th:src="@{/image/demo/about/ibk.jpg}"
+                                                            alt="Image Client"></div>
+                                                    <div class="member-info">
+                                                        <h3 class="name-member">Jennifer lawrence</h3>
+                                                        <p class="job-member">Co Founder</p>
+                                                        <p class="des-member">Lorem ipsum dolor sit amet, consectetur
+                                                            adipiscing elit. Integer condimentum</p>
+                                                        <ul class="social-member">
+                                                            <li class="social-icon rss"><a class="fa fa-rss"
+                                                                                           th:href="@{#}"
+                                                                                           title="RSS"><span>RSS</span></a>
+                                                            </li>
+                                                            <li class="social-icon facebook"><a class="fa fa-facebook"
+                                                                                                th:href="@{#}"
+                                                                                                title="Facebook"><span>Facebook</span></a>
+                                                            </li>
+                                                            <li class="social-icon twitter"><a class="fa fa-twitter"
+                                                                                               th:href="@{#}"
+                                                                                               title="Twitter"><span>Twitter</span></a>
+                                                            </li>
+                                                            <li class="social-icon google"><a class="fa fa-google"
+                                                                                              th:href="@{#}"
+                                                                                              title="Google"><span>Google</span></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- //Main Container -->
+
+    <!-- Footer Container -->
+    <footer th:replace="fragments/footer::footer"></footer>
+    <!-- //end Footer Container -->
+
+</div>
+
+
+<!-- Include Libs & Plugins
+	============================================ -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" th:src="@{/js/jquery-2.2.4.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/owl-carousel/owl.carousel.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/libs.js}"></script>
+<script type="text/javascript" th:src="@{/js/unveil/jquery.unveil.js}"></script>
+<script type="text/javascript" th:src="@{/js/countdown/jquery.countdown.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/datetimepicker/moment.js}"></script>
+<script type="text/javascript" th:src="@{/js/datetimepicker/bootstrap-datetimepicker.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery-ui/jquery-ui.min.js}"></script>
+
+
+<!-- Theme files
+============================================ -->
+<script type="text/javascript" th:src="@{/js/themejs/so_megamenu.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/addtocart.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/application.js}"></script>
+
+
+</body>
+</html>

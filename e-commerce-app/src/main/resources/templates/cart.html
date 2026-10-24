@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    
+    <!-- Basic page needs
+	============================================ -->
+	<title th:replace="fragments/title :: title"></title>
+	<meta charset="utf-8">
+    <meta name="keywords" content="boostrap, responsive, html5, css3, jquery, theme, multicolor, parallax, retina, business" />
+    <meta name="author" content="Magentech">
+    <meta name="robots" content="index, follow" />
+   
+	<!-- Mobile specific metas
+	============================================ -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	
+	<!-- Favicon
+	============================================ -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" th:href="@{/ico/apple-touch-icon-144-precomposed.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" th:href="@{/ico/apple-touch-icon-114-precomposed.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" th:href="@{/ico/apple-touch-icon-72-precomposed.png}">
+    <link rel="apple-touch-icon-precomposed" th:href="@{/ico/apple-touch-icon-57-precomposed.png}">
+    <link rel="shortcut icon" th:href="@{/ico/favicon.png}">
+	
+	<!-- Google web fonts
+	============================================ -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+	
+    <!-- Libs CSS
+	============================================ -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap/css/bootstrap.min.css}">
+	<link th:href="@{/css/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+	<link th:href="@{/js/datetimepicker/bootstrap-datetimepicker.min.css}" rel="stylesheet">
+    <link th:href="@{/js/owl-carousel/owl.carousel.css}" rel="stylesheet">
+	<link th:href="@{/css/themecss/lib.css}" rel="stylesheet">
+	<link th:href="@{/js/jquery-ui/jquery-ui.min.css}" rel="stylesheet">
+	
+	<!-- Theme CSS
+	============================================ -->
+   	<link th:href="@{/css/themecss/so_megamenu.css}" rel="stylesheet">
+    <link th:href="@{/css/themecss/so-categories.css}" rel="stylesheet">
+	<link th:href="@{/css/themecss/so-listing-tabs.css}" rel="stylesheet">
+	<link th:href="@{/css/footer1.css}" rel="stylesheet">
+	<link th:href="@{/css/header1.css}" rel="stylesheet">
+	<link th:href="@{/css/checkout.css}" rel="stylesheet">
+	<link id="color_scheme" th:href="@{/css/theme.css}" rel="stylesheet">
+		
+	<link th:href="@{/css/responsive.css}" rel="stylesheet">
+	
+  
+</head>
+
+<body class="res layout-subpage">
+    <div id="wrapper" class="wrapper-full ">
+	<!-- Header Container  -->
+		<header th:replace="fragments/header :: header" ></header>
+	<!-- //Header Container  -->
+	<!-- Main Container  -->
+	<div class="main-container container">
+		<ul class="breadcrumb">
+			<li><a th:href="@{#}"><i class="fa fa-home"></i></a></li>
+			<li><a th:href="@{#}">Shopping Cart</a></li>
+		</ul>
+		
+		<div class="row">
+			<!--Middle Part Start-->
+        <div id="content" class="col-sm-12">
+          <h2 class="title">Shopping Cart</h2>
+			<p th:if="${cartItems.isEmpty()}" > Votre panier est vide pour l'instant ! </p>
+            <div class="table-responsive form-group">
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <td class="text-center">Image</td>
+                    <td class="text-left">Product Name</td>
+                    <td class="text-left">Brand</td>
+                    <td class="text-left">Quantity</td>
+                    <td class="text-right">Unit Price</td>
+                    <td class="text-right">Total</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="cartItem : ${cartItems}">
+                    <td class="text-center"><a th:href="@{/product/{id}(id=${cartItem.article.idArticle})}"><img width="70px" th:src="${cartItem.article.getImagePath()}" th:alt="${cartItem.article.label}" th:title="${cartItem.article.label}" class="img-thumbnail" /></a></td>
+                    <td class="text-left"><a th:href="@{/product/{id}(id=${cartItem.article.idArticle})}" th:text="${cartItem.article.label}">Emasa rumas gacem</a><br />
+                     </td>
+                    <td class="text-left" th:text="${cartItem.article.brand}">Pt 001</td>
+                    <td class="text-left" >
+						<div class="input-group btn-block quantity">
+							<div class="option quantity">
+								<div class="input-group quantity-control" unselectable="on">
+									<span th:onclick="'totalPrice('+${cartItem.idItem}+',\'-\')'" class="input-group-addon product_quantity_down">− </span>
+									<input th:id="${'qt-'+cartItem.idItem}" disabled style="text-align: center;" class="form-control" type="text" th:value="${cartItem.quantity}" />
+									<span th:onclick="'totalPrice('+${cartItem.idItem}+',\'+\')'" class="input-group-addon product_quantity_up">+ </span>
+									<span class="input-group-btn">
+									<button type="button" th:onclick="'updateCartItem('+${cartItem.idItem}+')'" data-toggle="tooltip" title="Update" class="btn btn-primary">
+										<i class="fa fa-clone"></i>
+									</button>
+
+									<a th:href="@{/cart/remove/{id}(id=${cartItem.idItem})}" type="button" data-toggle="tooltip" title="Remove" class="btn btn-danger" >
+										<i class="fa fa-times-circle"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</td>
+                    <td th:id="${'price-'+cartItem.idItem}" class="text-right" th:text="${cartItem.article.price}">120.00</td>
+                    <td th:id="${'total-'+cartItem.idItem}" class="text-right" th:text="${cartItem.article.price * cartItem.quantity}" >120.00</td>
+                  </tr>
+				</tbody>
+              </table>
+            </div>
+		
+		<div class="row">
+			<div class="col-sm-4 col-sm-offset-8">
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<td class="text-right">
+								<strong>Sub-Total:</strong>
+							</td>
+							<td class="text-right" >[[${total.subTotal}]] FCFA</td>
+						</tr>
+						<tr>
+							<td class="text-right">
+								<strong>Discounts Total:</strong>
+							</td>
+							<td class="text-right" >[[${total.discountTotal}]] FCFA</td>
+						</tr>
+						<tr>
+							<td class="text-right">
+								<strong>Total:</strong>
+							</td>
+							<td class="text-right" >[[${total.subTotal - total.discountTotal}]] FCFA</td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+
+		 <div class="buttons">
+            <div class="pull-left"><a th:href="@{index}" class="btn btn-primary">Continue Shopping</a></div>
+            <div th:if="${!cartItems.isEmpty()}" class="pull-right"><a th:href="@{checkout}" class="btn btn-primary">Checkout</a></div>
+          </div>
+        </div>
+        <!--Middle Part End -->
+			
+		</div>
+	</div>
+	<!-- //Main Container -->
+	
+
+	<!-- Footer Container -->
+		<footer th:replace="fragments/footer::footer"></footer>
+	<!-- //end Footer Container -->
+
+    </div>
+	
+	
+<!-- Include Libs & Plugins
+	============================================ -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" th:src="@{/js/jquery-2.2.4.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/owl-carousel/owl.carousel.js}"></script>
+	<script type="text/javascript" th:src="@{/js/themejs/libs.js}"></script>
+	<script type="text/javascript" th:src="@{/js/unveil/jquery.unveil.js}"></script>
+	<script type="text/javascript" th:src="@{/js/countdown/jquery.countdown.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/datetimepicker/moment.js}"></script>
+	<script type="text/javascript" th:src="@{/js/datetimepicker/bootstrap-datetimepicker.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/jquery-ui/jquery-ui.min.js}"></script>
+	
+	
+	<!-- Theme files
+	============================================ -->
+	
+	
+	<script type="text/javascript" th:src="@{/js/themejs/so_megamenu.js}"></script>
+	<script type="text/javascript" th:src="@{/js/themejs/addtocart.js}"></script>
+	<script type="text/javascript" th:src="@{/js/themejs/application.js}"></script>
+	<script>
+		function updateCartItem(id) {
+			$.ajax({
+				type: "POST",
+				url: "/api/cart/update/"+id,
+				headers: {
+					'Accept': 'application/json',
+					'Content-Type': 'application/json'
+				},
+				data: JSON.stringify({
+					"quantity" : document.getElementById("qt-"+id).value
+				}),
+				success: function (data) {
+					window.location.href = "/cart";
+				},
+			})
+		}
+
+		function totalPrice(id,btn) {
+			if (btn === '+') {
+				document.getElementById("total-"+id).textContent = ((parseFloat(document.getElementById("qt-"+id).value) + 1) * parseFloat(document.getElementById("price-"+id).textContent)).toString();
+			}
+
+			if (btn === '-' && document.getElementById("qt-"+id).value > 1) {
+				document.getElementById("total-"+id).textContent = ((parseFloat(document.getElementById("qt-"+id).value) - 1) * parseFloat(document.getElementById("price-"+id).textContent)).toString();
+			}
+		}
+	</script>
+		
+</body>
+</html>

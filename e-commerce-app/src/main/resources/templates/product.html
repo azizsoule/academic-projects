@@ -1,0 +1,532 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" lang="en">
+<head>
+    
+    <!-- Basic page needs
+	============================================ -->
+	<title th:replace="fragments/title :: title"></title>
+	<meta charset="utf-8">
+    <meta name="keywords" content="boostrap, responsive, html5, css3, jquery, theme, multicolor, parallax, retina, business" />
+    <meta name="author" content="Magentech">
+    <meta name="robots" content="index, follow" />
+   
+	<!-- Mobile specific metas
+	============================================ -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	
+	<!-- Favicon
+	============================================ -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" th:href="@{/ico/apple-touch-icon-144-precomposed.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" th:href="@{/ico/apple-touch-icon-114-precomposed.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" th:href="@{/ico/apple-touch-icon-72-precomposed.png}">
+    <link rel="apple-touch-icon-precomposed" th:href="@{/ico/apple-touch-icon-57-precomposed.png}">
+    <link rel="shortcut icon" th:href="@{/ico/favicon.png}">
+	
+	<!-- Google web fonts
+	============================================ -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+	
+    <!-- Libs CSS
+	============================================ -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap/css/bootstrap.min.css}">
+
+	<link th:href="@{/css/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+	<link th:href="@{/js/datetimepicker/bootstrap-datetimepicker.min.css}" rel="stylesheet">
+    <link th:href="@{/js/owl-carousel/owl.carousel.css}" rel="stylesheet">
+	<link th:href="@{/css/themecss/lib.css}" rel="stylesheet">
+	<link th:href="@{/css/themecss/lib.css}" rel="stylesheet">
+	<link th:href="@{/js/jquery-ui/jquery-ui.min.css}" rel="stylesheet">
+	
+	<!-- Theme CSS
+	============================================ -->
+	<link th:href="@{/css/rating.css}" rel="stylesheet">
+   	<link th:href="@{/css/themecss/so_megamenu.css}" rel="stylesheet">
+    <link th:href="@{/css/themecss/so-categories.css}" rel="stylesheet">
+	<link th:href="@{/css/themecss/so-listing-tabs.css}" rel="stylesheet">
+	<link th:href="@{/css/footer1.css}" rel="stylesheet">
+	<link th:href="@{/css/header1.css}" rel="stylesheet">
+	<link id="color_scheme" th:href="@{/css/theme.css}" rel="stylesheet">
+
+	<link th:href="@{/css/responsive.css}" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+	<link th:href="@{/bootstrap-star-rating/css/star-rating.css}" media="all" rel="stylesheet" type="text/css"/>
+	<link th:href="@{/bootstrap-star-rating/themes/krajee-fas/theme.css}" media="all" rel="stylesheet" type="text/css"/>
+	<link th:href="@{/bootstrap-star-rating/themes/krajee-svg/theme.css}" media="all" rel="stylesheet" type="text/css"/>
+	<!--suppress JSUnresolvedLibraryURL -->
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script th:src="@{/bootstrap-star-rating/js/star-rating.js}" type="text/javascript"></script>
+	<script th:src="@{/bootstrap-star-rating/themes/krajee-fas/theme.js}" type="text/javascript"></script>
+	<script th:src="@{/bootstrap-star-rating/themes/krajee-svg/theme.js}" type="text/javascript"></script>
+
+</head>
+
+<body class="res layout-subpage">
+    <div id="wrapper" class="wrapper-full ">
+	<!-- Header Container  -->
+		<header th:replace="fragments/header :: header"></header>
+	<!-- //Header Container  -->
+	<!-- Main Container  -->
+	<div class="main-container container">
+		<ul class="breadcrumb">
+			<li><a><i class="fa fa-home"></i></a></li>
+			<li><a th:text="${article.subCategory.category.catalog.label}">Bint Beef</a></li>
+			<li><a th:text="${article.subCategory.category.label}">Bint Beef</a></li>
+			<li><a th:href="@{/sub-category/{id}(id=${article.subCategory.idSubCategory})}" th:text="${article.subCategory.label}">Smartphone & Tablets</a></li>
+			<li><a th:text="${article.label}">Bint Beef</a></li>
+			
+		</ul>
+		
+		<div class="row">
+			<!--Middle Part Start-->
+			<div id="content" class="col-md-12 col-sm-12">
+				
+				<div class="product-view row">
+					<div class="left-content-product col-lg-10 col-xs-12">
+						<div class="row">
+							<div class="content-product-left class-honizol col-sm-6 col-xs-12 ">
+								<div class="large-image  ">
+									<img itemprop="image" class="product-image-zoom" th:src="${article.getImagePath()}" data-zoom-image="image/demo/shop/product/J9.jpg" th:title="${article.label}" th:alt="${article.label}">
+								</div>
+								<div id="thumb-slider" class="owl-theme owl-loaded owl-drag full_slider">
+									<a th:each="image : ${article.images}" data-index="0" class="img thumbnail " data-image="image/demo/shop/product/J9.jpg" th:title="${article.label}">
+										<img th:src="${image.getImagePath()}" th:title="${article.label}" th:alt="${article.label}">
+									</a>
+								</div>
+								
+							</div>
+
+							<div class="content-product-right col-sm-6 col-xs-12">
+								<div class="title-product">
+									<h1 th:text="${article.label}">Bint Beef</h1>
+								</div>
+								<!-- Review ---->
+								<div class="box-review form-group">
+
+									<input th:if="${article.comments.size() != 0}" disabled th:value="${article.ratingSum/article.comments.size()}" type="number" class="rating" min=0 max=5 step=0.1 size="xl" />
+
+									<input th:if="${article.comments.size() == 0}" disabled th:value="${article.ratingSum/article.comments.size()}" type="number" class="rating" min=0 max=5 step=0.1 size="xl" />
+
+									<a class="reviews_button" href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;" >[[ ${article.comments.size()} ]] reviews</a>	|
+									<a class="write_review_button" href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">Write a review</a>
+								</div>
+
+								<div class="product-label form-group">
+									<div class="product_page_price price" itemprop="offerDetails" itemscope="" itemtype="http://data-vocabulary.org/Offer">
+										<span class="price-new" itemprop="price" >[[ ${article.price} ]] FCFA</span>
+										<span class="price-old">[[ ${article.price} ]] FCFA</span>
+									</div>
+									<div class="stock"><span>Availability:</span> <span class="status-stock">In Stock</span></div>
+								</div>
+
+								<div class="product-box-desc">
+									<div class="inner-box-desc">
+										<div class="brand"><span>Brand:</span><a th:text="${article.brand}"></a>		</div>
+										<div class="model"><span>Product Code:</span> [[ ${article.sku} ]]</div>
+									</div>
+								</div>
+
+
+								<div id="product">
+									<h4></h4>
+									<div >
+										<label class="control-label"></label>
+										<ul class="product-options clearfix"id="input-option231">
+										
+											<li class="selected-option">
+											</li>
+										</ul>
+									</div>
+
+									<div sec:authorize="isAuthenticated()" class="form-group box-info-product">
+										<div class="option quantity">
+											<div class="input-group quantity-control" unselectable="on"
+												 style="-webkit-user-select: none;">
+												<label>Qty </label>
+												<input id="qt" disabled class="form-control" type="text" name="quantity"
+													   value="1"/>
+												<input disabled type="hidden" name="product_id" value="50"/>
+												<span class="input-group-addon product_quantity_down">− </span>
+												<span class="input-group-addon product_quantity_up">+ </span>
+											</div>
+										</div>
+										<div class="cart">
+											<input th:data-pi="${article.idArticle}" th:data-ci="${customer.id}" th:data-pimg="${article.getImagePath()}" th:data-pn="${article.label}" type="button" data-toggle="tooltip" title="" value="Add to Cart"
+												   onclick="cart.add(this.getAttribute('data-pi'), this.getAttribute('data-ci'), document.getElementById('qt').value, this.getAttribute('data-pimg'), this.getAttribute('data-pn'))" data-loading-text="Loading..."
+												   id="button-cart" class="btn btn-mega btn-lg"
+												   data-original-title="Add to Cart"/>
+										</div>
+										<div class="add-to-links wish_comp">
+											<ul class="blank list-inline">
+												<li class="wishlist">
+													<a th:data-pi="${article.idArticle}" th:data-ci="${customer.id}" th:data-pimg="${article.getImagePath()}" th:data-pn="${article.label}" class="icon" data-toggle="tooltip" title=""
+													   onclick="wishlist.add(this.getAttribute('data-pi'), this.getAttribute('data-ci'), this.getAttribute('data-pimg'), this.getAttribute('data-pn'));"
+													   data-original-title="Add to Wish List"><i
+															class="fa fa-heart"></i>
+													</a>
+												</li>
+											</ul>
+										</div>
+
+									</div>
+
+								</div>
+								<!-- end box info product -->
+
+							</div>
+						</div>
+					</div>
+					
+					<section class="col-lg-2 hidden-sm hidden-md hidden-xs slider-products">
+						<div class="module col-sm-12 four-block">
+							<div class="modcontent clearfix">
+								<div class="policy-detail">
+									<div class="banner-policy">
+										<div class="policy policy1">
+											<a> <span class="ico-policy">&nbsp;</span>	90 day
+											<br> money back </a>
+										</div>
+										<div class="policy policy2">
+											<a> <span class="ico-policy">&nbsp;</span>	In-store exchange </a>
+										</div>
+										<div class="policy policy3">
+											<a> <span class="ico-policy">&nbsp;</span>	lowest price guarantee </a>
+										</div>
+										<div class="policy policy4">
+											<a> <span class="ico-policy">&nbsp;</span>	shopping guarantee </a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+				
+				<!-- Product Tabs -->
+				<div class="producttab ">
+	<div class="tabsslider  vertical-tabs col-xs-12">
+		<ul class="nav nav-tabs col-lg-2 col-sm-3">
+			<li class="active"><a data-toggle="tab" th:href="@{#tab-1}">Description</a></li>
+			<li class="item_nonactive"><a data-toggle="tab" th:href="@{#tab-review}">Reviews ([[ ${article.comments.size()} ]])</a></li>
+		</ul>
+		<div class="tab-content col-lg-10 col-sm-9 col-xs-12">
+			<div id="tab-1" class="tab-pane fade active in">
+				<p th:text="${article.description}">
+					The 30-inch Apple Cinema HD Display delivers an amazing 2560 x 1600 pixel resolution. Designed specifically for the creative professional, this display provides more space for easier access to all the tools and palettes needed to edit, format and composite your work. Combine this display with a Mac Pro, MacBook Pro, or PowerMac G5 and there's no limit to what you can achieve. <br>
+					<br>
+					The Cinema HD features an active-matrix liquid crystal display that produces flicker-free images that deliver twice the brightness, twice the sharpness and twice the contrast ratio of a typical CRT display. Unlike other flat panels, it's designed with a pure digital interface to deliver distortion-free images that never need adjusting. With over 4 million digital pixels, the display is uniquely suited for scientific and technical applications such as visualizing molecular structures or analyzing geological data. <br>
+					<br>
+					Offering accurate, brilliant color performance, the Cinema HD delivers up to 16.7 million colors across a wide gamut allowing you to see subtle nuances between colors from soft pastels to rich jewel tones. A wide viewing angle ensures uniform color from edge to edge. Apple's ColorSync technology allows you to create custom profiles to maintain consistent color onscreen and in print. The result: You can confidently use this display in all your color-critical applications. <br>
+					<br>
+					Housed in a new aluminum design, the display has a very thin bezel that enhances visual accuracy. Each display features two FireWire 400 ports and two USB 2.0 ports, making attachment of desktop peripherals, such as iSight, iPod, digital and still cameras, hard drives, printers and scanners, even more accessible and convenient. Taking advantage of the much thinner and lighter footprint of an LCD, the new displays support the VESA (Video Electronics Standards Association) mounting interface standard. Customers with the optional Cinema Display VESA Mount Adapter kit gain the flexibility to mount their display in locations most appropriate for their work environment. <br>
+					<br>
+					The Cinema HD features a single cable design with elegant breakout for the USB 2.0, FireWire 400 and a pure digital connection using the industry standard Digital Video Interface (DVI) interface. The DVI connection allows for a direct pure-digital connection.<br>
+				</p>
+			</div>
+			<div id="tab-review" class="tab-pane fade">
+				<form method="post" th:action="@{/product/{articleId}/comment/add(articleId=${article.idArticle})}" th:object="${comment}">
+					<div id="review">
+						<table class="table table-striped table-bordered">
+							<tbody>
+								<div th:each="comment : ${article.comments}">
+									<div th:if="${!comment.blocked}">
+										<tr>
+											<td style="width: 50%;"><strong th:text="${comment.customer.firstName + ' ' + comment.customer.lastName}">Super Administrator</strong></td>
+											<td class="text-right" th:text="${comment.createdAt}" >29/07/2015</td>
+										</tr>
+										<tr>
+											<td colspan="2">
+												<p th:text="${comment.content}">Best this product opencart</p>
+												<input clearButton="<div></div>" disabled th:value="${comment.rating}" type="number" class="rating" min=0 max=5 step=0.1 size="xl" />
+											</td>
+										</tr>
+									</div>
+
+									<div th:if="${comment.blocked}">
+										<tr>
+											<td style="width: 50%;"><strong th:text="${comment.customer.firstName + ' ' + comment.customer.lastName}">Super Administrator</strong></td>
+											<td class="text-right" th:text="${comment.createdAt}" >29/07/2015</td>
+										</tr>
+										<tr>
+											<td colspan="2">
+												<p class="btn btn-info">Ce commentaire a été bloqué par le système ou les administrateurs car son contenu est inapproprié !</p>
+											</td>
+										</tr>
+									</div>
+								</div>
+							</tbody>
+						</table>
+						<div class="text-right"></div>
+					</div>
+					<h2 sec:authorize="isAuthenticated()" id="review-title">Write a review</h2>
+					<div sec:authorize="isAuthenticated()" th:if="${hasAlreadyOrderedProduct}" class="contacts-form">
+						
+						<div class="form-group"> <span class="icon icon-bubbles-2"></span>
+							<textarea th:field="${comment.content}" class="form-control" name="text" placeholder="Your Review"></textarea>
+						</div> 
+						
+					
+						<div class="rate">
+						 <span style="font-size: 11px;"><span class="text-danger">Note:</span></span>
+						    <b>Rating</b> <br> </span>
+							<input th:field="${comment.rating}" id="input-id" type="number" class="rating" min=0 max=5 step=0.1 size="xl" />
+						</div>
+						 <br> <br> <br>
+						<input type="submit" class="buttons clearfix btn buttonGray" id="button-review" value="send" />
+
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+				<!-- //Product Tabs -->
+				
+				<!-- Related Products -->
+				<div class="related titleLine products-list grid module ">
+	<h3 class="modtitle">Related Products  </h3>
+	<div class="releate-products ">
+		<div class="product-layout">
+			<div class="product-item-container">
+				<div class="left-block">
+					<div class="product-image-container second_img ">
+						<img th:src="@{/image/demo/shop/product/e11.jpg}" title="Apple Cinema 30&quot;" class="img-responsive" />
+						<img th:src="@{/image/demo/shop/product/e12.jpg}" title="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+					</div>
+					<!--Sale Label-->
+					<span class="label label-sale">Sale</span>
+					<!--full quick view block-->
+					<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
+					<!--end full quick view block-->
+				</div>
+				
+				
+				<div class="right-block">
+					<div class="caption">
+						<h4><a th:href="@{product}">Apple Cinema 30&quot;</a></h4>
+						<div class="ratings">
+							<div class="rating-box">
+								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+								<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+							</div>
+						</div>
+											
+						<div class="price">
+							<span class="price-new">$74.00</span> 
+							<span class="price-old">$122.00</span>		 
+							<span class="label label-percent">-40%</span>    
+						</div>
+						<div class="description item-desc hidden">
+							<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut l..</p>
+						</div>
+					</div>
+					
+					  <div class="button-group">
+						<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs">Add to Cart</span></button>
+						<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
+						<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
+					  </div>
+				</div><!-- right block -->
+
+			</div>
+		</div>
+		<div class="product-layout ">
+			<div class="product-item-container">
+				<div class="left-block">
+					<div class="product-image-container second_img ">
+						<img th:src="@{/image/demo/shop/product/11.jpg}" title="Apple Cinema 30&quot;" class="img-responsive" />
+						<img th:src="@{/image/demo/shop/product/10.jpg}" title="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+						
+					</div>
+					<!--Sale Label-->
+					<span class="label label-sale">Sale</span>
+					<!--full quick view block-->
+					<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
+					<!--end full quick view block-->
+				</div>
+				
+				
+				<div class="right-block">
+					<div class="caption">
+						<h4><a th:href="@{product}">Apple Cinema 30&quot;</a></h4>
+						<div class="ratings">
+							<div class="rating-box">
+								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+								<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+							</div>
+						</div>
+											
+						<div class="price">
+							<span class="price-new">$74.00</span> 
+							<span class="price-old">$122.00</span>		 
+							<span class="label label-percent">-40%</span>    
+						</div>
+						<div class="description item-desc hidden">
+							<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut l..</p>
+						</div>
+					</div>
+					
+					  <div class="button-group">
+						<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs">Add to Cart</span></button>
+						<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
+						<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
+					  </div>
+				</div><!-- right block -->
+
+			</div>
+		</div>
+		<div class="product-layout ">
+			<div class="product-item-container">
+				<div class="left-block">
+					<div class="product-image-container second_img ">
+						<img th:src="@{/image/demo/shop/product/35.jpg}" title="Apple Cinema 30&quot;" class="img-responsive" />
+						<img th:src="@{/image/demo/shop/product/34.jpg}" title="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+					</div>
+					<!--Sale Label-->
+					<span class="label label-sale">Sale</span>
+					<!--full quick view block-->
+					<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
+					<!--end full quick view block-->
+				</div>
+				
+				
+				<div class="right-block">
+					<div class="caption">
+						<h4><a th:href="@{product}">Apple Cinema 30&quot;</a></h4>
+						<div class="ratings">
+							<div class="rating-box">
+								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+								<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+							</div>
+						</div>
+											
+						<div class="price">
+							<span class="price-new">$74.00</span> 
+							<span class="price-old">$122.00</span>		 
+							<span class="label label-percent">-40%</span>    
+						</div>
+						<div class="description item-desc hidden">
+							<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut l..</p>
+						</div>
+					</div>
+					
+					  <div class="button-group">
+						<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs">Add to Cart</span></button>
+						<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
+						<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
+					  </div>
+				</div><!-- right block -->
+
+			</div>
+		</div>
+		<div class="product-layout ">
+			<div class="product-item-container">
+				<div class="left-block">
+					<div class="product-image-container second_img ">
+						<img th:src="@{/image/demo/shop/product/14.jpg}" title="Apple Cinema 30&quot;" class="img-responsive" />
+						<img th:src="@{/image/demo/shop/product/15.jpg}" title="Apple Cinema 30&quot;" class="img_0 img-responsive" />
+					</div>
+					<!--Sale Label-->
+					<span class="label label-sale">Sale</span>
+					<!--full quick view block-->
+					<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{quickview}">  Quickview</a>
+					<!--end full quick view block-->
+				</div>
+				
+				
+				<div class="right-block">
+					<div class="caption">
+						<h4><a th:href="@{product}">Apple Cinema 30&quot;</a></h4>
+						<div class="ratings">
+							<div class="rating-box">
+								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+								<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+								<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>
+							</div>
+						</div>
+											
+						<div class="price">
+							<span class="price-new">$74.00</span> 
+							<span class="price-old">$122.00</span>		 
+							<span class="label label-percent">-40%</span>    
+						</div>
+						<div class="description item-desc hidden">
+							<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut l..</p>
+						</div>
+					</div>
+					
+					  <div class="button-group">
+						<button class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" onclick="cart.add('42', '1');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs">Add to Cart</span></button>
+						<button class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
+						<button class="compare" type="button" data-toggle="tooltip" title="Compare this Product" onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
+					  </div>
+				</div><!-- right block -->
+
+			</div>
+		</div>
+	</div>
+</div>
+
+			<!-- end Related  Products-->
+			
+				
+			</div>
+			
+			
+		</div>
+		<!--Middle Part End-->
+	</div>
+	<!-- //Main Container -->
+	
+
+	<!-- Footer Container -->
+		<footer th:replace="fragments/footer :: footer"></footer>
+	<!-- //end Footer Container -->
+
+    </div>
+	
+	
+
+
+
+
+	
+	
+<!-- Include Libs & Plugins
+	============================================ -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" th:src="@{/js/jquery-2.2.4.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/owl-carousel/owl.carousel.js}"></script>
+	<script type="text/javascript" th:src="@{/js/themejs/libs.js}"></script>
+	<script type="text/javascript" th:src="@{/js/unveil/jquery.unveil.js}"></script>
+	<script type="text/javascript" th:src="@{/js/countdown/jquery.countdown.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/datetimepicker/moment.js}"></script>
+	<script type="text/javascript" th:src="@{/js/datetimepicker/bootstrap-datetimepicker.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/jquery-ui/jquery-ui.min.js}"></script>
+	
+	
+	<!-- Theme files
+	============================================ -->
+	
+	
+	<script type="text/javascript" th:src="@{/js/themejs/so_megamenu.js}"></script>
+	<script type="text/javascript" th:src="@{/js/themejs/addtocart.js}"></script>
+	<script type="text/javascript" th:src="@{/js/themejs/application.js}"></script>
+	<script type="text/javascript" th:src="@{/js/themejs/cpanel.js}"></script>
+	
+</body>
+</html>

@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+
+    <!-- Basic page needs
+	============================================ -->
+	<title th:replace="fragments/title :: title" ></title>
+	<meta charset="utf-8">
+    <meta name="keywords" content="boostrap, responsive, html5, css3, jquery, theme, multicolor, parallax, retina, business" />
+    <meta name="author" content="Magentech">
+    <meta name="robots" content="index, follow" />
+
+	<!-- Mobile specific metas
+	============================================ -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<!-- Favicon
+	============================================ -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" th:href="@{/ico/apple-touch-icon-144-precomposed.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" th:href="@{/ico/apple-touch-icon-114-precomposed.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" th:href="@{/ico/apple-touch-icon-72-precomposed.png}">
+    <link rel="apple-touch-icon-precomposed" th:href="@{/ico/apple-touch-icon-57-precomposed.png}">
+    <link rel="shortcut icon" th:href="@{/ico/favicon.png}">
+
+	<!-- Google web fonts
+	============================================ -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+
+    <!-- Libs CSS
+	============================================ -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap/css/bootstrap.min.css}">
+	<link th:href="@{/css/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+	<link th:href="@{/js/datetimepicker/bootstrap-datetimepicker.min.css}" rel="stylesheet">
+    <link th:href="@{/js/owl-carousel/owl.carousel.css}" rel="stylesheet">
+	<link th:href="@{/css/themecss/lib.css}" rel="stylesheet">
+	<link th:href="@{/js/jquery-ui/jquery-ui.min.css}" rel="stylesheet">
+
+	<!-- Theme CSS
+	============================================ -->
+   	<link th:href="@{/css/themecss/so_megamenu.css}" rel="stylesheet">
+    <link th:href="@{/css/themecss/so-categories.css}" rel="stylesheet">
+	<link th:href="@{/css/themecss/so-listing-tabs.css}" rel="stylesheet">
+	<link th:href="@{/css/footer1.css}" rel="stylesheet">
+	<link th:href="@{/css/header1.css}" rel="stylesheet">
+		<link id="color_scheme" th:href="@{/css/theme.css}" rel="stylesheet">
+
+	<link th:href="@{/css/responsive.css}" rel="stylesheet">
+
+
+
+</head>
+
+<body class="res layout-subpage">
+    <div id="wrapper" class="wrapper-full ">
+	<!-- Header Container  -->
+		<header th:replace="fragments/header :: header" ></header>
+	<!-- //Header Container  -->
+	<!-- Main Container  -->
+	<div class="main-container container">
+		<ul class="breadcrumb">
+			<li><a th:href="@{#}"><i class="fa fa-home"></i></a></li>
+			<li><a th:href="@{#}">Account</a></li>
+			<li><a th:href="@{#}">Login</a></li>
+		</ul>
+
+		<div class="row">
+			<div id="content" class="col-sm-12">
+				<div class="page-login">
+
+					<div class="account-border">
+
+						<div th:if="${param.error}" class="alert alert-danger">
+							<i class="fa fa-exclamation-circle"></i>
+							Erreur - E-mail ou mot de passe incorrect !
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close" >x</button>
+						</div>
+
+						<div th:if="${param.logout}" class="alert alert-info">
+							<i class="fa fa-info-circle"></i>
+							Message - Vous êtes déconnecté !
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close" >x</button>
+						</div>
+
+						<div class="row">
+							<div class="col-sm-6 new-customer">
+								<img th:src="@{/image/back.jpg}" width="700" height="340" alt="">
+							</div>
+
+							<form th:action="@{/login}" method="post" >
+								<div class="col-sm-6 customer-login">
+									<div class="well">
+
+										<div class="form-group">
+											<h2 style="text-align: center;" ><img th:src="@{/image/user.png}" alt=""> Login</h2>
+											<label class="control-label " for="input-email">E-Mail Address</label>
+											<input type="email" required name="email" value="" id="input-email" class="form-control" />
+										</div>
+										<div class="form-group">
+											<label class="control-label " for="input-password">Password</label>
+											<input required type="password" name="password" value="" id="input-password" class="form-control" />
+										</div>
+									</div>
+									<div class="bottom-form">
+										<a th:href="@{#}" class="forgot">Forgotten Password</a>
+										<input type="submit" value="Login" class="btn btn-default pull-right" />
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //Main Container -->
+
+
+	<!-- Footer Container -->
+		<footer th:replace="fragments/footer :: footer"></footer>
+	<!-- //end Footer Container -->
+
+    </div>
+
+	<!-- Include Libs & Plugins
+        ============================================ -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script type="text/javascript" th:src="@{/js/jquery-2.2.4.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/owl-carousel/owl.carousel.js}"></script>
+	<script type="text/javascript" th:src="@{/js/themejs/libs.js}"></script>
+	<script type="text/javascript" th:src="@{/js/unveil/jquery.unveil.js}"></script>
+	<script type="text/javascript" th:src="@{/js/countdown/jquery.countdown.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/datetimepicker/moment.js}"></script>
+	<script type="text/javascript" th:src="@{/js/datetimepicker/bootstrap-datetimepicker.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/jquery-ui/jquery-ui.min.js}"></script>
+
+
+	<!-- Theme files
+    ============================================ -->
+
+
+	<script type="text/javascript" th:src="@{/js/themejs/so_megamenu.js}"></script>
+	<script type="text/javascript" th:src="@{/js/themejs/addtocart.js}"></script>
+	<script type="text/javascript" th:src="@{/js/themejs/application.js}"></script>
+
+
+</body>
+</html>
