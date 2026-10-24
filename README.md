@@ -13,6 +13,7 @@ Chaque dossier est un projet indépendant, importé avec son historique git d'or
 | [PVC](PVC) | Application de bureau | Java, Spring Boot, JavaFX |
 | [Marks-management-project](Marks-management-project) | Gestion de notes | PHP, Propel |
 | [meetyou](meetyou) | Site de rencontre (cours de Technologies Web) | PHP, MySQL, Docker |
+| [e-commerce-app](e-commerce-app) | Site e-commerce, projet de fin d'année Master 1 MIAGE | Java, Spring Boot, MySQL, Oracle, Debezium |
 | [NetworkAS](NetworkAS) | Application Android | Kotlin, Android |
 | [asna_chat](asna_chat) | Application de messagerie | Flutter, Firebase |
 
