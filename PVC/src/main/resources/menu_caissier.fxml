@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="window" prefHeight="77.0" prefWidth="285.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projet.pvc.controllers.MenuCaissierController">
+   <children>
+      <VBox alignment="CENTER" prefHeight="240.0" prefWidth="285.0" spacing="20.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="42.0" prefWidth="315.0" text="MENU CAISSIER">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Button mnemonicParsing="false" onAction="#onNewVente" prefHeight="34.0" prefWidth="255.0" style="-fx-background-color: #7ad551;" text="Nouvelle vente" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Button>
+            <Button mnemonicParsing="false" onAction="#onExit" prefHeight="34.0" prefWidth="257.0" style="-fx-background-color: #bf4e44; -fx-color: #000;" text="Quitter" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+   </children>
+</AnchorPane>
