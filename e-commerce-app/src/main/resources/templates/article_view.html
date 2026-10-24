@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout/base-layout}" xmlns="http://www.w3.org/1999/html">
+<!--<th:block layout:fragment="links">-->
+<!--    -->
+<!--</th:block>-->
+<head>
+    <title>
+        Article View
+    </title>
+    <style>
+        .checked {
+            color: orange;
+        }
+    </style>
+</head>
+<th:block layout:fragment="content" >
+        <main>
+            <div class="container-fluid">
+                <h2 class="mt-30 page-title">Article</h2>
+                <ol class="breadcrumb mb-30">
+                    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a th:href="@{/articles}">Articles</a></li>
+                    <li class="breadcrumb-item active">View</li>
+                </ol>
+                <div class="row" th:object="${article}">
+                    <div class="col-lg-5 col-md-6">
+                        <div class="card card-static-2 mb-30">
+                            <div class="card-body-table">
+                                <div class="shopowner-content-left text-center pd-20">
+                                    <div class="shop_img">
+                                        <img th:src="@{${article.getMainImage()}}" alt="">
+                                    </div>
+                                    <ul class="product-dt-purchases">
+                                        <li>
+                                            <div class="product-status">
+                                                Quantity <span class="badge-item-2 badge-status" th:text="${article.inventory.quantity}"></span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="product-status" th:text="*{label}">
+                                                Name
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <ul class="product-dt-purchases">
+                                        <li>
+                                            <div class="product-status">
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star checked"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span th:text="*{'('+ratingSum+')'}"></span>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                    <div class="shopowner-dts">
+                                        <div class="shopowner-dt-list">
+                                            <span class="left-dt font-weight-bolder">Price</span>
+                                            <span class="right-dt" th:text="*{price + 'XOF'}">$15</span>
+                                        </div>
+                                        <div class="shopowner-dt-list">
+                                            <span class="left-dt font-weight-bolder">SKU</span>
+                                            <span class="right-dt" th:text="*{sku}">sku</span>
+                                        </div>
+                                        <div class="shopowner-dt-list">
+                                            <span class="left-dt">Status</span>
+                                            <span class="right-dt">Active</span>
+                                        </div>
+                                        <div class="shopowner-dt-list">
+                                            <span class="left-dt font-weight-bolder">Brand</span>
+                                            <span class="right-dt" th:text="*{brand}">5 May 2020, 03.45 PM</span>
+                                        </div>
+                                        <div class="shopowner-dt-list">
+                                            <span class="left-dt font-weight-bolder">Created</span>
+                                            <span class="right-dt">5 May 2020, 03.45 PM</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-md-12 col-lg-10">
+                                <div class="card text-dark">
+                                    <div th:each="comment:${article.comments}" class="card-body p-4">
+                                        <div class="d-flex flex-start">
+                                            <img
+                                                    class="rounded-circle shadow-1-strong me-3"
+                                                    src="https://mdbootstrap.com/img/Photos/Avatars/img%20(23).jpg"
+                                                    alt="avatar"
+                                                    width="60"
+                                                    height="60"
+                                            />
+                                            <div>
+                                                <h6 class="fw-bold mb-1" th:text="${comment.customer.firstName}">Maggie Marsh</h6>
+                                                <div class="d-flex align-items-center mb-3">
+                                                    <p class="mb-0">
+                                                        [[${comment.createdAt}]]
+                                                        <span th:class="${comment.blocked ? 'badge bg-danger':'badge bg-success'}" th:text="${comment.blocked ? 'BLOCKED':'VALID'}">Pending</span>
+                                                    </p>
+                                                    <a href="#!" class="link-muted"
+                                                    ><i class="fas fa-pencil-alt ms-2"></i
+                                                    ></a>
+                                                    <a href="#!" class="link-muted"><i class="fas fa-redo-alt ms-2"></i></a>
+                                                    <a href="#!" class="link-muted"><i class="fas fa-heart ms-2"></i></a>
+                                                </div>
+                                                <p class="mb-0" th:text="${comment.content}">
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <hr class="my-0" />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </main>
+        </th:block>
+ </html>
