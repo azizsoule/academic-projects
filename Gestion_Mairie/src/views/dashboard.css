@@ -1,0 +1,18 @@
+.button
+{
+    -fx-background-color : #05071F;
+    -fx-text-fill : #e7e5e5;
+}
+.button:hover{
+    -fx-background-color : #10165F;
+}
+.button:pressed
+{
+    -fx-background-color : #1620A1;
+}
+
+.btn-selected {
+    -fx-text-fill : #fff !important;
+    -fx-background-color :  linear-gradient(to bottom right,#0056d8, #25ccff, #0056d8) !important;
+    
+}

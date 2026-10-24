@@ -1,0 +1,64 @@
+/*  
+    ================================================================================================
+        Auteur : Enoch Zabra
+        Copoyright ZabraCode | 2020
+        Librairie css [Design et Aniamation]
+        Créée dans le cadre du projet de classe
+        UE : PROGRAMMATION D'APPLICATION
+        App: Administration d'une mairie
+        ____________________________________________________________________________________________
+        TEAM : //_ANO Romaric  //_OUATTARA Zele Mariam  //SOULE Malick //_ZABRA Enoch
+    ================================================================================================
+*/
+
+                    /* ===========================================================
+                                                 GENERALE 
+                      ===========================================================*/
+/* _____________________________@ BACKGROUND ZABRACODE @______________________________ */ 
+.quit-btn
+{
+    -fx-background-color : linear-gradient(to right, #ff0000, #ff0000);
+    -fx-text-fill : #e7e5e5;
+}
+.quit-btn:hover{
+    -fx-background-color : linear-gradient(to right, #e00000, #e00000);
+    -fx-translate-y: -3px;
+    -fx-box-shadow: 0px 10px 20px rgba(0,0,0,0.4);
+}
+.quit-btn:active
+{
+    -fx-translate-y: -1px;
+    -fx-background-color : #1620A1;
+}
+
+/* Hover effect */
+.Hover-top
+{
+    
+}
+.Hover-top:hover{
+    -fx-translate-y: -5px;
+    -fx-box-shadow: 0px 10px 20px rgba(0,0,0,0.4);
+}
+
+/* ========== BACKGROUND ========= */
+.bg-mariage {
+    -fx-background-image:url('icons/coupe.jpg');
+    -fx-background-size: 100% 100%;
+}
+.bg-baby {
+    -fx-background-image:url('icons/baby.jpg');
+    -fx-background-size: 100% 100%;
+}
+/*  
+    ================================================================================================
+        Auteur : Enoch Zabra
+        Copoyright ZabraCode | 2020
+        Librairie css [Design et Aniamation]
+        Dans le cadre du projet de classe
+        UE : PROGRAMMATION D'APPLICATION
+        App: Administration d'une mairie
+        ____________________________________________________________________________________________
+        TEAM : //_ANO Romaric  //_OUATTARA Zele Mariam  //SOULE Malick //_ZABRA Enoch
+    ================================================================================================
+*/

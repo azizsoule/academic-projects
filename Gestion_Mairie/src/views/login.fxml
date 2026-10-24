@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox fx:id="loginWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="428.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+  <children>
+    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="428.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
+      <children>
+            <Pane layoutX="215.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="428.0" prefWidth="425.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="215.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <TextField fx:id="username" layoutX="100.0" layoutY="164.0" prefHeight="26.0" prefWidth="226.0" promptText="Nom d'utilisateur" />
+                  <Button layoutX="138.0" layoutY="281.0" mnemonicParsing="false" onAction="#connect" prefHeight="32.0" prefWidth="151.0" text="Se connecter" textAlignment="CENTER" />
+                  <Button fx:id="btn_close" layoutX="326.0" layoutY="364.0" mnemonicParsing="false" onAction="#closeWindow" styleClass="quit-btn" stylesheets="@style.css" text="Quitter" textAlignment="CENTER" />
+                  <Text layoutX="141.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20px;" text="Connexion" textAlignment="CENTER" wrappingWidth="110.86457824707031" />
+                  <ImageView fitHeight="164.0" fitWidth="281.0">
+                     <image>
+                        <Image url="@icons/ruban.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView layoutX="251.0" layoutY="113.0">
+                     <image>
+                        <Image url="@icons/icons8_login_rounded_right_30px.png" />
+                     </image>
+                  </ImageView>
+                  <PasswordField fx:id="password" layoutX="100.0" layoutY="220.0" prefHeight="26.0" prefWidth="226.0" promptText="mot de passe" />
+               </children></Pane>
+            <AnchorPane layoutX="-11.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="428.0" prefWidth="226.0" style="-fx-background-color: linear-gradient(to bottom right, rgb(10, 137, 255), #25ccff, #0056d8);">
+               <children>
+                  <ImageView fitHeight="113.0" fitWidth="127.0" layoutX="50.0" layoutY="31.0">
+                     <image>
+                        <Image url="@icons/armoiries.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" blendMode="COLOR_DODGE" layoutX="42.0" layoutY="396.0" prefHeight="18.0" prefWidth="142.0" text="with baby 5 |  2020" textAlignment="CENTER" />
+               </children></AnchorPane>
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>
