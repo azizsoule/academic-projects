@@ -6,7 +6,7 @@ class Database
 	private static $dbPort = "3306";
 	private static $dbName = "bd_rencontre";
 	private static $dbUsername = "admin";
-	private static $dbUserpassword = "admin";
+	private static $dbUserpassword = "CHANGE_ME";
 
 	private static $connection = null;
 

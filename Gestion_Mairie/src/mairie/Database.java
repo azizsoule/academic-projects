@@ -60,7 +60,7 @@ public class Database {
         host = "localhost";
         port = 3306;
         this.user = "root";
-        this.password = "root";
+        this.password = "CHANGE_ME";
         this.dbName = "mairie";
         url = this.url + host + ":" + port + "/" + this.dbName;
     }
