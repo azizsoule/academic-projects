@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"> lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<header th:fragment="header" id="header" class=" variantleft type_1">
+
+    <!-- Header center -->
+    <div class="header-center left">
+        <div class="container">
+            <div class="row">
+                <!-- Logo -->
+                <div class="navbar-logo col-md-3 col-sm-12 col-xs-12">
+                    <a th:href="@{/index}"><img th:src="@{/image/demo/logos/theme_logo.png}" title="Your Store"
+                                                    alt="Your Store"/></a>
+                </div>
+                <!-- //end Logo -->
+
+                <!-- Search -->
+                <div id="sosearchpro" class="col-sm-7 search-pro">
+                    <form method="GET" action="index">
+                        <div id="search0" class="search input-group">
+                            <div class="select_category filter_type icon-select">
+                                <select class="no-border" name="category_id">
+                                    <option value="0">All Catalogs</option>
+                                    <option value="78">Apparel</option>
+                                    <option value="77">Cables &amp; Connectors</option>
+                                    <option value="82">Cameras &amp; Photo</option>
+                                    <option value="80">Flashlights &amp; Lamps</option>
+                                    <option value="81">Mobile Accessories</option>
+                                    <option value="79">Video Games</option>
+                                    <option value="20">Jewelry &amp; Watches</option>
+                                    <option value="76">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Earings</option>
+                                    <option value="26">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wedding Rings</option>
+                                    <option value="27">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Men Watches</option>
+                                </select>
+                            </div>
+
+                            <input class="autosearch-input form-control" type="text" value="" size="50"
+                                   autocomplete="off" placeholder="Search" name="search">
+                            <span class="input-group-btn">
+					<button type="submit" class="button-search btn btn-primary" name="submit_search"><i
+                            class="fa fa-search"></i></button>
+					</span>
+                        </div>
+                        <input type="hidden" name="route" value="product/search"/>
+                    </form>
+                </div>
+                <!-- //end Search -->
+
+                <!-- Secondary menu -->
+                <div class="col-md-2 col-sm-5 col-xs-12 shopping_cart pull-right">
+                    <!--cart-->
+                    <div id="cart" class=" btn-group btn-shopping-cart">
+                        <a data-loading-text="Loading..." class="top_cart dropdown-toggle" data-toggle="dropdown">
+                            <div class="shopcart">
+                                <span class="handle pull-left"></span>
+                                <span class="title">My cart</span>
+                                <p sec:authorize="isAuthenticated()" id="cart-counter" class="text-shopping-cart cart-total-full">[[ ${userCartItems.size()} ]] item(s) </p>
+                                <p sec:authorize="isAnonymous()" id="cart-counter" class="text-shopping-cart cart-total-full">0 item </p>
+
+                            </div>
+                        </a>
+
+
+                        <ul class="tab-content content dropdown-menu pull-right shoppingcart-box" role="menu">
+
+                            <li>
+                                <table sec:authorize="isAuthenticated()" id="cart-table" class="table table-striped">
+                                    <tbody>
+                                    <tr th:each="item : ${userCartItems}" th:id="'ci-'+${item.idItem}" >
+                                        <td class="text-center" style="width:70px">
+                                            <a th:href="@{/product/{id}(id=${item.article.idArticle})}"> <img
+                                                    th:src="${item.article.getImagePath()}"
+                                                    style="width:70px" th:alt="${item.article.label}" th:title="${item.article.label}"
+                                                    class="preview"> </a>
+                                        </td>
+                                        <td class="text-left"><a class="cart_product_name"
+                                                                 th:href="@{/product/{id}(id=${item.article.idArticle})}" th:text="${item.article.label}">Filet Mign</a></td>
+                                        <td class="text-center"> x[[${item.quantity}]]</td>
+                                        <td class="text-center"> [[${item.article.price}]] FCFA</td>
+                                        <td class="text-right">
+                                            <a th:href="@{product}" class="fa fa-edit"></a>
+                                        </td>
+                                        <td class="text-right">
+                                            <a th:data-ci="${item.idItem}" th:data-pi="${item.article.getImagePath()}" th:data-pn="${item.article.label}" onclick="removeCartItem(this.getAttribute('data-ci'),this.getAttribute('data-pi'),this.getAttribute('data-pn'));" class="fa fa-times fa-delete"></a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <script>
+                                    function removeCartItem(item_id, product_image, product_name) {
+                                        cart.remove(item_id, product_image, product_name);
+                                        document.getElementById("ci-"+item_id).remove();
+                                        const rowCount = $("#cart-table").length;
+                                        document.getElementById("cart-counter").innerHTML = rowCount.toString() + " item(s)";
+                                    }
+                                </script>
+                            </li>
+                            <li>
+                                <div>
+                                    <p class="text-right">
+                                        <a sec:authorize="isAuthenticated()" class="btn view-cart" th:href="@{/cart}"><i
+                                            class="fa fa-shopping-cart"></i>View Cart
+                                        </a>&nbsp;&nbsp;&nbsp;
+                                        <a sec:authorize="isAuthenticated()" class="btn btn-mega checkout-cart" th:href="@{/checkout}"><i
+                                            class="fa fa-share"></i>Checkout
+                                        </a>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="header-top-right collapsed-block text-right col-lg-6 col-md-7 col-sm-12 col-xs-12 compact-hidden">
+                        <h5 class="tabBlockTitle visible-xs">More<a class="expander " th:href="@{#TabBlock-1}"><i
+                                class="fa fa-angle-down"></i></a></h5>
+                        <div class="tabBlock" id="TabBlock-1">
+                            <ul class="top-link list-inline">
+                                <li class="account btn-group" id="my_account">
+                                    <a th:href="@{#}" title="My Account" class="btn btn-xs dropdown-toggle"
+                                       data-toggle="dropdown"> <span class="hidden-xs">My Account</span> <span
+                                            class="fa fa-angle-down "></span></a>
+                                    <ul class="dropdown-menu ">
+                                        <li sec:authorize="isAuthenticated()" ><a th:href="@{/my-account}"><i class="fa fa-pencil-square-o"></i>
+                                            My Account</a></li>
+                                        <li sec:authorize="isAnonymous()" ><a th:href="@{/login}"><i class="fa fa-pencil-square-o"></i>
+                                            Login</a></li>
+                                        <li sec:authorize="isAnonymous()" ><a th:href="@{/register}"><i class="fa fa-user"></i> Register</a>
+                                        </li>
+                                        <li sec:authorize="isAuthenticated()" ><a th:href="@{/logout}"><i class="fa fa-user"></i> Logout</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--//cart-->
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- //Header center -->
+
+    <!-- Header Bottom -->
+    <div class="header-bottom">
+        <div class="container">
+            <div class="row">
+
+                <div class="sidebar-menu col-md-3 col-sm-6 col-xs-12 ">
+                    <div class="responsive so-megamenu ">
+                        <div class="so-vertical-menu no-gutter compact-hidden">
+                            <nav class="navbar-default">
+
+                                <div class="container-megamenu vertical open">
+                                    <div id="menuHeading">
+                                        <div class="megamenuToogle-wrapper">
+                                            <div class="megamenuToogle-pattern">
+                                                <div class="container">
+                                                    <div>
+                                                        <span></span>
+                                                        <span></span>
+                                                        <span></span>
+                                                    </div>
+                                                    All Catalogs
+                                                    <i class="fa pull-right arrow-circle fa-chevron-circle-up"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="navbar-header">
+                                        <button type="button" id="show-verticalmenu" data-toggle="collapse"
+                                                class="navbar-toggle fa fa-list-alt">
+
+                                        </button>
+                                        All Catalogs
+                                    </div>
+                                    <div class="vertical-wrapper">
+                                        <span id="remove-verticalmenu" class="fa fa-times"></span>
+                                        <div class="megamenu-pattern">
+                                            <div class="container">
+                                                <ul class="megamenu">
+                                                    <li th:each="catalog : ${catalogs}" class="item-vertical style1 with-sub-menu hover">
+                                                        <p class="close-menu"></p>
+                                                        <a class="clearfix">
+                                                            <img style="border-radius: 100px" th:src="${catalog.getImagePath()}" width="24px" height="24px" alt="icon">
+                                                            <span th:text="${catalog.label}">Automotive &amp; Motocrycle</span>
+                                                            <b class="caret"></b>
+                                                        </a>
+                                                        <div class="sub-menu" data-subwidth="100">
+                                                            <div class="content">
+                                                                <div class="row">
+                                                                    <div class="col-sm-12">
+                                                                        <div class="row">
+                                                                            <div th:each="category : ${catalog.categories}" class="col-md-4 static-menu">
+                                                                                <div class="menu">
+                                                                                    <ul>
+                                                                                        <li>
+                                                                                            <a class="main-menu" th:text="${category.label}">Apparel</a>
+                                                                                            <ul>
+                                                                                                <li th:each="subCategory : ${category.subCategories}" >
+                                                                                                    <a th:text="${subCategory.label}" th:href="@{/sub-category/{id}(id = ${subCategory.idSubCategory})}">Accessories
+                                                                                                        for Tablet
+                                                                                                        PC</a>
+                                                                                                </li>
+                                                                                            </ul>
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="loadmore">
+                                                        <i class="fa fa-plus-square-o"></i>
+                                                        <span class="more-view">More Catalogs</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Main menu -->
+                <div class="megamenu-hori header-bottom-right  col-md-9 col-sm-6 col-xs-12 ">
+                    <div class="responsive so-megamenu ">
+                        <nav class="navbar-default">
+                            <div class=" container-megamenu  horizontal">
+                                <div class="navbar-header">
+                                    <button type="button" id="show-megamenu" data-toggle="collapse"
+                                            class="navbar-toggle">
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                    Navigation
+                                </div>
+
+                                <div class="megamenu-wrapper">
+                                    <span id="remove-megamenu" class="fa fa-times"></span>
+                                    <div class="megamenu-pattern">
+                                        <div class="container">
+                                            <ul class="megamenu " data-transition="slide" data-animationtime="250">
+                                                <li class="home hover">
+                                                    <a th:href="@{/index}">Home </a>
+                                                </li>
+
+                                                <li class="with-sub-menu hover">
+                                                    <p class="close-menu"></p>
+                                                    <a class="clearfix">
+                                                        <strong>Categories</strong>
+                                                        <span class="label"></span>
+                                                        <b class="caret"></b>
+                                                    </a>
+                                                    <div class="sub-menu" style="width: 100%; display: none;">
+                                                        <div class="content">
+                                                            <div class="row">
+                                                                <div class="col-sm-12">
+                                                                    <div class="row">
+                                                                        <div th:each="category : ${categories}" class="col-md-3 img img1">
+                                                                            <a ><img
+                                                                                    th:src="${category.getImagePath()}"
+                                                                                    th:alt="${category.label}"></a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div th:each="category : ${categories}" class="col-md-3">
+                                                                    <a
+                                                                       class="title-submenu" th:text="${category.label}">Automotive</a>
+                                                                    <div class="row">
+                                                                        <div class="col-md-12 hover-menu">
+                                                                            <div class="menu">
+                                                                                <ul>
+                                                                                    <li th:each="subCategory : ${category.subCategories}"><a th:href="@{/sub-category/{id}(id=${subCategory.idSubCategory})}"
+                                                                                           class="main-menu" th:text="${subCategory.label}">Car
+                                                                                        Alarms and Security</a>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li class="">
+                                                    <p class="close-menu"></p>
+                                                    <a th:href="@{/contact}">Contact us </a>
+                                                </li>
+
+                                                <li class="">
+                                                    <p class="close-menu"></p>
+                                                    <a th:href="@{/about-us}">About us </a>
+                                                </li>
+
+                                                <li class="">
+                                                    <p class="close-menu"></p>
+                                                    <a th:href="@{/faq}">FAQ </a>
+                                                </li>
+
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                <!-- //end Main menu -->
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Navbar switcher -->
+    <!-- //end Navbar switcher -->
+</header>
+
+</body>
+</html>

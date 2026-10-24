@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+
+    <!-- Basic page needs
+	============================================ -->
+    <title th:replace="fragments/title :: title">Market - Premium Multipurpose HTML5/CSS3 Theme</title>
+    <meta charset="utf-8">
+    <meta name="keywords"
+          content="boostrap, responsive, html5, css3, jquery, theme, multicolor, parallax, retina, business"/>
+    <meta name="author" content="Magentech">
+    <meta name="robots" content="index, follow"/>
+
+    <!-- Mobile specific metas
+    ============================================ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- Favicon
+    ============================================ -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" th:href="@{/ico/apple-touch-icon-144-precomposed.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" th:href="@{/ico/apple-touch-icon-114-precomposed.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" th:href="@{/ico/apple-touch-icon-72-precomposed.png}">
+    <link rel="apple-touch-icon-precomposed" th:href="@{/ico/apple-touch-icon-57-precomposed.png}">
+    <link rel="shortcut icon" th:href="@{/ico/favicon.png}">
+
+    <!-- Google web fonts
+    ============================================ -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+
+    <!-- Libs CSS
+	============================================ -->
+    <link rel="stylesheet" th:href="@{/css/register.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap/css/bootstrap.min.css}">
+    <link th:href="@{/css/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{/js/datetimepicker/bootstrap-datetimepicker.min.css}" rel="stylesheet">
+    <link th:href="@{/js/owl-carousel/owl.carousel.css}" rel="stylesheet">
+    <link th:href="@{/css/themecss/lib.css}" rel="stylesheet">
+    <link th:href="@{/js/jquery-ui/jquery-ui.min.css}" rel="stylesheet">
+
+    <!-- Theme CSS
+    ============================================ -->
+    <link th:href="@{/css/themecss/so_megamenu.css}" rel="stylesheet">
+    <link th:href="@{/css/themecss/so-categories.css}" rel="stylesheet">
+    <link th:href="@{/css/themecss/so-listing-tabs.css}" rel="stylesheet">
+    <link th:href="@{/css/footer1.css}" rel="stylesheet">
+    <link th:href="@{/css/header1.css}" rel="stylesheet">
+    <link id="color_scheme" th:href="@{/css/theme.css}" rel="stylesheet">
+
+    <link th:href="@{/css/responsive.css}" rel="stylesheet">
+
+
+</head>
+
+<body class="res layout-subpage">
+<div id="wrapper" class="wrapper-full ">
+    <!-- Header Container  -->
+    <header th:replace="fragments/header :: header" ></header>
+    <!-- //Header Container  -->
+
+    <!-- Main Container  -->
+    <div class="main-container container">
+        <ul class="breadcrumb">
+            <li><a th:href="@{#}"><i class="fa fa-home"></i></a></li>
+            <li><a th:href="@{#}">Account</a></li>
+            <li><a th:href="@{#}">Register</a></li>
+        </ul>
+
+        <div class="row">
+            <div id="content" class="col-sm-12">
+                <h2 class="title">Register Account</h2>
+                <p>If you already have an account with us, please login at the <a th:href="@{login}">login page</a>.</p>
+
+                <div th:if="${success}" class="alert alert-success">
+                    <i class="fa fa-check-circle"></i>
+                    [[${success}]]
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" >x</button>
+                </div>
+
+                <div th:if="${failure}" class="alert alert-danger">
+                    <i class="fa fa-exclamation-circle"></i>
+                    [[${failure}]]
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" >x</button>
+                </div>
+
+                <form th:action="@{/register}" th:object="${customer}" method="post" class="form-horizontal account-register clearfix">
+                    <fieldset id="account">
+                        <legend>Your Personal Details</legend>
+                        <div class="form-group required">
+                            <label class="col-sm-2 control-label" for="input-firstname">First Name</label>
+                            <div class="col-sm-10">
+                                <input required th:field="${customer.firstName}" type="text" placeholder="First Name"
+                                       id="input-firstname" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group required">
+                            <label class="col-sm-2 control-label" for="input-lastname">Last Name</label>
+                            <div class="col-sm-10">
+                                <input required th:field="${customer.lastName}" type="text" value="" placeholder="Last Name" id="input-lastname"
+                                       class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group required">
+                            <label class="col-sm-2 control-label" for="input-sex">Sex</label>
+                            <div class="col-sm-10">
+                                <select required th:field="${customer.sex.idSex}" id="input-sex" class="form-control">
+                                    <option disabled selected value=""> --- Please Select ---</option>
+                                    <option th:each="sex : ${sexes}" th:value="${sex.idSex}" th:text="${sex.label}">Aaland Islands</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group required">
+                            <label class="col-sm-2 control-label" for="input-birth">Birthday</label>
+                            <div class="col-sm-10">
+                                <input required th:field="${customer.birthDate}" type="date" value="" placeholder="Birthday" id="input-birth"
+                                       class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group required">
+                            <label class="col-sm-2 control-label" for="input-email">E-Mail</label>
+                            <div class="col-sm-10">
+                                <input required type="email" th:field="${customer.email}" value="" placeholder="E-Mail" id="input-email"
+                                       class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group required">
+                            <label class="col-sm-2 control-label" for="input-telephone">Telephone</label>
+                            <div class="col-sm-10">
+                                <input required type="tel" th:field="${customer.phoneNumber}" value="" placeholder="Telephone" id="input-telephone"
+                                       class="form-control">
+                            </div>
+                        </div>
+
+                    </fieldset>
+                    <fieldset id="address">
+                        <legend>Your Address</legend>
+                        <div class="form-group required">
+                            <label class="col-sm-2 control-label" for="input-label">Label</label>
+                            <div class="col-sm-10">
+                                <input required type="text" th:field="${address.label}" value="" placeholder="Label" id="input-label"
+                                       class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group required">
+                            <label class="col-sm-2 control-label" for="input-city">City</label>
+                            <div class="col-sm-10">
+                                <select required th:field="${address.city.idCity}" id="input-city" class="form-control">
+                                    <option selected disabled value=""> --- Please Select ---</option>
+                                    <option th:each=" city : ${cities}" th:value="${city.idCity}" th:text="${city.label}" >Aberdeen</option>
+                                </select>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Your Password</legend>
+                        <div class="form-group required">
+                            <label class="col-sm-2 control-label" for="password">Password</label>
+                            <div class="col-sm-10">
+                                <input required type="password"  th:field="${customer.password}" value="" placeholder="Password"
+                                       id="password" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group required">
+                            <label class="col-sm-2 control-label" for="confirm_pass">Password Confirm</label>
+                            <div class="col-sm-10">
+                                <input required type="password" name="confirm_pass" value="" placeholder="Password Confirm"
+                                       id="confirm_pass" class="form-control">
+                                <p></p>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="buttons">
+                        <div class="pull-right">I have read and agree to the conditions
+                            <input required class="box-checkbox" type="checkbox" name="agree" value="1"> &nbsp;
+                            <input  type="submit" value="Continue" class="btn btn-primary">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- //Main Container -->
+
+
+    <!-- Footer Container -->
+    <footer th:replace="fragments/footer :: footer"></footer>
+    <!-- //end Footer Container -->
+
+</div>
+
+
+<!-- Include Libs & Plugins
+	============================================ -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" th:src="@{/js/jquery-2.2.4.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/register.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/owl-carousel/owl.carousel.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/libs.js}"></script>
+<script type="text/javascript" th:src="@{/js/unveil/jquery.unveil.js}"></script>
+<script type="text/javascript" th:src="@{/js/countdown/jquery.countdown.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/datetimepicker/moment.js}"></script>
+<script type="text/javascript" th:src="@{/js/datetimepicker/bootstrap-datetimepicker.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery-ui/jquery-ui.min.js}"></script>
+
+
+
+<!-- Theme files
+============================================ -->
+
+
+<script type="text/javascript" th:src="@{/js/themejs/so_megamenu.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/addtocart.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/application.js}"></script>
+
+</body>
+</html>

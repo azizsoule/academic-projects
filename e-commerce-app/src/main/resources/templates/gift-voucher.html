@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    
+    <!-- Basic page needs
+	============================================ -->
+	<title th:replace="fragments/title :: title"></title>
+	<meta charset="utf-8">
+    <meta name="keywords" content="boostrap, responsive, html5, css3, jquery, theme, multicolor, parallax, retina, business" />
+    <meta name="author" content="Magentech">
+    <meta name="robots" content="index, follow" />
+   
+	<!-- Mobile specific metas
+	============================================ -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	
+	<!-- Favicon
+	============================================ -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" th:href="@{/ico/apple-touch-icon-144-precomposed.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" th:href="@{/ico/apple-touch-icon-114-precomposed.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" th:href="@{/ico/apple-touch-icon-72-precomposed.png}">
+    <link rel="apple-touch-icon-precomposed" th:href="@{/ico/apple-touch-icon-57-precomposed.png}">
+    <link rel="shortcut icon" th:href="@{/ico/favicon.png}">
+	
+	<!-- Google web fonts
+	============================================ -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+	
+    <!-- Libs CSS
+	============================================ -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap/css/bootstrap.min.css}">
+	<link th:href="@{/css/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+	<link th:href="@{/js/datetimepicker/bootstrap-datetimepicker.min.css}" rel="stylesheet">
+    <link th:href="@{/js/owl-carousel/owl.carousel.css}" rel="stylesheet">
+	<link th:href="@{/css/themecss/lib.css}" rel="stylesheet">
+	<link th:href="@{/js/jquery-ui/jquery-ui.min.css}" rel="stylesheet">
+	
+	<!-- Theme CSS
+	============================================ -->
+   	<link th:href="@{/css/themecss/so_megamenu.css}" rel="stylesheet">
+    <link th:href="@{/css/themecss/so-categories.css}" rel="stylesheet">
+	<link th:href="@{/css/themecss/so-listing-tabs.css}" rel="stylesheet">
+	<link th:href="@{/css/footer1.css}" rel="stylesheet">
+	<link th:href="@{/css/header1.css}" rel="stylesheet">
+		<link id="color_scheme" th:href="@{/css/theme.css}" rel="stylesheet">
+		
+	<link th:href="@{/css/responsive.css}" rel="stylesheet">
+	
+   
+	
+	
+
+</head>
+
+<body class="res layout-subpage">
+    <div id="wrapper" class="wrapper-full ">
+	<!-- Header Container  -->
+		<header th:replace="fragments/header :: header" ></header>
+	<!-- //Header Container  -->
+	<!-- Main Container  -->
+	<div class="main-container container">
+		<ul class="breadcrumb">
+			<li><a th:href="@{#}"><i class="fa fa-home"></i></a></li>
+			<li><a th:href="@{#}">Gift Voucher</a></li>
+		</ul>
+		
+		<div class="row">
+			<!--Middle Part Start-->
+			<div id="content" class="col-sm-9">
+				<h2 class="title">Purchase a Gift Card</h2>
+				<p>This gift card will be emailed to the recipient after your order has been paid for.</p>
+
+				<form class="form-horizontal">
+					<div class="form-group required">
+						<label for="input-to-name" class="col-sm-2 control-label">Recipient's Name</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="input-to-name" value="" name="to_name">
+						</div>
+					</div>
+					<div class="form-group required">
+						<label for="input-to-email" class="col-sm-2 control-label">Recipient's e-mail</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="input-to-email" value="" name="to_email">
+						</div>
+					</div>
+					<div class="form-group required">
+						<label for="input-from-name" class="col-sm-2 control-label">Your Name</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="input-from-name" value="" name="from_name">
+						</div>
+					</div>
+					<div class="form-group required">
+						<label for="input-from-email" class="col-sm-2 control-label">Your e-mail</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="input-from-email" value="" name="from_email">
+						</div>
+					</div>
+					<div class="form-group required">
+						<label class="col-sm-2 control-label">Gift Certificate Theme</label>
+						<div class="col-sm-10">
+							<div class="radio">
+								<label>
+									<input type="radio" value="8" name="voucher_theme_id"> General
+								</label>
+							</div>
+							<div class="radio">
+								<label>
+									<input type="radio" value="7" name="voucher_theme_id"> Birthday
+								</label>
+							</div>
+							<div class="radio">
+								<label>
+									<input type="radio" value="6" name="voucher_theme_id"> Christmas
+								</label>
+							</div>
+
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="input-message" class="col-sm-2 control-label"><span title="" data-toggle="tooltip" data-original-title="Optional">Message</span>
+						</label>
+						<div class="col-sm-10">
+							<textarea class="form-control" id="input-message" rows="5" cols="40" name="message"></textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="input-amount" class="col-sm-2 control-label"><span title="" data-toggle="tooltip" data-original-title="Card value can range from between $10.00 and $1,000.00">Amount</span>
+						</label>
+						<div class="col-sm-10">
+							<input type="text" size="5" class="form-control" id="input-amount" value="10" name="amount">
+						</div>
+					</div>
+					<div class="buttons clearfix">
+						<div class="pull-right">I understand that gift certificates are non-refundable.
+							<input type="checkbox" value="1" name="agree"> &nbsp;
+							<input type="submit" class="btn btn-primary" value="Continue">
+						</div>
+					</div>
+				</form>
+
+
+			</div>
+			<!--Middle Part End-->
+			<!--Right Part Start -->
+			<aside class="col-sm-3 hidden-xs" id="column-right">
+				<h2 class="subtitle">Account</h2>
+				<div class="list-group">
+					<ul class="list-item">
+						<li><a th:href="@{login}">Login</a>
+						</li>
+						<li><a th:href="@{register}">Register</a>
+						</li>
+						<li><a th:href="@{#}">Forgotten Password</a>
+						</li>
+						<li><a th:href="@{#}">My Account</a>
+						</li>
+						<li><a th:href="@{#}">Address Books</a>
+						</li>
+						<li><a th:href="@{wishlist}">Wish List</a>
+						</li>
+						<li><a th:href="@{#}">Order History</a>
+						</li>
+						<li><a th:href="@{#}">Downloads</a>
+						</li>
+						<li><a th:href="@{#}">Reward Points</a>
+						</li>
+						<li><a th:href="@{#}">Returns</a>
+						</li>
+						<li><a th:href="@{#}">Transactions</a>
+						</li>
+						<li><a th:href="@{#}">Newsletter</a>
+						</li>
+						<li><a th:href="@{#}">Recurring payments</a>
+						</li>
+					</ul>
+				</div>
+			</aside>
+			<!--Right Part End -->
+		</div>
+	</div>
+	<!-- //Main Container -->
+		
+
+	<!-- Footer Container -->
+		<footer th:replace="fragments/footer::footer"></footer>
+	<!-- //end Footer Container -->
+
+    </div>
+	
+	
+	
+<!-- Include Libs & Plugins
+	============================================ -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" th:src="@{/js/jquery-2.2.4.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/owl-carousel/owl.carousel.js}"></script>
+	<script type="text/javascript" th:src="@{/js/themejs/libs.js}"></script>
+	<script type="text/javascript" th:src="@{/js/unveil/jquery.unveil.js}"></script>
+	<script type="text/javascript" th:src="@{/js/countdown/jquery.countdown.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/datetimepicker/moment.js}"></script>
+	<script type="text/javascript" th:src="@{/js/datetimepicker/bootstrap-datetimepicker.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/jquery-ui/jquery-ui.min.js}"></script>
+	
+	
+	<!-- Theme files
+	============================================ -->
+	
+	
+	<script type="text/javascript" th:src="@{/js/themejs/so_megamenu.js}"></script>
+	<script type="text/javascript" th:src="@{/js/themejs/addtocart.js}"></script>
+	<script type="text/javascript" th:src="@{/js/themejs/application.js}"></script>
+</body>
+</html>

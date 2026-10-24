@@ -1,0 +1,434 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" lang="en">
+<head>
+    
+    <!-- Basic page needs
+	============================================ -->
+	<title th:replace="fragments/title::title">Market - Premium Multipurpose HTML5/CSS3 Theme</title>
+	<meta charset="utf-8">
+    <meta name="keywords" content="boostrap, responsive, html5, css3, jquery, theme, multicolor, parallax, retina, business" />
+    <meta name="author" content="Magentech">
+    <meta name="robots" content="index, follow" />
+   
+	<!-- Mobile specific metas
+	============================================ -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	
+	<!-- Favicon
+	============================================ -->
+   
+    <link rel="shortcut icon" th:href="@{/ico/favicon.png}">
+	
+	<!-- Google web fonts
+	============================================ -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+	
+    <!-- Libs CSS
+	============================================ -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap/css/bootstrap.min.css}">
+	<link th:href="@{/css/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+	<link th:href="@{/js/datetimepicker/bootstrap-datetimepicker.min.css}" rel="stylesheet">
+    <link th:href="@{/js/owl-carousel/owl.carousel.css}" rel="stylesheet">
+	<link th:href="@{/css/themecss/lib.css}" rel="stylesheet">
+	<link th:href="@{/js/jquery-ui/jquery-ui.min.css}" rel="stylesheet">
+	
+	<!-- Theme CSS
+	============================================ -->
+   	<link th:href="@{/css/themecss/so_megamenu.css}" rel="stylesheet">
+    <link th:href="@{/css/themecss/so-categories.css}" rel="stylesheet">
+	<link th:href="@{/css/themecss/so-listing-tabs.css}" rel="stylesheet">
+	<link th:href="@{/css/themecss/so-newletter-popup.css}" rel="stylesheet">
+	<link th:href="@{/css/themecss/just_purchased_notification.css}" rel=stylesheet>
+
+	<link th:href="@{/css/footer1.css}" rel="stylesheet">
+	<link th:href="@{/css/header1.css}" rel="stylesheet">
+	<link id="color_scheme" th:href="@{/css/theme.css}" rel="stylesheet">
+	<link th:href="@{/css/responsive.css}" rel="stylesheet">
+	
+</head>
+
+<body class="common-home res layout-home1">
+		
+
+
+    <div id="wrapper" class="wrapper-full banners-effect-7">
+	
+	
+
+	<!-- Header Container  -->
+        <header th:replace="fragments/header :: header" ></header>
+	<!-- //Header Container  -->
+	
+	<!-- Block Spotlight1  -->
+	<section class="so-spotlight1 ">
+		<div class="container">
+			<div class="row">
+				<div id="yt_header_right" class="col-lg-offset-3 col-lg-9 col-md-12">
+					<div class="slider-container "> 
+
+						<div class="module first-block">
+							<div class="modcontent clearfix">
+								<div id="custom_popular_search" class="clearfix">
+
+								</div>
+							</div>
+						</div>
+						<div id="so-slideshow" class="col-lg-8 col-md-8 col-sm-12 col-xs-12 two-block">
+							<div class="module no-margin">
+								<div class="yt-content-slider yt-content-slider--arrow1"  data-rtl="yes" data-autoplay="no" data-autoheight="no" data-delay="4" data-speed="0.6" data-margin="0" data-items_column0="1" data-items_column1="1" data-items_column2="1"  data-items_column3="1" data-items_column4="1" data-arrows="yes" data-pagination="no" data-lazyload="yes" data-loop="no" data-hoverpause="yes">
+									<div  class="yt-content-slide">
+										<a th:href="@{#}"><img th:src="@{/image/demo/slider/slider-1.png}" alt="slider1" class="img-responsive"></a>
+									</div>
+									<div class="yt-content-slide">
+										<a th:href="@{#}"><img th:src="@{/image/demo/slider/slider-2.png}" alt="slider2" class="img-responsive"></a>
+									</div>
+									<div class="yt-content-slide">
+										<a th:href="@{#}"><img th:src="@{/image/demo/slider/slider-3.png}" alt="slider3" class="img-responsive"></a>
+									</div>
+								</div>
+								
+								<div class="loadeding"></div>
+							</div>
+							
+						</div>
+
+						
+						<div class="module col-md-4  hidden-sm hidden-xs three-block ">
+							<div class="modcontent clearfix">
+								<div class="htmlcontent-block">	
+									<ul class="htmlcontent-home">		
+										<li>
+											<div class="banners">
+												<div>
+													<a th:href="@{#}"><img th:src="@{/image/demo/cms/banner1.jpg}" alt="banner1"></a>
+												</div>
+											</div>
+										</li>		
+										<li>
+											<div class="banners">
+												<div>
+													<a th:href="@{#}"><img th:src="@{/image/demo/cms/banner2.jpg}" alt="banner1"></a>
+												</div>
+											</div>
+										</li>		
+										<li>
+											<div class="banners">
+												<div>
+													<a th:href="@{#}"><img th:src="@{/image/demo/cms/banner3.jpg}" alt="banner1"></a>
+												</div>
+											</div>
+										</li>	
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="module hidden-xs col-sm-12 four-block">
+							<div class="modcontent clearfix">
+								<div class="policy-detail">
+									<div>
+
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>  
+	</section>
+	<!-- //Block Spotlight1  -->
+	
+	<!-- Main Container  -->
+	<br><br><br><br><br>
+	<div class="main-container container">
+		
+		<div class="row">
+			<div id="content" class="col-sm-12">
+				
+			<div class="module tab-slider titleLine">
+				<h3 class="modtitle">Featured Product</h3>
+				<div id="so_listing_tabs_1" class="so-listing-tabs first-load module">
+					<div class="loadeding"></div>
+					<div class="ltabs-wrap">
+						<div class="ltabs-tabs-container" data-rtl="yes" data-delay="300" data-duration="600" data-effect="starwars" data-ajaxurl="" data-type_source="0" data-lg="4" data-md="3" data-sm="2" data-xs="1" data-margin="30">
+							<!--Begin Tabs-->
+							<div class="ltabs-tabs-wrap"> 
+							<span class="ltabs-tab-selected">Jewelry &amp; Watches	</span> <span class="ltabs-tab-arrow">▼</span>
+								<div class="item-sub-cat">
+									<ul class="ltabs-tabs cf">
+										<li class="ltabs-tab tab-sel" data-category-id="20" data-active-content=".items-category-20"> <span class="ltabs-tab-label">Jewelry &amp; Watches						</span> </li>
+									</ul>
+								</div>
+							</div>
+							<!-- End Tabs-->
+						</div>
+						<div class="ltabs-items-container">
+							<!--Begin Items-->
+							<div class="ltabs-items ltabs-items-selected items-category-20 grid" data-total="10">
+								<div class="ltabs-items-inner ltabs-slider ">
+									<div  th:each="article:${articles}" class="ltabs-item product-layout">
+										<div class="product-item-container">
+											<div class="left-block">
+												<div class="product-image-container second_img ">
+													<img th:src="${article.getImagePath()}" th:alt="${article.label}" class="img-responsive" />
+													<img th:src="${article.getImagePath()}" th:alt="${article.label}" class="img_0 img-responsive" />
+												</div>
+												<!--Sale Label-->
+												<span class="label label-sale">-15%</span>
+												<!--full quick view block-->
+												<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{/quickview/{id}(id=${article.idArticle})}">  Quickview</a>
+												<!--end full quick view block-->
+											</div>
+											<div class="right-block">
+												<div class="caption">
+													<h4><a th:text="${article.label}" th:href="@{/product/{id}(id=${article.idArticle})}">Cupim Bris</a></h4>
+
+													<div th:if="${article.comments.size() != 0}" class="ratings">
+														<div class="rating-box">
+															<span th:each="i : ${#numbers.sequence(1, 5)}" class="fa fa-stack"><i th:class="${i<=(article.ratingSum/article.comments.size()) ? 'fa fa-star fa-stack-1x' : 'fa fa-star-o fa-stack-1x' }"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+														</div>
+													</div>
+
+													<div th:if="${article.comments.size() == 0}" class="ratings" >
+														<div class="rating-box">
+															<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+															<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+															<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+															<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+															<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+														</div>
+													</div>
+
+													<div class="price">
+														<span th:text="${article.price}" class="price-new">$50.00</span>
+														<span class="price-old">$62.00</span>
+													</div>
+												</div>
+												<div class="button-group">
+													<button sec:authorize="isAuthenticated()" class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" th:data-pi="${article.idArticle}" th:data-ci="${customer.id}" th:data-pimg="${article.getImagePath()}" th:data-pn="${article.label}" onclick="cart.add(this.getAttribute('data-pi'), this.getAttribute('data-ci'), 1, this.getAttribute('data-pimg'), this.getAttribute('data-pn'))"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs">Add to Cart</span></button>
+													<button sec:authorize="isAuthenticated()" class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" th:data-pi="${article.idArticle}" th:data-ci="${customer.id}" th:data-pimg="${article.getImagePath()}" th:data-pn="${article.label}" onclick="wishlist.add(this.getAttribute('data-pi'), this.getAttribute('data-ci'), this.getAttribute('data-pimg'), this.getAttribute('data-pn'))"><i class="fa fa-heart"></i></button>
+												</div>
+											</div><!-- right block -->
+										</div>
+									</div>
+
+								</div>
+
+							</div>
+							<div class="ltabs-items items-category-18 grid" data-total="11">
+								<div class="ltabs-loading"></div>
+
+							</div>
+							<div class="ltabs-items  items-category-25 grid" data-total="11">
+								<div class="ltabs-loading"></div>
+							</div>
+						</div>
+						<!--End Items-->
+
+
+					</div>
+
+				</div>
+			</div>
+				<div class="module ">
+					<div class="modcontent clearfix">
+						<div class="banner-wraps ">
+							<div class="m-banner row">
+								<div class="banner htmlconten1 col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<div class="banners">
+										<div>
+											<a th:href="@{#}"><img th:src="@{/image/demo/cms/banner2-1.png}" alt="banner1"></a>
+										</div>
+									</div>
+								</div>
+								<div class="htmlconten2 col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<div class="module banners">
+											<div>
+												<a th:href="@{#}"><img th:src="@{/image/demo/cms/banner2-2.png}" alt="banner1"></a>
+											</div>
+									</div>
+										
+									<div class="banners">
+										<div>
+											<a th:href="@{#}"><img th:src="@{/image/demo/cms/banner2-3.png}" alt="banner1"></a>
+										</div>
+									</div>
+									
+								</div>
+								<div class="banner htmlconten3 hidden-sm col-lg-4 col-md-4 col-sm-6 col-xs-12">
+									<div class="banners">
+										<div>
+											<a th:href="@{#}"><img th:src="@{/image/demo/cms/banner2-4.png}" alt="banner1"></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="module tab-slider titleLine">
+					<h3 class="modtitle">New Products</h3>
+					<div id="so_listing_tabs_2" class="so-listing-tabs first-load module">
+						<div class="loadeding"></div>
+						<div class="ltabs-wrap">
+						<div class="ltabs-tabs-container" data-rtl="yes" data-delay="300" data-duration="600" data-effect="starwars" data-ajaxurl="" data-type_source="0" data-lg="4" data-md="3" data-sm="2" data-xs="1" data-margin="30">
+							<!--Begin Tabs-->
+							<div class="ltabs-tabs-wrap"> 
+							<span class="ltabs-tab-selected">Jewelry &amp; Watches	</span> <span class="ltabs-tab-arrow">▼</span>
+								<div class="item-sub-cat">
+									<ul class="ltabs-tabs cf">
+										<li class="ltabs-tab tab-sel" data-category-id="20" data-active-content=".items-category-20"> <span class="ltabs-tab-label">Jewelry &amp; Watches						</span> </li>
+									</ul>
+								</div>
+							</div>
+							<!-- End Tabs-->
+						</div>
+							<div class="ltabs-items-container">
+								<!--Begin Items-->
+								<div class="ltabs-items ltabs-items-selected items-category-20 grid" data-total="10">
+									<div class="ltabs-items-inner ltabs-slider ">
+										<div  th:each="article:${articles}" class="ltabs-item product-layout">
+											<div class="product-item-container">
+												<div class="left-block">
+													<div class="product-image-container second_img ">
+														<img th:src="${article.getImagePath()}" th:alt="${article.label}" class="img-responsive" />
+														<img th:src="${article.getImagePath()}" th:alt="${article.label}" class="img_0 img-responsive" />
+													</div>
+													<!--Sale Label-->
+													<span class="label label-sale">-15%</span>
+													<!--full quick view block-->
+													<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{/quickview/{id}(id=${article.idArticle})}">  Quickview</a>
+													<!--end full quick view block-->
+												</div>
+												<div class="right-block">
+													<div class="caption">
+														<h4><a th:text="${article.label}" th:href="@{/product/{id}(id=${article.idArticle})}">Cupim Bris</a></h4>
+
+														<div th:if="${article.comments.size() != 0}" class="ratings">
+															<div class="rating-box">
+																<span th:each="i : ${#numbers.sequence(1, 5)}" class="fa fa-stack"><i th:class="${i<=(article.ratingSum/article.comments.size()) ? 'fa fa-star fa-stack-1x' : 'fa fa-star-o fa-stack-1x' }"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+															</div>
+														</div>
+
+														<div th:if="${article.comments.size() == 0}" class="ratings" >
+															<div class="rating-box">
+																<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+																<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+																<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+																<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+																<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+															</div>
+														</div>
+
+														<div class="price">
+															<span th:text="${article.price}" class="price-new">$50.00</span>
+															<span class="price-old">$62.00</span>
+														</div>
+													</div>
+													<div class="button-group">
+														<button sec:authorize="isAuthenticated()" class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" th:data-pi="${article.idArticle}" th:data-ci="${customer.id}" th:data-pimg="${article.getImagePath()}" th:data-pn="${article.label}" onclick="cart.add(this.getAttribute('data-pi'), this.getAttribute('data-ci'), 1, this.getAttribute('data-pimg'), this.getAttribute('data-pn'))"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs">Add to Cart</span></button>
+														<button sec:authorize="isAuthenticated()" class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" th:data-pi="${article.idArticle}" th:data-ci="${customer.id}" th:data-pimg="${article.getImagePath()}" th:data-pn="${article.label}" onclick="wishlist.add(this.getAttribute('data-pi'), this.getAttribute('data-ci'), this.getAttribute('data-pimg'), this.getAttribute('data-pn'))"><i class="fa fa-heart"></i></button>
+													</div>
+												</div><!-- right block -->
+											</div>
+										</div>
+
+									</div>
+
+								</div>
+								<div class="ltabs-items items-category-18 grid" data-total="11">
+									<div class="ltabs-loading"></div>
+
+								</div>
+								<div class="ltabs-items  items-category-25 grid" data-total="11">
+									<div class="ltabs-loading"></div>
+								</div>
+							</div>
+						<!--End Items-->
+						
+						
+						</div>
+					
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //Main Container -->
+	<!-- Block Spotlight3  -->
+	<section class="so-spotlight3">
+		<div class="container">
+			<div class="row">
+				
+				<div id="so_categories_173761471880018" class="so-categories module titleLine preset01-4 preset02-3 preset03-3 preset04-1 preset05-1">
+					<h3 class="modtitle">Hot Categories</h3>
+
+					<div class="wrap-categories">
+						<div class="cat-wrap theme3">
+							<div th:each="category : ${categories}" class="content-box">
+								<div class="image-cat">
+									<a th:title="${category.label}">
+										<img th:src="${category.getImagePath()}" th:title="${category.label}" th:alt="${category.label}">
+									</a>
+								</div>
+								<div class="inner">
+									<div class="title-cat"> <a th:text="${category.label}" >Automotive</a> </div>
+									<div class="child-cat">
+										<div th:each="subCategory : ${category.subCategories}" class="child-cat-title"> <a th:title="${subCategory.label}" th:href="@{/sub-category/{id}(id=${subCategory.idSubCategory})}" th:text="${subCategory.label}">More Car Accessories		</a> </div>
+									</div>
+								</div>
+							</div>
+							<div class="clr1"></div>
+						</div>
+					</div>
+				</div>
+			
+				
+			</div>
+		</div>
+	</section>
+	<!-- //Block Spotlight3  -->
+<script type="text/javascript">
+	var $typeheader = 'header-home1';
+	//-->
+</script>
+
+	<!-- Footer Container -->
+        <footer th:replace="fragments/footer::footer"></footer>
+	<!-- //end Footer Container -->
+
+    </div>
+	
+	
+<!-- Include Libs & Plugins
+============================================ -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" th:src="@{/js/jquery-2.2.4.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/owl-carousel/owl.carousel.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/libs.js}"></script>
+<script type="text/javascript" th:src="@{/js/unveil/jquery.unveil.js}"></script>
+<script type="text/javascript" th:src="@{/js/countdown/jquery.countdown.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/datetimepicker/moment.js}"></script>
+<script type="text/javascript" th:src="@{/js/datetimepicker/bootstrap-datetimepicker.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery-ui/jquery-ui.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/modernizr/modernizr-2.6.2.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap-notify.min.js}"></script>
+
+<!-- Theme files
+============================================ -->
+<script type="text/javascript" th:src="@{/js/themejs/application.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/homepage.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/so_megamenu.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/addtocart.js}"></script>
+
+
+
+</body>
+</html>

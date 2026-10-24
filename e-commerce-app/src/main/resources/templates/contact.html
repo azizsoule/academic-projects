@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    
+    <!-- Basic page needs
+	============================================ -->
+	<title th:replace="fragments/title :: title"></title>
+	<meta charset="utf-8">
+    <meta name="keywords" content="boostrap, responsive, html5, css3, jquery, theme, multicolor, parallax, retina, business" />
+    <meta name="author" content="Magentech">
+    <meta name="robots" content="index, follow" />
+   
+	<!-- Mobile specific metas
+	============================================ -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	
+	<!-- Favicon
+	============================================ -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" th:href="@{/ico/apple-touch-icon-144-precomposed.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" th:href="@{/ico/apple-touch-icon-114-precomposed.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" th:href="@{/ico/apple-touch-icon-72-precomposed.png}">
+    <link rel="apple-touch-icon-precomposed" th:href="@{/ico/apple-touch-icon-57-precomposed.png}">
+    <link rel="shortcut icon" th:href="@{/ico/favicon.png}">
+	
+	<!-- Google web fonts
+	============================================ -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+	
+    <!-- Libs CSS
+	============================================ -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap/css/bootstrap.min.css}">
+	<link th:href="@{/css/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+	<link th:href="@{/js/datetimepicker/bootstrap-datetimepicker.min.css}" rel="stylesheet">
+    <link th:href="@{/js/owl-carousel/owl.carousel.css}" rel="stylesheet">
+	<link th:href="@{/css/themecss/lib.css}" rel="stylesheet">
+	<link th:href="@{/js/jquery-ui/jquery-ui.min.css}" rel="stylesheet">
+	
+	<!-- Theme CSS
+	============================================ -->
+   	<link th:href="@{/css/themecss/so_megamenu.css}" rel="stylesheet">
+    <link th:href="@{/css/themecss/so-categories.css}" rel="stylesheet">
+	<link th:href="@{/css/themecss/so-listing-tabs.css}" rel="stylesheet">
+	<link th:href="@{/css/footer1.css}" rel="stylesheet">
+	<link th:href="@{/css/header1.css}" rel="stylesheet">
+	<link id="color_scheme" th:href="@{/css/theme.css}" rel="stylesheet">
+		
+	<link th:href="@{/css/responsive.css}" rel="stylesheet">
+	
+   
+	
+
+</head>
+
+<body class="res layout-subpage">
+    <div id="wrapper" class="wrapper-full ">
+	<!-- Header Container  -->
+		<header th:replace="fragments/header :: header" ></header>
+	<!-- //Header Container  -->
+	<!-- Main Container  -->
+	<div class="main-container container">
+		<ul class="breadcrumb">
+			<li><a th:href="@{#}"><i class="fa fa-home"></i></a></li>
+			<li><a th:href="@{#}">Page</a></li>
+			<li><a th:href="@{#}">Contact us</a></li>
+		</ul>
+		
+		<div class="row">
+			<div id="content" class="col-sm-12">
+				<div class="page-title">
+					<h2>Contact Us</h2>
+				</div>
+				
+				
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2948.8442639328655!2d-71.10008329902021!3d42.34584359264178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e379f63dc43ccb%3A0xa15d5aa87d0f0c12!2s4+Yawkey+Way%2C+Boston%2C+MA+02215!5e0!3m2!1sen!2s!4v1475081210943" width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
+				<div class="info-contact clearfix">
+					<div class="col-lg-4 col-sm-4 col-xs-12 info-store">
+						<div class="row">
+							<div class="name-store">
+								<h3>Your Store</h3>
+							</div>
+							<address>
+								<div class="address clearfix form-group">
+									<div class="icon">
+										<i class="fa fa-home"></i>
+									</div>
+									<div class="text">My Company, 42 avenue des Champs Elysées 75000 Paris France</div>
+								</div>
+								<div class="phone form-group">
+									<div class="icon">
+										<i class="fa fa-phone"></i>
+									</div>
+									<div class="text">Phone : 0102417078</div>
+								</div>
+								<div class="comment">             
+								Maecenas euismod felis et purus consectetur, quis fermentum velition. Aenean egestas quis turpis vehicula.Maecenas euismod felis et purus consectetur, quis fermentum velition. 
+								Aenean egestas quis turpis vehicula.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. 
+								The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
+								</div>
+							</address>
+						</div>
+					</div>
+					<div class="col-lg-8 col-sm-8 col-xs-12 contact-form">
+						<form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+							<fieldset>
+								<legend>Contact Form</legend>
+								<div class="form-group required">
+							<label class="col-sm-2 control-label" for="input-name">Your Name</label>
+							<div class="col-sm-10">
+								<input type="text" name="name" value="" id="input-name" class="form-control">
+								</div>
+							</div>
+							<div class="form-group required">
+								<label class="col-sm-2 control-label" for="input-email">E-Mail Address</label>
+								<div class="col-sm-10">
+									<input type="text" name="email" value="" id="input-email" class="form-control">
+									</div>
+								</div>
+								<div class="form-group required">
+									<label class="col-sm-2 control-label" for="input-enquiry">Enquiry</label>
+									<div class="col-sm-10">
+										<textarea name="enquiry" rows="10" id="input-enquiry" class="form-control"></textarea>
+									</div>
+								</div>
+							</fieldset>
+							<div class="buttons">
+								<div class="pull-right">
+									<button class="btn btn-default buttonGray" type="submit">
+										<span>Submit</span>
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //Main Container -->
+	
+
+	<!-- Footer Container -->
+		<footer th:replace="fragments/footer::footer"></footer>
+	<!-- //end Footer Container -->
+
+    </div>
+	
+	
+	
+<!-- Include Libs & Plugins
+============================================ -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" th:src="@{/js/jquery-2.2.4.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/owl-carousel/owl.carousel.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/libs.js}"></script>
+<script type="text/javascript" th:src="@{/js/unveil/jquery.unveil.js}"></script>
+<script type="text/javascript" th:src="@{/js/countdown/jquery.countdown.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/datetimepicker/moment.js}"></script>
+<script type="text/javascript" th:src="@{/js/datetimepicker/bootstrap-datetimepicker.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/jquery-ui/jquery-ui.min.js}"></script>
+
+
+<!-- Theme files
+============================================ -->
+
+
+<script type="text/javascript" th:src="@{/js/themejs/so_megamenu.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/addtocart.js}"></script>
+<script type="text/javascript" th:src="@{/js/themejs/application.js}"></script>
+	
+</body>
+</html>

@@ -1,0 +1,66 @@
+.container-confirm{
+    padding: 10px;
+    margin-bottom: 20px;
+
+}
+
+.payment
+{
+    border:1px solid #f2f2f2;
+    height:280px;
+    border-radius:20px;
+    background:#fff;
+    margin-right: auto;
+
+}
+.payment_header
+{
+    background: #f7b867;
+    padding:20px;
+    border-radius:20px 20px 0px 0px;
+
+}
+
+.check
+{
+    margin:0px auto;
+    width:50px;
+    height:50px;
+    border-radius:100%;
+    background:#fff;
+    text-align:center;
+}
+
+.check i
+{
+    vertical-align:middle;
+    line-height:50px;
+    font-size:30px;
+}
+
+.content-confirm
+{
+    text-align:center;
+}
+
+.content-confirm  h1
+{
+    font-size:25px;
+    padding-top:25px;
+}
+
+.content-confirm a
+{
+    width:200px;
+    height:35px;
+    color:#fff;
+    border-radius:30px;
+    padding:5px 10px;
+    background: #f7b867;
+    transition:all ease-in-out 0.3s;
+}
+.content-confirm a:hover
+{
+    text-decoration:none;
+    background: #747474;
+}

@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" lang="en">
+<head>
+    
+    <!-- Basic page needs
+	============================================ -->
+	<title th:replace="fragments/title :: title"></title>
+	<meta charset="utf-8">
+    <meta name="keywords" content="boostrap, responsive, html5, css3, jquery, theme, multicolor, parallax, retina, business" />
+    <meta name="author" content="Magentech">
+    <meta name="robots" content="index, follow" />
+   
+	<!-- Mobile specific metas
+	============================================ -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	
+	<!-- Favicon
+	============================================ -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" th:href="@{/ico/apple-touch-icon-144-precomposed.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" th:href="@{/ico/apple-touch-icon-114-precomposed.png}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" th:href="@{/ico/apple-touch-icon-72-precomposed.png}">
+    <link rel="apple-touch-icon-precomposed" th:href="@{/ico/apple-touch-icon-57-precomposed.png}">
+    <link rel="shortcut icon" th:href="@{/ico/favicon.png}">
+	
+	<!-- Google web fonts
+	============================================ -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+	
+    <!-- Libs CSS
+	============================================ -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap/css/bootstrap.min.css}">
+	<link th:href="@{/css/font-awesome/css/font-awesome.min.css}" rel="stylesheet">
+	<link th:href="@{/js/datetimepicker/bootstrap-datetimepicker.min.css}" rel="stylesheet">
+    <link th:href="@{/js/owl-carousel/owl.carousel.css}" rel="stylesheet">
+	<link th:href="@{/css/themecss/lib.css}" rel="stylesheet">
+	<link th:href="@{/js/jquery-ui/jquery-ui.min.css}" rel="stylesheet">
+	
+	<!-- Theme CSS
+	============================================ -->
+   	<link th:href="@{/css/themecss/so_megamenu.css}" rel="stylesheet">
+    <link th:href="@{/css/themecss/so-categories.css}" rel="stylesheet">
+	<link th:href="@{/css/themecss/so-listing-tabs.css}" rel="stylesheet">
+	<link th:href="@{/css/footer1.css}" rel="stylesheet">
+	<link th:href="@{/css/header1.css}" rel="stylesheet">
+		<link id="color_scheme" th:href="@{/css/theme.css}" rel="stylesheet">
+		
+	<link th:href="@{/css/responsive.css}" rel="stylesheet">
+	
+   
+	
+</head>
+
+<body class="res layout-subpage banners-effect-6">
+    <div id="wrapper" class="wrapper-full ">
+	<!-- Header Container  -->
+		<header th:replace="fragments/header :: header" ></header>
+	<!-- //Header Container  -->
+	<!-- Main Container  -->
+	<div class="main-container container">
+		<ul class="breadcrumb">
+			<li><a><i class="fa fa-home"></i></a></li>
+			<li><a th:text="${subCategory.category.catalog.label}">Smartphone & Tablets</a></li>
+			<li><a th:text="${subCategory.category.label}">Smartphone & Tablets</a></li>
+			<li><a th:text="${subCategory.label}">Smartphone & Tablets</a></li>
+		</ul>
+		
+		<div class="row">
+			<!--Left Part Start -->
+			<aside class="col-sm-4 col-md-3" id="column-left">
+				<div class="module menu-category titleLine">
+	<h3 class="modtitle">Categories</h3>
+	<div class="modcontent">
+		<div class="box-category">
+			<ul id="cat_accordion" class="list-group">
+				<li th:each="category : ${categories}" class="hadchild"><a class="cutom-parent" th:text="${category.label + ' ( ' + category.catalog.label +' )'}">Electronics</a>   <span class="button-view  fa fa-plus-square-o"></span>
+					<ul style="display: none;">
+						<li th:each="subCategory : ${category.subCategories}"><a th:href="@{/sub-category/{id}(id=${subCategory.idSubCategory})}" th:text="${subCategory.label}" >Cycling</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+				<div class="module">
+					<div class="modcontent clearfix">
+						<div class="banners">
+							<div>
+								<a><img th:src="@{/image/demo/cms/left-image-static.png}" alt="left-image"></a>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</aside>
+			<!--Left Part End -->
+			
+			<!--Middle Part Start-->
+			<div id="content" class="col-md-9 col-sm-8">
+				<div class="products-category">
+					<div class="category-derc">
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="banners">
+									<div>
+										<a><img height="260px" width="870px" th:src="${subCategory.getImagePath()}" th:alt="${subCategory.label}"><br></a>
+									</div>
+								</div>
+							
+							</div>
+						</div>
+					</div>
+					<!-- Filters -->
+					<div class="product-filter filters-panel">
+						<div class="row">
+							<div class="col-md-2 visible-lg">
+								<div class="view-mode">
+									<div class="list-view">
+										<button class="btn btn-default grid active" data-view="grid" data-toggle="tooltip"  data-original-title="Grid"><i class="fa fa-th"></i></button>
+										<button class="btn btn-default list" data-view="list" data-toggle="tooltip" data-original-title="List"><i class="fa fa-th-list"></i></button>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<!-- //end Filters -->
+					<!--changed listings-->
+					<div class="products-list row grid">
+
+						<div th:each="article : ${subCategory.articles}">
+							<div class="product-layout col-md-4 col-sm-6 col-xs-12 ">
+								<div class="product-item-container">
+									<div class="left-block">
+										<div class="product-image-container second_img ">
+											<img th:src="${article.getImagePath()}" th:alt="${article.label}" class="img-responsive" />
+											<img th:src="${article.images[0].getImagePath()}" th:alt="${article.label}" class="img_0 img-responsive" />
+										</div>
+										<!--Sale Label-->
+										<span class="label label-sale">Sale</span>
+										<!--full quick view block-->
+										<a class="quickview iframe-link visible-lg" data-fancybox-type="iframe"  th:href="@{/quickview/{id}(id=${article.idArticle})}">  Quickview</a>
+										<!--end full quick view block-->
+									</div>
+
+
+									<div class="right-block">
+										<div class="caption">
+											<h4><a th:href="@{/product/{id}(id=${article.idArticle})}" th:text="${article.label}" >Lorem Cow</a></h4>
+
+											<div th:if="${article.comments.size() != 0}" class="ratings">
+												<div class="rating-box">
+													<span th:each="i : ${#numbers.sequence(1, 5)}" class="fa fa-stack"><i th:class="${i<=(article.ratingSum/article.comments.size()) ? 'fa fa-star fa-stack-1x' : 'fa fa-star-o fa-stack-1x' }"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+												</div>
+											</div>
+
+											<div th:if="${article.comments.size() == 0}" class="ratings" >
+												<div class="rating-box">
+													<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+													<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+													<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+													<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+													<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>
+												</div>
+											</div>
+
+											<div class="price">
+												<span class="price-new">[[${article.price}]] FCFA</span>
+												<span th:text="${article.price}" class="price-old">$122.00</span>
+												<span th:if="${!article.discounts.isEmpty()}" class="label label-percent">-40%</span>
+											</div>
+											<div class="description item-desc hidden">
+												<p th:utext="${article.description}" >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est . </p>
+											</div>
+										</div>
+
+										<div class="button-group">
+											<button sec:authorize="isAuthenticated()" class="addToCart" type="button" data-toggle="tooltip" title="Add to Cart" th:data-pi="${article.idArticle}" th:data-ci="${customer.id}" th:data-pimg="${article.getImagePath()}" th:data-pn="${article.label}" onclick="cart.add(this.getAttribute('data-pi'), this.getAttribute('data-ci'), 1, this.getAttribute('data-pimg'), this.getAttribute('data-pn'))"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs">Add to Cart</span></button>
+											<button sec:authorize="isAuthenticated()" class="wishlist" type="button" data-toggle="tooltip" title="Add to Wish List" th:data-pi="${article.idArticle}" th:data-ci="${customer.id}" th:data-pimg="${article.getImagePath()}" th:data-pn="${article.label}" onclick="wishlist.add(this.getAttribute('data-pi'), this.getAttribute('data-ci'), this.getAttribute('data-pimg'), this.getAttribute('data-pn'))"><i class="fa fa-heart"></i></button>
+										</div>
+									</div><!-- right block -->
+
+								</div>
+							</div>
+							<div class="clearfix visible-sm-block"></div><div class="clearfix visible-xs-block"></div>
+						</div>
+
+					</div>					<!--// End Changed listings-->
+					<!-- Filters -->
+					<div class="product-filter product-filter-bottom filters-panel" >
+						<div class="row">
+							<div class="col-md-2 hidden-sm hidden-xs">
+							</div>
+						   <div class="short-by-show text-center col-md-7 col-sm-8 col-xs-12">
+								<div class="form-group" style="margin: 7px 10px">Showing 1 to 9 of 10 (2 Pages)</div>
+							</div>
+							<div class="box-pagination col-md-3 col-sm-4 text-right"><ul class="pagination"><li class="active"><span>1</span></li><li><a th:href="@{#}">2</a></li><li><a th:href="@{#}">&gt;</a></li><li><a th:href="@{#}">&gt;|</a></li></ul></div>
+									
+						 </div>
+					</div>
+					<!-- //end Filters -->
+					
+				</div>
+				
+			</div>
+			
+			
+		</div>
+		<!--Middle Part End-->
+	</div>
+	<!-- //Main Container -->
+	
+
+	<!-- Footer Container -->
+		<footer th:replace="fragments/footer::footer"></footer>
+	<!-- //end Footer Container -->
+
+    </div>
+	
+	
+	<!-- Cpanel Block -->
+	<div id="sp-cpanel_btn" class="isDown visible-lg">
+	<i class="fa fa-cog"></i>
+</div>		
+
+<!-- Include Libs & Plugins
+	============================================ -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" th:src="@{/js/jquery-2.2.4.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/owl-carousel/owl.carousel.js}"></script>
+	<script type="text/javascript" th:src="@{/js/themejs/libs.js}"></script>
+	<script type="text/javascript" th:src="@{/js/unveil/jquery.unveil.js}"></script>
+	<script type="text/javascript" th:src="@{/js/countdown/jquery.countdown.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/datetimepicker/moment.js}"></script>
+	<script type="text/javascript" th:src="@{/js/datetimepicker/bootstrap-datetimepicker.min.js}"></script>
+	<script type="text/javascript" th:src="@{/js/jquery-ui/jquery-ui.min.js}"></script>
+	
+	
+	<!-- Theme files
+	============================================ -->
+	
+	
+	<script type="text/javascript" th:src="@{/js/themejs/so_megamenu.js}"></script>
+	<script type="text/javascript" th:src="@{/js/themejs/addtocart.js}"></script>
+	<script type="text/javascript" th:src="@{/js/themejs/application.js}"></script>
+	<script type="text/javascript">
+	// Check if Cookie exists
+		if($.cookie('display')){
+			view = $.cookie('display');
+		}else{
+			view = 'grid';
+		}
+		if(view) display(view);
+	//--></script> 
+</body>
+</html>
